@@ -1,0 +1,62 @@
+(TeX-add-style-hook
+ "mathematics"
+ (lambda ()
+   (TeX-run-style-hooks
+    "xstring"
+    "xparse"
+    "etoolbox"
+    "enumitem"
+    "amsmath"
+    "amsthm"
+    "amssymb"
+    "amsfonts"
+    "amscd")
+   (TeX-add-symbols
+    '("interior" 1)
+    '("restrict" 1)
+    "exerciseWord"
+    "statementWord"
+    "answerWord"
+    "definitionWord"
+    "theoremWord"
+    "lemmaWord"
+    "propositionWord"
+    "corollaryWord"
+    "conjectureWord"
+    "exampleWord"
+    "remarkWord"
+    "axiomWord"
+    "exsymbol"
+    "exerciseName"
+    "diff"
+    "C"
+    "R"
+    "Q"
+    "Z"
+    "N")
+   (LaTeX-add-environments
+    '("ex" LaTeX-env-args ["argument"] 0)
+    "exercise"
+    "statement"
+    "answer")
+   (LaTeX-add-counters
+    "exerciseCounter"
+    "sectionCopy")
+   (LaTeX-add-amsthm-newtheorems
+    "thm"
+    "theorem"
+    "cor"
+    "corollary"
+    "lem"
+    "lemma"
+    "prop"
+    "proposition"
+    "rem"
+    "remark"
+    "con"
+    "conjecture"
+    "definition"
+    "axiom"
+    "example"))
+ :latex)
+

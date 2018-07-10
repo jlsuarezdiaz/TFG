@@ -1,0 +1,52 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global}
+    \entry{lmnn}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d4806c5e19f2bed51b4188ae242ad629}{%
+           family={Weinberger},
+           family_i={W\bibinitperiod},
+           given={Kilian\bibnamedelima Q},
+           given_i={K\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=5b3b0692ba432de2656e974c244d47e3}{%
+           family={Saul},
+           family_i={S\bibinitperiod},
+           given={Lawrence\bibnamedelima K},
+           given_i={L\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{b1a64d68bc5178898a74cd17d90c5b7f}
+      \strng{fullhash}{b1a64d68bc5178898a74cd17d90c5b7f}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{Feb}
+      \field{title}{Distance metric learning for large margin nearest neighbor classification}
+      \field{volume}{10}
+      \field{year}{2009}
+      \field{pages}{207\bibrangedash 244}
+      \range{pages}{38}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

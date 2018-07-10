@@ -1,0 +1,14 @@
+[0] Config.pm:340> INFO - This is Biber 2.4
+[0] Config.pm:343> INFO - Logfile is 'TFG.blg'
+[33] biber:287> INFO - === mar may 15, 2018, 11:59:11
+[112] Biber.pm:348> INFO - Reading 'TFG.bcf'
+[241] Biber.pm:742> INFO - Found 1 citekeys in bib section 0
+[246] Biber.pm:3151> INFO - Processing section 0
+[273] Biber.pm:3308> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[285] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[293] bibtex.pm:974> INFO - Found BibTeX data source 'bibliography.bib'
+[316] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[316] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[317] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'es-ES'
+[318] bbl.pm:519> INFO - Writing 'TFG.bbl' with encoding 'UTF-8'
+[322] bbl.pm:615> INFO - Output to TFG.bbl
