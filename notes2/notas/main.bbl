@@ -44,6 +44,36 @@
       \field{title}{Convex optimization}
       \field{year}{2004}
     \endentry
+    \entry{proximity_convex}{article}{}
+      \name{author}{2}{}{%
+        {{hash=518ffdffba5ad0325c63c3f990c02575}{%
+           family={Cheney},
+           family_i={C\bibinitperiod},
+           given={Ward},
+           given_i={W\bibinitperiod}}}%
+        {{hash=4318d98692830569223ac653456e331a}{%
+           family={Goldstein},
+           family_i={G\bibinitperiod},
+           given={Allen\bibnamedelima A},
+           given_i={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{1cfb38f4b2eba588a44fa1ea13115f5b}
+      \strng{fullhash}{1cfb38f4b2eba588a44fa1ea13115f5b}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the American Mathematical Society}
+      \field{number}{3}
+      \field{title}{Proximity maps for convex sets}
+      \field{volume}{10}
+      \field{year}{1959}
+      \field{pages}{448\bibrangedash 450}
+      \range{pages}{3}
+    \endentry
     \entry{introductiontoalgorithms}{book}{}
       \name{author}{1}{}{%
         {{hash=875d0e644e9b2df15d2a834abaecc2e8}{%
@@ -63,6 +93,29 @@
       \field{labeltitlesource}{title}
       \field{title}{Introduction to algorithms}
       \field{year}{2009}
+    \endentry
+    \entry{variations_convex}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e6908e0eeee954987c8751d41e2e6e7d}{%
+           family={Dacorogna},
+           family_i={D\bibinitperiod},
+           given={Bernard},
+           given_i={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{e6908e0eeee954987c8751d41e2e6e7d}
+      \strng{fullhash}{e6908e0eeee954987c8751d41e2e6e7d}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Direct methods in the calculus of variations}
+      \field{volume}{78}
+      \field{year}{2007}
+      \field{pages}{67\bibrangedash 148}
+      \range{pages}{82}
     \endentry
     \entry{itml}{inproceedings}{}
       \name{author}{5}{}{%
@@ -106,6 +159,51 @@
       \field{year}{2007}
       \field{pages}{209\bibrangedash 216}
       \range{pages}{8}
+    \endentry
+    \entry{ovoova}{article}{}
+      \name{author}{5}{}{%
+        {{hash=0c072b3353a45cbb3b58dc07c0214328}{%
+           family={Galar},
+           family_i={G\bibinitperiod},
+           given={Mikel},
+           given_i={M\bibinitperiod}}}%
+        {{hash=4418d7e26434ffd004127af1a68d9330}{%
+           family={Fernández},
+           family_i={F\bibinitperiod},
+           given={Alberto},
+           given_i={A\bibinitperiod}}}%
+        {{hash=e9e33965c69147db8dc66b9d42105f8e}{%
+           family={Barrenechea},
+           family_i={B\bibinitperiod},
+           given={Edurne},
+           given_i={E\bibinitperiod}}}%
+        {{hash=49f599414224f361110a4d04dddee416}{%
+           family={Bustince},
+           family_i={B\bibinitperiod},
+           given={Humberto},
+           given_i={H\bibinitperiod}}}%
+        {{hash=9f81f46436ba77791311a5db20ff5c25}{%
+           family={Herrera},
+           family_i={H\bibinitperiod},
+           given={Francisco},
+           given_i={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9479ce4fdee50e334a2d27324189190f}
+      \strng{fullhash}{ba58108b24116d1c9be61e5c93d6fafd}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pattern Recognition}
+      \field{number}{8}
+      \field{title}{An overview of ensemble methods for binary classifiers in multi-class problems: Experimental study on one-vs-one and one-vs-all schemes}
+      \field{volume}{44}
+      \field{year}{2011}
+      \field{pages}{1761\bibrangedash 1776}
+      \range{pages}{16}
     \endentry
     \entry{mcml}{inproceedings}{}
       \name{author}{2}{}{%
@@ -435,6 +533,34 @@
       \field{title}{Understanding machine learning: From theory to algorithms}
       \field{year}{2014}
     \endentry
+    \entry{ssl1}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=f3a2e09bebfc4fb75342aa8d7f0bd5a0}{%
+           family={Subramanya},
+           family_i={S\bibinitperiod},
+           given={Amar},
+           given_i={A\bibinitperiod}}}%
+        {{hash=1facba61f45fb17bbd5e092e7762ccda}{%
+           family={Talukdar},
+           family_i={T\bibinitperiod},
+           given={Partha\bibnamedelima Pratim},
+           given_i={P\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{a4eede88e98e1196fa56c5b74edf8abe}
+      \strng{fullhash}{a4eede88e98e1196fa56c5b74edf8abe}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Tutorial Abstracts of ACL 2012}
+      \field{title}{Graph-based semi-supervised learning algorithms for NLP}
+      \field{year}{2012}
+      \field{pages}{6\bibrangedash 6}
+      \range{pages}{1}
+    \endentry
     \entry{klmnn}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=7174975989c609900098ef361edc9286}{%
@@ -606,6 +732,31 @@
       \field{year}{2012}
       \field{pages}{1\bibrangedash 26}
       \range{pages}{26}
+    \endentry
+    \entry{ssl2}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c0589c96d31566f50f3aa4f931a33357}{%
+           family={Zhu},
+           family_i={Z\bibinitperiod},
+           given={Xiaojin},
+           given_i={X\bibinitperiod}}}%
+        {{hash=bf5cf30deddddad00a6341ad7a414445}{%
+           family={Ghahramani},
+           family_i={G\bibinitperiod},
+           given={Zoubin},
+           given_i={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{dd67de5dd0b7a9b6418f2aeec7fd3714}
+      \strng{fullhash}{dd67de5dd0b7a9b6418f2aeec7fd3714}
+      \field{sortinit}{Z}
+      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning from labeled and unlabeled data with label propagation}
+      \field{year}{2002}
     \endentry
   \endsortlist
 \endrefsection

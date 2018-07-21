@@ -1,18 +1,33 @@
 \BOOKMARK [-1][-]{part.1}{I Matem\341ticas}{}% 1
-\BOOKMARK [-1][-]{part.2}{II Inform\341tica te\363rica}{}% 2
-\BOOKMARK [0][-]{chapter.1}{El aprendizaje autom\341tico}{part.2}% 3
-\BOOKMARK [1][-]{section.1.1}{Introducci\363n}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.2}{El aprendizaje supervisado}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.3}{El problema de clasificaci\363n}{chapter.1}% 6
-\BOOKMARK [0][-]{chapter.2}{El aprendizaje de m\351tricas de distancia}{part.2}% 7
-\BOOKMARK [1][-]{section.2.1}{Distancias. Distancias en espacios de Hilbert.}{chapter.2}% 8
-\BOOKMARK [1][-]{section.2.2}{Descripci\363n del problema}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.3}{Aplicaciones}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.4}{El aprendizaje por semejanza}{chapter.2}% 11
-\BOOKMARK [0][-]{chapter.3}{Descripci\363n te\363rica de t\351cnicas de aprendizaje de m\351tricas de distancia}{part.2}% 12
-\BOOKMARK [1][-]{section.3.1}{T\351cnicas de reducci\363n de dimensionalidad}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{T\351cnicas orientadas a la mejora del clasificador de vecinos cercanos}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{T\351cnicas orientadas a la mejora del clasificador de centroides cercanos}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.4}{T\351cnicas basadas en teor\355a de la informaci\363n}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.5}{Otras t\351cnicas de aprendizaje de m\351tricas de distancia}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.6}{El kernel trick. Algoritmos de aprendizaje de m\351tricas de distancia basados en kernels}{chapter.3}% 18
+\BOOKMARK [0][-]{chapter.1}{An\341lisis convexo}{part.1}% 2
+\BOOKMARK [1][-]{section.1.1}{Conjuntos convexos}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Funciones convexas}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Problemas de optimizaci\363n}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{\301lgebra matricial avanzado}{part.1}% 6
+\BOOKMARK [1][-]{section.2.1}{Preliminares}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Las matrices como espacio de Hilbert}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Matrices semidefinidas positivas: teoremas de descomposici\363n y proyecci\363n}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.4}{Cociente de Rayleigh. Teoremas min-max.}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.5}{Optimizaci\363n matricial}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Teor\355a de la informaci\363n y divergencias}{part.1}% 12
+\BOOKMARK [1][-]{section.3.1}{Introducci\363n}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{La divergencia de Kullback-Leibler}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.3}{La divergencia de Jeffrey}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.4}{La distribuci\363n normal multivariante. Divergencias matriciales.}{chapter.3}% 16
+\BOOKMARK [-1][-]{part.2}{II Inform\341tica te\363rica}{}% 17
+\BOOKMARK [0][-]{chapter.4}{El aprendizaje autom\341tico}{part.2}% 18
+\BOOKMARK [1][-]{section.4.1}{Introducci\363n}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{El aprendizaje supervisado}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{El problema de clasificaci\363n}{chapter.4}% 21
+\BOOKMARK [0][-]{chapter.5}{El aprendizaje de m\351tricas de distancia}{part.2}% 22
+\BOOKMARK [1][-]{section.5.1}{Distancias. Distancia de Mahalanobis.}{chapter.5}% 23
+\BOOKMARK [1][-]{section.5.2}{Descripci\363n del problema}{chapter.5}% 24
+\BOOKMARK [1][-]{section.5.3}{Aplicaciones}{chapter.5}% 25
+\BOOKMARK [1][-]{section.5.4}{El aprendizaje por semejanza}{chapter.5}% 26
+\BOOKMARK [0][-]{chapter.6}{Descripci\363n te\363rica de t\351cnicas de aprendizaje de m\351tricas de distancia}{part.2}% 27
+\BOOKMARK [1][-]{section.6.1}{T\351cnicas de reducci\363n de dimensionalidad}{chapter.6}% 28
+\BOOKMARK [1][-]{section.6.2}{T\351cnicas orientadas a la mejora del clasificador de vecinos cercanos}{chapter.6}% 29
+\BOOKMARK [1][-]{section.6.3}{T\351cnicas orientadas a la mejora del clasificador de centroides cercanos}{chapter.6}% 30
+\BOOKMARK [1][-]{section.6.4}{T\351cnicas basadas en teor\355a de la informaci\363n}{chapter.6}% 31
+\BOOKMARK [1][-]{section.6.5}{Otras t\351cnicas de aprendizaje de m\351tricas de distancia}{chapter.6}% 32
+\BOOKMARK [1][-]{section.6.6}{El kernel trick. Algoritmos de aprendizaje de m\351tricas de distancia basados en kernels}{chapter.6}% 33

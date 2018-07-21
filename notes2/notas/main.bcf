@@ -2049,23 +2049,32 @@
     <bcf:datasource type="file" datatype="bibtex">bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">maulik2002performance</bcf:citekey>
-    <bcf:citekey order="2">lmnn</bcf:citekey>
-    <bcf:citekey order="3">nca</bcf:citekey>
-    <bcf:citekey order="4">ncmml</bcf:citekey>
-    <bcf:citekey order="5">clustering_algorithms</bcf:citekey>
-    <bcf:citekey order="6">itml</bcf:citekey>
-    <bcf:citekey order="7">dmlmj</bcf:citekey>
-    <bcf:citekey order="8">mcml</bcf:citekey>
-    <bcf:citekey order="9">lsi</bcf:citekey>
-    <bcf:citekey order="10">dmleig</bcf:citekey>
-    <bcf:citekey order="11">overton1988minimizing</bcf:citekey>
-    <bcf:citekey order="12">dmleig</bcf:citekey>
-    <bcf:citekey order="13">ldml</bcf:citekey>
-    <bcf:citekey order="14">klmnn</bcf:citekey>
-    <bcf:citekey order="15">anmm</bcf:citekey>
-    <bcf:citekey order="16">dmlmj</bcf:citekey>
-    <bcf:citekey order="17">kda</bcf:citekey>
+    <bcf:citekey order="1">convexoptimization</bcf:citekey>
+    <bcf:citekey order="1">convexanalysis</bcf:citekey>
+    <bcf:citekey order="1">variations_convex</bcf:citekey>
+    <bcf:citekey order="2">variations_convex</bcf:citekey>
+    <bcf:citekey order="3">convexoptimization</bcf:citekey>
+    <bcf:citekey order="4">proximity_convex</bcf:citekey>
+    <bcf:citekey order="5">ssl1</bcf:citekey>
+    <bcf:citekey order="5">ssl2</bcf:citekey>
+    <bcf:citekey order="6">ovoova</bcf:citekey>
+    <bcf:citekey order="7">maulik2002performance</bcf:citekey>
+    <bcf:citekey order="8">lmnn</bcf:citekey>
+    <bcf:citekey order="9">nca</bcf:citekey>
+    <bcf:citekey order="10">ncmml</bcf:citekey>
+    <bcf:citekey order="11">clustering_algorithms</bcf:citekey>
+    <bcf:citekey order="12">itml</bcf:citekey>
+    <bcf:citekey order="13">dmlmj</bcf:citekey>
+    <bcf:citekey order="14">mcml</bcf:citekey>
+    <bcf:citekey order="15">lsi</bcf:citekey>
+    <bcf:citekey order="16">dmleig</bcf:citekey>
+    <bcf:citekey order="17">overton1988minimizing</bcf:citekey>
+    <bcf:citekey order="18">dmleig</bcf:citekey>
+    <bcf:citekey order="19">ldml</bcf:citekey>
+    <bcf:citekey order="20">klmnn</bcf:citekey>
+    <bcf:citekey order="21">anmm</bcf:citekey>
+    <bcf:citekey order="22">dmlmj</bcf:citekey>
+    <bcf:citekey order="23">kda</bcf:citekey>
     <bcf:citekey order="0">*</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nty/global" type="entry" sortscheme="nty" sortnamekeyscheme="global">
