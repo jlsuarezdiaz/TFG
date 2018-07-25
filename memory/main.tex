@@ -1,0 +1,191 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Apuntes de la asignatura Análisis de Fourier
+%
+% Autores: Andrés Herrera Poyatos (https://github.com/andreshp)
+%          Juan Luis Suárez Díaz (https://github.com/jlsuarezdiaz)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-----------------------------------------------------------------------------------------------------
+%	INCLUSIÓN DE PAQUETES BÁSICOS
+%-----------------------------------------------------------------------------------------------------
+
+\documentclass{book}
+
+% Utiliza el paquete de español.
+\usepackage{spanish}
+
+% Utiliza la plantilla para reports.
+\usepackage{template}
+
+%---------------------------------------------------------------------------------------------------
+%	OTROS PAQUETES
+%-----------------------------------------------------------------------------------------------------
+
+\usepackage{mathematics}
+\usepackage{comment}
+
+% Change the space before and anfer chapter titles.
+% https://tex.stackexchange.com/questions/111643/decrease-space-before-and-after-chapter-in-fncychap
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-30\p@}}{}{}
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-30\p@}}{}{}
+\patchcmd{\DOTI}{\vskip 80\p@}{\vskip 40\p@}{}{}
+\patchcmd{\DOTIS}{\vskip 40\p@}{\vskip 0\p@}{}{}
+\makeatother
+
+%-----------------------------------------------------------------------------------------------------
+%	LICENCIA
+%-----------------------------------------------------------------------------------------------------
+
+\usepackage[
+    type={CC},
+    modifier={by},
+    version={4.0}, 
+]{doclicense}
+
+%-----------------------------------------------------------------------------------------------------
+% DEFINICIÓN DE COMANDOS 
+%-----------------------------------------------------------------------------------------------------
+
+\newcommand{\istargetof}{\rightsquigarrow}
+
+%-----------------------------------------------------------------------------------------------------
+%	PORTADA
+%-----------------------------------------------------------------------------------------------------
+
+% Elija uno de los siguientes formatos.
+% No olvide incluir los archivos .sty asociados en el directorio del documento.
+\usepackage{title1}
+%\usepackage{title2}
+%\usepackage{title3}
+
+%-----------------------------------------------
+% BIBLIOGRAPHY
+%-----------------------------------------------
+
+\usepackage[
+backend=biber
+]{biblatex}
+
+\addbibresource{bibliography.bib}
+
+%-----------------------------------------------------------------------------------------------------
+%	DATOS DEL DOCUMENTO
+%-----------------------------------------------------------------------------------------------------
+
+\newcommand{\doctitle}{Trabajo de Fin de Grado}
+\newcommand{\docsubtitle}{El aprendizaje de métricas de distancia: análisis y revisión de técnicas desarrolladas en alta dimensionalidad}
+\newcommand{\docdate}{\date}
+\newcommand{\subject}{}
+\newcommand{\docauthor}{Juan Luis Suárez Díaz}
+\newcommand{\docaddress}{Universidad de Granada}
+\newcommand{\docemail}{jlsuarezdiaz@correo.ugr.es}
+\newcommand{\doclhead}{J. L. Suárez}
+\newcommand{\docrhead}{}
+
+%-----------------------------------------------------------------------------------------------------
+%	RESUMEN
+%-----------------------------------------------------------------------------------------------------
+
+% Resumen del documento. Va en la portada.
+% Puedes también dejarlo vacío, en cuyo caso no aparece en la portada.
+\newcommand{\docabstract}{}
+%\newcommand{\docabstract}{En este texto puedes incluir un resumen del documento. Este informa al lector sobre el contenido del texto, indicando el objetivo del mismo y qué se puede aprender de él.}
+
+\begin{document}
+
+%\hypersetup{pageanchor=false}
+%\maketitle
+%\hypersetup{pageanchor=true}
+
+%-----------------------------------------------------------------------------------------------------
+%	ÍNDICE
+%-----------------------------------------------------------------------------------------------------
+
+% Profundidad del Índice:
+\setcounter{tocdepth}{1}
+
+\thispagestyle{plain}
+\tableofcontents
+\vspace*{\fill}
+\doclicenseThis
+\newpage
+\thispagestyle{plain}
+
+
+\part{Matemáticas}
+
+
+\begin{comment}
+\begin{prop}[Caracterizaciones de distancias asociadas a métricas] \label{prop:caract_distancias}
+	
+\end{prop}
+\end{comment}
+
+\begin{thm}[Optimización de la traza por vectores propios] \label{thm:eigen_trace_opt}
+	Sean $d',d \in \N $, con $d' \le d$. Sea $C \in \mathcal{S}_d(\R)$, y consideramos el problema de optimización
+	
+	\begin{align*}
+	\max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(LCL^T\right)  \\
+	\text{s.a.: } &\quad LL^T = I.
+	\end{align*}
+	
+	Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
+	\text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
+	& \dots &  \\
+	\text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
+	\end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son los vectores propios de $C$ correspondientes a sus $d'$ mayores valores propios.
+	
+	
+\end{thm}
+
+\begin{thm} \label{thm:eigen_trace_ratio_opt}
+	Sean $d',d \in \N $, con $d' \le d$. Sean $A \in \mathcal{S}_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$, y consideramos el problema de optimización
+	
+	\begin{align*}
+	\max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(\frac{LAL^T}{LBL^T}\right)  \\
+	\end{align*}
+	
+	Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
+	\text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
+	& \dots &  \\
+	\text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
+	\end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son los vectores propios de $B^{-1}C$ correspondientes a sus $d'$ mayores valores propios.
+	
+	
+\end{thm}
+
+
+
+%% CAPÍTULO 1 - ANÁLISIS CONVEXO
+\input{chapters/convex_analysis}
+
+
+%% CAPÍTULO 2 - MATRICES
+\input{chapters/matrices}
+
+
+%% CAPÍTULO 3 - TEORÍA DE LA INFORMACIÓN
+\input{chapters/information_theory}
+
+
+\part{Informática teórica}
+
+%% CAPÍTULO 4 - EL APRENDIZAJE AUTOMÁTICO
+\input{chapters/machine_learning}
+
+%% CAPÍTULO 5 - EL APRENDIZAJE DE MÉTRICAS DE DISTANCIA
+\input{chapters/dml_theory}
+
+%% CAPÍTULO 6 - DESCRIPCIÓN DE TÉCNICAS DE APRENDIZAJE DE MÉTRICAS DE DISTANCIA
+\input{chapters/dml_algorithms} 
+
+%-----------------------------------------------------------------------------------------------------
+%	BIBLIOGRAFÍA
+%-----------------------------------------------------------------------------------------------------
+
+\printbibliography
+\nocite{*}
+
+\end{document}
+

@@ -1,0 +1,946 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nty/global}
+    \entry{survey_dml_2}{article}{}
+      \name{author}{3}{}{%
+        {{hash=cecab514c728aed99e81691d0adc2d82}{%
+           family={Bellet},
+           family_i={B\bibinitperiod},
+           given={Aurelien},
+           given_i={A\bibinitperiod}}}%
+        {{hash=1b1cadcf76e13516bb1be6fdf871e4ba}{%
+           family={Habrard},
+           family_i={H\bibinitperiod},
+           given={Amaury},
+           given_i={A\bibinitperiod}}}%
+        {{hash=e5e02fc8b0b22f6c5375270dfb0f35c6}{%
+           family={Sebban},
+           family_i={S\bibinitperiod},
+           given={Marc},
+           given_i={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{0bfbe3971e57d05a01e6443728a762f9}
+      \strng{fullhash}{0bfbe3971e57d05a01e6443728a762f9}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1306.6709}
+      \field{title}{A survey on metric learning for feature vectors and structured data}
+      \field{year}{2013}
+    \endentry
+    \entry{convexoptimization}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ec94d94cc487dd71939a90cbeaaf47d0}{%
+           family={Boyd},
+           family_i={B\bibinitperiod},
+           given={Stephen},
+           given_i={S\bibinitperiod}}}%
+        {{hash=2608d599a0bc2a784c301329a8da5f7b}{%
+           family={Vandenberghe},
+           family_i={V\bibinitperiod},
+           given={Lieven},
+           given_i={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge university press}%
+      }
+      \strng{namehash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \strng{fullhash}{436abed3bce8d1b1d30640d4e5ff3d58}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Convex optimization}
+      \field{year}{2004}
+    \endentry
+    \entry{proximity_convex}{article}{}
+      \name{author}{2}{}{%
+        {{hash=518ffdffba5ad0325c63c3f990c02575}{%
+           family={Cheney},
+           family_i={C\bibinitperiod},
+           given={Ward},
+           given_i={W\bibinitperiod}}}%
+        {{hash=4318d98692830569223ac653456e331a}{%
+           family={Goldstein},
+           family_i={G\bibinitperiod},
+           given={Allen\bibnamedelima A},
+           given_i={A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{1cfb38f4b2eba588a44fa1ea13115f5b}
+      \strng{fullhash}{1cfb38f4b2eba588a44fa1ea13115f5b}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the American Mathematical Society}
+      \field{number}{3}
+      \field{title}{Proximity maps for convex sets}
+      \field{volume}{10}
+      \field{year}{1959}
+      \field{pages}{448\bibrangedash 450}
+      \range{pages}{3}
+    \endentry
+    \entry{learningfromdata}{book}{}
+      \name{author}{2}{}{%
+        {{hash=46b15d836b5339a882ef472cc4c3d4d8}{%
+           family={Cherkassky},
+           family_i={C\bibinitperiod},
+           given={Vladimir},
+           given_i={V\bibinitperiod}}}%
+        {{hash=4f7ee01bb7baa8476cfd8be965f0dae1}{%
+           family={Mulier},
+           family_i={M\bibinitperiod},
+           given={Filip},
+           given_i={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley New York}%
+      }
+      \strng{namehash}{9ce403fde7db16cdf86f09ef32641ee7}
+      \strng{fullhash}{9ce403fde7db16cdf86f09ef32641ee7}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning from data: Concepts, theory, and methods}
+      \field{year}{1998}
+    \endentry
+    \entry{introductiontoalgorithms}{book}{}
+      \name{author}{1}{}{%
+        {{hash=875d0e644e9b2df15d2a834abaecc2e8}{%
+           family={Cormen},
+           family_i={C\bibinitperiod},
+           given={Thomas\bibnamedelima H},
+           given_i={T\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT press}%
+      }
+      \strng{namehash}{875d0e644e9b2df15d2a834abaecc2e8}
+      \strng{fullhash}{875d0e644e9b2df15d2a834abaecc2e8}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to algorithms}
+      \field{year}{2009}
+    \endentry
+    \entry{variations_convex}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e6908e0eeee954987c8751d41e2e6e7d}{%
+           family={Dacorogna},
+           family_i={D\bibinitperiod},
+           given={Bernard},
+           given_i={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{e6908e0eeee954987c8751d41e2e6e7d}
+      \strng{fullhash}{e6908e0eeee954987c8751d41e2e6e7d}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Direct methods in the calculus of variations}
+      \field{volume}{78}
+      \field{year}{2007}
+      \field{pages}{67\bibrangedash 148}
+      \range{pages}{82}
+    \endentry
+    \entry{itml}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=421d490f690ca95c88daf054ee5d0eaf}{%
+           family={Davis},
+           family_i={D\bibinitperiod},
+           given={Jason\bibnamedelima V},
+           given_i={J\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=e24b01c6124a3bb04d49303b7ec58d29}{%
+           family={Kulis},
+           family_i={K\bibinitperiod},
+           given={Brian},
+           given_i={B\bibinitperiod}}}%
+        {{hash=fbeb5a488714394fadfaff285a9b2a13}{%
+           family={Jain},
+           family_i={J\bibinitperiod},
+           given={Prateek},
+           given_i={P\bibinitperiod}}}%
+        {{hash=533357302a33eccdc40c943cd97d2edc}{%
+           family={Sra},
+           family_i={S\bibinitperiod},
+           given={Suvrit},
+           given_i={S\bibinitperiod}}}%
+        {{hash=913edd1ed6d39dab27744f7c19b0b18e}{%
+           family={Dhillon},
+           family_i={D\bibinitperiod},
+           given={Inderjit\bibnamedelima S},
+           given_i={I\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{25d238f5567658764211d65e5470e42e}
+      \strng{fullhash}{733b3daa8b2c1d9c38108f5ea1acfbbc}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 24th international conference on Machine learning}
+      \field{title}{Information-theoretic metric learning}
+      \field{year}{2007}
+      \field{pages}{209\bibrangedash 216}
+      \range{pages}{8}
+    \endentry
+    \entry{ovoova}{article}{}
+      \name{author}{5}{}{%
+        {{hash=0c072b3353a45cbb3b58dc07c0214328}{%
+           family={Galar},
+           family_i={G\bibinitperiod},
+           given={Mikel},
+           given_i={M\bibinitperiod}}}%
+        {{hash=4418d7e26434ffd004127af1a68d9330}{%
+           family={Fernández},
+           family_i={F\bibinitperiod},
+           given={Alberto},
+           given_i={A\bibinitperiod}}}%
+        {{hash=e9e33965c69147db8dc66b9d42105f8e}{%
+           family={Barrenechea},
+           family_i={B\bibinitperiod},
+           given={Edurne},
+           given_i={E\bibinitperiod}}}%
+        {{hash=49f599414224f361110a4d04dddee416}{%
+           family={Bustince},
+           family_i={B\bibinitperiod},
+           given={Humberto},
+           given_i={H\bibinitperiod}}}%
+        {{hash=9f81f46436ba77791311a5db20ff5c25}{%
+           family={Herrera},
+           family_i={H\bibinitperiod},
+           given={Francisco},
+           given_i={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9479ce4fdee50e334a2d27324189190f}
+      \strng{fullhash}{ba58108b24116d1c9be61e5c93d6fafd}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pattern Recognition}
+      \field{number}{8}
+      \field{title}{An overview of ensemble methods for binary classifiers in multi-class problems: Experimental study on one-vs-one and one-vs-all schemes}
+      \field{volume}{44}
+      \field{year}{2011}
+      \field{pages}{1761\bibrangedash 1776}
+      \range{pages}{16}
+    \endentry
+    \entry{mcml}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=e8b604d0a7af5ee88043f8e31a4c6871}{%
+           family={Globerson},
+           family_i={G\bibinitperiod},
+           given={Amir},
+           given_i={A\bibinitperiod}}}%
+        {{hash=4e69fee6b2b432b2ce442593b4ee88fe}{%
+           family={Roweis},
+           family_i={R\bibinitperiod},
+           given={Sam\bibnamedelima T},
+           given_i={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{e7b626cf872b2502788832bec17c9969}
+      \strng{fullhash}{e7b626cf872b2502788832bec17c9969}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in neural information processing systems}
+      \field{title}{Metric learning by collapsing classes}
+      \field{year}{2006}
+      \field{pages}{451\bibrangedash 458}
+      \range{pages}{8}
+    \endentry
+    \entry{nca}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=61ffa1afeaed1680543a9a0cb90072e4}{%
+           family={Goldberger},
+           family_i={G\bibinitperiod},
+           given={Jacob},
+           given_i={J\bibinitperiod}}}%
+        {{hash=5aeb1de9b6c6f00a078230c628e6f41c}{%
+           family={Hinton},
+           family_i={H\bibinitperiod},
+           given={Geoffrey\bibnamedelima E},
+           given_i={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=4e69fee6b2b432b2ce442593b4ee88fe}{%
+           family={Roweis},
+           family_i={R\bibinitperiod},
+           given={Sam\bibnamedelima T},
+           given_i={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=e5b17e5b7cb16c2e4abf9da0884e59b0}{%
+           family={Salakhutdinov},
+           family_i={S\bibinitperiod},
+           given={Ruslan\bibnamedelima R},
+           given_i={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{8969f0bee2fc1760589629f5901b6dee}
+      \strng{fullhash}{bba0772befd133a44ffc39ed8aa7e6ce}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in neural information processing systems}
+      \field{title}{Neighbourhood components analysis}
+      \field{year}{2005}
+      \field{pages}{513\bibrangedash 520}
+      \range{pages}{8}
+    \endentry
+    \entry{ldml}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=f86907ed22ae82012f00805c8d512289}{%
+           family={Guillaumin},
+           family_i={G\bibinitperiod},
+           given={Matthieu},
+           given_i={M\bibinitperiod}}}%
+        {{hash=6db399bb4fce2fb790b103539429f56c}{%
+           family={Verbeek},
+           family_i={V\bibinitperiod},
+           given={Jakob},
+           given_i={J\bibinitperiod}}}%
+        {{hash=58e4a9845eac42a4b0e5205cf0970fc0}{%
+           family={Schmid},
+           family_i={S\bibinitperiod},
+           given={Cordelia},
+           given_i={C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{0bfb3a4516236c490e2d2b6642acc5e6}
+      \strng{fullhash}{0bfb3a4516236c490e2d2b6642acc5e6}
+      \field{sortinit}{G}
+      \field{sortinithash}{1c854ef9177a91bf894e66485bdbd3ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision, 2009 IEEE 12th international conference on}
+      \field{title}{Is that you? Metric learning approaches for face identification}
+      \field{year}{2009}
+      \field{pages}{498\bibrangedash 505}
+      \range{pages}{8}
+    \endentry
+    \entry{psd_projection}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f7248788962f99a62cd73cb96185038a}{%
+           family={Higham},
+           family_i={H\bibinitperiod},
+           given={Nicholas\bibnamedelima J},
+           given_i={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f7248788962f99a62cd73cb96185038a}
+      \strng{fullhash}{f7248788962f99a62cd73cb96185038a}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Linear algebra and its applications}
+      \field{title}{Computing a nearest symmetric positive semidefinite matrix}
+      \field{volume}{103}
+      \field{year}{1988}
+      \field{pages}{103\bibrangedash 118}
+      \range{pages}{16}
+    \endentry
+    \entry{matrix_analysis}{book}{}
+      \name{author}{3}{}{%
+        {{hash=ab14f8165351f3a134a2ac987e0b1493}{%
+           family={Horn},
+           family_i={H\bibinitperiod},
+           given={Roger\bibnamedelima A},
+           given_i={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=ab14f8165351f3a134a2ac987e0b1493}{%
+           family={Horn},
+           family_i={H\bibinitperiod},
+           given={Roger\bibnamedelima A},
+           given_i={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=375d6f07b6cbbcb122d67fe6d975262e}{%
+           family={Johnson},
+           family_i={J\bibinitperiod},
+           given={Charles\bibnamedelima R},
+           given_i={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge university press}%
+      }
+      \strng{namehash}{d359644c1f9a9351131310253db392c5}
+      \strng{fullhash}{d359644c1f9a9351131310253db392c5}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Matrix analysis}
+      \field{year}{1990}
+    \endentry
+    \entry{maulik2002performance}{article}{}
+      \name{author}{2}{}{%
+        {{hash=1b4a422783c9c9d52eefa8aee1234175}{%
+           family={Maulik},
+           family_i={M\bibinitperiod},
+           given={Ujjwal},
+           given_i={U\bibinitperiod}}}%
+        {{hash=677774606dcde5657361415e2b2a2809}{%
+           family={Bandyopadhyay},
+           family_i={B\bibinitperiod},
+           given={Sanghamitra},
+           given_i={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{4646e6286f60ad32894a15b31a65b832}
+      \strng{fullhash}{4646e6286f60ad32894a15b31a65b832}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{number}{12}
+      \field{title}{Performance evaluation of some clustering algorithms and validity indices}
+      \field{volume}{24}
+      \field{year}{2002}
+      \field{pages}{1650\bibrangedash 1654}
+      \range{pages}{5}
+    \endentry
+    \entry{ncmml}{incollection}{}
+      \name{author}{4}{}{%
+        {{hash=ffc3c50f7f2f5814db998defff4b2ccd}{%
+           family={Mensink},
+           family_i={M\bibinitperiod},
+           given={Thomas},
+           given_i={T\bibinitperiod}}}%
+        {{hash=6db399bb4fce2fb790b103539429f56c}{%
+           family={Verbeek},
+           family_i={V\bibinitperiod},
+           given={Jakob},
+           given_i={J\bibinitperiod}}}%
+        {{hash=5a3c11e2931f5c99d33069b6ed09adca}{%
+           family={Perronnin},
+           family_i={P\bibinitperiod},
+           given={Florent},
+           given_i={F\bibinitperiod}}}%
+        {{hash=c882d00b910577173c124d39d0ea7e7f}{%
+           family={Csurka},
+           family_i={C\bibinitperiod},
+           given={Gabriela},
+           given_i={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f836f3a2b0b38312260f0b8f65d078c5}
+      \strng{fullhash}{17f2c6b024b7ce549571350f8c3363da}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision--ECCV 2012}
+      \field{title}{Metric learning for large scale image classification: Generalizing to new classes at near-zero cost}
+      \field{year}{2012}
+      \field{pages}{488\bibrangedash 501}
+      \range{pages}{14}
+    \endentry
+    \entry{kda}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=abc841f2523f952368acaf990312dfa5}{%
+           family={Mika},
+           family_i={M\bibinitperiod},
+           given={Sebastian},
+           given_i={S\bibinitperiod}}}%
+        {{hash=2298e36b333b0aa99bb6d09e6a171708}{%
+           family={Ratsch},
+           family_i={R\bibinitperiod},
+           given={Gunnar},
+           given_i={G\bibinitperiod}}}%
+        {{hash=417a25f3511d7c21e76d4a15e67dd679}{%
+           family={Weston},
+           family_i={W\bibinitperiod},
+           given={Jason},
+           given_i={J\bibinitperiod}}}%
+        {{hash=a8ec77afd672acfe7820edd22821493e}{%
+           family={Scholkopf},
+           family_i={S\bibinitperiod},
+           given={Bernhard},
+           given_i={B\bibinitperiod}}}%
+        {{hash=c7bcf64db839b1efb1ebf76701f83bea}{%
+           family={Mullers},
+           family_i={M\bibinitperiod},
+           given={Klaus-Robert},
+           given_i={K\bibinithyphendelim R\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Ieee}%
+      }
+      \strng{namehash}{ea2d5a61a4e251fb88d4bdeec48bd187}
+      \strng{fullhash}{dbc4841f9fbb4ca718b9665e10e2366c}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Neural networks for signal processing IX, 1999. Proceedings of the 1999 IEEE signal processing society workshop.}
+      \field{title}{Fisher discriminant analysis with kernels}
+      \field{year}{1999}
+      \field{pages}{41\bibrangedash 48}
+      \range{pages}{8}
+    \endentry
+    \entry{dmlmj}{article}{}
+      \name{author}{3}{}{%
+        {{hash=7ad1b3eebec0d802445068e2852575ab}{%
+           family={Nguyen},
+           family_i={N\bibinitperiod},
+           given={Bac},
+           given_i={B\bibinitperiod}}}%
+        {{hash=c77ed64a3f442ad44353913bd3ef7d1f}{%
+           family={Morell},
+           family_i={M\bibinitperiod},
+           given={Carlos},
+           given_i={C\bibinitperiod}}}%
+        {{hash=2b6ee1d731e52a6c8536b1bf9f9fcdb1}{%
+           family={De\bibnamedelima Baets},
+           family_i={D\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={Bernard},
+           given_i={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{8defd83c282372dee08411601fdc46f6}
+      \strng{fullhash}{8defd83c282372dee08411601fdc46f6}
+      \field{sortinit}{N}
+      \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pattern Recognition}
+      \field{title}{Supervised distance metric learning through maximization of the Jeffrey divergence}
+      \field{volume}{64}
+      \field{year}{2017}
+      \field{pages}{215\bibrangedash 225}
+      \range{pages}{11}
+    \endentry
+    \entry{overton1988minimizing}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e6cc2ab7dd065a7edc73262d3ca60d3d}{%
+           family={Overton},
+           family_i={O\bibinitperiod},
+           given={Michael\bibnamedelima L},
+           given_i={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{e6cc2ab7dd065a7edc73262d3ca60d3d}
+      \strng{fullhash}{e6cc2ab7dd065a7edc73262d3ca60d3d}
+      \field{sortinit}{O}
+      \field{sortinithash}{7803d2715d5e795e70382b084ab8d00e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Matrix Analysis and Applications}
+      \field{number}{2}
+      \field{title}{On minimizing the maximum eigenvalue of a symmetric matrix}
+      \field{volume}{9}
+      \field{year}{1988}
+      \field{pages}{256\bibrangedash 268}
+      \range{pages}{13}
+    \endentry
+    \entry{convexanalysis}{book}{}
+      \name{author}{1}{}{%
+        {{hash=f1f20782c9839f6f33e03ba2e0ad251d}{%
+           family={Rockafellar},
+           family_i={R\bibinitperiod},
+           given={Ralph\bibnamedelima Tyrell},
+           given_i={R\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton university press}%
+      }
+      \strng{namehash}{f1f20782c9839f6f33e03ba2e0ad251d}
+      \strng{fullhash}{f1f20782c9839f6f33e03ba2e0ad251d}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Convex analysis}
+      \field{year}{2015}
+    \endentry
+    \entry{rudin}{book}{}
+      \name{author}{1}{}{%
+        {{hash=33be2fc2739d3493c6d6cc5d56a4c41e}{%
+           family={Rudin},
+           family_i={R\bibinitperiod},
+           given={Walter},
+           given_i={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Tata McGraw-Hill Education}%
+      }
+      \strng{namehash}{33be2fc2739d3493c6d6cc5d56a4c41e}
+      \strng{fullhash}{33be2fc2739d3493c6d6cc5d56a4c41e}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Real and complex analysis}
+      \field{year}{1987}
+    \endentry
+    \entry{understandingml}{book}{}
+      \name{author}{2}{}{%
+        {{hash=a6c5827676b0a2058e5b904c3dd7f878}{%
+           family={Shalev-Shwartz},
+           family_i={S\bibinithyphendelim S\bibinitperiod},
+           given={Shai},
+           given_i={S\bibinitperiod}}}%
+        {{hash=509866d90ae18bfca30c6f4cdc846529}{%
+           family={Ben-David},
+           family_i={B\bibinithyphendelim D\bibinitperiod},
+           given={Shai},
+           given_i={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge university press}%
+      }
+      \strng{namehash}{38fabf8438a7aae182a9d192e7aa2d98}
+      \strng{fullhash}{38fabf8438a7aae182a9d192e7aa2d98}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Understanding machine learning: From theory to algorithms}
+      \field{year}{2014}
+    \endentry
+    \entry{ssl1}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=f3a2e09bebfc4fb75342aa8d7f0bd5a0}{%
+           family={Subramanya},
+           family_i={S\bibinitperiod},
+           given={Amar},
+           given_i={A\bibinitperiod}}}%
+        {{hash=1facba61f45fb17bbd5e092e7762ccda}{%
+           family={Talukdar},
+           family_i={T\bibinitperiod},
+           given={Partha\bibnamedelima Pratim},
+           given_i={P\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Association for Computational Linguistics}%
+      }
+      \strng{namehash}{a4eede88e98e1196fa56c5b74edf8abe}
+      \strng{fullhash}{a4eede88e98e1196fa56c5b74edf8abe}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Tutorial Abstracts of ACL 2012}
+      \field{title}{Graph-based semi-supervised learning algorithms for NLP}
+      \field{year}{2012}
+      \field{pages}{6\bibrangedash 6}
+      \range{pages}{1}
+    \endentry
+    \entry{thompson_inequality}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1b52ff5fff24f8918783c4fe0b3e3bdd}{%
+           family={Thompson},
+           family_i={T\bibinitperiod},
+           given={Robert},
+           given_i={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Mathematical Sciences Publishers}%
+      }
+      \strng{namehash}{1b52ff5fff24f8918783c4fe0b3e3bdd}
+      \strng{fullhash}{1b52ff5fff24f8918783c4fe0b3e3bdd}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pacific Journal of Mathematics}
+      \field{number}{1}
+      \field{title}{Convex and concave functions of singular values of matrix sums}
+      \field{volume}{66}
+      \field{year}{1976}
+      \field{pages}{285\bibrangedash 290}
+      \range{pages}{6}
+    \endentry
+    \entry{klmnn}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=7174975989c609900098ef361edc9286}{%
+           family={Torresani},
+           family_i={T\bibinitperiod},
+           given={Lorenzo},
+           given_i={L\bibinitperiod}}}%
+        {{hash=2fce95d45312fa9ad5ac55b510605d86}{%
+           family={Lee},
+           family_i={L\bibinitperiod},
+           given={Kuang-chih},
+           given_i={K\bibinithyphendelim c\bibinitperiod}}}%
+      }
+      \strng{namehash}{a924fb436b8012e07e29a4e02056b072}
+      \strng{fullhash}{a924fb436b8012e07e29a4e02056b072}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in neural information processing systems}
+      \field{title}{Large margin component analysis}
+      \field{year}{2007}
+      \field{pages}{1385\bibrangedash 1392}
+      \range{pages}{8}
+    \endentry
+    \entry{survey_dml_1}{article}{}
+      \name{author}{2}{}{%
+        {{hash=60af9bc009f709103e587bb92cee1cda}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Fei},
+           given_i={F\bibinitperiod}}}%
+        {{hash=a1b0869dc74267b9c5cd955132f0ef7d}{%
+           family={Sun},
+           family_i={S\bibinitperiod},
+           given={Jimeng},
+           given_i={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{a569173849735b1a4edec6790c492567}
+      \strng{fullhash}{a569173849735b1a4edec6790c492567}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Data Mining and Knowledge Discovery}
+      \field{number}{2}
+      \field{title}{Survey on distance metric learning and dimensionality reduction in data mining}
+      \field{volume}{29}
+      \field{year}{2015}
+      \field{pages}{534\bibrangedash 564}
+      \range{pages}{31}
+    \endentry
+    \entry{anmm}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=60af9bc009f709103e587bb92cee1cda}{%
+           family={Wang},
+           family_i={W\bibinitperiod},
+           given={Fei},
+           given_i={F\bibinitperiod}}}%
+        {{hash=1cdb46d901af9706e5eedcaab5d6222e}{%
+           family={Zhang},
+           family_i={Z\bibinitperiod},
+           given={Changshui},
+           given_i={C\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1d4548c2b86bd6a703fcf20c9c7193a5}
+      \strng{fullhash}{1d4548c2b86bd6a703fcf20c9c7193a5}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computer Vision and Pattern Recognition, 2007. CVPR'07. IEEE Conference on}
+      \field{title}{Feature extraction by maximizing the average neighborhood margin}
+      \field{year}{2007}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+    \endentry
+    \entry{lmnn}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d4806c5e19f2bed51b4188ae242ad629}{%
+           family={Weinberger},
+           family_i={W\bibinitperiod},
+           given={Kilian\bibnamedelima Q},
+           given_i={K\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=5b3b0692ba432de2656e974c244d47e3}{%
+           family={Saul},
+           family_i={S\bibinitperiod},
+           given={Lawrence\bibnamedelima K},
+           given_i={L\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{b1a64d68bc5178898a74cd17d90c5b7f}
+      \strng{fullhash}{b1a64d68bc5178898a74cd17d90c5b7f}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{Feb}
+      \field{title}{Distance metric learning for large margin nearest neighbor classification}
+      \field{volume}{10}
+      \field{year}{2009}
+      \field{pages}{207\bibrangedash 244}
+      \range{pages}{38}
+    \endentry
+    \entry{lsi}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=1d416fa2a6186b2cf1ffbd502fd4b0f2}{%
+           family={Xing},
+           family_i={X\bibinitperiod},
+           given={Eric\bibnamedelima P},
+           given_i={E\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=996ffb9cb286a8b4b0fc16793c54cc31}{%
+           family={Jordan},
+           family_i={J\bibinitperiod},
+           given={Michael\bibnamedelima I},
+           given_i={M\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+        {{hash=9ce1e6cbe6dc79fd521d7b8ba8e8c568}{%
+           family={Russell},
+           family_i={R\bibinitperiod},
+           given={Stuart\bibnamedelima J},
+           given_i={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=799b172b8d02b7acdf21d0cc48934fca}{%
+           family={Ng},
+           family_i={N\bibinitperiod},
+           given={Andrew\bibnamedelima Y},
+           given_i={A\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{293ec4fdad007327cab7def72a2de7e3}
+      \strng{fullhash}{e509bd3850574f7ead9ec618a1c37266}
+      \field{sortinit}{X}
+      \field{sortinithash}{2999ebab86052e6d71b434385f8b4ed2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in neural information processing systems}
+      \field{title}{Distance metric learning with application to clustering with side-information}
+      \field{year}{2003}
+      \field{pages}{521\bibrangedash 528}
+      \range{pages}{8}
+    \endentry
+    \entry{clustering_algorithms}{article}{}
+      \name{author}{2}{}{%
+        {{hash=af1f6890b49ac6de6ee9af944bdf1990}{%
+           family={Xu},
+           family_i={X\bibinitperiod},
+           given={Rui},
+           given_i={R\bibinitperiod}}}%
+        {{hash=58f7e47e9d72f27bae0b59cf8e6b0f42}{%
+           family={Wunsch},
+           family_i={W\bibinitperiod},
+           given={Donald},
+           given_i={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Ieee}%
+      }
+      \strng{namehash}{2a0a4daaaf5a77ffe8a5eb87f68617bd}
+      \strng{fullhash}{2a0a4daaaf5a77ffe8a5eb87f68617bd}
+      \field{sortinit}{X}
+      \field{sortinithash}{2999ebab86052e6d71b434385f8b4ed2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on neural networks}
+      \field{number}{3}
+      \field{title}{Survey of clustering algorithms}
+      \field{volume}{16}
+      \field{year}{2005}
+      \field{pages}{645\bibrangedash 678}
+      \range{pages}{34}
+    \endentry
+    \entry{dmleig}{article}{}
+      \name{author}{2}{}{%
+        {{hash=29226eee0fda9df2cd64fe0eeb7049ab}{%
+           family={Ying},
+           family_i={Y\bibinitperiod},
+           given={Yiming},
+           given_i={Y\bibinitperiod}}}%
+        {{hash=24bece773e8873ff8f03d9a3eced56df}{%
+           family={Li},
+           family_i={L\bibinitperiod},
+           given={Peng},
+           given_i={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{9d63bc3e9053f0a958d6084355f76d6e}
+      \strng{fullhash}{9d63bc3e9053f0a958d6084355f76d6e}
+      \field{sortinit}{Y}
+      \field{sortinithash}{3cbc1e3d286284cedb5e5218a3248f94}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{Jan}
+      \field{title}{Distance metric learning with eigenvalue optimization}
+      \field{volume}{13}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 26}
+      \range{pages}{26}
+    \endentry
+    \entry{zhang2011matrix}{book}{}
+      \name{author}{1}{}{%
+        {{hash=0ad0099761608ec1140a7d2da6ff501f}{%
+           family={Zhang},
+           family_i={Z\bibinitperiod},
+           given={Fuzhen},
+           given_i={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{0ad0099761608ec1140a7d2da6ff501f}
+      \strng{fullhash}{0ad0099761608ec1140a7d2da6ff501f}
+      \field{sortinit}{Z}
+      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Matrix theory: basic results and techniques}
+      \field{year}{2011}
+    \endentry
+    \entry{ssl2}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c0589c96d31566f50f3aa4f931a33357}{%
+           family={Zhu},
+           family_i={Z\bibinitperiod},
+           given={Xiaojin},
+           given_i={X\bibinitperiod}}}%
+        {{hash=bf5cf30deddddad00a6341ad7a414445}{%
+           family={Ghahramani},
+           family_i={G\bibinitperiod},
+           given={Zoubin},
+           given_i={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{dd67de5dd0b7a9b6418f2aeec7fd3714}
+      \strng{fullhash}{dd67de5dd0b7a9b6418f2aeec7fd3714}
+      \field{sortinit}{Z}
+      \field{sortinithash}{fdda4caaa6b5fa63e0c081dcb159543a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning from labeled and unlabeled data with label propagation}
+      \field{year}{2002}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

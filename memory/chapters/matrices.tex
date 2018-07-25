@@ -1,0 +1,415 @@
+\chapter{Álgebra matricial avanzado}
+
+En el aprendizaje de métricas de distancia, las matrices tendrán un papel fundamental, pues serán la estructura que definirá las distancias y sobre la que se aplicarán los métodos de optimización estudiados en el capítulo anterior. Dentro del conjunto de todas las matrices, las matrices semidefinidas serán de aún mayor importancia, por lo que para comprender mejor los problemas de aprendizaje con los que trataremos será necesario profundizar en algunas de sus numerosas propiedades.
+
+Este capítulo profundiza en el estudio de las matrices, partiendo de los resultados más conocidos de diagonalización en el álgebra lineal. Desde esta base, se introducirá un producto escalar en el espacio de las matrices, convirtiéndolas así en un espacio de Hilbert, añadiendo de esta forma propiedades métricas y topológicas que analizaremos. A continuación nos centraremos en las matrices definidas positivas, estudiando varios teoremas de descomposición que serán de gran utilidad. También veremos cómo el producto escalar que hemos añadido permite demostrar un teorema de proyección que motivará muchos de los algoritmos que se estudiarán más adelante. Por último, analizaremos cómo trabajar con problemas de optimización basados en matrices, haciendo especial hincapié en determinados problemas de optimización que se pueden resolver mediante vectores propios.
+
+\section{Preliminares}
+
+Nos centraremos en el estudio de las matrices con entradas reales, pues el problema que vamos a tratar será en variable real, si bien muchos de los resultados que vamos a ver son extensibles al caso complejo. Introducimos en primer lugar la notación que utilizaremos para las matrices a lo largo de este trabajo.
+
+Notaremos el espacio de las matrices reales de dimensión $d' \times d$ como $\mathcal{M}_{d'\times d}(\R)$. Cuando $d' = d$, entonces abreviaremos, notando el espacio de las matrices cuadradas de orden $d$ como $\mathcal{M}_d(\R)$. Una matriz $A \in \mathcal{M}_{d'\times d}(\R)$ también la podremos expresar, aludiendo a sus entradas, como $A = (A_{ij})_{\substack{i=1,\dots,d' \\ j=1,\dots,d}}$, donde $A_{ij} \in \R$ representa la entrada en la fila $i$-ésima y columna $j$-ésima. También usaremos la notación $A_{.j}$ para aludir a la columna $j$-ésima completa de la matriz, vista como vector, y análogamente $A_{i.}$ para la fila $i$-ésima. Los vectores $v = (v_1,\dots,v_d) \in \R^d$ los trataremos como matrices columna.
+
+Dada $A = (A_{ij}) \in \mathcal{M}_{d'\times d}(\R)$, notaremos la matriz traspuesta de $A$ como $A^T = (A_{ji}) \in \mathcal{d\times d'}(\R)$. El conjunto de las matrices simétricas de orden $d$ lo notaremos por $S_d(\R) = \{ A \in \mathcal{M}_d(\R) \colon A = A^T\}$. Al conjunto de las matrices antisimétricas lo expresaremos como $A_d(\R) = \{A \in \mathcal{M}_d(\R) \colon A = -A^T$. El conjunto de las matrices regulares de orden $d$ o grupo lineal de orden $d$ lo escribiremos como
+\begin{align*}
+\gl_d(\R) &= \{A \in \mathcal{M}_d(\R) \colon \exists A^{-1} \in \mathcal{M}_d(\R) \colon AA^{-1} = A^{-1}A = I \}\\
+          &= \{A \in \mathcal{M}_d(\R) \colon \det(A) \ne 0\} = \{A \in \mathcal{M}_d(\R) \colon r(A) = d\},
+\end{align*}
+donde las operaciones $r$ y $\det$ hacen referencia al rango y al determinante, respectivamente. También utilizaremos el operador traza, que notaremos por $\tr$. Una matriz $A \in \mathcal{M}_{d}(\R)$ diremos que es ortogonal si es regular y $A^T = A^{-1}$. El conjunto de las matrices ortogonales lo notaremos por $O_d(\R)$.
+
+Una matriz $M \in S_d(\R)$ diremos que es semidefinida positiva si se verifica que $x^T M x \ge 0$ para todo $x \in \R^d$. Si además se tiene que $x^TMx = 0 \iff x = 0$, diremos que $M$ es definida positiva. Notaremos a estos conjuntos por $\mathcal{M}_d(\R)^+_0$ y $\mathcal{M}_d(\R)^+$, respectivamente. Las matrices semidefinidas positivas (resp. definidas positivas) se caracterizan por tener todos sus valores propios no negativos (resp. positivos). Análogamente se definen las matrices semidefinidas y definidas negativas, y se notan por $\mathcal{M}_d(\R)^-_0$ y $\mathcal{M}_d(\R)^-$.
+
+Es conocido que, fijada una base en $\R^d$, las matrices de dimensión $d' \times d$ se identifican con el conjunto de aplicaciones lineales de $\R^d$ en $\R^{d'}$ de forma biunívoca. Por tanto, si es necesario, una matriz $L \in \mathcal{M}_{d'\times d}(\R)$ la veremos como una aplicación lineal $L \colon \R^d \to \R^{d'}$, notando ambas de la misma forma. También es conocido que las matrices simétricas se identifican con operadores autoadjuntos si la base fijada es ortonormal. Pero las matrices simétricas $A \in S_d(\R)$ además pueden identificarse con formas bilineales simétricas, esto es, aplicaciones de la forma $g_A \colon \R^d \to \R^d$ dadas por $g_A(x,y) = x^TAy$, que además son semidefinidas o definidas positivas si la matriz $A$ lo es. De nuevo, según las circunstancias, podremos ver las matrices simétricas como aplicaciones, si es necesario.
+
+\section{Las matrices como espacio de Hilbert}
+
+Sobre el conjunto de las matrices de determinada dimensión tenemos definida una operación de suma, y además tenemos definido un producto entre matrices de órdenes $d \times r$ y $r \times n$, que cuando nos restringimos a matrices cuadradas, se convierte en un producto interno, que junto con la suma da al espacio vectorial de las matrices una estructura de anillo no conmutativo. Con estas operaciones solo podemos obtener propiedades algebraicas sobre las matrices. Si queremos desarrollar una teoría geométrica sobre ellas tendremos que introducir una topología adecuada. La topología que introduciremos permitirá tratar el espacio de matrices $\mathcal{M}_{d'\times d}(\R)$ como un espacio de Hilbert idéntico a $\R^{d'\times d}$. Esta identificación será únicamente a nivel de espacios de Hilbert, de forma que con las herramientas matriciales como el producto matricial o los valores propios podremos estudiar propiedades que en general no se presentan en $\R^{d'\times d}$ como espacio vectorial.
+
+\begin{definition}
+    Se define el \emph{producto escalar de Frobenius} en el espacio de matrices de orden $d' \times d$ como la aplicación $\langle \cdot, \cdot \rangle_F \colon \mathcal{M}_{d' \times d}(\R) \times \mathcal{M}_{d' \times d}(\R) \to \R$ dada por
+    \[ \langle A, B \rangle_F = \sum_{i=1}^d\sum_{j=1}^{d'} A_{ij}B_{ij} = \tr(A^TB). \]
+    Se define la \emph{norma de Frobenius} en el espacio de matrices de orden $d' \times d$ como la aplicación $\|\cdot \|_F \colon \mathcal{M}_{d' \times d}(\R) \to \R^+_0$ dada por
+    \[ \|A\|_F = \sqrt{\langle A^T, A \rangle} = \sqrt{\sum_{i=1}^d\sum_{j=1}^{d'}A_{ij}^2} = \sqrt{\tr(A^TA)} \]
+\end{definition}
+
+Se tiene que $(\mathcal{M}_{d'\times d}(\R),\langle \cdot, \cdot \rangle_F)$ es un espacio de Hilbert, y su producto escalar es el mismo que si calculáramos el producto escalar usual de la matriz vista como vector en $\R^{d' \times d}$, añadiendo las filas al vector una detrás de otra.
+
+La norma de Frobenius es, por tanto, idéntica a la norma euclidea en $\mathbb{R}^{d'\times d}$ realizando la misma identificación entre matrices y vectores. Vista como norma matricial, verifica propiedades adicionales. Por ejemplo, si consideramos matrices cuadradas, tenemos que la norma de Frobenius es submultiplicativa, esto es, $\|AB\|_F \le \|A\|_F\|B\|_F$, para $A, B \in \mathcal{M}_d(\R)$. Esto se deduce aplicando las definiciones de norma de Frobenius y producto matricial, y aplicando la desigualdad de Cauchy-Schwarz para el producto escalar en $\R^d$. De hecho, la desigualdad se verifica para matrices no cuadradas, siempre que las dimensiones permitan multiplicarlas, y tomando en cada caso la norma de Frobenius en el espacio adecuado.
+
+Muchas de las normas que se definen para las matrices cuadradas tienen la propiedad de que son \emph{inducidas} por una norma vectorial, esto es, la norma $\matrixnorm{\cdot}$ en $\mathcal{M}_{d}(\R)$ está inducida por la norma $\|\cdot\|$ en $\R^{d}$ si para toda $A \in \mathcal{M}_{d}(\R)$ se tiene
+\[ \matrixnorm{A} = \sup \{ \|Ax\| \colon x \in \R^d, \|x\| = 1 \} = \sup\left\{ \frac{\|Ax\|}{\|x\|} \colon x \in \R^d \setminus \{0\} \right\}. \]
+En este caso, se tiene que la norma de Frobenius no está inducida por ninguna norma vectorial, para $d \ge 2$. Observemos que todas las normas inducidas por una norma vectorial han de verificar $\matrixnorm{I} = 1$, lo cual no ocurre con la norma de Frobenius, pues $\|I\|_F = \sqrt{d} > 1$.
+
+Además de las ya comentadas, es importante destacar las siguientes propiedades de la norma de Frobenius.
+
+\begin{prop}~ \label{prop:prop_frobenius}
+    \begin{enumerate}
+        \item Para cada $A \in \mathcal{M}_{d' \times d}(\R)$, $\|A\|_F = \|A^T\|_F$.
+        \item Para cada $A \in \mathcal{M}_{d' \times d}(\R)$, $\|A\|_F = \sqrt{\tr(AA^T)}$
+        \item Si $U \in O_d(\R), V \in O_{d'}(\R)$ y $A \in \mathcal{M}_{d' \times d}(\R)$, entonces $\|AU\|_F = \|VA\|_F = \|VAU\|_F = \|A\|_F$.
+        \item Si $A \in S_d(\R)$, entonces $\|A\|_F^2 = \sum_{i=1}^d \lambda_i^2$, donde $\lambda_1,\dots,\lambda_d$ son los valores propios de $A$.
+        \item Si $A \in S_d(\R)$, entonces, $\rho(A) \le \|A\|_F \le \sqrt{d}\rho(A)$, donde $\rho(A) = \max\{|\lambda| \colon \lambda \in \R \text{ es valor propio de } A\}$ es el \emph{radio espectral} de $A$.
+        %\item Si $d' \le d$, para cada $A \in \mathcal_{d' \times d}(\R)$, $\|A\|_F^2 = \sum_{i=1}^{d'} \sigma_i^2$, donde $\sigma_1, \dots, \sigma_{d'}$ son los valores propios de $AA^T$ (que coinciden con los de $A^TA$, teniendo este último $d - d'$ valores propios adicionales con valor $0$).
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Es evidente.
+        \item Consecuencia de la invarianza de la traza por permutaciones cíclicas.
+        \item Se tiene
+            \begin{align*}
+                \|AU\|_F^2 &= \tr((AU)^T(AU)) = \tr(U^TA^TAU) = \tr(UU^TA^TA) = \tr(A^TA) = \|A\|^2_F \\
+                \|VA\|_F^2 &= \tr((VA)^T(VA)) = \tr(A^TV^TVA) = \tr(A^TA) = \|A\|_F^2 
+            \end{align*}
+        \item Si $A \in S_d(\R)$, existe una matrix $U \in O_d(\R)$ tal que $A = UDU^T$ y $D = \diag(\lambda_1,\dots,\lambda_d)$ es la matriz diagonal con los valores propios de $A$. Entonces, por la propiedad anterior,
+        \[ \|A\|_F^2 = \|UDU^T\|_F^2 = \|D\|_F^2 = \sum_{i,j=1}^d D_{ij}^2 = \sum_{i=1}^d \lambda_i^2. \]
+        \item Si $D = \diag(\lambda_1,\dots,\lambda_d)$ es la matriz diagonal con los valores propios de $A$, se tiene que
+        \[ \rho(A) = \|(\lambda_1,\dots,\lambda_d)\|_{\infty} \le \|(\lambda_1,\dots,\lambda_d)\|_2 \le \sqrt{d}\|(\lambda_1,\dots,\lambda_d)\|_{\infty} = \sqrt{d}\rho(A). \]
+        El resultado se tiene al observar que $\|(\lambda_1,\dots,\lambda_d)\|_2 = \|D\|_F = \|A\|_F$.
+        %\item Tiene pinta de que hace falta SVD y tampoco la vamos a usar, creo
+
+
+    \end{enumerate}
+
+\end{proof}
+
+Para concluir, observemos que, teniendo las matrices identificadas como elementos de un espacio vectorial de dimensión finita con producto escalar, todas las teorías métricas pueden ser desarrolladas de la misma forma que las teorías en un espacio $\R^d$. En particular, todos los resultados vistos en el capítulo anterior pueden aplicarse sobre las matrices.
+
+\begin{comment}
+Para concluir la sección, es interesante destacar algunas propiedades topológicas de las que disponen algunos de los subconjuntos más destacados de matrices con el producto escalar que hemos añadido.
+
+\begin{prop}~
+    En las siguientes propiedades suponemos fijada una dimensión $d' \times d$ (con $d' = d$ cuando la propiedad esté definida solo en espacios de matrices cuadradas).
+    \begin{enumerate}
+        \item Las aplicaciones traza y determinante son continuas.
+        \item La suma, el producto y la trasposición de matrices son continuos.
+        \item El conjunto de todas las matrices es un espacio vectorial. Las matrices simétricas (resp. antisimétricas) forman un subespacio vectorial del espacio de matrices cuadradas. En consecuencia, son convexos y por tanto conexos.
+        \item El conjunto de las matrices regulares (o isomorfismos vectoriales) es abierto y tiene dos componentes conexas: los isomorfismos que preservan la orientación (determinante positivo) y los que la invierten (determinante negativo).
+        \item El grupo ortogonal (o grupo de isometrías) tiene también dos componentes conexas: las isometrías que preservan la orientación, y las que la invierten. Además, es compacto.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Ambas aplicaciones son polinomios en las entradas de la matriz.
+        \item Cada componente de las funciones es un polinomio en las entradas de las matrices que reciben como argumento.
+        \item La comprobación de que son espacios vectoriales es inmediata. Son convexos por serlo todos los subespacios vectoriales.
+    \end{enumerate}
+\end{proof}
+\end{comment}
+
+\section{Matrices semidefinidas positivas: teoremas de descomposición y proyección}
+
+\subsection{El cono de las matrices semidefinidas positivas}
+
+En esta sección nos centraremos en el estudio de las matrices semidefinidas positivas. Comenzaremos viendo su estructura algebraica como conjunto. Sean $A, B \in \mathcal{M}_d(\R)^+_0$ y $\alpha_1, \alpha_2 \in \R^+_0$. Entonces, dado $x \in \R^d$,
+\[ x^T(\alpha_1A + \alpha_2B)x = \alpha_1(x^TAx) + \alpha_2(x^TBx) \ge 0, \]
+luego $\alpha_1A + \alpha_2B \in \mathcal{M}_d(\R)^+_0$. Por tanto, el conjunto de las matrices semidefinidas positivas tiene estructura de cono, y en particular es convexo. Viendo este conjunto como subconjunto de las matrices simétricas, y con la topología inducida por estas, tenemos que el cono de matrices semidefinidas positivas verifica también las siguientes propiedades:
+\begin{itemize}
+    \item Es cerrado. Podemos ver
+    \[\mathcal{M}_d(\R)^+_0 = \{ M \in S_d(\R) \colon x^TMx \ge 0 \quad \forall x \in \R^d \} = \bigcap_{x \in \R^d} \{ M \in S_d(\R) \colon x^T M x \ge 0 \}. \]
+    Los elementos en la intersección son semiespacios cerrados, dentro del conjunto de las matrices simétricas, pues la aplicación $M \mapsto x^TMx$ es lineal en $M$, fijado $x \in \R^d$. Por tanto, la intersección es cerrada.
+    \item Es puntiagudo. Observemos que $-\mathcal{M}_d(\R)^+_0 = \mathcal{M}_d(\R)^-_0$. Si $M \in \mathcal{M}_d(\R)^+_0 \cap \mathcal{M}_d(\R)^-_0$, entonces se tiene que todos sus valores propios son no negativos y no positivos, luego todos sus valores propios son $0$, y esto solo es posible si $M = 0$.
+
+    \item Es sólido. Concretamente, su interior es $\mathcal{M}_d(\R)^+$, que es no vacío. Para probarlo utilizaremos el siguiente resultado.
+\end{itemize}
+
+\begin{prop}[Propiedades de regularización]~ \label{prop:pd_regularization}
+    \begin{enumerate}
+        \item Sea $M \in S_d(\R)$. Entonces, existe $\varepsilon > 0$ tal que $M + \varepsilon I \in \mathcal{M}_d(\R)^+$.
+        \item Sea $M \in \mathcal{M}_d(\R)^+_0$. Entonces, para todo $\varepsilon > 0$, se tiene que $M + \varepsilon I \in \mathcal{M}_d(\R)^+$.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    Sea $M \in S_d(\R)$. Entonces, todos sus valores propios son reales, y son raíces del polinomio característico $p(\lambda) = \det(M - \lambda I)$. Si llamamos $\lambda_1 \le \dots \le \lambda_d$ a los valores propios de $M$, para cada $\varepsilon \in \R$ se tiene que las raíces del polinomio $q(\lambda) = p(\lambda - \varepsilon)$ son $\lambda_1 + \varepsilon \le \dots \le \lambda_d + \varepsilon$. Además, el polinomio $q$ es justo el polinomio característico asociado a $M + \varepsilon I$, pues $\det( (M + \varepsilon - I) - \lambda I) = \det(M - (\lambda - \varepsilon)I ) = p(\lambda  \varepsilon) = q(\lambda)$.
+
+    Por tanto, si tomamos $\varepsilon > \max\{-\lambda_1, 0\} \ge 0$, todos los valores propios de $M + \varepsilon I$ serán positivos, y por tanto $M + \varepsilon I \in \mathcal{M}_d(\R)^+$. Si se tenía $M \in \mathcal{M}_d(\R)^+_0$, entonces conseguimos que los valores propios sean positivos para cualquier $\varepsilon > 0$.
+\end{proof}
+
+La propiedad anterior es muy interesante desde el punto de vista computacional, pues en ocasiones los errores de precisión en los cálculos con matrices hacen que se pierda la condición de ser definida positiva. El resultado anterior nos dice que podemos recuperarla añadiendo un valor positivo a la diagonal de la matriz, siendo tan pequeño como queramos en el caso de tener una matriz semidefinida. De aquí que se enuncien como propiedades de regularización. Con estas propiedades vamos a terminar de ver que el interior del conjunto de matrices semidefinidas positivas son las matrices definidas positivas (viéndolas dentro de las matrices simétricas).
+
+\begin{cor}
+    $\mathcal{M}_d(\R)^+_0$ es un cono propio con interior $\mathcal{M}_d(\R)^+$.
+\end{cor}
+\begin{proof}
+    Ya hemos visto que $\mathcal{M}_d(\R)^+_0$ es un cono cerrado y puntiagudo. Queda comprobar que su interior es el conjunto de las matrices definidas positivas. Notamos a las bolas inducidas por la norma de Frobenius sobre las matrices simétricas como $B(M,r) = \{ A \in S_d(\R) \colon \|M - A\|_F < r\}$, para cada $M \in S_d(\R)$ y $r > 0$.
+
+    Veamos que $\interior{(\mathcal{M}_d(\R)^+_0)} \subset \mathcal{M}_d(\R)^+$. Sea $M \in \interior{(\mathcal{M}_d(\R)^+_0)}$. Entonces, existe $\varepsilon > 0$ tal que $B(M,2\varepsilon\sqrt{d}) \subset \mathcal{M}_d(\R)^+_0$. Sea $A = M - \varepsilon I$. Se tiene que $\|M - A\|_F = \|\varepsilon I\|_F = \varepsilon\sqrt{d}$, luego $A \in B(M,2\varepsilon\sqrt{d}) \subset \mathcal{M}_d(\R)^+_0$. Por la proposición anterior, $M = A + \varepsilon I \in \mathcal{M}_d(\R)^+$.
+
+    Veamos que $\mathcal{M}_d(\R)^+$ es abierto. El criterio de Sylvester nos dice que $M \in \mathcal{M}_d(\R)^+$ si y solo si todos sus menores principales son positivos, esto es, si y solo si $\det(M_k) > 0$ para cada $k \in \{1,\dots,d\}$, donde $M_k \in \mathcal{M}_k(\R)$ es la matriz de orden $k$ cuyas entradas coinciden con las de $M$ hasta dicha dimensión. En consecuencia,
+    \[\mathcal{M}_d(\R)^+ = \{M \in S_d(\R) \colon \det(M_k) > 0 \quad \forall k = 1,\dots,d \} = \bigcap_{k=1}^d\{M \in \mathcal{S}_d(\R) \colon \det(M_k) > 0 \}. \]
+    Por la continuidad del determinante, tenemos una intersección finita de conjuntos abiertos en $S_d(\R)$ (son abiertos en $\mathcal{M}_d(\R)$, intersecados con $S_d(\R)$). Por tanto, $\mathcal{M}_d(\R)^+$ es abierto.
+
+    Como $\mathcal{M}_d(\R)^+ \subset \mathcal{M}_d(\R)^+_0$ y $\mathcal{M}_d(\R)^+$ es abierto, tomando interiores se deduce la inclusión restante.
+\end{proof}
+
+Puesto que hemos probado que las matrices semidefinidas positivas son un cono propio sobre las matrices simétricas, tenemos definidas sobre estas la relación de orden $\preceq$, dada por $A \preceq B \iff B - A \in \mathcal{M}_d(\R)^+_0$. Análogamente, tenemos el orden estricto dado por $A \prec B \iff B - A \in \mathcal{M}_d(\R)^+$. Estos órdenes se denominan órdenes de \emph{Löwner} Veamos algunas de sus principales propiedades.
+
+\begin{prop}[Propiedades del orden de las matrices semidefinidas]~
+    Supongamos $A,B,M \in S_d(\R)$.
+    \begin{enumerate}
+        \item $M \in \mathcal{M}_d(\R)^+_0 \iff M \succeq 0$ y $M \in \mathcal{M}_d(\R)^+ \iff M \succ 0$.
+        \item $A \preceq B \iff x^TAx \le x^TBx$ para todo $x \in \R^d$.
+        \item $A \prec B \iff x^TAx < x^TBx$ para todo $x \in \R^d\setminus\{0\}$.
+        \item Si $A \preceq B$, entonces $C^TAC \preceq C^TBC$, para todo $C \in \mathcal{M}_d(\R)$.
+        \item Si $A \prec B$, entonces $C^TAC \prec C^TBC$ para todo $C \in \gl_d(\R)$.
+
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Es evidente.
+        \item $A \preceq B \iff B - A \succeq 0 \iff x^T(B-A)x \ge 0$ para todo $x \in \R^d$ $\iff x^TBx \ge x^TAx$ para todo $x \in \R^d$.
+        \item La prueba es análoga a la anterior.
+        \item Basta ver que $B - A \succeq 0 \implies C^T(B-A)C \succeq 0$:
+            \[B - A \succeq 0 \implies (Cx)^T(B-A)(Cx) \ge 0 \quad \forall x \in \R^d \implies x^T(C^T(B-A)C)x \ge 0 \quad \forall x \in \R^d \implies C^T(B-A)C \succeq 0. \]
+        \item La prueba es análoga a la anterior, teniendo en cuenta que $Cx \ne 0$ para todo $x \ne 0$, pues $C$ es regular.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Teoremas de descomposición}
+
+Los próximos resultados que veremos serán teoremas de descomposición para matrices semidefinidas positivas, o basadas en estas. Estos resultados nos permitirán, por un lado, proporcionar varias alternativas para parametrizar el problema que trataremos en el capítulo \ref{chapter:dml_theory}. Por otra parte, estos teoremas de descomposición proporcionan la base para muchos algoritmos de factorización de matrices, como es el caso de la factorización de Cholesky, o la descomposición en valores singulares. Por último, estos resultados nos mostrarán que el cono de las matrices semidefinidas positivas permite generalizar algunos conceptos adicionales definidos para los números no negativos, como es el caso de las raíces cuadradas o el valor absoluto, manteniendo algunas de sus propiedades.
+
+Comenzaremos con una caracterización de las matrices semidefinidas positivas por descomposición, la cual nos permitirá introducir además el concepto de raíz cuadrada. Utilizaremos para ello un lema previo.
+
+\begin{lem} \label{lem:poly_conmute}
+    Sean $A, B \in \mathcal{M}_d(\R)$ dos matrices que conmutan, es decir, $AB = BA$. Entonces, $Ap(B) = p(B)A$, donde $p$ denota cualquier polinomio sobre matrices (es decir, una expresión de la forma $p(C) = a_0I + a_1C + a_2C^2 + \dots a_nC^n$, con $a_1,\dots,a_n \in \R$).
+\end{lem}
+\begin{proof}
+    Basta ver que
+    \[AB^n = (AB)B^{n-1} = B(AB)B^{n-2} = \dots = B^{n-1}(AB) = B^nA, \]
+    y $Ap(B) = p(B)A$ se deduce por linealidad.
+\end{proof}
+
+\begin{lem} \label{lem:poly_diag_sqrt}
+    Sea $D \in \mathcal{M}_d(\R)^+_0$ una matriz diagonal. Entonces, existe un polinomio sobre matrices $p$ tal que $p(D^2) = D$.
+\end{lem}
+\begin{proof}
+    Supongamos $D = \diag(\lambda_1,\dots,\lambda_d)$, con $0 \le \lambda_1 \le \dots \lambda_d$. Entonces, $D^2 = \diag(\lambda_1^2,\dots\lambda_d^2)$. Tomamos un polinomio $p$ de interpolación en los puntos $(\lambda_i^2,\lambda_i)$, para $i = 1,\dots,d$. Siempre podemos construir un polinomio de esta forma: si todos los $\lambda_i$ son distintos existe un único polinomio de grado $d-1$ que realiza esta interpolación (la matriz de Vandermonde asociada a los valores $\lambda_i^2$ es regular y los coeficientes del polinomio son la solución del sistema determinado por la matriz de Vandermonde y los valores $\lambda_i$ como término independiente) . Si alguno de los $\lambda_i$ está repetido, consideramos el punto $(\lambda_i^2, \lambda_i)$ una única vez, pudiendo interpolar mediante un polinomio de menor dimensión. El polinomio que obtenemos podemos evaluarlo sobre $D^2$, obteniendo
+    \[p(D^2) = p(\diag(\lambda_1^2,\dots,\lambda_d^2)) = \diag(p(\lambda_1^2),\dots,p(\lambda_d^2)) = \diag(\lambda_1,\dots,\lambda_d) = D. \]
+\end{proof}
+
+\begin{thm}~ \label{thm:decomp_sqrt}
+    Sea $M \in \mathcal{M}_d(\R)$. Entonces,
+    \begin{enumerate}
+        \item $M \in \mathcal{M}_d(\R)^+_0$ si y solo si existe $L \in \mathcal{M}_d(\R)$ tal que $M = L^T L$.
+        \item Si $M \in \mathcal{M}_d(\R)^+_0$, existe una única matriz $N \in \mathcal{M}_d(\R)^+_0$ tal que $N^2 = M$. Además, $M \in \mathcal{M}_d(\R)^+ \iff N \in \mathcal{M}_d(\R)^+$.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    En primer lugar veamos que $L^TL$ es una matriz semidefinida positiva, para cualquier $L \in \mathcal{M}_d(\R)$. En efecto, dado $x \in \R^d$,
+    \[ x^TL^TLx = (Lx)^T(Lx) = \|Lx\|^2_2 \ge 0. \]
+    Probaremos la segunda implicación del primer apartado viendo directamente la existencia de la matriz $N$ del segundo apartado. Para ello, consideramos la descomposición $M = UDU^T$, con $U \in O_d(\R)$ y $D = \diag(\lambda_1,\dots,\lambda_d)$, con $0 \le \lambda_1 \dots \lambda_d$ los valores propios de $M$. Definimos $D^{1/2} = \diag(\sqrt{\lambda_1},\dots,\sqrt{\lambda_d})$ y construimos la matriz $N = UD^{1/2}U^T$. Se tiene que $N$ es semidefinida positiva, pues sus valores propios son los de $D^{1/2}$, que son todos positivos, y además, 
+    \[N^2 = UD^{1/2}U^TUD^{1/2}U^T = UD^{1/2}D^{1/2}U^T = UDU^T = M.\]
+    También, la positividad estricta de los valores propios de $M$ equivale a la de los valores propios de $N$, luego $M \in \mathcal{M}_d(\R)^+ \iff N \in \mathcal{M}_d(\R)^+$. Veamos finalmente que $N$ es única.
+
+    Supongamos que existen $N_1, N_2 \in \mathcal{M}_d(\R)^+_0$ con $N_1^2 = M = N_2^2$. Notemos que $N_1$ y $N_2$ han de tener los mismos valores propios, pues tienen todos sus valores propios reales por ser simétricas, los cuadrados de sus valores propios son los valores propios de $M$, y son semidefinidas positivas, luego sus valores propios son necesariamente las raíces positivas de los valores propios de $M$. Por tanto, son semejantes a una misma matriz diagonal, es decir, existen $U, V \in O_d(\R)$ tales que $N_1 = UDU^T$ y $N_2 = VDV^T$. De $N_1^2 = N_2^2$ obtenemos
+    \[ UD^2U^T = VD^2V^T \implies V^TUD^2 = D^2V^TU, \]
+    luego para $W = V^TU \in O_d(\R)$, se tiene que $D^2$ y $W$ conmutan. Combinando los lemas \ref{lem:poly_diag_sqrt} y \ref{lem:poly_conmute} obtenemos que $D$ y $W$ también conmutan. Por tanto,
+    \[WD = DW \implies V^TUD = DV^TU \implies UDU^T = VDV^T \implies N_1 = N_2, \]
+    obteniéndose la unicidad.
+\end{proof}
+
+Como habíamos anticipado, este teorema motiva la definición de las raíces cuadradas para matrices semidefinidas positivas.
+
+\begin{definition}
+    Sea $M \in \mathcal{M}_d(\R)^+_0$. Se define la \emph{raíz cuadrada} de $M$ como la única matriz $N \in \mathcal{M}_d(\R)^+_0$ tal que $N^2 = M$. Dicha matriz además puede construirse como $N = UD^{1/2}U^T$, donde $M = UDU^T$ es una descomposición espectral de $M$. La raíz cuadrada se nota como $N = M^{1/2}$.
+\end{definition}
+
+Observemos que una matriz, incluso siendo semidefinida positiva, puede admitir más de una matriz que tenga como cuadrado la matriz inicial. Por ejemplo, la identidad en $\R^2$ es el cuadrado de ella misma, de la simetría respecto al origen, o de la aplicación que intercambia los ejes de coordenadas. Lo que afirma el teorema es que, como ocurre con los números reales, la raíz cuadrada semidefinida positiva es única. La raíz cuadrada, además de seguir extendiendo las propiedades de los números no negativos al cono de matrices semidefinidas, es una herramienta útil para probar algunos resultados. Por ejemplo, aunque trabajemos con matrices simétricas, su producto no es necesariamente simétrico, luego podría no ser diagonalizable por semejanza. Veamos que si una de las matrices admite raíces regulares podemos asegurar dicha diagonalización.
+
+\begin{cor}
+    Si $A \in \mathcal{M}_d(\R)^+$ y $B \in S_d(\R)$, entonces $AB$ es diagonalizable por semejanza.
+\end{cor}
+
+\begin{proof}
+    Se tiene que $A^{1/2} \in \mathcal{M}_d(\R)^+$, y $A^{-1/2}(AB)A^{1/2} = A^{1/2}BA^{1/2}$. Esta última matriz es simétrica, pues $A^{1/2}$ y $B$ lo son, luego $(A^{1/2}BA^{1/2})^T = (A^{1/2})^TB^T(A^{1/2})^T = A^{1/2}BA^{1/2}$. El lado izquierdo de la igualdad nos dice que $AB$ es semejante a esta matriz, y por tanto, es diagonalizable.
+\end{proof}
+
+Continuando la extensión de conceptos sobre los números no negativos a matrices semidefinidas positivas, la raíz cuadrada permite definir el valor absoluto o módulo para matrices cuadradas arbitrarias.
+
+\begin{definition}
+    Sea $A \in \mathcal{M}_d(\R)$. Se define el \emph{valor absoluto} o \emph{módulo} de $A$ como
+    \[ |A| = (A^TA)^{1/2} \in \mathcal{M}_d(\R)^+_0. \]
+
+    Se denominan \emph{valores singulares} de $A$ a los valores propios de $|A|$. Observemos que los valores singulares de cualquier matriz cuadrada son reales no negativos.
+\end{definition},
+
+\begin{remark}
+    Si $A$ es simétrica y $A = UDU^T$ es una descomposición espectral, entonces los valores singulares de $A$ son el valor absoluto de sus valores propios y $|A| = U|D|U^T$.
+\end{remark}
+
+Como se ve en la definición, el módulo de matrices es siempre semidefinido positivo y su definición es análoga a las definiciones de módulo que pueden realizarse sobre $\R$ o $\C$. No todas las propiedades del valor absoluto pueden ser trasladadas al módulo de matrices. Por ejemplo, la desigualdad triangular (para el orden de Löwner) no se verifica. Sin embargo, sí es posible probar que para matrices $A, B \in \mathcal{M}_d(\R)$ existen matrices ortogonales $U$ y $V$ tales que $|A+B| \preceq U|A|U^T + V|B|V^T$. Esta desigualdad se conoce como desigualdad de Thompson \cite{thompson_inequality}.
+
+El módulo y los valores singulares permiten deducir nuevos teoremas de descomposición para matrices cuadradas arbitrarias.
+
+\begin{thm}[Descomposición polar y descomposición en valores singulares] \label{thm:polar_svd}
+    Sea $A \in \mathcal{M}_d(\R)$. Entonces,
+    \begin{enumerate}
+        \item Para todo $x \in \R^d$, $\| Ax\|_2 = \| |A| x\|_2$.
+        \item Existe $U \in O_d(\R)$ tal que $A = U|A|$. Esta descomposición se denomina \emph{descomposición polar} de $A$, y no es necesariamente única.
+        \item Existen $V,W \in O_d(\R)$ tales que $A = W\Sigma V^T$, donde $\Sigma$ es la matriz diagonal con los valores singulares de $A$. Esta descomposición se denomina \emph{descomposición en valores singulares} de $A$.
+        \item Las columnas de $V$ forman una base ortonormal de vectores propios de $|A|$ (y de $A^TA$) y las columnas de $W$ forman una base ortonormal de vectores propios de $|A^T|$ (y de $AA^T$).
+    \end{enumerate} 
+\end{thm}
+
+\begin{proof}~
+    \begin{enumerate}
+        \item Dado $x \in \R^d$,
+        \[ \|Ax\|_2^2 = (Ax)^T(Ax) = x^TA^TAx = x^T|A|^2x = x^T|A||A|x = x^T|A|^T|A|x = (|A|x)^T(|A|x) = \||A|x\|_2^2. \]
+
+        \item Definimos la aplicación $U_1 \colon \im(|A|) \to \im(A)$ por $U_1(|A|x) = Ax$. Esta aplicación está bien definida, ya que $|A|x = |A|y \iff x - y \in \ker|A|$, y se tiene que $\ker|A| = \ker A$, ya que $|A|x = 0 \iff \||A|x\|_2 = \|Ax\|_2 = 0 \iff Ax = 0$. Por tanto, $|A|x = |A|y \iff x - y \in \ker A \iff Ax = Ay$. Además, es una isometría, por el apartado anterior, y claramente es sobreyectiva. Se tiene además que
+        \[ \dim \im(A)^{\perp} = d - \dim\im(A) = \dim\ker(A) = \dim\ker(|A|) = d - \dim\im(|A|) = \dim\im(|A|)^{\perp}. \]
+        Luego si $r = \dim\im(A)^{\perp} = \dim\im(|A|)^{\perp}$ podemos fijar bases ortonormales $\{u_1,\dots,u_r\}$ en $\im(A)^{\perp}$ y $\{w_1,\dots,w_r\}$ en $\im(|A|)^{\perp}$, y definir la aplicación lineal
+        \begin{equation*}
+            \begin{split}
+                U \colon & \R^d \to \R^d \\
+                &x \mapsto U_1x, \quad x \in \im(|A|) \\
+                &w_i \mapsto u_i, \quad i = 1,\dots,r. 
+            \end{split}
+        \end{equation*}
+        Observemos que esta aplicación está bien definida, y por construcción es una isometría en $\R^d$. Por tanto, $U \in O_d(\R)$ y $U|A| = U_1|A| = A$.
+
+        \item Consideramos la descomposición $|A| = V\Sigma V^T$, con $V \in O_d(\R)$, y llamamos $W = UV \in O_d(\R)$, donde $U$ es una matriz de descomposición polar dada por el apartado anterior. Entonces,
+        \[A = U|A| = UV\Sigma V^T = W\Sigma V^T.  \]
+
+        \item La construcción de $V$ es clara, por la descomposición espectral $|A| = V\Sigma V^T$. Para $W$, notemos que
+        \[ \Sigma^2 = V^T|A|^2 V = V^TU^TAU^TAV = W^TAA^TUV = W^TAA^TW, \]
+        luego $W$ diagonaliza a $AA^T$ y por tanto también a $(AA^T)^{1/2} = |A^T|$.
+\end{enumerate}
+\end{proof}
+
+\begin{remark}
+    Si $A$ es regular, $|A|$ también lo es, y la descomposición polar es única, donde la matriz $U$ viene dada por $U = A|A|^{-1}$.
+\end{remark}
+
+La descomposición en valores singulares es una herramienta muy útil para cálculos con matrices por ordenador, como el cálculo de rangos, la resolución de sistemas de ecuaciones lineales, el cálculo de valores propios o los ajustes por mínimos cuadrados. Esto se debe a que se conocen algoritmos para calcularlos de forma eficiente, y permiten establecer niveles de tolerancia (por ejemplo, a la hora de determinar un rango) que hacen los cálculos más robustos frente a errores de precisión.
+
+Para concluir con los teoremas de descomposición, vamos a afinar el resultado inicial con el que comenzábamos la sección (el teorema \ref{thm:decomp_sqrt}) añadiendo condiciones de unicidad sobre la descomposición $L^TL$. Para ello haremos uso de la descomposición polar.
+
+\begin{thm} \label{thm:psd_decomposition}
+    Sea $M \in \mathcal{M}_d(\R)^+_0$. Entonces,
+    \begin{enumerate}
+        \item Existe una matriz $L \in \mathcal{M}_d(\R)$ tal que $M = L^TL$.
+        \item Si $K \in \mathcal{M}_d(\R)$ es cualquier otra matriz tal que $M = K^TK$, entonces $K = UL$, donde $U \in O_d(\R)$ (es decir, $L$ es única salvo isometrías).
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    La primera afirmación fue vista en el teorema \ref{thm:decomp_sqrt}. Supongamos entonces que $L, K \in \mathcal{M}_d(\R)$ verifican $M = L^TL = K^TK$. Sean $L = V|L|, K = W|K|$, con $L, K \in O_d(\R)$, descomposiciones polares de $L$ y $K$. Entonces,
+    \begin{align*}
+        L^TL = K^TK &\implies |L|^TV^TV|L| = |K|^TW^TW|K| \\
+                    &\implies |L|^T|L| = |K|^T|K| \implies |L|^2 = |K|^2.
+    \end{align*}
+    Como $|L|$ y $|K|$ son semidefinidas positivas, han de ser la única raíz cuadrada de $|L|^2 = |K|^2$, es decir, $|L|=|K|$. Llamamos $N = |L| = |K|$. Volviendo a las descomposiciones polares de $L$ y $K$, se deduce que
+    \[ N = V^TL = W^TK \implies K = WV^TL. \]
+    Por tanto, tomando $U = WV^T \in O_d(\R)$ obtenemos la igualdad buscada.
+\end{proof}
+
+\subsection{Matrices semidefinidas como seminormas}
+
+Es conocido que las matrices definidas positivas se identifican con productos escalares en $\R^d$, es decir, formas bilineales simétricas y definidas positivas. Para los productos escalares se tiene la conocida desigualdad de Cauchy-Schwarz, de la cual se deduce la desigualdad de Minkowski o desigualdad triangular, la cual permite concluir que la aplicación $\|\cdot\|_M \colon \R^d \to \R^+_0$ dada por $\|x\|_M = \sqrt{x^TMx}$ es una norma, para $M$ definida positiva. Cuando $M$ es únicamente semidefinida positiva no podemos asegurar que $\|\cdot\|_M$ sea una norma, pues en general no se tiene $\|x\| = 0 \iff x = 0$. Sin embargo, sí podemos probar, con algo más de esfuerzo, una desigualdad de Cauchy-Schwarz y una desigualdad triangular, que dan a $\|\cdot\|_M$ la condición de seminorma.
+
+\begin{thm}[Desigualdad de Cauchy-Schwarz para matrices semidefinidas positivas] \label{thm:cauchy_schwarz}
+    Sea $M \in \mathcal{M}_d(\R)^+_0$ y definimos $g \colon \R^d \times \R^d \to \R$ por $g(x,y) = x^TMy$. Entonces,
+    \[ |g(x,y)| \le \|x\|_M\|y\|_M. \]
+\end{thm}
+\begin{proof}
+    Supongamos que $g(y,y)=0$, y sea $\lambda \in \R^+$ arbitrario. Entonces,
+    \begin{align*}
+        0 \le g(x + \lambda y, x+\lambda y) = g(x,x) + 2\lambda g(x,y) + \lambda^2 g(y,y) = g(x,x) + 2\lambda g(x,y).
+    \end{align*}
+    Por tanto,
+    \[ - \frac{g(x,x)}{2\lambda} \le g(x,y). \]
+    Razonando análogamente para $-\lambda$, se obtiene que
+    \[ - \frac{g(x,x)}{2\lambda} \le g(x,y) \le \frac{g(x,x)}{2\lambda}.\]
+    La arbitrariedad de $\lambda$ conduce a que $g(x,y)=0$, verificándose la desigualdad.
+
+    Supongamos ahora $g(y,y) \ne 0$. Análogamente a la desigualdad de Cauchy-Schwarz para el producto escalar, consideramos $\lambda = \frac{g(x,y)}{g(y,y)}$. Entonces,
+    \begin{align*}
+        0 &\le g(x - \lambda y, x - \lambda y) = g(x,x) - 2\lambda g(x,y) + \lambda^2g(y,y) \\
+          &= g(x,x) - 2 \frac{g(x,y)^2}{g(y,y)}+\frac{g(x,y)^2}{g(y,y)} = \|x\|_M^2 - \frac{g(x,y)^2}{\|y\|_M^2},
+    \end{align*}
+    de donde se deduce que
+    \[ g(x,y)^2 \le \|x\|_M^2\|y\|_M^2. \]
+\end{proof}
+
+\begin{cor}[Desigualdad triangular o de Minkowski]
+    Si $M \in \mathcal{M}_d(\R)^+_0$, entonces $\|x+y\|_M \le \|x\|_M + \|y\|_M$.
+\end{cor}
+\begin{proof}
+    Aplicando la desigualdad de Cauchy-Schwarz,
+    \[ \|x+y\|^2_M = \|x\|^2_M + 2g(x,y) + \|y\|_M^2 \le \|x\|^2_M + 2\|x\|_M\|y\|_M + \|y\|^2_M = (\|x\|_M + \|y\|_M)^2 \]
+\end{proof}
+
+\subsection{Proyección sobre las matrices semidefinidas}
+
+Para concluir la sección, retomamos la estructura del conjunto de matrices semidefinidas como cono convexo y cerrado. El teorema de la proyección convexa \ref{thm:convex_projection} nos dice toda matrix podemos proyectarla a dicho cono. Veremos que podemos calcular una proyección explícita.
+
+Antes de analizar la proyección sobre el cono de matrices semidefinidas, analizamos otra proyección importante desde el punto de vista algorítmico: la proyección sobre el espacio vectorial de las matrices simétricas. Es fácil comprobar que $S_d(\R) \perp A_d(\R)$, para el producto escalar de Frobenius, y además $S_d(\R) \bigoplus A_d(\R) = \mathcal{M}_d(\R)$, pues su intersección es vacía, al ser ortogonales, y sus dimensiones suman $d^2$ (el espacio de las matrices simétricas tiene dimensión $d(d+1)/2$ y el de las antisimétricas $d(d-1)/2$; esto se debe a que las matrices simétricas vienen determinadas por sus componentes en el triángulo superior con la diagonal, y las antisimétricas vienen determinadas por sus componentes en el triángulo superior sin la diagonal). Por tanto, $S_d(\R)$ y $A_d(\R)$ se complementan ortogonalmente. Observando que, para toda $A \in \mathcal{M}_d(\R)$, la descomposición de $A$ en estos subespacios es
+\[ A = \frac{A + A^T}{2} + \frac{A - A^T}{2}, \]
+donde el primer sumando es simétrico y el segundo antisimétrico, el teorema de la proyección ortogonal permite concluir que la proyección sobre $S_d(\R)$ viene dada por $A \mapsto (A + A^T)/2$.
+
+Pasamos a buscar la proyección sobre el cono de las matrices semidefinidas. Veremos en primer lugar que, cuando queremos proyectar matrices simétricas, la proyección tiene una expresión muy sencilla, a partir de los valores propios.
+
+\begin{definition}
+    Sea $\Sigma \in \mathcal{M}_d(\R)$ una matriz diagonal, $\Sigma = \diag(\sigma_1,\dots,\sigma_d)$. Se define la \emph{parte positiva} de $\Sigma$ como $\Sigma^+ = \diag(\sigma_1^+,\dots,\sigma_d^+)$, donde $\sigma_i^+ = \max\{\sigma_i,0\}$. Análogamente, se define su \emph{parte negativa} como $\Sigma^- = \diag(\sigma_1^-,\dots,\sigma_d^-)$, donde $\sigma_i = \max\{-\sigma_i,0\}$.
+
+    Sea $A \in S_d(\R)$ y sea $A = UDU^T$ una descomposición espectral. Se define la \emph{parte positiva} de $A$ como $A^+ = UD^+U^T$. Análogamente, se define la parte negativa de $A$ como $A^- = UD^-U^T$.
+\end{definition}
+
+Es fácil comprobar que $A^+$ no depende de la matriz $U$ escogida, como consecuencia del lema \ref{lem:poly_conmute} aplicado a un polinomio que interpole los puntos de la forma $(\lambda_i,\lambda_i^+)$ (el teorema \ref{thm:decomp_sqrt} muestra el procedimiento). Lo mismo ocurre con $A^-$. Además, observemos que $A^+, A^- \in \mathcal{M}_d(\R)^+_0$. $A^+$ determinará la proyección de matrices simétricas sobre el cono de matrices semidefinidas positivas.
+
+\begin{thm}[Proyección semidefinida]
+    Sea $A \in S_d(\R)$. Entonces, $A^+$ es la proyección de $A$ sobre el cono de las matrices semidefinidas positivas.
+\end{thm}
+
+\begin{proof}
+    Tomamos $A = UDU^T$, con $U \in O_d(\R)$, una descomposición espectral de $A$, con $D = \diag(\lambda_1,\dots,\lambda_d)$, y $\lambda_i \in \R$ los valores propios de $A$, para $i = 1,\dots,d$. Sea $M \in \mathcal{M}_d(\R)^+_0$ arbitraria. Llamamos $S = U^TMU$ (esto es, $M = USU^T$). Se tiene que
+    \begin{align*}
+        \|A - M\|_F^2 &=\|UDU^T - USU^T\|_F^2 = \|U(D-S)U^T\|_F^2 = \|D-S\|_F^2 \\
+                     &= \sum_{i \ne j} S_{ij}^2 + \sum_{i=1}^d (\lambda_i - S_{ii})^2 \ge \sum_{i=1}^d (\lambda_i - S_{ii})^2 \\
+                     &\ge \sum_{\lambda_i < 0} (\lambda_ i - S_{ii})^2 \ge \sum_{\lambda_i < 0} \lambda_i^2,   
+    \end{align*}
+    donde en la última desigualdad se ha usado que $S_{ii} \ge 0$ para cada $i \in \{1,\dots,d\}$, por ser $S$ semidefinida positiva (basta ver que $S_{ii} = e_i^TSe_i \ge 0$, donde $\{e_1,\dots,e_d\}$ es la base canónica de $\R^d$), y por tanto, $(\lambda_i - S_{ii})^2 = \lambda_i^2 - 2\lambda_iS_{ii} + S_{ii}^2 \ge \lambda_i^2$ para cada $i$ con $\lambda_i < 0$.
+
+    La desigualdad anterior es válida para toda $M \in \mathcal{M}_d(\R)^+_0$, y solo depende de $A$ (concretamente, de sus valores propios negativos). Notemos que para $A^+$ se da la igualdad, pues
+    \[\|A - A^+\|_F^2 = \|D - D^+\|_F^2 = \sum_{\lambda_i < 0} \lambda_i^2, \]
+    luego $A^+$ minimiza la distancia a $A$ dentro de $\mathcal{M}_d(\R)^+_0$.
+
+    El teorema de la proyección convexa \ref{thm:convex_projection} asegura que $A^+$ es la proyección de $A$ sobre el cono de las matrices semidefinidas positivas, aunque también es fácil comprobarlo con la desigualdad anterior, pues cuando se da la igualdad, se ha de verificar que $S_{ij} = 0$ para $i \ne j$, $S_{ii} = 0$ para $\lambda_i < 0$ y $S_{ii} = \lambda_i$ en caso contrario.
+\end{proof}
+
+Concluimos viendo la proyección semidefinida de una matriz cuadrada arbitraria.
+
+\begin{cor}
+    Sea $A \in \mathcal{M}_d(\R)$. Entonces, la proyección de $A$ sobre el cono de las matrices semidefinidas positivas es $((A + A^T)/2)^+$.
+\end{cor}
+
+\begin{proof}
+    Podemos descomponer $A = B+C$, donde $B = (A+A^T)/2 \in S_d(\R)$ y $C = (A - A^T)/2 \in A_d(\R)$. Como $\langle B, C\rangle_F = 0$, el teorema de Pitágoras nos dice que, para $M \in \mathcal{M}_d(\R)^+_0$, que también verifica $\langle M, C \rangle_F = 0$, se tiene
+    \[ \|A - M\|_F^2 = \|B - M\|_F^2 + \|C\|_F^2. \]
+    Por tanto, minimizar la distancia a $A$ en $\mathcal{M}_d(\R)^+_0$ equivale a minimizar la distancia a $B$ en el mismo conjunto, la cual alcanza el mínimo cuando $M = B^+$.
+\end{proof}
+
+\begin{remark}
+    Los teoremas de proyección semidefinida nos permiten calcular también la distancia de una matriz al cono de matrices semidefinidas positivas. Si $A \in \mathcal{M}_d(\R)$, y $B$ y $C$ son sus partes simétrica y antisimétrica, con $\lambda_i(B)$ los valores propios de $B$, para $i = 1,\dots,d$, esta distancia viene dada por
+    \[ d(A,\mathcal{M}_d(\R)^+_0) = \sum_{\lambda_i(B) < 0} \lambda_i(B)^2 + \|C\|^2_F.  \]
+\end{remark}
+
+\begin{remark}
+    Análogamente se tiene que la proyección sobre el cono de matrices semidefinidas negativas de una matriz simétrica $A \in \mathcal{M}_d(\R)$ es $-A^-$. Las partes positiva y negativa, como ocurre con los números reales, permiten recuperar la matriz original, es decir, se verifica que $A = A^+ - A^-$. Igualmente ocurre con el módulo: $|A| = A^+ A^-$. Esto permite calcular la proyección semidefinida también como $A^+ = (A + |A|)/2.$
+\end{remark}
+
+\section{Cociente de Rayleigh. Teoremas minimax.}
+
+TODO
+
+\section{Optimización matricial}
+
+TODO
