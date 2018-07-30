@@ -49,110 +49,126 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.4}Proyecci\IeC {\'o}n sobre las matrices semidefinidas}{35}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Cociente de Rayleigh. Teoremas minimax.}{36}{section.2.4}
+\contentsline {section}{\numberline {2.4}Cociente de Rayleigh. Optimizaci\IeC {\'o}n con vectores propios.}{37}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.5}Optimizaci\IeC {\'o}n matricial}{36}{section.2.5}
+\contentsline {section}{\numberline {2.5}\IeC {\'U}ltimas consideraciones}{41}{section.2.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Teor\IeC {\'\i }a de la informaci\IeC {\'o}n y divergencias}{37}{chapter.3}
+\contentsline {chapter}{\numberline {3}Teor\IeC {\'\i }a de la informaci\IeC {\'o}n y divergencias}{43}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Introducci\IeC {\'o}n}{37}{section.3.1}
+\contentsline {section}{\numberline {3.1}Introducci\IeC {\'o}n}{43}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}La divergencia de Kullback-Leibler}{37}{section.3.2}
+\contentsline {section}{\numberline {3.2}Las divergencias de Kullback-Leibler y Jeffrey}{44}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}La divergencia de Jeffrey}{37}{section.3.3}
+\contentsline {section}{\numberline {3.3}La distribuci\IeC {\'o}n normal multivariante y divergencias matriciales.}{46}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}La distribuci\IeC {\'o}n normal multivariante. Divergencias matriciales.}{37}{section.3.4}
+\contentsline {part}{II\hspace {1em}Inform\IeC {\'a}tica te\IeC {\'o}rica}{51}{part.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{II\hspace {1em}Inform\IeC {\'a}tica te\IeC {\'o}rica}{39}{part.2}
+\contentsline {chapter}{\numberline {4}El aprendizaje autom\IeC {\'a}tico}{53}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}El aprendizaje autom\IeC {\'a}tico}{41}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n}{53}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n}{41}{section.4.1}
+\contentsline {section}{\numberline {4.2}El aprendizaje supervisado}{53}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}El aprendizaje supervisado}{41}{section.4.2}
+\contentsline {section}{\numberline {4.3}El problema de clasificaci\IeC {\'o}n}{53}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}El problema de clasificaci\IeC {\'o}n}{41}{section.4.3}
+\contentsline {chapter}{\numberline {5}El aprendizaje de m\IeC {\'e}tricas de distancia}{55}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}El aprendizaje de m\IeC {\'e}tricas de distancia}{43}{chapter.5}
+\contentsline {section}{\numberline {5.1}Distancias. Distancia de Mahalanobis.}{55}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Distancias. Distancia de Mahalanobis.}{43}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Definici\IeC {\'o}n y ejemplos}{55}{subsection.5.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Definici\IeC {\'o}n y ejemplos}{43}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Pseudodistancias}{56}{subsection.5.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Pseudodistancias}{44}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Distancias de Mahalanobis}{58}{subsection.5.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Distancias de Mahalanobis}{46}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Descripci\IeC {\'o}n del problema}{60}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Descripci\IeC {\'o}n del problema}{48}{section.5.2}
+\contentsline {section}{\numberline {5.3}Aplicaciones}{62}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Aplicaciones}{50}{section.5.3}
+\contentsline {section}{\numberline {5.4}El aprendizaje por semejanza}{64}{section.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}El aprendizaje por semejanza}{52}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Introducci\IeC {\'o}n}{64}{subsection.5.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.1}Introducci\IeC {\'o}n}{52}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}El clasificador de vecinos cercanos.}{66}{subsection.5.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.2}El clasificador de vecinos cercanos.}{54}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}Otros clasificadores por semejanza.}{68}{subsection.5.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.3}Otros clasificadores por semejanza.}{56}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.4}Fundamentos estad\IeC {\'\i }sticos del k-NN. La maldici\IeC {\'o}n de la dimensionalidad.}{68}{subsection.5.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4.4}Fundamentos estad\IeC {\'\i }sticos del k-NN. La maldici\IeC {\'o}n de la dimensionalidad.}{56}{subsection.5.4.4}
+\contentsline {chapter}{\numberline {6}Descripci\IeC {\'o}n te\IeC {\'o}rica de t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{69}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Descripci\IeC {\'o}n te\IeC {\'o}rica de t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{57}{chapter.6}
+\contentsline {section}{\numberline {6.1}T\IeC {\'e}cnicas de reducci\IeC {\'o}n de dimensionalidad}{69}{section.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}T\IeC {\'e}cnicas de reducci\IeC {\'o}n de dimensionalidad}{57}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}PCA}{69}{subsection.6.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.1}PCA}{57}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}LDA}{73}{subsection.6.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.2}LDA}{61}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}ANMM}{75}{subsection.6.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1.3}ANMM}{63}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de vecinos cercanos}{78}{section.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de vecinos cercanos}{66}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}LMNN}{78}{subsection.6.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.1}LMNN}{66}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}NCA}{81}{subsection.6.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.2}NCA}{69}{subsection.6.2.2}
+\contentsline {subsubsection}{El kNN y la validaci\IeC {\'o}n \emph {Leave One Out}}{81}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{El kNN y la validaci\IeC {\'o}n \emph {Leave One Out}}{69}{section*.14}
+\contentsline {subsubsection}{El an\IeC {\'a}lisis de componentes de vecindarios}{82}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{El an\IeC {\'a}lisis de componentes de vecindarios}{70}{section*.15}
+\contentsline {section}{\numberline {6.3}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de centroides cercanos}{83}{section.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de centroides cercanos}{71}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}NCMML}{83}{subsection.6.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3.1}NCMML}{71}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}NCMC}{84}{subsection.6.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3.2}NCMC}{72}{subsection.6.3.2}
+\contentsline {subsubsection}{Generalizando NCM: El clasificador de m\IeC {\'u}ltiples centroides}{84}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Generalizando NCM: El clasificador de m\IeC {\'u}ltiples centroides}{72}{section*.16}
+\contentsline {subsubsection}{K-Means y la b\IeC {\'u}squeda de centroides}{85}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{K-Means y la b\IeC {\'u}squeda de centroides}{73}{section*.18}
+\contentsline {subsubsection}{Aprendiendo distancias para NCMC}{86}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Aprendiendo distancias para NCMC}{74}{section*.19}
+\contentsline {section}{\numberline {6.4}T\IeC {\'e}cnicas basadas en teor\IeC {\'\i }a de la informaci\IeC {\'o}n}{86}{section.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}T\IeC {\'e}cnicas basadas en teor\IeC {\'\i }a de la informaci\IeC {\'o}n}{74}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}ITML}{86}{subsection.6.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4.1}ITML}{74}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}DMLMJ}{88}{subsection.6.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4.2}DMLMJ}{76}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}MCML}{90}{subsection.6.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4.3}MCML}{78}{subsection.6.4.3}
+\contentsline {section}{\numberline {6.5}Otras t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{92}{section.6.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.5}Otras t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{80}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}LSI}{92}{subsection.6.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5.1}LSI}{80}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}DML-eig}{93}{subsection.6.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5.2}DML-eig}{81}{subsection.6.5.2}
+\contentsline {subsection}{\numberline {6.5.3}LDML}{95}{subsection.6.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5.3}LDML}{83}{subsection.6.5.3}
+\contentsline {section}{\numberline {6.6}El kernel trick. Algoritmos de aprendizaje de m\IeC {\'e}tricas de distancia basados en kernels}{96}{section.6.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.6}El kernel trick. Algoritmos de aprendizaje de m\IeC {\'e}tricas de distancia basados en kernels}{84}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}El kernel trick}{96}{subsection.6.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6.1}El kernel trick}{84}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}KLMNN}{101}{subsection.6.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6.2}KLMNN}{89}{subsection.6.6.2}
+\contentsline {subsection}{\numberline {6.6.3}KANMM}{102}{subsection.6.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6.3}KANMM}{90}{subsection.6.6.3}
+\contentsline {subsection}{\numberline {6.6.4}KDMLMJ}{103}{subsection.6.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6.4}KDMLMJ}{91}{subsection.6.6.4}
+\contentsline {subsection}{\numberline {6.6.5}KDA}{104}{subsection.6.6.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6.5}KDA}{92}{subsection.6.6.5}
+\contentsline {part}{III\hspace {1em}Inform\IeC {\'a}tica pr\IeC {\'a}ctica}{107}{part.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Software desarrollado}{109}{chapter.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.1}Los lenguajes R y Python}{109}{section.7.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.2}Descripci\IeC {\'o}n del software}{109}{section.7.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.3}Uso del software}{109}{section.7.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}Experimentaci\IeC {\'o}n}{111}{chapter.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.1}Descripci\IeC {\'o}n de los experimentos}{111}{section.8.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.2}Resultados}{111}{section.8.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.3}Conclusiones}{111}{section.8.3}

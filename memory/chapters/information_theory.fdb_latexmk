@@ -1,18 +1,17 @@
 # Fdb version 3
-["pdflatex"] 1532703673 "matrices.tex" "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/matrices.pdf" "matrices" 1532703674
+["pdflatex"] 1532894365 "information_theory.tex" "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/information_theory.pdf" "information_theory" 1532894365
   "/etc/texmf/web2c/texmf.cnf" 1499699252 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/matrices.aux" 1532183992 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/information_theory.aux" 1532885038 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
-  "/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd" 1454284088 2256 80ce1168fb4ce6a85583a9cf8972c013 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1503681742 1863403 f3ff9a4253bcb5fb9a9baaf0c572cb01 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1503681749 3853964 33e3853c2836a0d9d4611a5d113ce1ee ""
-  "matrices.tex" 1532703673 55328 6bf3e3d7e5441f196342ca758729bf52 ""
+  "information_theory.tex" 1532894362 19771 0e5d0a63af4f76a8f6cf2b0c303e8c4d ""
   (generated)
-  "matrices.log"
-  "matrices.pdf"
-  "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/matrices.pdf"
-  "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/matrices.log"
+  "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/information_theory.log"
+  "information_theory.pdf"
+  "/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/information_theory.pdf"
+  "information_theory.log"

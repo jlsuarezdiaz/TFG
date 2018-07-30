@@ -1,4 +1,4 @@
-\chapter{Descripción teórica de técnicas de aprendizaje de métricas de distancia}
+\chapter{Descripción teórica de técnicas de aprendizaje de métricas de distancia} \label{chapter:dml_algorithms}
 
 En este capítulo se describen algunas de las técnicas más populares actualmente en el aprendizaje de métricas de distancia supervisado. A ellas se añade el análisis de componentes principales, pese a no ser supervisado, debido a su importancia para otros algoritmos de aprendizaje de métricas. Algunas estas técnicas, como PCA o LDA, constituyen procedimientos estadísticos desarrollados a finales del siglo pasado, que en la actualidad siguen siendo de gran relevancia en muchos problemas. Otras propuestas más recientes se sitúan en el estado del arte, como es el caso de NCMML o DMLMJ, entre otras.
 
@@ -499,9 +499,9 @@ Los conjuntos $S$ y $D$ representan, por tanto, los vectores con las diferencias
 
 Si ahora aplicamos una transformación lineal a los datos, $x \mapsto Lx$, con $L \in \mathcal{M}_{d'\times d}(\R)$, las distribuciones transformadas seguirán teniendo media 0 y covarianzas $L\Sigma_S L^T$ y $L\Sigma_D L^T$, respectivamente. A dichas distribuciones las denominaremos $P_L$ y $Q_L$. El objetivo de DMLMJ es encontrar una transformación que maximice la divergencia de Jeffrey entre $P_L$ y $Q_L$:
 
-\[ \max_{L \in \mathcal{M}_{d'\times d}(\R)} \quad f(L) =  JF(P_L,Q_L) = KL(P_L,Q_L) + KL(Q_L,P_L).\]
+\[ \max_{L \in \mathcal{M}_{d'\times d}(\R)} \quad f(L) =  \jf(P_L\|Q_L) = \kl(P_L\|Q_L) + \kl(Q_L\|P_L).\]
 
-Como se demostró en la proposición \ref{prop:caract_jeffrey}, la divergencia de Jeffrey entre las distribuciones gaussianas $P_L$ y $Q_L$ se puede expresar como 
+Como se demostró en la proposición \ref{prop:caract_jeffrey:2}, la divergencia de Jeffrey entre las distribuciones gaussianas $P_L$ y $Q_L$ se puede expresar como 
 \[ f(L) = \frac{1}{2} \tr\left( (L\Sigma_S L^T)^{-1} (L\Sigma_D L^T) + (L \Sigma_D L^T)^{-1} (L \Sigma_S L^T) \right) - d'. \]
 
 Como $d'$ es constante, obtenemos el problema equivalente

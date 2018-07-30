@@ -1,4 +1,4 @@
-\chapter{Álgebra matricial avanzado}
+\chapter{Álgebra matricial avanzado} \label{chapter:matrices}
 
 En el aprendizaje de métricas de distancia, las matrices tendrán un papel fundamental, pues serán la estructura que definirá las distancias y sobre la que se aplicarán los métodos de optimización estudiados en el capítulo anterior. Dentro del conjunto de todas las matrices, las matrices semidefinidas serán de aún mayor importancia, por lo que para comprender mejor los problemas de aprendizaje con los que trataremos será necesario profundizar en algunas de sus numerosas propiedades.
 
@@ -288,6 +288,8 @@ El módulo y los valores singulares permiten deducir nuevos teoremas de descompo
     Si $A$ es regular, $|A|$ también lo es, y la descomposición polar es única, donde la matriz $U$ viene dada por $U = A|A|^{-1}$.
 \end{remark}
 
+La descomposición polar tiene una interpretación geométrica muy interesante, y es que nos dice que todo endomorfismo lineal en $\R^d$ es, salvo una isometría, un escalado sobre una determinada base ortonormal (la base donde diagonaliza $|A|$), entendiendo por escalado sobre dicha base una aplicación que a cada vector de la base (eje) lo envía a otro vector con la misma dirección y sentido (incluyendo el $0$), pudiendo variar la constante de escala en cada eje.
+
 La descomposición en valores singulares es una herramienta muy útil para cálculos con matrices por ordenador, como el cálculo de rangos, la resolución de sistemas de ecuaciones lineales, el cálculo de valores propios o los ajustes por mínimos cuadrados. Esto se debe a que se conocen algoritmos para calcularlos de forma eficiente, y permiten establecer niveles de tolerancia (por ejemplo, a la hora de determinar un rango) que hacen los cálculos más robustos frente a errores de precisión.
 
 Para concluir con los teoremas de descomposición, vamos a afinar el resultado inicial con el que comenzábamos la sección (el teorema \ref{thm:decomp_sqrt}) añadiendo condiciones de unicidad sobre la descomposición $L^TL$. Para ello haremos uso de la descomposición polar.
@@ -406,10 +408,180 @@ Concluimos viendo la proyección semidefinida de una matriz cuadrada arbitraria.
     Análogamente se tiene que la proyección sobre el cono de matrices semidefinidas negativas de una matriz simétrica $A \in \mathcal{M}_d(\R)$ es $-A^-$. Las partes positiva y negativa, como ocurre con los números reales, permiten recuperar la matriz original, es decir, se verifica que $A = A^+ - A^-$. Igualmente ocurre con el módulo: $|A| = A^+ A^-$. Esto permite calcular la proyección semidefinida también como $A^+ = (A + |A|)/2.$
 \end{remark}
 
-\section{Cociente de Rayleigh. Teoremas minimax.}
+\section{Cociente de Rayleigh. Optimización con vectores propios.}
 
-TODO
+En esta sección estudiaremos varios problemas de optimización matricial cuya resolución involucra valores y vectorios propios de las matrices que definen el problema. La resolución de estos problemas nos será de gran utilidad en los algoritmos que estudiaremos más adelante.
 
-\section{Optimización matricial}
+\begin{definition}
+    Sea $A \in S_d(\R)$. Se define el \emph{cociente de Rayleigh} asociado a $A$ como la aplicación $\rho_A \colon \R^d \setminus \{0\} \to \R$ dada por
+    \[ \rho_A(x) = \frac{x^TAx}{x^Tx} = \frac{\langle Ax, x\rangle}{\|x\|_2^2} \quad \forall x \in \R^d \setminus\{0\}. \]
+
+    Si $B \in \mathcal{M}_d(\R)^+$, se define el \emph{cociente de Rayleigh generalizado} asociado a $A$ y $B$ como la aplicación $\mathcal{R}_{A,B} \colon \R^d \setminus \{0\}\to \R$ dada por
+    \[ \mathcal{R}_{A,B}(x) = \frac{x^TAx}{x^TBx} = \frac{\langle Ax ,x \rangle}{\|x\|_B^2} \quad \forall x \in \R^d \setminus \{0\}.\]
+\end{definition}
+
+Ambas aplicaciones están bien definidas, pues los cocientes solo pueden anularse cuando $x = 0$. Notemos que el cociente de Rayleigh es un caso particular del cociente generalizado cuando $B = I$. A lo largo de la sección supondremos $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$ fijas, y nos referiremos a los cocientes de Rayleigh como $\rho = \rho_A$ y $\mathcal{R} = \mathcal{R}_{a,b}$.
+
+Una primera observación sobre estas aplicaciones es que, para $x \in \R^d \setminus \{0\}$ y $\lambda \in \R^*$, se verifica que
+\[ \mathcal{R}(\lambda x) = \frac{(\lambda x)^TA(\lambda x)}{(\lambda x)^TB(\lambda x)} = \frac{\lambda^2(x^TAx)}{\lambda^2(x^TBx)} = \mathcal{R}(x). \]
+Por tanto, $\mathcal{R}$ toma todos sus valores en la esfera unidad $d-1$-dimensional, es decir $\mathcal{R}(\R \setminus \{0\}) = \mathcal{R}(\mathbb{S}^{d-1}) \subset \R$. Como $\mathcal{R}$ es continua y la esfera $d-1$-dimensional es compacta, se tiene que $\mathcal{R}$ alcanza un máximo y un mínimo en $\R^d \setminus \{0\}$, los cuales no van a ser únicos. Igualmente ocurre con $\rho$.
+
+Podemos encontrar los valores máximos y mínimos que toman los cocientes de Rayleigh. Comenzaremos analizando $\rho$.
+
+
+\begin{thm}[Rayleigh-Ritz]
+    Sean $\lambda_{\min}$ y $\lambda_{\max}$ los valores propios mínimo y máximo, respectivamente, de $A$. Entonces,
+    \begin{enumerate}
+        \item Para todo $x \in \R^d$, se tiene que $\lambda_{\min} \|x\|^2 \le x^TAx \le \lambda_{\max}\|x\|^2$.
+        \item $\lambda_{\max} = \max_{x \in \R^d \setminus \{0\}} \frac{x^TAx}{x^Tx} = \max_{\|x\|_2 = 1} x^TAx$.
+        \item $\lambda_{\min} = \min_{x \in \R^d \setminus \{0\}} \frac{x^TAx}{x^Tx} = \min_{\|x\|_2 = 1} x^TAx$.
+    \end{enumerate}
+    Por tanto, los valores máximo y mínimo de $\rho$ son $\lambda_{\max}$ y $\lambda_{\min}$, respectivamente.
+\end{thm}
+
+\begin{proof}
+    Sea $A = UDU^T$ con $U \in O_d(\R)$ y $D = \diag(\lambda_1,\dots,\lambda_d)$, donde $\lambda_1 \le \dots \le \lambda_d$, una descomposición espectral de $A$. Sea $x \in \R^d \setminus \{0\}$ y tomamos $y = U^Tx$. Entonces,
+    \begin{equation} \label{eq:ray_ritz:1}
+        \rho(x) = \frac{x^TAx}{x^Tx} = \frac{x^TUDU^Tx}{x^Tx} = \frac{y^TU^TUDU^TUy}{y^TU^TUy} = \frac{y^TDy}{\|y\|^2_2} = \frac{\sum\limits_{i=1}^d \lambda_i y_i^2}{\|\lambda\|^2_2}. 
+    \end{equation}
+    Además, es claro que
+    \[ \lambda_1\|y\|_2^2 = \lambda_1 \sum_{i=1}^d y_i^2 \le \sum_{i=1}^d \lambda_i y_i^2 \le \lambda_d \sum_{i=1}^d y_i^2 = \lambda_d\|y\|_2^2. \]
+    Aplicando esta desigualdad sobre la expresión \ref{eq:ray_ritz:1}, se deduce que
+    \[ \lambda_1 \le \rho(x) \le \lambda_d. \]
+    Además, si $u_1$ y $u_d$ son vectores propios de $A$ asociados a $\lambda_1$ y $\lambda_d$, se tiene que
+    \[ \rho(u_1) = \frac{u_1^TAu_1}{u_1^Tu_1} = \frac{\lambda_1 u_1^Tu_1}{u_1^Tu_1} = \lambda_1, \quad \rho(u_d) = \frac{u_d^TAu_d}{u_d^Tu_d} = \frac{\lambda_d u_d^Tu_d}{u_d^Tu_d} = \lambda_d.  \]
+    Por tanto, se alcanza la igualdad, lo que permite deducir las tres afirmaciones del teorema.
+\end{proof}
+
+El teorema de Rayleigh-Ritz nos muestra que $\rho(\R^d \setminus \{0\}) = [\lambda_{\min}, \lambda_{\max}]$, alcanzándose un mínimo o máximo en los respectivos vectores propios. Sin embargo, $\lambda_{\min}$ y $\lambda_{\max}$ no son los únicos valores propios que actúan como óptimos para el cociente de Rayleigh. Si nos restringimos a espacios de menor dimensión, podemos obtener cualquier valor propio de $A$ como óptimo para el cociente de Rayleigh, como veremos en los siguientes resultados.
+
+\begin{lem} \label{lem:courant_fischer}
+    Sean $\lambda_1,\dots,\lambda_d$ los valores propios de $A$, y $u_1,\dots,u_d$ vectores propios ortonormales asociados. Entonces, para cada $k \in \{1\dots,d\}$,
+    \begin{equation}
+        \lambda_k = \max_{x \in \lin\{u_1,\dots,u_k\}} \rho(x) = \min_{x \in \lin\{u_k,\dots,u_{d}\}} \rho(x)
+    \end{equation}
+\end{lem}
+
+\begin{proof}
+    Si $x \in \lin\{u_1,\dots,u_{d-k+1}$, entonces $x = \sum_{i=1}^{d-k+1} \langle x, u_i \rangle u_i$, y por la identidad de Parseval,
+    \begin{align*}
+        x^Tx &= \langle x, x \rangle = \sum_{i=1}^{d-k+1} \langle x, u_i \rangle^2 \\
+        x^TAx &= \langle x, Ax \rangle = \sum_{i=1}^{d-k+1} \lambda_i \langle x, u_i \rangle^2.
+    \end{align*}
+    Si tomamos $y_i = \langle x, u_i \rangle$, tenemos una expresión análoga a la de \ref{eq:ray_ritz:1}, que en este caso tiene como valor máximo $\lambda_k$, y se alcanza en $u_k$. Razonando análogamente sobre $\lin\{u_k,\dots,u_{d}\}$, obtenemos que el cociente de Rayleigh en este subespacio tiene como mínimo $\lambda_k$ y se alcanza en $u_k$.
+\end{proof}
+
+\begin{thm}[Courant-Fischer] \label{thm:courant_fischer}
+    Sean $\lambda_1 \le \dots \le \lambda_d$ los valores propios de $A$ y notamos por $S_k$ a un subespacio vectorial de $\R^d$ de dimensión $k$. Entonces, para cada $k \in \{1,\dots,d\}$, se tiene que
+    \begin{align}
+        \lambda_k &= \min_{S_{k} \subset \R^d} \max_{\substack{x \in S_{k} \\ \|x\|_2 = 1}} x^TAx \label{eq:courant_fischer:1}\\ 
+        \lambda_k &= \max_{S_{d-k+1} \subset \R^d} \min_{\substack{x \in S_{d-k+1} \\ \|x\|_2 = 1}} x^TAx \label{eq:courant_fischer:2}
+    \end{align}
+\end{thm}
+
+\begin{proof}
+    Probaremos que se verifica la igualdad \ref{eq:courant_fischer:1}. La igualdad \ref{eq:courant_fischer:2} se prueba de forma análoga.
+
+    Sean  $u_1, \dots, u_d$ vectores propios ortonormales asociados a $\lambda_1,\dots,\lambda_d$. El lema \ref{lem:courant_fischer} nos dice que
+    \[ \lambda_k = \max_{\substack{x \in \lin\{u_1,\dots,u_k\} \\ \|x\|_2 = 1}} x^TAx. \]
+    Como $\dim(\lin\{u_1,\dots,u_k\}) = k$, se tiene que
+    \[ \min_{S_k \subset \R^d} \max_{\substack{x \in S_k \\ \|x\|_2 = 1}} x^TAx \le \lambda_k. \]
+    Por otro lado, sea $A = UDU^T$ con $U \in O_d(\R)$ y $D = \diag(\lambda_1,\dots,\lambda_d)$, donde $\lambda_1 \le \dots \le \lambda_d$ la descomposición espectral de $A$ asociada a la base $\{u_1,\dots,u_d\}$.
+    Fijado $S_k$ un subespacio de dimensión $k$, definimos los subespacios vectoriales
+    \begin{align*}
+        V &= \{ U^Tx \colon x \in S_k \} \\
+        W &= \{ y \in \R^d \colon y_1 = \dots = y_{k-1} = 0 \} = \lin\{e_k,\dots,e_d\},
+    \end{align*}
+    donde $\{e_1,\dots,e_d\}$ es la base canónica de $\R^d$. Como $\dim(V) = \dim(S_k) = k$ y $\dim(W) = d-k+1$. Como $\dim(V) + \dim(W) = d+1 > d$, necesariamente $\dim(V\cap W) \ge 1$. Por tanto, $V \cap W$ contiene vectores no nulos para cualquier $S_k$, y entonces,
+    \begin{align*}
+         \min_{S_{k} \subset \R^d} \max_{\substack{x \in S_{k} \\ \|x\|_2 = 1}} x^TAx &= \min_{V \subset \R^d} \max_{\substack{y \in V \\ \|y\|_2 = 1}} y^TDy \\
+                                                                                      &\ge \min_{V \subset \R^d} \max_{\substack{y \in V\cap W \\ \|y\|_2 = 1}} y^TDy \\
+                                                                                      &= \min_{V \subset \R^d} \max_{\substack{y \in V \cap W \\ \|y\|_2 = 1}} \sum_{i=k}^d \lambda_i y_i^2 \\
+                                                                                      &\ge \lambda_k,
+    \end{align*}
+    obteniendo así la desigualdad restante.
+\end{proof}
+
+Los teoremas de Rayleigh-Ritz y de Courant-Fischer tienen consecuencias muy interesantes. Por ejemplo, una de ellas es el teorema de Weyl, que relaciona los valores propios de dos matrices simétricas con el de su suma. De este teorema se puede deducir que el orden de Löwner sobre las matrices es equivalente al orden producto sobre los vectores con los valores propios. Estos resultados no se usarán a lo largo de este trabajo, pero pueden consultarse en \cite{matrix_analysis,zhang2011matrix}. Sí que utilizaremos el conocido como teorema de entrelace de Cauchy.
+
+\begin{thm}[Entrelace de Cauchy]
+    Supongamos que $\lambda_1 \le \dots \le \lambda_d$ son los valores propios de $A$. Sea $J \subset \{1, \dots, d\}$ de cardinal $|J| = d'$, y sea $A_J \in S_{d'}(\R)$ la matriz $A_J = (A_{ij})_{i,j \in J}$, es decir, la submatriz de $A$ con las entradas de $A$ cuyos índices están en $J \times J$. Entonces, si $\tau_1 \le \dots \le \tau_{d'}$ son los valores propios de $A_J$, se tiene que, para cada $k \in \{1,\dots,d'\}$,
+    \[ \lambda_k \le \tau_k \le \lambda_{k+d-d'}. \]
+\end{thm}
+
+\begin{proof}
+    Veamos la prueba para el caso en que $J = \{1,\dots,d'\}$. La prueba general es igual, eligiendo en cada caso un subespacio $W$ generado por vectores de la base canónica $e_1, \dots, e_d$ cuyos índices se adapten a los del conjunto $J$. 
+
+    Sea $k \in \{1,\dots,d\}$. Consideramos el subespacio $W = \lin\{e_1,\dots,e_{d'}\} = \{ x \in \R^d \colon e_{d'+1} = \dots = e_d = 0\}$. Dado $x \in W$ denotaremos $\pi(x) = (x_1,\dots,x_{d'}) \in \R^{d'}$ al vector con las componentes no nulas de $x$ (o la correspondiente identificación sobre $\R^{d'}$). Observemos que $\pi(x)^TA_J\pi(x) = \sum_{i,j=1}^{d'}A_{ij}x_ix_j = x^TAx$. Aplicando el teorema de Courant-Fischer \ref{thm:courant_fischer} restringiéndonos a subespacios de $W \equiv \R^{d'}$ de dimensión $k$, se tiene que
+    \[ \lambda_k = \min_{S_k \subset \R^d} \max_{\substack{x \in S_k \\ \|x\|_2 = 1}} x^TAx \le \min_{S_k \subset W} \max_{\substack{x \in S_k \\ \|x\|_2 = 1}} \pi(x)^TA_J\pi(x) = \tau_k  \]
+    De la misma forma, si nos restringimos a subespacios de $W$ de dimensión $d' + 1 -k = d - (k+d-d') + 1$, obtenemos que
+    \[  \lambda_{k+d-d'} = \max_{\substack{S_{d'+1-k} \subset \R^d}} \min_{\substack{x \in S_{d'+1-k} \\ \|x\|_2 = 1}} x^TAx \ge \max_{\substack{S_{d'+1-k} \subset W \equiv \R^{d'}}} \min_{\substack{x \in S_{d'+1-k} \\ \|x\|_2 = 1}} \pi(x)^TA_J\pi(x) = \tau_k \]
+\end{proof}
+
+\begin{cor} \label{cor: interlace}
+    Sea $L \in \mathcal{M}_{d' \times d}(\R)$ tal que $LL^T = I$. Si $\mu_1 \ge \dots \ge \mu_d$ son los valores propios de $A$, y $\sigma_1 \ge \dots \ge \sigma_{d'}$ son los valores propios de $LAL^T$ (en este caso estamos tomando los valores propios ordenados descendentemente), entonces, $\sigma_k \le \mu_k$, para $k = 1,\dots,r$.
+\end{cor}
+
+\begin{proof}
+
+\end{proof}
+
+A continuación planteamos el problema de optimización que buscamos resolver en esta sección. Queremos, para cada $d' \le d$, maximizar la suma de cocientes de Rayleigh sobre vectores ortogonales, esto es,
+\begin{equation}
+    \max_{\substack{u_1,\dots,u_{d'} \in  \R^d \\ u_i \ne 0 \\ \langle u_i, u_j \rangle = 0 (i \ne j)}} \sum_{i=1}^{d'} \rho(u_i).
+\end{equation}
+Teniendo en cuenta que maximizar el cociente de Rayleigh equivale a hacerlo sobre vectores unitarios, y si colocamos los vectores $u_i$ por columnas en una matriz $L \in \mathcal{M}_{d'\times d}(\R)$, que los vectores formen una conjunto ortonormal equivale a que $L^TL = I$, podemos reescribir el problema como
+\begin{equation}
+    \max_{\substack{u_1,\dots,u_{d'} \in  \R^d \\ u_i \ne 0 \\ \langle u_i, u_j \rangle = 0 (i \ne j)}} \sum_{i=1}^{d'} \rho(u_i) = \max_{\substack{u_1,\dots,u_{d'} \in  \R^d \\ \|u_i\|_2 = 1 \\ \langle u_i, u_j \rangle = 0 (i \ne j)}} \sum_{i=1}^{d'} u_i^TAu_i = \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) \\ LL^T  = I}} \tr(LAL^T). 
+\end{equation}
+
+Veamos cómo resolver este problema.
+
+\begin{thm}[Optimización de la traza por vectores propios] \label{thm:eigen_trace_opt}
+    Sean $d',d \in \N $, con $d' \le d$. Sea $A \in \mathcal{S}_d(\R)$, y consideramos el problema de optimización
+    
+    \begin{align*}
+    \max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(LAL^T\right)  \\
+    \text{s.a.: } &\quad LL^T = I.
+    \end{align*}
+    
+    Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
+    \text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
+    & \dots &  \\
+    \text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
+    \end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son vectores propios ortonormales de $A$ correspondientes a sus $d'$ mayores valores propios. Además, el valor máximo es la suma de los $d'$ mayores valores propios de $A$.
+    
+    
+\end{thm}
+
+\begin{proof}
+    Sean $\mu_1 \ge \dots \ge \mu_d$ los valores propios de $A$, ordenados decrecientemente, y $\sigma_1 \ge \dots \ge \sigma_{d'}$ los valores propios de $LAL^T$. Por el corolario \ref{cor: interlace}, para cualquier $L \in \mathcal{M}_{d' \times d}(\R)$ con $LL^T = I$,
+    \[ \tr(LAL^T) = \sum_{i=1}^{d'} \sigma_i \le \sum_{i=1}^{d'} \mu_i. \]
+    Además, cuando $L$ contiene, por filas, los vectores propios $v_1,\dots,v_{d'}$ de $A$, se tiene que $LL^T = I$ y $\tr(LAL^T) = \sum_{i=1}^{d'}\mu_i$, luego la cota anterior se alcanza justo en estos vectores.
+\end{proof}
+
+Finalmente, aplicamos los resultados ya probados al cociente de Rayleigh generalizado. Para ello, veamos que podemos diagonalizar (por congruencia) las matrices $A$ y $B$ simultáneamente.
+
+\begin{lem}[Diagonalización simultánea de matrices]
+    Sea $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+_0$. Entonces existe una matriz regular $P \in \gl_d(\R)$ y una matriz diagonal $D \in \mathcal{M}_d(\R)$ tales que $P^TAP = D$ y $P^TBP = I$.
+\end{lem}
+
+\begin{proof}
+    Consideramos la matriz $C = B^{-1/2}AB^{-1/2}$. $C$ es claramente simétrica, por serlo $A$ y $B$, luego existe $U \in O_d(\R)$ tal que $U^TCU$ es diagonal. Llamamos $D = U^TCU$ y tomamos $P = B^{-1/2}U \in \gl_d(\R)$. Se tiene que
+    \begin{align*}
+        P^TAP &= P^TB^{1/2}CB^{1/2}P = (B^{-1/2}U)^TB^{1/2}CB^{1/2}(B^{-1/2}U) = U^T(B^{-1/2}B^{1/2})C(B^{1/2}B^{-1/2})U = D \\
+        P^TBP &= (B^{-1/2}U)^TB(B^{-1/2}U) = U^TB^{-1/2}BB^{-1/2}U = U^TU = I.
+    \end{align*}
+\end{proof}
+
+El lema anterior nos permite expresar el cociente de Rayleigh generalizado a partir de un cociente de Rayleigh para la matriz $D$ diagonal anterior. En efecto, para $x \in \R^d \setminus \{0\}$, tomando la matriz regular $P$ del lema anterior, podemos tomar $y = P^{-1}x \in \R^d\setminus\{0\}$, y entonces
+\[ \mathcal{R}(x) = \frac{x^TAx}{x^TBx} = \frac{(Py)^TA(Py)}{(Py)^TB(Py)} = \frac{y^TP^TAPy}{y^TP^TBPy} = \frac{y^TDy}{y^Ty} = \rho_D(y). \]
+Por tanto, $\mathcal{R}(x) = \rho_D(P^{-1}x)$, y maximizar o minimizar $\mathcal{R}$ equivale a maximizar o minimizar $\rho_D$. Observemos que podemos suponer $D = \diag(\lambda_1,\dots,\lambda_d)$, con $\lambda_1 \ge \dots \ge \lambda_d$ ($D$ contiene los valores propios de $B^{-1/2}AB^{-1/2}$, como se muestra en el lema previo). Entonces, la imagen de $\mathcal{R}$ está en el intervalo $[\lambda_d,\lambda_1]$, e igualmente se puede probar un teorema de Courant-Fischer asociado a $\mathcal{R}$. Notemos además que para la base canónica $\{e_1,\dots,e_d\}$ de $\R^d$, se tiene que $\rho_D(e_i) = \lambda_i$, y en consecuencia $\mathcal{R}(Pe_i) = \lambda_i$. Por otra parte, de $P^TAP = D$ y $P^TBP = I$, se deduce que
+\[ D = P^TAP = (P^TBP)^{-1}(P^TAP) = P^{-1}B^{-1}P^{-T}P^TAP = P^{-1}B^{-1}AP, \]
+luego $D$ es una matriz diagonal semejante a $B^{-1}A$. Por tanto, si $v_1, \dots, v_d$ son vectores propios de $B^{-1}A$ asociados a $\lambda_1,\dots,\lambda_d$, se tiene que $Av_i = \lambda_iBv_i$, y entonces
+\[ \mathcal{R}(v_i) = \frac{v_i^TAv_i}{v_i^TBv_i} = \lambda_i\frac{v_i^TBv_i}{v_i^TBv_i} = \lambda_i, \]
+y por tanto estos vectores propios maximizan el problema del teorema \ref{thm:eigen_trace_opt} asociado a la matriz $D$.
+
+\section{Últimas consideraciones}
 
 TODO

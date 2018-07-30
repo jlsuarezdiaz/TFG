@@ -1,14 +1,16 @@
 [0] Config.pm:340> INFO - This is Biber 2.4
 [0] Config.pm:343> INFO - Logfile is 'main.blg'
-[32] biber:287> INFO - === mié jul 25, 2018, 17:40:56
-[109] Biber.pm:348> INFO - Reading 'main.bcf'
-[228] Biber.pm:739> INFO - Using all citekeys in bib section 0
-[232] Biber.pm:3151> INFO - Processing section 0
-[259] Biber.pm:3308> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[288] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
-[313] bibtex.pm:974> INFO - Found BibTeX data source 'bibliography.bib'
-[737] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[737] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[737] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'es-ES'
-[787] bbl.pm:519> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[869] bbl.pm:615> INFO - Output to main.bbl
+[32] biber:287> INFO - === dom jul 29, 2018, 18:05:38
+[112] Biber.pm:348> INFO - Reading 'main.bcf'
+[238] Biber.pm:739> INFO - Using all citekeys in bib section 0
+[243] Biber.pm:3151> INFO - Processing section 0
+[268] Biber.pm:3308> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[305] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[336] bibtex.pm:974> INFO - Found BibTeX data source 'bibliography.bib'
+[378] Utils.pm:147> WARN - Range field 'pages' in entry 'loeve1978probability' is malformed, skipping
+[1081] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1081] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1081] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'es-ES'
+[1140] bbl.pm:519> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1238] bbl.pm:615> INFO - Output to main.bbl
+[1238] Biber.pm:109> INFO - WARNINGS: 1

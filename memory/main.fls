@@ -359,11 +359,11 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 OUTPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.toc
 INPUT /usr/share/texlive/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by.pdf
 INPUT /usr/share/texlive/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by.pdf
 INPUT /usr/share/texlive/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by.pdf
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
@@ -462,6 +462,10 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm5.tfm
+INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/software.tex
+INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/software.tex
+INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/experiments.tex
+INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/experiments.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.aux
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.out
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.out

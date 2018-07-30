@@ -122,22 +122,7 @@ backend=biber
 \end{prop}
 \end{comment}
 
-\begin{thm}[Optimización de la traza por vectores propios] \label{thm:eigen_trace_opt}
-	Sean $d',d \in \N $, con $d' \le d$. Sea $C \in \mathcal{S}_d(\R)$, y consideramos el problema de optimización
-	
-	\begin{align*}
-	\max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(LCL^T\right)  \\
-	\text{s.a.: } &\quad LL^T = I.
-	\end{align*}
-	
-	Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
-	\text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
-	& \dots &  \\
-	\text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
-	\end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son los vectores propios de $C$ correspondientes a sus $d'$ mayores valores propios.
-	
-	
-\end{thm}
+
 
 \begin{thm} \label{thm:eigen_trace_ratio_opt}
 	Sean $d',d \in \N $, con $d' \le d$. Sean $A \in \mathcal{S}_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$, y consideramos el problema de optimización
@@ -179,6 +164,12 @@ backend=biber
 
 %% CAPÍTULO 6 - DESCRIPCIÓN DE TÉCNICAS DE APRENDIZAJE DE MÉTRICAS DE DISTANCIA
 \input{chapters/dml_algorithms} 
+
+\part{Informática práctica}
+
+\input{chapters/software}
+
+\input{chapters/experiments}
 
 %-----------------------------------------------------------------------------------------------------
 %	BIBLIOGRAFÍA

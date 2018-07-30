@@ -32,8 +32,7 @@
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\select@language{spanish}}
 \@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\select@language{spanish}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {part}{I\hspace  {1em}Matem\IeC {\'a}ticas}{3}{part.1}}
-\newlabel{thm:eigen_trace_opt}{{0.0.1}{5}{Optimización de la traza por vectores propios}{thm.0.0.1}{}}
-\newlabel{thm:eigen_trace_ratio_opt}{{0.0.2}{5}{}{thm.0.0.2}{}}
+\newlabel{thm:eigen_trace_ratio_opt}{{0.0.1}{5}{}{thm.0.0.1}{}}
 \abx@aux@cite{convexoptimization}
 \abx@aux@cite{convexanalysis}
 \abx@aux@cite{variations_convex}
@@ -57,10 +56,13 @@
 \newlabel{item:prop_convex:1}{{{{a)}}}{14}{}{Item.22}{}}
 \newlabel{item:prop_convex:2}{{{{b)}}}{14}{}{Item.23}{}}
 \newlabel{item:prop_convex:3}{{{{c)}}}{14}{}{Item.24}{}}
+\newlabel{prop:convex_functions_opt_dif}{{1.2.2}{15}{}{thm.1.2.2}{}}
+\newlabel{item:prop:convex_functions:gradient}{{{{d)}}}{15}{}{Item.28}{}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}La desigualdad de Jensen}{16}{subsection.1.2.2}}
 \newlabel{lem:secantes}{{1.2.4}{16}{Lema de las tres secantes}{thm.1.2.4}{}}
 \newlabel{eq:caract_convex:1}{{1.1}{16}{La desigualdad de Jensen}{equation.1.2.1}{}}
 \newlabel{eq:caract_convex:2}{{1.2}{16}{La desigualdad de Jensen}{equation.1.2.2}{}}
+\newlabel{thm:desig_jensen}{{1.2.5}{17}{Desigualdad de Jensen}{thm.1.2.5}{}}
 \newlabel{eq:jensen:1}{{1.5}{18}{La desigualdad de Jensen}{equation.1.2.5}{}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {1.3}Problemas de optimizaci\IeC {\'o}n}{18}{section.1.3}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Definiciones}{18}{subsection.1.3.1}}
@@ -79,6 +81,7 @@
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {2}\IeC {\'A}lgebra matricial avanzado}{25}{chapter.2}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{chapter:matrices}{{2}{25}{Álgebra matricial avanzado}{chapter.2}{}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {2.1}Preliminares}{25}{section.2.1}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {2.2}Las matrices como espacio de Hilbert}{26}{section.2.2}}
 \newlabel{prop:prop_frobenius}{{2.2.1}{27}{}{thm.2.2.1}{}}
@@ -95,164 +98,193 @@
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Matrices semidefinidas como seminormas}{34}{subsection.2.3.3}}
 \newlabel{thm:cauchy_schwarz}{{2.3.12}{34}{Desigualdad de Cauchy-Schwarz para matrices semidefinidas positivas}{thm.2.3.12}{}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Proyecci\IeC {\'o}n sobre las matrices semidefinidas}{35}{subsection.2.3.4}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {2.4}Cociente de Rayleigh. Teoremas minimax.}{36}{section.2.4}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {2.5}Optimizaci\IeC {\'o}n matricial}{36}{section.2.5}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {3}Teor\IeC {\'\i }a de la informaci\IeC {\'o}n y divergencias}{37}{chapter.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {2.4}Cociente de Rayleigh. Optimizaci\IeC {\'o}n con vectores propios.}{37}{section.2.4}}
+\newlabel{eq:ray_ritz:1}{{2.1}{37}{Cociente de Rayleigh. Optimización con vectores propios}{equation.2.4.1}{}}
+\newlabel{lem:courant_fischer}{{2.4.2}{38}{}{thm.2.4.2}{}}
+\newlabel{thm:courant_fischer}{{2.4.3}{38}{Courant-Fischer}{thm.2.4.3}{}}
+\newlabel{eq:courant_fischer:1}{{2.3}{38}{Courant-Fischer}{equation.2.4.3}{}}
+\newlabel{eq:courant_fischer:2}{{2.4}{38}{Courant-Fischer}{equation.2.4.4}{}}
+\abx@aux@cite{matrix_analysis}
+\abx@aux@cite{zhang2011matrix}
+\newlabel{cor: interlace}{{2.4.5}{40}{}{thm.2.4.5}{}}
+\newlabel{thm:eigen_trace_opt}{{2.4.6}{40}{Optimización de la traza por vectores propios}{thm.2.4.6}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {2.5}\IeC {\'U}ltimas consideraciones}{41}{section.2.5}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {3}Teor\IeC {\'\i }a de la informaci\IeC {\'o}n y divergencias}{43}{chapter.3}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introducci\IeC {\'o}n}{37}{section.3.1}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3.2}La divergencia de Kullback-Leibler}{37}{section.3.2}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3.3}La divergencia de Jeffrey}{37}{section.3.3}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3.4}La distribuci\IeC {\'o}n normal multivariante. Divergencias matriciales.}{37}{section.3.4}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Inform\IeC {\'a}tica te\IeC {\'o}rica}{39}{part.2}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {4}El aprendizaje autom\IeC {\'a}tico}{41}{chapter.4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3.1}Introducci\IeC {\'o}n}{43}{section.3.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3.2}Las divergencias de Kullback-Leibler y Jeffrey}{44}{section.3.2}}
+\newlabel{thm:desig_infor}{{3.2.1}{45}{Desigualdad de la información}{thm.3.2.1}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {3.3}La distribuci\IeC {\'o}n normal multivariante y divergencias matriciales.}{46}{section.3.3}}
+\newlabel{eq:kl_gaussian:sum_1}{{3.1}{48}{La distribución normal multivariante y divergencias matriciales}{equation.3.3.1}{}}
+\newlabel{eq:kl_gaussian:sum_2}{{3.2}{48}{La distribución normal multivariante y divergencias matriciales}{equation.3.3.2}{}}
+\newlabel{prop:caract_kl:1}{{3.3.2}{49}{}{thm.3.3.2}{}}
+\newlabel{prop:caract_kl:2}{{3.3.3}{49}{}{thm.3.3.3}{}}
+\newlabel{prop:caract_jeffrey:1}{{3.3.4}{49}{}{thm.3.3.4}{}}
+\newlabel{prop:caract_jeffrey:2}{{3.3.5}{49}{}{thm.3.3.5}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {part}{II\hspace  {1em}Inform\IeC {\'a}tica te\IeC {\'o}rica}{51}{part.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {4}El aprendizaje autom\IeC {\'a}tico}{53}{chapter.4}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n}{41}{section.4.1}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4.2}El aprendizaje supervisado}{41}{section.4.2}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4.3}El problema de clasificaci\IeC {\'o}n}{41}{section.4.3}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {5}El aprendizaje de m\IeC {\'e}tricas de distancia}{43}{chapter.5}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n}{53}{section.4.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4.2}El aprendizaje supervisado}{53}{section.4.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4.3}El problema de clasificaci\IeC {\'o}n}{53}{section.4.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {5}El aprendizaje de m\IeC {\'e}tricas de distancia}{55}{chapter.5}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chapter:dml_theory}{{5}{43}{El aprendizaje de métricas de distancia}{chapter.5}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.1}Distancias. Distancia de Mahalanobis.}{43}{section.5.1}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Definici\IeC {\'o}n y ejemplos}{43}{subsection.5.1.1}}
-\newlabel{item:dist:coincid}{{{{a)}}}{43}{Distancia}{Item.73}{}}
-\newlabel{item:dist:sim}{{{{b)}}}{43}{Distancia}{Item.74}{}}
-\newlabel{item:dist:triang}{{{{c)}}}{43}{Distancia}{Item.75}{}}
-\newlabel{item:dist:no_neg}{{{{d)}}}{43}{}{Item.76}{}}
-\newlabel{item:dist:triang_def}{{{{e)}}}{43}{}{Item.77}{}}
-\newlabel{item:dist:triang_gen}{{{{f)}}}{43}{}{Item.78}{}}
-\newlabel{ex:dist:norm}{{5.1.5}{44}{Distancias asociadas a normas}{thm.5.1.5}{}}
-\newlabel{item:dist:homogen}{{{{g)}}}{44}{Distancias asociadas a normas}{Item.82}{}}
-\newlabel{item:dist:inv_tras}{{{{h)}}}{44}{Distancias asociadas a normas}{Item.83}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Pseudodistancias}{44}{subsection.5.1.2}}
-\newlabel{item:pdist:coincid}{{{{a)}}}{44}{Pseudodistancia}{Item.84}{}}
-\newlabel{item:pdist:sim}{{{{b)}}}{45}{Pseudodistancia}{Item.85}{}}
-\newlabel{item:pdist:triang}{{{{c)}}}{45}{Pseudodistancia}{Item.86}{}}
-\newlabel{thm:quotient_dist}{{5.1.10}{45}{}{thm.5.1.10}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Distancias de Mahalanobis}{46}{subsection.5.1.3}}
-\newlabel{prop:mahalanobis_lowrank}{{5.1.11}{47}{}{thm.5.1.11}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.2}Descripci\IeC {\'o}n del problema}{48}{section.5.2}}
-\newlabel{eq:metric_learning_eq}{{5.1}{49}{Descripción del problema}{equation.5.2.1}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.3}Aplicaciones}{50}{section.5.3}}
-\newlabel{section:aplicaciones}{{5.3}{50}{Aplicaciones}{section.5.3}{}}
+\newlabel{chapter:dml_theory}{{5}{55}{El aprendizaje de métricas de distancia}{chapter.5}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.1}Distancias. Distancia de Mahalanobis.}{55}{section.5.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Definici\IeC {\'o}n y ejemplos}{55}{subsection.5.1.1}}
+\newlabel{item:dist:coincid}{{{{a)}}}{55}{Distancia}{Item.78}{}}
+\newlabel{item:dist:sim}{{{{b)}}}{55}{Distancia}{Item.79}{}}
+\newlabel{item:dist:triang}{{{{c)}}}{55}{Distancia}{Item.80}{}}
+\newlabel{item:dist:no_neg}{{{{d)}}}{55}{}{Item.81}{}}
+\newlabel{item:dist:triang_def}{{{{e)}}}{55}{}{Item.82}{}}
+\newlabel{item:dist:triang_gen}{{{{f)}}}{55}{}{Item.83}{}}
+\newlabel{ex:dist:norm}{{5.1.5}{56}{Distancias asociadas a normas}{thm.5.1.5}{}}
+\newlabel{item:dist:homogen}{{{{g)}}}{56}{Distancias asociadas a normas}{Item.87}{}}
+\newlabel{item:dist:inv_tras}{{{{h)}}}{56}{Distancias asociadas a normas}{Item.88}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Pseudodistancias}{56}{subsection.5.1.2}}
+\newlabel{item:pdist:coincid}{{{{a)}}}{56}{Pseudodistancia}{Item.89}{}}
+\newlabel{item:pdist:sim}{{{{b)}}}{57}{Pseudodistancia}{Item.90}{}}
+\newlabel{item:pdist:triang}{{{{c)}}}{57}{Pseudodistancia}{Item.91}{}}
+\newlabel{thm:quotient_dist}{{5.1.10}{57}{}{thm.5.1.10}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Distancias de Mahalanobis}{58}{subsection.5.1.3}}
+\newlabel{prop:mahalanobis_lowrank}{{5.1.11}{59}{}{thm.5.1.11}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.2}Descripci\IeC {\'o}n del problema}{60}{section.5.2}}
+\newlabel{eq:metric_learning_eq}{{5.1}{61}{Descripción del problema}{equation.5.2.1}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.3}Aplicaciones}{62}{section.5.3}}
+\newlabel{section:aplicaciones}{{5.3}{62}{Aplicaciones}{section.5.3}{}}
 \abx@aux@cite{ssl1}
 \abx@aux@cite{ssl2}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Supongamos que tenemos un conjunto de datos en el plano, los cuales pueden pertenecer a tres clases distintas, las cuales vienen definidas por ectas paralelas. Supongamos que para clasificar un nuevo dato lo hacemos asign\IeC {\'a}ndole la clase del punto que se encuentre m\IeC {\'a}s cerca, para la distancia eucl\IeC {\'\i }dea usual. Entonces, para los datos observados obtendr\IeC {\'\i }amos unas regiones de clasificaci\IeC {\'o}n como las de la figura de la izquierda, pues los datos de las clases B y C est\IeC {\'a}n mucho m\IeC {\'a}s separados entre s\IeC {\'\i } que la separaci\IeC {\'o}n entre las rectas. Sin embargo, si aprendemos una distancia adecuada y volvemos a intentar clasificar asignando la clase del punto m\IeC {\'a}s cercano para esta nueva distancia, obtenemos unas regiones de clasificaci\IeC {\'o}n como las de la figura central, mucho m\IeC {\'a}s efectivas. Por \IeC {\'u}ltimo, aprender una m\IeC {\'e}trica es equivalente a aprender una transformaci\IeC {\'o}n de los datos y medir en el espacio transformado con la distancia eucl\IeC {\'\i }dea usual. Esto se muestra en la figura derecha. Tambi\IeC {\'e}n podemos observar que los datos se est\IeC {\'a}n proyectando, salvo errores de precisi\IeC {\'o}n, sobre una recta, luego tambi\IeC {\'e}n estamos reduciendo la dimensionalidad del conjunto de datos.\relax }}{51}{figure.caption.4}}
-\newlabel{fig:mejorar_knn}{{5.1}{51}{Supongamos que tenemos un conjunto de datos en el plano, los cuales pueden pertenecer a tres clases distintas, las cuales vienen definidas por ectas paralelas. Supongamos que para clasificar un nuevo dato lo hacemos asignándole la clase del punto que se encuentre más cerca, para la distancia euclídea usual. Entonces, para los datos observados obtendríamos unas regiones de clasificación como las de la figura de la izquierda, pues los datos de las clases B y C están mucho más separados entre sí que la separación entre las rectas. Sin embargo, si aprendemos una distancia adecuada y volvemos a intentar clasificar asignando la clase del punto más cercano para esta nueva distancia, obtenemos unas regiones de clasificación como las de la figura central, mucho más efectivas. Por último, aprender una métrica es equivalente a aprender una transformación de los datos y medir en el espacio transformado con la distancia euclídea usual. Esto se muestra en la figura derecha. También podemos observar que los datos se están proyectando, salvo errores de precisión, sobre una recta, luego también estamos reduciendo la dimensionalidad del conjunto de datos.\relax }{figure.caption.4}{}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces El dataset 'D\IeC {\'\i }gitos' est\IeC {\'a} formado por 1797 ejemplos. Cada uno de ellos consiste en un vector de 64 atributos, representando valores de intensidad sobre una imagen 8x8. Los ejemplos pertenecen a 10 clases distintas, cada una de ellas representando los n\IeC {\'u}meros del 0 al 9. Aprendiendo una transformaci\IeC {\'o}n adecuada somos capaces de proyectar la mayor\IeC {\'\i }a de clases sobre el plano, de forma que se perciban regiones claramente diferenciadas asociadas a cada una de las clases.\relax }}{52}{figure.caption.5}}
-\newlabel{fig:reduc_dim}{{5.2}{52}{El dataset 'Dígitos' está formado por 1797 ejemplos. Cada uno de ellos consiste en un vector de 64 atributos, representando valores de intensidad sobre una imagen 8x8. Los ejemplos pertenecen a 10 clases distintas, cada una de ellas representando los números del 0 al 9. Aprendiendo una transformación adecuada somos capaces de proyectar la mayoría de clases sobre el plano, de forma que se perciban regiones claramente diferenciadas asociadas a cada una de las clases.\relax }{figure.caption.5}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.4}El aprendizaje por semejanza}{52}{section.5.4}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Introducci\IeC {\'o}n}{52}{subsection.5.4.1}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces El conjunto de datos de la figura izquierda parece que concentra la mayor\IeC {\'\i }a de su informaci\IeC {\'o}n en la recta diagonal que une las esquinas inferior izquierda y la superior derecha. Aprendiendo la transformaci\IeC {\'o}n adecuada, podemos conseguir que dicha direcci\IeC {\'o}n caiga sobre el eje horizontal, como se muestra en la figura central. De esta forma, la primera coordenada de los vectores en esta nueva base concentra gran parte de la variabilidad del vector. Adem\IeC {\'a}s, parece razonable pensar que los valores que introduce la coordenada vertical pueden deberse a ruido, por lo que podemos incluso quedarnos \IeC {\'u}nicamente con la primera componente, como se muestra en la figura derecha.\relax }}{53}{figure.caption.6}}
-\newlabel{fig:mover_ejes}{{5.3}{53}{El conjunto de datos de la figura izquierda parece que concentra la mayoría de su información en la recta diagonal que une las esquinas inferior izquierda y la superior derecha. Aprendiendo la transformación adecuada, podemos conseguir que dicha dirección caiga sobre el eje horizontal, como se muestra en la figura central. De esta forma, la primera coordenada de los vectores en esta nueva base concentra gran parte de la variabilidad del vector. Además, parece razonable pensar que los valores que introduce la coordenada vertical pueden deberse a ruido, por lo que podemos incluso quedarnos únicamente con la primera componente, como se muestra en la figura derecha.\relax }{figure.caption.6}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Supongamos que tenemos un conjunto de datos en el plano, los cuales pueden pertenecer a tres clases distintas, las cuales vienen definidas por ectas paralelas. Supongamos que para clasificar un nuevo dato lo hacemos asign\IeC {\'a}ndole la clase del punto que se encuentre m\IeC {\'a}s cerca, para la distancia eucl\IeC {\'\i }dea usual. Entonces, para los datos observados obtendr\IeC {\'\i }amos unas regiones de clasificaci\IeC {\'o}n como las de la figura de la izquierda, pues los datos de las clases B y C est\IeC {\'a}n mucho m\IeC {\'a}s separados entre s\IeC {\'\i } que la separaci\IeC {\'o}n entre las rectas. Sin embargo, si aprendemos una distancia adecuada y volvemos a intentar clasificar asignando la clase del punto m\IeC {\'a}s cercano para esta nueva distancia, obtenemos unas regiones de clasificaci\IeC {\'o}n como las de la figura central, mucho m\IeC {\'a}s efectivas. Por \IeC {\'u}ltimo, aprender una m\IeC {\'e}trica es equivalente a aprender una transformaci\IeC {\'o}n de los datos y medir en el espacio transformado con la distancia eucl\IeC {\'\i }dea usual. Esto se muestra en la figura derecha. Tambi\IeC {\'e}n podemos observar que los datos se est\IeC {\'a}n proyectando, salvo errores de precisi\IeC {\'o}n, sobre una recta, luego tambi\IeC {\'e}n estamos reduciendo la dimensionalidad del conjunto de datos.\relax }}{63}{figure.caption.4}}
+\newlabel{fig:mejorar_knn}{{5.1}{63}{Supongamos que tenemos un conjunto de datos en el plano, los cuales pueden pertenecer a tres clases distintas, las cuales vienen definidas por ectas paralelas. Supongamos que para clasificar un nuevo dato lo hacemos asignándole la clase del punto que se encuentre más cerca, para la distancia euclídea usual. Entonces, para los datos observados obtendríamos unas regiones de clasificación como las de la figura de la izquierda, pues los datos de las clases B y C están mucho más separados entre sí que la separación entre las rectas. Sin embargo, si aprendemos una distancia adecuada y volvemos a intentar clasificar asignando la clase del punto más cercano para esta nueva distancia, obtenemos unas regiones de clasificación como las de la figura central, mucho más efectivas. Por último, aprender una métrica es equivalente a aprender una transformación de los datos y medir en el espacio transformado con la distancia euclídea usual. Esto se muestra en la figura derecha. También podemos observar que los datos se están proyectando, salvo errores de precisión, sobre una recta, luego también estamos reduciendo la dimensionalidad del conjunto de datos.\relax }{figure.caption.4}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces El dataset 'D\IeC {\'\i }gitos' est\IeC {\'a} formado por 1797 ejemplos. Cada uno de ellos consiste en un vector de 64 atributos, representando valores de intensidad sobre una imagen 8x8. Los ejemplos pertenecen a 10 clases distintas, cada una de ellas representando los n\IeC {\'u}meros del 0 al 9. Aprendiendo una transformaci\IeC {\'o}n adecuada somos capaces de proyectar la mayor\IeC {\'\i }a de clases sobre el plano, de forma que se perciban regiones claramente diferenciadas asociadas a cada una de las clases.\relax }}{64}{figure.caption.5}}
+\newlabel{fig:reduc_dim}{{5.2}{64}{El dataset 'Dígitos' está formado por 1797 ejemplos. Cada uno de ellos consiste en un vector de 64 atributos, representando valores de intensidad sobre una imagen 8x8. Los ejemplos pertenecen a 10 clases distintas, cada una de ellas representando los números del 0 al 9. Aprendiendo una transformación adecuada somos capaces de proyectar la mayoría de clases sobre el plano, de forma que se perciban regiones claramente diferenciadas asociadas a cada una de las clases.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5.4}El aprendizaje por semejanza}{64}{section.5.4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Introducci\IeC {\'o}n}{64}{subsection.5.4.1}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces El conjunto de datos de la figura izquierda parece que concentra la mayor\IeC {\'\i }a de su informaci\IeC {\'o}n en la recta diagonal que une las esquinas inferior izquierda y la superior derecha. Aprendiendo la transformaci\IeC {\'o}n adecuada, podemos conseguir que dicha direcci\IeC {\'o}n caiga sobre el eje horizontal, como se muestra en la figura central. De esta forma, la primera coordenada de los vectores en esta nueva base concentra gran parte de la variabilidad del vector. Adem\IeC {\'a}s, parece razonable pensar que los valores que introduce la coordenada vertical pueden deberse a ruido, por lo que podemos incluso quedarnos \IeC {\'u}nicamente con la primera componente, como se muestra en la figura derecha.\relax }}{65}{figure.caption.6}}
+\newlabel{fig:mover_ejes}{{5.3}{65}{El conjunto de datos de la figura izquierda parece que concentra la mayoría de su información en la recta diagonal que une las esquinas inferior izquierda y la superior derecha. Aprendiendo la transformación adecuada, podemos conseguir que dicha dirección caiga sobre el eje horizontal, como se muestra en la figura central. De esta forma, la primera coordenada de los vectores en esta nueva base concentra gran parte de la variabilidad del vector. Además, parece razonable pensar que los valores que introduce la coordenada vertical pueden deberse a ruido, por lo que podemos incluso quedarnos únicamente con la primera componente, como se muestra en la figura derecha.\relax }{figure.caption.6}{}}
 \abx@aux@cite{ovoova}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Aprendizaje con la informaci\IeC {\'o}n supervisada (izquierda) frente al aprendizaje considerando toda la informaci\IeC {\'o}n no supervisada (derecha).\relax }}{54}{figure.caption.7}}
-\newlabel{fig:ssl}{{5.4}{54}{Aprendizaje con la información supervisada (izquierda) frente al aprendizaje considerando toda la información no supervisada (derecha).\relax }{figure.caption.7}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}El clasificador de vecinos cercanos.}{54}{subsection.5.4.2}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de Voronoi.\relax }}{55}{figure.caption.8}}
-\newlabel{fig:voronoi}{{5.5}{55}{Diagrama de Voronoi.\relax }{figure.caption.8}{}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Comparaci\IeC {\'o}n del k-NN para distintos valores de $k$ (dataset 'Iris')\relax }}{55}{figure.caption.9}}
-\newlabel{fig:knn_comp_k}{{5.6}{55}{Comparación del k-NN para distintos valores de $k$ (dataset 'Iris')\relax }{figure.caption.9}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Otros clasificadores por semejanza.}{56}{subsection.5.4.3}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Fundamentos estad\IeC {\'\i }sticos del k-NN. La maldici\IeC {\'o}n de la dimensionalidad.}{56}{subsection.5.4.4}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {6}Descripci\IeC {\'o}n te\IeC {\'o}rica de t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{57}{chapter.6}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Aprendizaje con la informaci\IeC {\'o}n supervisada (izquierda) frente al aprendizaje considerando toda la informaci\IeC {\'o}n no supervisada (derecha).\relax }}{66}{figure.caption.7}}
+\newlabel{fig:ssl}{{5.4}{66}{Aprendizaje con la información supervisada (izquierda) frente al aprendizaje considerando toda la información no supervisada (derecha).\relax }{figure.caption.7}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}El clasificador de vecinos cercanos.}{66}{subsection.5.4.2}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de Voronoi.\relax }}{67}{figure.caption.8}}
+\newlabel{fig:voronoi}{{5.5}{67}{Diagrama de Voronoi.\relax }{figure.caption.8}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Comparaci\IeC {\'o}n del k-NN para distintos valores de $k$ (dataset 'Iris')\relax }}{67}{figure.caption.9}}
+\newlabel{fig:knn_comp_k}{{5.6}{67}{Comparación del k-NN para distintos valores de $k$ (dataset 'Iris')\relax }{figure.caption.9}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Otros clasificadores por semejanza.}{68}{subsection.5.4.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.4}Fundamentos estad\IeC {\'\i }sticos del k-NN. La maldici\IeC {\'o}n de la dimensionalidad.}{68}{subsection.5.4.4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {6}Descripci\IeC {\'o}n te\IeC {\'o}rica de t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{69}{chapter.6}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.1}T\IeC {\'e}cnicas de reducci\IeC {\'o}n de dimensionalidad}{57}{section.6.1}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}PCA}{57}{subsection.6.1.1}}
-\newlabel{eq:pca:compress}{{6.1}{58}{PCA}{equation.6.1.1}{}}
-\newlabel{eq:pca:compress2}{{6.2}{59}{PCA}{equation.6.1.2}{}}
-\newlabel{eq:pca:traceproblem}{{6.3}{59}{PCA}{equation.6.1.3}{}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Ejemplificaci\IeC {\'o}n gr\IeC {\'a}fica del PCA. En la primera imagen se muestra un conjunto de datos, junto con las direcciones principales (proporcionales de acuerdo a la varianza explicada) aprendidas por PCA. A su derecha, los datos proyectados en dimensi\IeC {\'o}n m\IeC {\'a}xima. Observamos que dicha proyecci\IeC {\'o}n consiste en girar los datos haciendo coincidir los ejes con las direcciones principales. Abajo a la izquierda, los datos proyectados sobre la primera componente principal. Por \IeC {\'u}ltimo, a su derecha, los datos recuperados mediante la matriz de descompresi\IeC {\'o}n, junto con los datos originales. Podemos comprobar que la proyecci\IeC {\'o}n de PCA es la que minimiza el error cuadr\IeC {\'a}tico de descompresi\IeC {\'o}n. En este caso particular los datos descomprimidos se encuentran en la recta de regresi\IeC {\'o}n de los datos originales, debido a las dimensiones del problema.\relax }}{60}{figure.caption.10}}
-\newlabel{fig:pca}{{6.1}{60}{Ejemplificación gráfica del PCA. En la primera imagen se muestra un conjunto de datos, junto con las direcciones principales (proporcionales de acuerdo a la varianza explicada) aprendidas por PCA. A su derecha, los datos proyectados en dimensión máxima. Observamos que dicha proyección consiste en girar los datos haciendo coincidir los ejes con las direcciones principales. Abajo a la izquierda, los datos proyectados sobre la primera componente principal. Por último, a su derecha, los datos recuperados mediante la matriz de descompresión, junto con los datos originales. Podemos comprobar que la proyección de PCA es la que minimiza el error cuadrático de descompresión. En este caso particular los datos descomprimidos se encuentran en la recta de regresión de los datos originales, debido a las dimensiones del problema.\relax }{figure.caption.10}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}LDA}{61}{subsection.6.1.2}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Ejemplo gr\IeC {\'a}fico del LDA y comparaci\IeC {\'o}n con PCA. En la primera imagen se muestra un conjunto de datos, con la direcci\IeC {\'o}n principal determinada por PCA, en naranja, y la direcci\IeC {\'o}n determinada por LDA, en verde. Observamos que si proyectamos los datos sobre la direcci\IeC {\'o}n obtenida por LDA quedan bien separados, como se muestra en la imagen derecha. En cambio, la direcci\IeC {\'o}n obtenida por PCA solo nos permite maximizar la varianza de todo el conjunto al proyectar, pues no considera la informaci\IeC {\'o}n de las etiquetas.\relax }}{61}{figure.caption.11}}
-\newlabel{fig:lda}{{6.2}{61}{Ejemplo gráfico del LDA y comparación con PCA. En la primera imagen se muestra un conjunto de datos, con la dirección principal determinada por PCA, en naranja, y la dirección determinada por LDA, en verde. Observamos que si proyectamos los datos sobre la dirección obtenida por LDA quedan bien separados, como se muestra en la imagen derecha. En cambio, la dirección obtenida por PCA solo nos permite maximizar la varianza de todo el conjunto al proyectar, pues no considera la información de las etiquetas.\relax }{figure.caption.11}{}}
+\newlabel{chapter:dml_algorithms}{{6}{69}{Descripción teórica de técnicas de aprendizaje de métricas de distancia}{chapter.6}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.1}T\IeC {\'e}cnicas de reducci\IeC {\'o}n de dimensionalidad}{69}{section.6.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}PCA}{69}{subsection.6.1.1}}
+\newlabel{eq:pca:compress}{{6.1}{70}{PCA}{equation.6.1.1}{}}
+\newlabel{eq:pca:compress2}{{6.2}{71}{PCA}{equation.6.1.2}{}}
+\newlabel{eq:pca:traceproblem}{{6.3}{71}{PCA}{equation.6.1.3}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Ejemplificaci\IeC {\'o}n gr\IeC {\'a}fica del PCA. En la primera imagen se muestra un conjunto de datos, junto con las direcciones principales (proporcionales de acuerdo a la varianza explicada) aprendidas por PCA. A su derecha, los datos proyectados en dimensi\IeC {\'o}n m\IeC {\'a}xima. Observamos que dicha proyecci\IeC {\'o}n consiste en girar los datos haciendo coincidir los ejes con las direcciones principales. Abajo a la izquierda, los datos proyectados sobre la primera componente principal. Por \IeC {\'u}ltimo, a su derecha, los datos recuperados mediante la matriz de descompresi\IeC {\'o}n, junto con los datos originales. Podemos comprobar que la proyecci\IeC {\'o}n de PCA es la que minimiza el error cuadr\IeC {\'a}tico de descompresi\IeC {\'o}n. En este caso particular los datos descomprimidos se encuentran en la recta de regresi\IeC {\'o}n de los datos originales, debido a las dimensiones del problema.\relax }}{72}{figure.caption.10}}
+\newlabel{fig:pca}{{6.1}{72}{Ejemplificación gráfica del PCA. En la primera imagen se muestra un conjunto de datos, junto con las direcciones principales (proporcionales de acuerdo a la varianza explicada) aprendidas por PCA. A su derecha, los datos proyectados en dimensión máxima. Observamos que dicha proyección consiste en girar los datos haciendo coincidir los ejes con las direcciones principales. Abajo a la izquierda, los datos proyectados sobre la primera componente principal. Por último, a su derecha, los datos recuperados mediante la matriz de descompresión, junto con los datos originales. Podemos comprobar que la proyección de PCA es la que minimiza el error cuadrático de descompresión. En este caso particular los datos descomprimidos se encuentran en la recta de regresión de los datos originales, debido a las dimensiones del problema.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}LDA}{73}{subsection.6.1.2}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Ejemplo gr\IeC {\'a}fico del LDA y comparaci\IeC {\'o}n con PCA. En la primera imagen se muestra un conjunto de datos, con la direcci\IeC {\'o}n principal determinada por PCA, en naranja, y la direcci\IeC {\'o}n determinada por LDA, en verde. Observamos que si proyectamos los datos sobre la direcci\IeC {\'o}n obtenida por LDA quedan bien separados, como se muestra en la imagen derecha. En cambio, la direcci\IeC {\'o}n obtenida por PCA solo nos permite maximizar la varianza de todo el conjunto al proyectar, pues no considera la informaci\IeC {\'o}n de las etiquetas.\relax }}{73}{figure.caption.11}}
+\newlabel{fig:lda}{{6.2}{73}{Ejemplo gráfico del LDA y comparación con PCA. En la primera imagen se muestra un conjunto de datos, con la dirección principal determinada por PCA, en naranja, y la dirección determinada por LDA, en verde. Observamos que si proyectamos los datos sobre la dirección obtenida por LDA quedan bien separados, como se muestra en la imagen derecha. En cambio, la dirección obtenida por PCA solo nos permite maximizar la varianza de todo el conjunto al proyectar, pues no considera la información de las etiquetas.\relax }{figure.caption.11}{}}
 \abx@aux@cite{maulik2002performance}
-\newlabel{eq:lda}{{6.6}{62}{LDA}{equation.6.1.6}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}ANMM}{63}{subsection.6.1.3}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica del margen promedio de vecindario para el dato $x_i$, para $\xi $ = $\zeta $ = 3. Las circunferencias azul y roja determinan la distancia media de $x_i$ a los datos de igual y distinta clase, respectivamente.\relax }}{64}{figure.caption.12}}
-\newlabel{fig:average_neighbor_margin}{{6.3}{64}{Descripción gráfica del margen promedio de vecindario para el dato $x_i$, para $\xi $ = $\zeta $ = 3. Las circunferencias azul y roja determinan la distancia media de $x_i$ a los datos de igual y distinta clase, respectivamente.\relax }{figure.caption.12}{}}
-\newlabel{eq:margin_caract}{{6.9}{65}{ANMM}{equation.6.1.9}{}}
+\newlabel{eq:lda}{{6.6}{74}{LDA}{equation.6.1.6}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}ANMM}{75}{subsection.6.1.3}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica del margen promedio de vecindario para el dato $x_i$, para $\xi $ = $\zeta $ = 3. Las circunferencias azul y roja determinan la distancia media de $x_i$ a los datos de igual y distinta clase, respectivamente.\relax }}{76}{figure.caption.12}}
+\newlabel{fig:average_neighbor_margin}{{6.3}{76}{Descripción gráfica del margen promedio de vecindario para el dato $x_i$, para $\xi $ = $\zeta $ = 3. Las circunferencias azul y roja determinan la distancia media de $x_i$ a los datos de igual y distinta clase, respectivamente.\relax }{figure.caption.12}{}}
+\newlabel{eq:margin_caract}{{6.9}{77}{ANMM}{equation.6.1.9}{}}
 \abx@aux@cite{lmnn}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.2}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de vecinos cercanos}{66}{section.6.2}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}LMNN}{66}{subsection.6.2.1}}
-\newlabel{section:lmnn}{{6.2.1}{66}{LMNN}{subsection.6.2.1}{}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica de vecinos objetivo e impostores (para $k = 3$) para el dato $x_i$. El c\IeC {\'\i }rculo azul representa el margen que determinan los vecinos objetivo. Todos los puntos de distintas clases en dicho c\IeC {\'\i }rculo son impostores. El objetivo LMNN ser\IeC {\'a} acercar los vecinos objetivos lo m\IeC {\'a}ximo posible y eliminar los impostores del c\IeC {\'\i }rculo. Por tanto, no influir\IeC {\'a}n los datos de la misma clase que no sean vecinos objetivo y se dejar\IeC {\'a}n de penalizar los impostores en cuanto salgan del margen, como se muestra a la derecha. Esto da un car\IeC {\'a}cter local a esta t\IeC {\'e}cnica de aprendizaje.\relax }}{67}{figure.caption.13}}
-\newlabel{fig:targets_impostors}{{6.4}{67}{Descripción gráfica de vecinos objetivo e impostores (para $k = 3$) para el dato $x_i$. El círculo azul representa el margen que determinan los vecinos objetivo. Todos los puntos de distintas clases en dicho círculo son impostores. El objetivo LMNN será acercar los vecinos objetivos lo máximo posible y eliminar los impostores del círculo. Por tanto, no influirán los datos de la misma clase que no sean vecinos objetivo y se dejarán de penalizar los impostores en cuanto salgan del margen, como se muestra a la derecha. Esto da un carácter local a esta técnica de aprendizaje.\relax }{figure.caption.13}{}}
-\newlabel{eq:lmnn:L}{{6.10}{67}{LMNN}{equation.6.2.10}{}}
-\newlabel{eq:lmnn:M}{{6.11}{68}{LMNN}{equation.6.2.11}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.2}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de vecinos cercanos}{78}{section.6.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}LMNN}{78}{subsection.6.2.1}}
+\newlabel{section:lmnn}{{6.2.1}{78}{LMNN}{subsection.6.2.1}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica de vecinos objetivo e impostores (para $k = 3$) para el dato $x_i$. El c\IeC {\'\i }rculo azul representa el margen que determinan los vecinos objetivo. Todos los puntos de distintas clases en dicho c\IeC {\'\i }rculo son impostores. El objetivo LMNN ser\IeC {\'a} acercar los vecinos objetivos lo m\IeC {\'a}ximo posible y eliminar los impostores del c\IeC {\'\i }rculo. Por tanto, no influir\IeC {\'a}n los datos de la misma clase que no sean vecinos objetivo y se dejar\IeC {\'a}n de penalizar los impostores en cuanto salgan del margen, como se muestra a la derecha. Esto da un car\IeC {\'a}cter local a esta t\IeC {\'e}cnica de aprendizaje.\relax }}{79}{figure.caption.13}}
+\newlabel{fig:targets_impostors}{{6.4}{79}{Descripción gráfica de vecinos objetivo e impostores (para $k = 3$) para el dato $x_i$. El círculo azul representa el margen que determinan los vecinos objetivo. Todos los puntos de distintas clases en dicho círculo son impostores. El objetivo LMNN será acercar los vecinos objetivos lo máximo posible y eliminar los impostores del círculo. Por tanto, no influirán los datos de la misma clase que no sean vecinos objetivo y se dejarán de penalizar los impostores en cuanto salgan del margen, como se muestra a la derecha. Esto da un carácter local a esta técnica de aprendizaje.\relax }{figure.caption.13}{}}
+\newlabel{eq:lmnn:L}{{6.10}{79}{LMNN}{equation.6.2.10}{}}
+\newlabel{eq:lmnn:M}{{6.11}{80}{LMNN}{equation.6.2.11}{}}
 \abx@aux@cite{nca}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}NCA}{69}{subsection.6.2.2}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{El kNN y la validaci\IeC {\'o}n \emph  {Leave One Out}}{69}{section*.14}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{El an\IeC {\'a}lisis de componentes de vecindarios}{70}{section*.15}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}NCA}{81}{subsection.6.2.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{El kNN y la validaci\IeC {\'o}n \emph  {Leave One Out}}{81}{section*.14}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{El an\IeC {\'a}lisis de componentes de vecindarios}{82}{section*.15}}
 \abx@aux@cite{ncmml}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.3}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de centroides cercanos}{71}{section.6.3}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}NCMML}{71}{subsection.6.3.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.3}T\IeC {\'e}cnicas orientadas a la mejora del clasificador de centroides cercanos}{83}{section.6.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}NCMML}{83}{subsection.6.3.1}}
 \abx@aux@cite{clustering_algorithms}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}NCMC}{72}{subsection.6.3.2}}
-\newlabel{section:ncmc}{{6.3.2}{72}{NCMC}{subsection.6.3.2}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{Generalizando NCM: El clasificador de m\IeC {\'u}ltiples centroides}{72}{section*.16}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Conjunto de datos donde el clasificador NCM no da buenos resultados, pues los centroides de ambas clases son muy cercanos y ambos caen entre los puntos de la clase 1. Veremos que, escogiendo m\IeC {\'a}s de un centroide de forma adecuada podremos clasificar este conjunto como se muestra en la figura de la derecha.\relax }}{72}{figure.caption.17}}
-\newlabel{fig:problema_ncm}{{6.5}{72}{Conjunto de datos donde el clasificador NCM no da buenos resultados, pues los centroides de ambas clases son muy cercanos y ambos caen entre los puntos de la clase 1. Veremos que, escogiendo más de un centroide de forma adecuada podremos clasificar este conjunto como se muestra en la figura de la derecha.\relax }{figure.caption.17}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{K-Means y la b\IeC {\'u}squeda de centroides}{73}{section*.18}}
-\newlabel{eq:obj:kmeans}{{6.20}{73}{K-Means y la búsqueda de centroides}{equation.6.3.20}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}NCMC}{84}{subsection.6.3.2}}
+\newlabel{section:ncmc}{{6.3.2}{84}{NCMC}{subsection.6.3.2}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{Generalizando NCM: El clasificador de m\IeC {\'u}ltiples centroides}{84}{section*.16}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Conjunto de datos donde el clasificador NCM no da buenos resultados, pues los centroides de ambas clases son muy cercanos y ambos caen entre los puntos de la clase 1. Veremos que, escogiendo m\IeC {\'a}s de un centroide de forma adecuada podremos clasificar este conjunto como se muestra en la figura de la derecha.\relax }}{84}{figure.caption.17}}
+\newlabel{fig:problema_ncm}{{6.5}{84}{Conjunto de datos donde el clasificador NCM no da buenos resultados, pues los centroides de ambas clases son muy cercanos y ambos caen entre los puntos de la clase 1. Veremos que, escogiendo más de un centroide de forma adecuada podremos clasificar este conjunto como se muestra en la figura de la derecha.\relax }{figure.caption.17}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{K-Means y la b\IeC {\'u}squeda de centroides}{85}{section*.18}}
+\newlabel{eq:obj:kmeans}{{6.20}{85}{K-Means y la búsqueda de centroides}{equation.6.3.20}{}}
 \abx@aux@cite{itml}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{Aprendiendo distancias para NCMC}{74}{section*.19}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.4}T\IeC {\'e}cnicas basadas en teor\IeC {\'\i }a de la informaci\IeC {\'o}n}{74}{section.6.4}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}ITML}{74}{subsection.6.4.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{Aprendiendo distancias para NCMC}{86}{section*.19}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.4}T\IeC {\'e}cnicas basadas en teor\IeC {\'\i }a de la informaci\IeC {\'o}n}{86}{section.6.4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}ITML}{86}{subsection.6.4.1}}
 \abx@aux@cite{dmlmj}
-\newlabel{eq:itml:prob1}{{6.22}{75}{ITML}{equation.6.4.22}{}}
-\newlabel{eq:itml:prob2}{{6.23}{75}{ITML}{equation.6.4.23}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}DMLMJ}{76}{subsection.6.4.2}}
-\newlabel{eq:jef:thm1}{{6.24}{77}{}{equation.6.4.24}{}}
-\newlabel{thm:dmlmj1}{{6.4.2}{77}{DMLMJ}{equation.6.4.24}{}}
-\newlabel{eq:jef:formula_vp}{{6.25}{77}{DMLMJ}{equation.6.4.25}{}}
-\newlabel{eq:jef:coro1_pre}{{6.26}{77}{DMLMJ}{equation.6.4.26}{}}
-\newlabel{cor:dmlmj1}{{6.4.2}{77}{}{thm.6.4.2}{}}
+\newlabel{eq:itml:prob1}{{6.22}{87}{ITML}{equation.6.4.22}{}}
+\newlabel{eq:itml:prob2}{{6.23}{87}{ITML}{equation.6.4.23}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}DMLMJ}{88}{subsection.6.4.2}}
+\newlabel{eq:jef:thm1}{{6.24}{89}{}{equation.6.4.24}{}}
+\newlabel{thm:dmlmj1}{{6.4.2}{89}{DMLMJ}{equation.6.4.24}{}}
+\newlabel{eq:jef:formula_vp}{{6.25}{89}{DMLMJ}{equation.6.4.25}{}}
+\newlabel{eq:jef:coro1_pre}{{6.26}{89}{DMLMJ}{equation.6.4.26}{}}
+\newlabel{cor:dmlmj1}{{6.4.2}{89}{}{thm.6.4.2}{}}
 \abx@aux@cite{mcml}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}MCML}{78}{subsection.6.4.3}}
-\newlabel{eq:mcml:fobj2}{{6.30}{79}{MCML}{equation.6.4.30}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}MCML}{90}{subsection.6.4.3}}
+\newlabel{eq:mcml:fobj2}{{6.30}{91}{MCML}{equation.6.4.30}{}}
 \abx@aux@cite{lsi}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.5}Otras t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{80}{section.6.5}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}LSI}{80}{subsection.6.5.1}}
-\newlabel{lsi}{{6.5.1}{80}{LSI}{subsection.6.5.1}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.5}Otras t\IeC {\'e}cnicas de aprendizaje de m\IeC {\'e}tricas de distancia}{92}{section.6.5}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}LSI}{92}{subsection.6.5.1}}
+\newlabel{lsi}{{6.5.1}{92}{LSI}{subsection.6.5.1}{}}
 \abx@aux@cite{dmleig}
-\newlabel{eq:lsi}{{6.31}{81}{LSI}{equation.6.5.31}{}}
-\newlabel{eq:lsi:equiv}{{6.32}{81}{LSI}{equation.6.5.32}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}DML-eig}{81}{subsection.6.5.2}}
-\newlabel{eq:dmleig:1}{{6.33}{82}{DML-eig}{equation.6.5.33}{}}
-\newlabel{eq:dmleig:2}{{6.34}{82}{DML-eig}{equation.6.5.34}{}}
-\newlabel{eq:dmleig:3}{{6.35}{82}{}{equation.6.5.35}{}}
-\newlabel{eq:dmleig:4}{{6.36}{82}{}{equation.6.5.36}{}}
+\newlabel{eq:lsi}{{6.31}{93}{LSI}{equation.6.5.31}{}}
+\newlabel{eq:lsi:equiv}{{6.32}{93}{LSI}{equation.6.5.32}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}DML-eig}{93}{subsection.6.5.2}}
+\newlabel{eq:dmleig:1}{{6.33}{94}{DML-eig}{equation.6.5.33}{}}
+\newlabel{eq:dmleig:2}{{6.34}{94}{DML-eig}{equation.6.5.34}{}}
+\newlabel{eq:dmleig:3}{{6.35}{94}{}{equation.6.5.35}{}}
+\newlabel{eq:dmleig:4}{{6.36}{94}{}{equation.6.5.36}{}}
 \abx@aux@cite{overton1988minimizing}
 \abx@aux@cite{ldml}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.3}LDML}{83}{subsection.6.5.3}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces La funci\IeC {\'o}n log\IeC {\'\i }stica.\relax }}{83}{figure.caption.20}}
-\newlabel{fig:funcion_logistica}{{6.6}{83}{La función logística.\relax }{figure.caption.20}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.6}El kernel trick. Algoritmos de aprendizaje de m\IeC {\'e}tricas de distancia basados en kernels}{84}{section.6.6}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.1}El kernel trick}{84}{subsection.6.6.1}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Clasificaci\IeC {\'o}n realizada por las m\IeC {\'a}quinas de vectores soporte en su versi\IeC {\'o}n b\IeC {\'a}sica.\relax }}{85}{figure.caption.21}}
-\newlabel{fig:svm_ejemplo}{{6.7}{85}{Clasificación realizada por las máquinas de vectores soporte en su versión básica.\relax }{figure.caption.21}{}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Conjunto de datos para el que SVM no puede establecer un hiperplano separador.\relax }}{85}{figure.caption.22}}
-\newlabel{fig:svm_ejemplo2}{{6.8}{85}{Conjunto de datos para el que SVM no puede establecer un hiperplano separador.\relax }{figure.caption.22}{}}
-\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Resoluci\IeC {\'o}n mediante m\IeC {\'a}quinas de vectores soporte del problema de la figura \ref  {fig:svm_ejemplo2} en el espacio de caracter\IeC {\'\i }sticas. A la derecha se muestra el efecto del clasificador aprendido en el espacio de caracter\IeC {\'\i }sticas sobre el conjunto de datos original.\relax }}{86}{figure.caption.23}}
-\newlabel{fig:svm_ejemplo3}{{6.9}{86}{Resolución mediante máquinas de vectores soporte del problema de la figura \ref {fig:svm_ejemplo2} en el espacio de características. A la derecha se muestra el efecto del clasificador aprendido en el espacio de características sobre el conjunto de datos original.\relax }{figure.caption.23}{}}
-\newlabel{eq:dist_features}{{6.39}{88}{El kernel trick}{equation.6.6.39}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.3}LDML}{95}{subsection.6.5.3}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces La funci\IeC {\'o}n log\IeC {\'\i }stica.\relax }}{95}{figure.caption.20}}
+\newlabel{fig:funcion_logistica}{{6.6}{95}{La función logística.\relax }{figure.caption.20}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {6.6}El kernel trick. Algoritmos de aprendizaje de m\IeC {\'e}tricas de distancia basados en kernels}{96}{section.6.6}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.1}El kernel trick}{96}{subsection.6.6.1}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Clasificaci\IeC {\'o}n realizada por las m\IeC {\'a}quinas de vectores soporte en su versi\IeC {\'o}n b\IeC {\'a}sica.\relax }}{97}{figure.caption.21}}
+\newlabel{fig:svm_ejemplo}{{6.7}{97}{Clasificación realizada por las máquinas de vectores soporte en su versión básica.\relax }{figure.caption.21}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Conjunto de datos para el que SVM no puede establecer un hiperplano separador.\relax }}{97}{figure.caption.22}}
+\newlabel{fig:svm_ejemplo2}{{6.8}{97}{Conjunto de datos para el que SVM no puede establecer un hiperplano separador.\relax }{figure.caption.22}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Resoluci\IeC {\'o}n mediante m\IeC {\'a}quinas de vectores soporte del problema de la figura \ref  {fig:svm_ejemplo2} en el espacio de caracter\IeC {\'\i }sticas. A la derecha se muestra el efecto del clasificador aprendido en el espacio de caracter\IeC {\'\i }sticas sobre el conjunto de datos original.\relax }}{98}{figure.caption.23}}
+\newlabel{fig:svm_ejemplo3}{{6.9}{98}{Resolución mediante máquinas de vectores soporte del problema de la figura \ref {fig:svm_ejemplo2} en el espacio de características. A la derecha se muestra el efecto del clasificador aprendido en el espacio de características sobre el conjunto de datos original.\relax }{figure.caption.23}{}}
+\newlabel{eq:dist_features}{{6.39}{100}{El kernel trick}{equation.6.6.39}{}}
 \abx@aux@cite{klmnn}
-\newlabel{thm:representer}{{6.6.5}{89}{Teorema de representación para el aprendizaje de métricas de distancia}{thm.6.6.5}{}}
-\newlabel{item:representer:1}{{{{a)}}}{89}{Teorema de representación para el aprendizaje de métricas de distancia}{Item.98}{}}
-\newlabel{item:representer:2}{{{{b)}}}{89}{Teorema de representación para el aprendizaje de métricas de distancia}{equation.6.6.40}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.2}KLMNN}{89}{subsection.6.6.2}}
+\newlabel{thm:representer}{{6.6.5}{101}{Teorema de representación para el aprendizaje de métricas de distancia}{thm.6.6.5}{}}
+\newlabel{item:representer:1}{{{{a)}}}{101}{Teorema de representación para el aprendizaje de métricas de distancia}{Item.103}{}}
+\newlabel{item:representer:2}{{{{b)}}}{101}{Teorema de representación para el aprendizaje de métricas de distancia}{equation.6.6.40}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.2}KLMNN}{101}{subsection.6.6.2}}
 \abx@aux@cite{anmm}
-\newlabel{eq:klmnn:L}{{6.41}{90}{KLMNN}{equation.6.6.41}{}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.3}KANMM}{90}{subsection.6.6.3}}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.4}KDMLMJ}{91}{subsection.6.6.4}}
+\newlabel{eq:klmnn:L}{{6.41}{102}{KLMNN}{equation.6.6.41}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.3}KANMM}{102}{subsection.6.6.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.4}KDMLMJ}{103}{subsection.6.6.4}}
 \abx@aux@cite{kda}
-\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.5}KDA}{92}{subsection.6.6.5}}
-\newlabel{eq:kda}{{6.44}{92}{KDA}{equation.6.6.44}{}}
-\newlabel{LastPage}{{}{96}{}{page.96}{}}
-\xdef\lastpage@lastpage{96}
-\xdef\lastpage@lastpageHy{96}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {6.6.5}KDA}{104}{subsection.6.6.5}}
+\newlabel{eq:kda}{{6.44}{104}{KDA}{equation.6.6.44}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {part}{III\hspace  {1em}Inform\IeC {\'a}tica pr\IeC {\'a}ctica}{107}{part.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {7}Software desarrollado}{109}{chapter.7}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {7.1}Los lenguajes R y Python}{109}{section.7.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {7.2}Descripci\IeC {\'o}n del software}{109}{section.7.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {7.3}Uso del software}{109}{section.7.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {chapter}{\numberline {8}Experimentaci\IeC {\'o}n}{111}{chapter.8}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\defcounter {refsection}{0}\relax }\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {8.1}Descripci\IeC {\'o}n de los experimentos}{111}{section.8.1}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {8.2}Resultados}{111}{section.8.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {8.3}Conclusiones}{111}{section.8.3}}
+\newlabel{LastPage}{{}{114}{}{page.114}{}}
+\xdef\lastpage@lastpage{114}
+\xdef\lastpage@lastpageHy{114}

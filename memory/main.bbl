@@ -147,6 +147,35 @@
       \field{title}{Introduction to algorithms}
       \field{year}{2009}
     \endentry
+    \entry{information_theory}{book}{}
+      \name{author}{2}{}{%
+        {{hash=a718381b5a44236f82deec20a151aaab}{%
+           family={Cover},
+           family_i={C\bibinitperiod},
+           given={Thomas\bibnamedelima M.},
+           given_i={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=18189c22cf869ecaa8bdb94e2eb21b06}{%
+           family={Thomas},
+           family_i={T\bibinitperiod},
+           given={Joy\bibnamedelima A.},
+           given_i={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Wiley-Interscience}%
+      }
+      \strng{namehash}{5cfce2d265e67837fcfe9e10685bc68b}
+      \strng{fullhash}{5cfce2d265e67837fcfe9e10685bc68b}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0471241954}
+      \field{title}{Elements of Information Theory (Wiley Series in Telecommunications and Signal Processing)}
+      \field{year}{2006}
+    \endentry
     \entry{variations_convex}{book}{}
       \name{author}{1}{}{%
         {{hash=e6908e0eeee954987c8751d41e2e6e7d}{%
@@ -169,6 +198,31 @@
       \field{year}{2007}
       \field{pages}{67\bibrangedash 148}
       \range{pages}{82}
+    \endentry
+    \entry{davis2007differential}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=421d490f690ca95c88daf054ee5d0eaf}{%
+           family={Davis},
+           family_i={D\bibinitperiod},
+           given={Jason\bibnamedelima V},
+           given_i={J\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=913edd1ed6d39dab27744f7c19b0b18e}{%
+           family={Dhillon},
+           family_i={D\bibinitperiod},
+           given={Inderjit\bibnamedelima S},
+           given_i={I\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{83003136d1bd56fa85149a45ccc375a5}
+      \strng{fullhash}{83003136d1bd56fa85149a45ccc375a5}
+      \field{sortinit}{D}
+      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in Neural Information Processing Systems}
+      \field{title}{Differential entropic clustering of multivariate gaussians}
+      \field{year}{2007}
+      \field{pages}{337\bibrangedash 344}
+      \range{pages}{8}
     \endentry
     \entry{itml}{inproceedings}{}
       \name{author}{5}{}{%
@@ -404,6 +458,56 @@
       \field{labeltitlesource}{title}
       \field{title}{Matrix analysis}
       \field{year}{1990}
+    \endentry
+    \entry{courant_fischer}{book}{}
+      \name{author}{2}{}{%
+        {{hash=f8069af10f00083d34bfc39fd26ee7b3}{%
+           family={Lancaster},
+           family_i={L\bibinitperiod},
+           given={Peter},
+           given_i={P\bibinitperiod}}}%
+        {{hash=53bd45bd8b7ad9bb2368238682755795}{%
+           family={Tismenetsky},
+           family_i={T\bibinitperiod},
+           given={Miron},
+           given_i={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{5d429a2462923e6feb6502637eb93fbf}
+      \strng{fullhash}{5d429a2462923e6feb6502637eb93fbf}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The theory of matrices: with applications}
+      \field{year}{1985}
+    \endentry
+    \entry{loeve1978probability}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f652596c4aae06dcdf794e75e7f82967}{%
+           family={Loeve},
+           family_i={L\bibinitperiod},
+           given={Michel},
+           given_i={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag New York-Heidelberg}%
+      }
+      \strng{namehash}{f652596c4aae06dcdf794e75e7f82967}
+      \strng{fullhash}{f652596c4aae06dcdf794e75e7f82967}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Graduate texts in mathematics}
+      \field{title}{Probability theory, vol. ii}
+      \field{volume}{46}
+      \field{year}{1978}
+      \field{pages}{\bibrangedash 387}
+      \range{pages}{-1}
+      \warn{\item Range field 'pages' in entry 'loeve1978probability' is malformed, skipping}
     \endentry
     \entry{maulik2002performance}{article}{}
       \name{author}{2}{}{%

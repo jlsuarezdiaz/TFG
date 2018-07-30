@@ -269,7 +269,7 @@ Veamos en primer lugar distintas formas de caracterizar a las funciones convexas
         \item $K$ es convexo y $f$ es convexa. \label{item:prop_convex:1}
         \item El \emph{epigrafo} de $f$ es un conjunto convexo, donde el epigrafo asociado a una función $f \colon K \to \R$ viene dado por
         \[ \epi(f) = \{(x,y) \in K \times \R \colon y \ge f(x) \}. \] \label{item:prop_convex:2}
-        \item $K$ es convexo, y para cualesquiera $x_1,x_2 \in K$, la función $\varphi\colon [0,1] \to \R$ dada por $\varphi(t) = f((1-t)x_1 + tx_2)$ es convexa. \label{item:prop_convex:3}
+        \item $K$ es convexo, y para cualesquiera $x_1,x_2 \in K$, la función $\varphi\colon [0,1] \to \R$ dada por $\varphi(t) = f((1-t)x_1 + tx_2)$ es convexa (análogamente se tiene la desigualdad estricta si suponemos convexidad estricta) \label{item:prop_convex:3}
     \end{enumerate}
 \end{prop}
 
@@ -295,14 +295,14 @@ Veamos en primer lugar distintas formas de caracterizar a las funciones convexas
 
 Los siguientes resultados bien conocidos sobre funciones convexas las relacionan con dos campos en los que son de gran interés: la optimización y la diferenciabilidad.
 
-\begin{prop}~
+\begin{prop}~ \label{prop:convex_functions_opt_dif}
     \begin{enumerate}
         \item Todo mínimo local de una función convexa es un mínimo global.
         \item Toda función estrictamente convexa tiene a lo sumo un mínimo local, que también será global.
         \item Toda función convexa en un conjunto convexo y abierto es localmente lipschitziana. En particular, es continua.
-        \item Sea $\Omega \subset \R^d$ abierto y convexo, y sea $f \colon \Omega \to \R$ una función de clase $\mathcal{C}^1(\Omega)$. Entonces, $f$ es convexa si y solo si para cualesquiera $x, x_0 \in \Omega$, se tiene
+        \item Sea $\Omega \subset \R^d$ abierto y convexo, y sea $f \colon \Omega \to \R$ una función de clase $\mathcal{C}^1(\Omega)$. Entonces, $f$ es convexa si y solo si para cualesquiera $x, x_0 \in \Omega$, se tiene \label{item:prop:convex_functions:gradient}
         \[ f(x) \ge f(x_0) + \langle \nabla f(x_0), x - x_0 \rangle \quad \forall x, x_0 \in \Omega. \]
-        Esto último se interpreta geométricamente como que el grafo de $f$ permanece por encima del plano tangente a $f$ en $x_0$.
+        Esto último se interpreta geométricamente como que el grafo de $f$ permanece por encima del plano tangente a $f$ en $x_0$. Si $f$ además es estrictamente convexa, la desigualdad es estricta siempre que $x \ne x_0$.
         \item Sea $\Omega \subset \R^d$ abierto y convexo, y sea $f \colon \Omega \to \R$ una función de clase $\mathcal{C}^2(\Omega)$. Entonces, $f$ es convexa si y solo si su matriz hessiana es semidefinida positiva en todo punto de $\Omega$.
         \item Sea $\Omega \subset \R^d$ abierto y convexo, y sea $f \colon \Omega \to \R$ una función de clase $\mathcal{C}^2(\Omega)$. Entonces, $f$ es estrictamente convexa si su matriz hessiana es definida positiva en todo punto de $\Omega$. El recíproco no es cierto en general.
     \end{enumerate}
@@ -362,7 +362,7 @@ En primer lugar, veamos una propiedad que verifican las funciones convexas de va
 
 Veamos finalmente la desigualdad de Jensen.
 
-\begin{thm}[Desigualdad de Jensen]
+\begin{thm}[Desigualdad de Jensen] \label{thm:desig_jensen}
     Sea $\mu$ una medida de probabilidad sobre una $\sigma$-álgebra $\mathcal{A}$ en un conjunto $\Omega$. Si $f\colon \Omega \to \R$ es una función real integrable respecto a $\mu$, con $f(\Omega) \subset ]a,b[$, y $\varphi\colon ]a,b[ \to \R$ es convexa, entonces
     \begin{equation}
         \varphi\left(\int_{\Omega}f\ d\mu\right) \le \int_{\Omega}(\varphi \circ f)\ d\mu
@@ -402,7 +402,7 @@ Veamos finalmente la desigualdad de Jensen.
     Supongamos ahora que $\varphi$ es estrictamente convexa y se da la igualdad, y supongamos que $f$ no es constante c.p.d. Si $t = \int_{\Omega} f \ d\mu$, entonces el conjunto $C = \{x \in \Omega \colon f(x) > t\}$ verifica $\mu(C) > 0$. Razonando de forma análoga a la del lema \ref{lem:secantes}, es posible probar que la convexidad estricta implica que $\varphi(s) > \varphi(t) + \beta(s-t)$, para $a < s < b$ y $s \ne t$, luego la desigualdad \ref{eq:jensen:1} la podemos escribir como $\varphi(f(x)) > \varphi(t) + \beta(f(x) - t)$, para todo $x \in C$. Sin embargo, esto contradice que se haya dado la igualdad en la desigualdad de Jensen, pues dicha igualdad implica que $\varphi(f(x)) = \varphi(t) + \beta(f(x)-t)$ c.p.d, y $C$ es un conjunto de medida no nula donde no se da dicha igualdad.
 \end{proof}
 
-\section{Problemas de optimización}
+\section{Problemas de optimización y algoritmos básicos}
 
 Los problemas de optimización aparecen en muchos campos del aprendizaje automático en general, y en particular, en la rama que vamos a tratar en este trabajo. Dentro de este tipo de problemas, la convexidad juega un papel fundamental, asegurando la globalidad de los óptimos encontrados. En esta sección estudiaremos estos problemas, proporcionando algunas herramientas genéricas para resolverlos.
 
