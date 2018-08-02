@@ -365,9 +365,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by
 INPUT /usr/share/texlive/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by.pdf
 INPUT /usr/share/texlive/texmf-dist/tex/latex/doclicense/images/doclicense-CC-by.pdf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/convex_analysis.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/convex_analysis.tex
 INPUT /usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
@@ -377,9 +374,12 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/./images/gradient.png
 INPUT ./images/gradient.png
 INPUT ./images/gradient.png
@@ -404,6 +404,8 @@ INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/information_theor
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/information_theory.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/machine_learning.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/machine_learning.tex
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/dml_theory.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/dml_theory.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/./images/ex_learning_nca.png
@@ -424,6 +426,11 @@ INPUT ./images/voronoi.png
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/./images/compare_knn.png
 INPUT ./images/compare_knn.png
 INPUT ./images/compare_knn.png
+INPUT /usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm7.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm5.tfm
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/dml_algorithms.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/dml_algorithms.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/./images/pca.png
@@ -435,6 +442,8 @@ INPUT ./images/lda.png
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/./images/anmm.png
 INPUT ./images/anmm.png
 INPUT ./images/anmm.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm8.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm6.tfm
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn1.png
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn1.png
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn1.png
@@ -457,11 +466,6 @@ INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_problem.png
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_solution.png
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_solution.png
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_solution.png
-INPUT /usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-INPUT /usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm7.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/bbm/bbm5.tfm
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/software.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/software.tex
 INPUT /home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/experiments.tex

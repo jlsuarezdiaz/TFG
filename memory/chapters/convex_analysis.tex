@@ -30,7 +30,7 @@ Son inmediatos los siguientes ejemplos y propiedades sobre los conjuntos convexo
 
 \end{enumerate}
 
-\begin{proof}
+\begin{proof}~
     \begin{enumerate}
         \item Es evidente por la definición de subespacio vectorial.
         \item Lo hacemos para $K = \{x \in V \colon T(x) < \alpha\}$. Para el resto de desigualdades es análogo. Sean $x_1,x_2 \in K$ y $\lambda \in [0,1]$. Entonces, $T(x_1),T(x_2) < \alpha$. Por la linealidad de $T$ se tiene que $T((1-\lambda)x_1+\lambda x_2) = (1-\lambda)T(x_1) + \lambda T(x_2) < (1-\lambda)\alpha + \lambda\alpha = \alpha$, luego $(1-\lambda)x_1+\lambda x_2 \in K$.
@@ -187,7 +187,7 @@ En esta sección presentaremos un tipo especial de conjuntos convexos, con unas 
 
 En algunos textos a los conjuntos cónicos se les denomina inicialmente conos, y a aquellos convexos se les denomina conos convexos. En este trabajo el término cono se reservará únicamente para estos últimos. Observemos también que con esta definición todos los conjuntos cónicos y conos contienen al 0. Veamos algunos ejemplos de conjuntos cónicos y conos.
 
-\begin{example} \label{ex:conos}
+\begin{example}~ \label{ex:conos}
     \begin{enumerate}
         \item Un conjunto finito o numerable de rectas o semirrectas en $\R^2$ que pasan por 0 (siendo este el origen en el caso de las semirrectas) es un conjunto cónico, pero no es un cono.
         \item Los subespacios vectoriales son conos.
@@ -252,7 +252,6 @@ En esta sección recordaremos el concepto de funciones convexas, sus propiedades
 
     Una función $f \colon K \to \R^d$ diremos que es \emph{convexa} si para todos $x,y \in K$ y cada $\lambda \in [0,1]$, se tiene
     \[f((1-\lambda)x+\lambda y) \le (1-\lambda) f(x) + \lambda f(y). \]
-
     Diremos que $f$ es \emph{estrictamente convexa} si la desigualdad anterior es estricta, es decir, si para cuaesquiera $x,y \in K$ con $x\ne y$ y cada $\lambda \in ]0,1[$ se tiene
     \[f((1-\lambda)x+\lambda y) < (1-\lambda)f(x) + \lambda f(y). \]
 
@@ -322,6 +321,7 @@ Para concluir, vamos a ver algunos ejemplos de funciones convexas que nos serán
         \item Si $K \subset \R^d$ es convexo, $f \colon K \to \R$ es convexa, $A \subset \R^n$ y $h\colon A \to \R^d$ es afín, con $h(A) \subset K$, entonces $f \circ h$ es convexa.
         \item Si $K \subset \R^d$ es convexo y $f_1,\dots,f_n \colon K \to \R$ son convexas, entonces $f \colon K \to \R$, dada por $f(x) = \max\{f_1(x),\dots,f_n(x)\}$ es convexa.
     \end{enumerate}
+    La convexidad de las normas es consecuencia de la desigualdad triangular. La convexidad de la función logaritmo-suma-exponencial puede obtenerse mediante el cálculo de la matriz Hessiana. Esta función será de gran importancia en algunos de los algoritmos que veremos más adelante. El resto de ejemplos son propiedades conocidas de las funciones convexas.
 \end{example}
 
 \subsection{La desigualdad de Jensen}
@@ -505,3 +505,26 @@ Para concluir, es interesante destacar que el teorema anterior admite una versi�
 \end{figure}
 
 \subsection{Subgradientes}
+
+Recordemos que cuando $f \colon \Omega \to \R$, con $\Omega$ convexo y abierto, es convexa y diferenciable, se verifica que $f(x) \ge \langle \nabla f(x_0), x - x_0 \rangle$ para cualesquiera $x,x_0 \in \Omega$. En general, si $f\colon A \to \R$ es una función arbitraria, cualquier vector $v \in \R^d$ que verifique, para $x_0 \in A$, que $f(x) \ge f(x_0)+ \langle v, x - x_0 \rangle$ para todo $x \in A$ se denomina un \emph{subgradiente} de $f$ en $x_0$. Una función puede no tener, o tener más de un subgradiente. El conjunto de los subgradientes se $f$ en el punto $x_0$ se denotará por $\partial f(x_0)$ (o $\partial f(x_0)/\partial x$, si es necesario especificar la variable).
+
+El subgradiente tiene un comportamiento similar al del gradiente, y por ello se utilizan como método de descenso cuando la función no es diferenciable. Es importante notar que no todos los subgradientes llevan siempre una dirección de descenso, ni necesariamente han de existir. En el caso de las funciones convexas sí que podemos garantizar la existencia de subgradientes en todos los puntos.
+
+\begin{prop}
+    Sea $\Omega \subset \R^d$ un abierto convexo. Una función $f \colon \Omega \to \R$ es convexa si y solo si admite subgradientes en todo punto de $\Omega$.
+\end{prop}
+
+\begin{proof}
+    Por un lado, $f$ es convexa si y solo si $\epi(f)$ es convexo. Por ser $\Omega$ abierto, $\epi(f)$ tiene interior no vacío en $\R^{d+1}$. Por otro lado, $v$ es un subgradiente de $f$ en $x_0$ si y solo si $(v,-1)$ define un hiperplano soporte en $\epi(f)$ sobre el punto frontera $(x_0,f(x_0))$. Esto se debe a que $(x,t) \in \epi(f)$, si y solo si $t \ge f(x) \ge f(x_0) + \langle v, x - x_0 \rangle$, lo cual ocurre si y solo si $\langle v,x \rangle - t \le f(x_0) + \langle v, x_0 \rangle \iff \langle (v,-1),(x,t) \rangle f(x_0) + \langle v,x_0 \rangle$. Gracias a estas caracterizaciones, el teorema del hiperplano soporte \ref{thm:support_hyperplane} garantiza el resultado buscado.
+\end{proof}
+
+Por tanto, sobre funciones convexas podemos tomar subgradientes en todo punto e iterar de forma análoga al gradiente descendente o al gradiente con proyecciones. Como ya se ha dicho, el subgradiente puede no llevar una dirección de descenso. Por ello, al aplicar este método se suele almacenar el mejor valor obtenido. Aunque exista más de un subgradiente, solo necesitamos calcular uno para aplicar el método del subgradiente. En los algoritmos que trataremos el cálculo de subgradientes será sencillo. Por ejemplo, si $f$ es diferenciable en $x$, podemos tomar el subgradiente $\nabla f(x)$ (de hecho, este es el único subgradiente en este caso). El otro caso de interés que trataremos será el cálculo del subgradiente de máximos de funciones convexas diferenciables.
+
+\begin{prop}
+    Sea $\Omega \subset \R^d$ abierto y convexo, y $f_i\colon \Omega \to \R$, con $i\in \{1,\dots,r\}$, funciones convexas diferenciables. Sea $f \colon \Omega \to \R$ definida fomo $f(x) = \max_i f_i(x)$. Dado $x \Omega$, tomamos $j \in \{1,\dots,r\}$ tal que $f(x) = f_j(x)$. Entonces, $\nabla f_j(x) \in \partial f(x)$.
+\end{prop}
+
+\begin{proof}
+    Como $f_j$ es convexa se tiene que, para todo $y \in \Omega$, $f_j(y) \ge f_j(x) + \langle y-x, \nabla f_j(x) \rangle$. Como $f(x) = f_j(x)$ y $f(y) \ge f_j(y)$, se concluye que
+    \[ f(y) \ge f(x) + \langle y-x, \nabla f_j(x) \rangle. \]
+\end{proof}

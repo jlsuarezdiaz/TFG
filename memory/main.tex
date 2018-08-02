@@ -124,24 +124,6 @@ backend=biber
 
 
 
-\begin{thm} \label{thm:eigen_trace_ratio_opt}
-	Sean $d',d \in \N $, con $d' \le d$. Sean $A \in \mathcal{S}_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$, y consideramos el problema de optimización
-	
-	\begin{align*}
-	\max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(\frac{LAL^T}{LBL^T}\right)  \\
-	\end{align*}
-	
-	Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
-	\text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
-	& \dots &  \\
-	\text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
-	\end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son los vectores propios de $B^{-1}C$ correspondientes a sus $d'$ mayores valores propios.
-	
-	
-\end{thm}
-
-
-
 %% CAPÍTULO 1 - ANÁLISIS CONVEXO
 \input{chapters/convex_analysis}
 

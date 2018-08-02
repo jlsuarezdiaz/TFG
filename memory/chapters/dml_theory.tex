@@ -121,8 +121,7 @@ Para concluir esta sección, vamos a mostrar que a partir de una pseudodistancia
     Sea $X$ un conjunto no vacío y $d:X\times X \to \mathbb{R}^+_0$ una pseudodistancia sobre $X$. Definimos la relación $x \sim y \iff d(x,y)=0$. $\sim$ es una relación de equivalencia.
 \end{prop}
 
-\begin{proof}
-$ $ \newline
+\begin{proof}~
 \begin{itemize}
     \item \emph{Reflexiva.} Consecuencia de la propiedad $\ref{item:pdist:coincid}$ de pseudodistancia.
     \item \emph{Simétrica.} Consecuencia de la propiedad $\ref{item:pdist:sim}$ de pseudodistancia.
@@ -182,7 +181,7 @@ Finalmente, al igual que las pseudodistancias inducían espacios métricos en el
     \end{enumerate}
 \end{prop}
 
-\begin{proof}
+\begin{proof}~
     \begin{enumerate}
         \item Sean $u, v \in V, \lambda, \mu \in \R$. Entonces,
         \[0 \le \|\lambda u + \mu v \|_M \le \|\lambda u \|_M+\|\mu v\|_M = |\lambda|\|u\|_M+|\mu|\|v\|_M = 0, \]
@@ -283,7 +282,7 @@ En esta sección se describen algunas de las principales aplicaciones del aprend
     \begin{figure}[h]
     \centering
     \includegraphics[width=21cm,center]{./images/ex_learning_nca.png}
-    \caption{Supongamos que tenemos un conjunto de datos en el plano, los cuales pueden pertenecer a tres clases distintas, las cuales vienen definidas por ectas paralelas. Supongamos que para clasificar un nuevo dato lo hacemos asignándole la clase del punto que se encuentre más cerca, para la distancia euclídea usual. Entonces, para los datos observados obtendríamos unas regiones de clasificación como las de la figura de la izquierda, pues los datos de las clases B y C están mucho más separados entre sí que la separación entre las rectas. Sin embargo, si aprendemos una distancia adecuada y volvemos a intentar clasificar asignando la clase del punto más cercano para esta nueva distancia, obtenemos unas regiones de clasificación como las de la figura central, mucho más efectivas. Por último, aprender una métrica es equivalente a aprender una transformación de los datos y medir en el espacio transformado con la distancia euclídea usual. Esto se muestra en la figura derecha. También podemos observar que los datos se están proyectando, salvo errores de precisión, sobre una recta, luego también estamos reduciendo la dimensionalidad del conjunto de datos.} \label{fig:mejorar_knn}
+    \caption{Supongamos que tenemos un conjunto de datos en el plano, los cuales pueden pertenecer a tres clases distintas, cuyas regiones vienen definidas por rectas paralelas. Supongamos que para clasificar un nuevo dato lo hacemos asignándole la clase del punto que se encuentre más cerca, para la distancia euclídea usual. Entonces, para los datos observados obtendríamos unas regiones de clasificación como las de la figura de la izquierda, pues los datos de las clases B y C están mucho más separados entre sí que la separación entre las regiones. Sin embargo, si aprendemos una distancia adecuada y volvemos a intentar clasificar asignando la clase del punto más cercano para esta nueva distancia, obtenemos unas regiones de clasificación como las de la figura central, mucho más efectivas. Por último, aprender una métrica es equivalente a aprender una transformación de los datos y medir en el espacio transformado con la distancia euclídea usual. Esto se muestra en la figura derecha. También podemos observar que los datos se están proyectando, salvo errores de precisión, sobre una recta, luego también estamos reduciendo la dimensionalidad del conjunto de datos.} \label{fig:mejorar_knn}
     \end{figure}
     
     \item \textbf{Reducción de la dimensionalidad.} Como ya hemos comentado, aprender una métrica de rango no máximo implica una reducción de dimensionalidad sobre los datos con los que trabajamos. Dicha reducción de dimensionalidad proporciona numerosas ventajas, como la reducción del coste computacional, tanto en espacio como en tiempo, de los algoritmos que se utilizarán posteriormente, o la eliminación del posible ruido introducido al tomar los datos. También, como veremos en la próxima sección, algunos algoritmos basados en distancias están expuestos a un problema denominado \emph{maldición de la dimensionalidad}. Reduciendo la dimensión de los datos, dicho problema también se hace menos grave. Por último, si se estima necesario, las proyecciones a dimensión 1,2 y 3 nos permitirían obtener representaciones visuales de nuestros datos, como se muestra en la figura \ref{fig:reduc_dim}
@@ -346,13 +345,15 @@ Entonces, el clasificador de los $k$ vecinos cercanos o k-NN asigna a $x$ el val
 
 Es interesante destacar que, por cómo se asignan las clases para los nuevos datos, el k-NN permite trabajar en problemas de clasificación multiclase sin ningún tipo de limitación. Esto, normalmente, no es así para muchos clasificadores, los cuales están diseñados únicamente para resolver problemas de clasificación binarios. Para extender estos clasificadores a problemas multiclase, la estrategia más común es dividir el problema en subproblemas binarios, resolver estos problemas, y asignar la clase final como aquella mayoritaria obtenida en los subproblemas. Los métodos usuales de división en problemas binarios consisten en enfrentar una clase frente a todas las demás (\emph{One versus All}), o enfrentar todos los pares de clases entre sí (\emph{One versus One}) \cite{ovoova}. En general, la mayoría de técnicas que aprenden por semejanza permiten también trabajar directamente con problemas multiclase.
 
-La elección del número de vecinos $k$ puede influir bastante en la región delimitada por el clasificador. Dicha región es no paramétrica, al no hacerse ninguna asunción sobre la forma de la función hipótesis $h$. Los valores pequeños de $k$  se ajustan más a los datos de entrenamiento, generando así una región más puntiaguda. En tales casos, el sesgo es bajo pero la variabilidad es alta. Los papeles se intercambian para valores grandes de $k$, donde la región generada presenta un aspecto más suave, como se muestra en la figura \ref{fig:knn_comp_k}
+La elección del número de vecinos $k$ puede influir bastante en la región delimitada por el clasificador. Dicha región es no paramétrica, al no hacerse ninguna asunción sobre la forma de la función hipótesis $h$. Los valores pequeños de $k$  se ajustan más a los datos de entrenamiento, generando así una región más puntiaguda. En tales casos, el sesgo es bajo pero la variabilidad es alta. Los papeles se intercambian para valores grandes de $k$, donde la región generada presenta un aspecto más suave, como se muestra en la figura \ref{fig:knn_comp_k}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{./images/compare_knn.png}
     \caption{Comparación del k-NN para distintos valores de $k$ (dataset 'Iris')} \label{fig:knn_comp_k}
 \end{figure}
+
+Como ya se anticipó en la sección, el k-NN sufre de la conocida como \emph{maldición de la dimensionalidad}. Nos restringimos al caso $k=1$. Supongamos que el dominio del problema es $\mathcal{X} = [0,1]^d$ (es decir, trabajamos con datos normalizados) y suponemos que el conjunto de clases es $\mathcal{Y} = \{0,1\}$. Suponemos que $\mathcal{D}$ es una distribución sobre $\mathcal{X}\times\mathcal{Y}$ para la cual la distribución de probabilidad condicionada, $\eta(x) = \mathbb{P}[y=1|x]$ es $c$-lipschitziana para la distancia $d$ con la que trabajamos. Entonces, es posible probar que la diferencia entre el error empírico y el \emph{error bayesiano óptimo}, asociado a la hipótesis $h^*(x) = \mathbbm{1}_{[\eta(x) > 1/2]}$ puede acotarse por $4c \sqrt{d} N^{-\frac{1}{d+1}}$ \cite{understandingml}, donde $N$ es el tamaño del conjunto de entrenamiento. Por tanto, si queremos asegurar que dicho error sea menor que $\varepsilon$, necesitamos escoger $N \ge (4c\sqrt{d}/\varepsilon)^{d+1}$. Es decir, según esta cota, el número de ejemplos crece exponencialmente con la dimensionaldad del conjunto. Además, es posible encontrar distribuciones para las cuales esta cota sea necesaria, además de suficiente. Esta circunstancia se puede generalizar para cualquier $k$, y es lo que se conoce como la maldición de la dimensionalidad para el k-NN. 
 
 Por último, es importante comentar que se puede cambiar la regla de clasificación del k-NN. Por ejemplo para, en lugar de asignar la clase mayoritaria en los $k$ vecinos más cercanos, establecer una ponderación sobre cada vecino de forma inversamente proporcional a la distancia, teniendo así más peso las clases de los primeros vecinos más cercanos. También se puede extender esta regla a problemas de regresión, considerando por ejemplo la media, o una media ponderada, entre los $k$ vecinos más cercanos. En general, un clasificador o regresor de $k$ vecinos cercanos utiliza una función hipótesis que se puede expresar genéricamente como
 \[ h(x) = \phi(x,d,(x_{\pi_1(x)},y_{\pi_1(x)}),\dots,(x_{\pi_N(x)},y_{\pi_N(x)})). \]
@@ -369,4 +370,6 @@ Aunque el k-NN es el algoritmo por semejanza más popular para clasificación, n
 
 \end{itemize}
 
+\begin{comment}
 \subsection{Fundamentos estadísticos del k-NN. La maldición de la dimensionalidad.}
+\end{comment}

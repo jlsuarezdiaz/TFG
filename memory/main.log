@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.25)  30 JUL 2018 11:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  2 AUG 2018 19:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1609,17 +1609,11 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
 
-(/home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.bbl
-
-Package biblatex Warning: Biber reported the following issues
-(biblatex)                with 'loeve1978probability':
-(biblatex)                - Range field 'pages' in entry 'loeve1978probability'
- is malformed, skipping.
-
-)
+(/home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.bbl)
 Package biblatex Info: Reference section=0 on input line 95.
 Package biblatex Info: Reference segment=0 on input line 95.
- (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.toc
+
+(/home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Info: Redefining \. on input line 4.
@@ -1658,9 +1652,6 @@ Package pdftex.def Info: doclicense-CC-by.pdf used on input line 111.
 
 ] [4]
 (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/convex_analysis.tex
-[5] [6
-
-]
 Cap\'{\i }tulo 1.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
@@ -1673,7 +1664,9 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [][]  
  []
 
-[7] [8] [9] [10]
+[5
+
+] [6] [7] [8]
 Overfull \hbox (4.02078pt too wide) detected at line 168
 \OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = \OMS/c
 msy/m/n/10 k\OML/cmm/m/it/10 y[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 x\OMS/cm
@@ -1692,15 +1685,15 @@ it/10 y \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 P[]\OT1/cmr/m/n/10 (\OML/cmm/m/it
 /10 x\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 k[]\OML/cmm/m/it/10 :
  []
 
-[11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
-<./images/gradient.png, id=445, 1192.455pt x 842.14626pt>
+[9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
+<./images/gradient.png, id=431, 1192.455pt x 842.14626pt>
 File: ./images/gradient.png Graphic file (type png)
 
 <use ./images/gradient.png>
 Package pdftex.def Info: ./images/gradient.png used on input line 457.
 (pdftex.def)             Requested size: 332.68385pt x 234.95123pt.
- [21 <./images/gradient.png>]
-<./images/iterated_projections.png, id=466, 1090.0725pt x 538.01pt>
+ [19 <./images/gradient.png>]
+<./images/iterated_projections.png, id=453, 1090.0725pt x 538.01pt>
 File: ./images/iterated_projections.png Graphic file (type png)
 
 <use ./images/iterated_projections.png>
@@ -1711,17 +1704,17 @@ Package pdftex.def Info: ./images/iterated_projections.png used on input line 5
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/matrices.tex
-[22] [23 <./images/iterated_projections.png>] [24
-
-]
+[20] [21 <./images/iterated_projections.png>])
+(/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/matrices.tex [22]
 Cap\'{\i }tulo 2.
 
 Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [][]  
  []
 
-[25] [26]
+[23
+
+] [24]
 Overfull \hbox (14.21654pt too wide) in paragraph at lines 51--53
 []\OT1/cmr/m/it/10 (-20) Si $\OML/cmm/m/it/10 A \OMS/cmsy/m/n/10 2 \OML/cmm/m/i
 t/10 S[]\OT1/cmr/m/n/10 (-20) (\U/msb/m/n/10 R\OT1/cmr/m/n/10 (-20) )$\OT1/cmr/
@@ -1734,7 +1727,7 @@ sy/m/n/10 fj\OML/cmm/m/it/10 ^^U\OMS/cmsy/m/n/10 j [] [] \OML/cmm/m/it/10 ^^U \
 OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]\OML/cmm/m/it/10 A\OMS/cmsy/m/n/10 g$
  []
 
-[27] [28]
+[25] [26]
 Overfull \hbox (0.67241pt too wide) in paragraph at lines 139--140
 []\OT1/cmr/m/n/10 (-20) Veamos que $[][] \OMS/cmsy/m/n/10 ^^Z M[]\OT1/cmr/m/n/1
 0 (-20) (\U/msb/m/n/10 R\OT1/cmr/m/n/10 (-20) )[]$. Sea $\OML/cmm/m/it/10 M \OM
@@ -1744,7 +1737,7 @@ S/cmsy/m/n/10 2 [][]$\OT1/cmr/m/n/10 (-20) . En-ton-ces, exis-te $\OML/cmm/m/it
 /10 (-20) ) \OMS/cmsy/m/n/10 ^^Z
  []
 
-[29]
+[27]
 Overfull \hbox (57.53667pt too wide) detected at line 168
 \OML/cmm/m/it/10 B \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 A \OMS/cmsy/m/n/10 ^^W
  \OT1/cmr/m/n/10 0  =[]\OMS/cmsy/m/n/10 )  \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Cx
@@ -1761,7 +1754,7 @@ m/n/10 )  \OML/cmm/m/it/10 C[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 B \OMS/cmsy/m/n
 ^^W \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :
  []
 
-[30] [31]
+[28] [29]
 Overfull \hbox (6.67957pt too wide) detected at line 264
 \OMS/cmsy/m/n/10 k\OML/cmm/m/it/10 Ax\OMS/cmsy/m/n/10 k[] \OT1/cmr/m/n/10 = (\O
 ML/cmm/m/it/10 Ax\OT1/cmr/m/n/10 )[](\OML/cmm/m/it/10 Ax\OT1/cmr/m/n/10 ) = \OM
@@ -1777,18 +1770,18 @@ y/m/n/10 j\OML/cmm/m/it/10 A\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 x\OT1/cmr/m/n/10
 OMS/cmsy/m/n/10 k[]\OML/cmm/m/it/10 :
  []
 
-[32] [33] [34] [35]
-Overfull \hbox (22.15227pt too wide) in paragraph at lines 411--411
+[30] [31] [32] [33] [34]
+Overfull \hbox (22.15227pt too wide) in paragraph at lines 415--415
 []\OT1/cmr/bx/n/14.4 Cociente de Ray-leigh. Op-ti-mi-za-ci^^Son con vec-to-res 
 pro-pios. 
  []
 
-[36] [37] [38] [39] [40]
-Overfull \hbox (0.76672pt too wide) in paragraph at lines 574--574
+[35] [36] [37] [38]
+Overfull \hbox (0.76672pt too wide) in paragraph at lines 580--580
 [] 
  []
 
-)
+[39] [40])
 (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/information_theory.te
 x [41] [42
 
@@ -1827,12 +1820,27 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [][]  
  []
 
-) (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/dml_theory.tex
 [53
 
-] [54
-
 ]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 32.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
+
+Overfull \hbox (11.02832pt too wide) in paragraph at lines 34--35
+[]\OT1/cmr/bx/n/10 El con-jun-to de los da-tos de en-tre-na-mien-to. \OT1/cmr/m
+/n/10 (-20) Es una mues-tra fi-ni-ta $\OML/cmm/m/it/10 S \OT1/cmr/m/n/10 (-20) 
+= \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 (-20) (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/
+n/10 (-20) )\OML/cmm/m/it/10 ; [] ; \OT1/cmr/m/n/10 (-20) (\OML/cmm/m/it/10 x[]
+; y[]\OT1/cmr/m/n/10 (-20) )\OMS/cmsy/m/n/10 g ^^Z
+ []
+
+[54] [55])
+(/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/dml_theory.tex
+[56]
 Cap\'{\i }tulo 5.
 
 Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
@@ -1844,37 +1852,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--36
 
  []
 
-[55] [56]
-Underfull \hbox (badness 10000) in paragraph at lines 125--127
+[57
 
- []
-
-[57] [58] [59] [60] [61]
-<./images/ex_learning_nca.png, id=873, 1300.86pt x 433.62pt>
+] [58] [59] [60] [61] [62] [63]
+<./images/ex_learning_nca.png, id=910, 1300.86pt x 433.62pt>
 File: ./images/ex_learning_nca.png Graphic file (type png)
 
 <use ./images/ex_learning_nca.png>
-Package pdftex.def Info: ./images/ex_learning_nca.png used on input line 285.
+Package pdftex.def Info: ./images/ex_learning_nca.png used on input line 284.
 (pdftex.def)             Requested size: 597.50787pt x 199.16988pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[62] <./images/ex_red_dim.png, id=884, 867.24pt x 578.16pt>
+[64] <./images/ex_red_dim.png, id=920, 867.24pt x 578.16pt>
 File: ./images/ex_red_dim.png Graphic file (type png)
 
 <use ./images/ex_red_dim.png>
-Package pdftex.def Info: ./images/ex_red_dim.png used on input line 293.
+Package pdftex.def Info: ./images/ex_red_dim.png used on input line 292.
 (pdftex.def)             Requested size: 332.68385pt x 221.79388pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./images/ex_mover_ejes.png, id=886, 1300.86pt x 433.62pt>
+<./images/ex_mover_ejes.png, id=922, 1300.86pt x 433.62pt>
 File: ./images/ex_mover_ejes.png Graphic file (type png)
 
 <use ./images/ex_mover_ejes.png>
-Package pdftex.def Info: ./images/ex_mover_ejes.png used on input line 302.
+Package pdftex.def Info: ./images/ex_mover_ejes.png used on input line 301.
 (pdftex.def)             Requested size: 569.05511pt x 189.68843pt.
 
 
@@ -1883,117 +1888,108 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 Underfull \vbox (badness 2600) has occurred while \output is active []
 
- [63 <./images/ex_learning_nca.png>] <./images/ssl.png, id=898, 867.24pt x 433.
+ [65 <./images/ex_learning_nca.png>] <./images/ssl.png, id=934, 867.24pt x 433.
 62pt>
 File: ./images/ssl.png Graphic file (type png)
 
 <use ./images/ssl.png>
-Package pdftex.def Info: ./images/ssl.png used on input line 312.
+Package pdftex.def Info: ./images/ssl.png used on input line 311.
 (pdftex.def)             Requested size: 443.57848pt x 221.79169pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[64 <./images/ex_red_dim.png>] [65 <./images/ex_mover_ejes.png>]
-<./images/voronoi.png, id=918, 433.62pt x 289.08pt>
+[66 <./images/ex_red_dim.png>] [67 <./images/ex_mover_ejes.png>]
+<./images/voronoi.png, id=955, 433.62pt x 289.08pt>
 File: ./images/voronoi.png Graphic file (type png)
  <use ./images/voronoi.png>
-Package pdftex.def Info: ./images/voronoi.png used on input line 343.
+Package pdftex.def Info: ./images/voronoi.png used on input line 342.
 (pdftex.def)             Requested size: 221.78923pt x 147.86111pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[66 <./images/ssl.png>]
-<./images/compare_knn.png, id=929, 867.24pt x 433.62pt>
+[68 <./images/ssl.png>]
+<./images/compare_knn.png, id=966, 867.24pt x 433.62pt>
 File: ./images/compare_knn.png Graphic file (type png)
 
 <use ./images/compare_knn.png>
-Package pdftex.def Info: ./images/compare_knn.png used on input line 353.
+Package pdftex.def Info: ./images/compare_knn.png used on input line 352.
 (pdftex.def)             Requested size: 443.57848pt x 221.79169pt.
- [67 <./images/voronoi.png> <./images/compare_knn.png>])
+LaTeX Font Info:    Try loading font information for U+bbm on input line 356.
+
+(/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+) [69 <./images/voronoi.png> <./images/compare_knn.png>])
 (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/dml_algorithms.tex
-[68]
+[70]
 Cap\'{\i }tulo 6.
 
 Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [][]  
  []
 
-[69
+[71
 
-] [70] [71] <./images/pca.png, id=975, 867.24pt x 867.24pt>
+] [72] [73] <./images/pca.png, id=1014, 867.24pt x 867.24pt>
 File: ./images/pca.png Graphic file (type png)
 
 <use ./images/pca.png>
-Package pdftex.def Info: ./images/pca.png used on input line 83.
+Package pdftex.def Info: ./images/pca.png used on input line 81.
 (pdftex.def)             Requested size: 332.68385pt x 332.69086pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [72 <./images/pca.png>] <./images/lda.png, id=984, 867.24pt x 433.62pt>
+ [74 <./images/pca.png>]
+<./images/lda.png, id=1024, 867.24pt x 433.62pt>
 File: ./images/lda.png Graphic file (type png)
-
-<use ./images/lda.png>
-Package pdftex.def Info: ./images/lda.png used on input line 95.
+ <use ./images/lda.png>
+Package pdftex.def Info: ./images/lda.png used on input line 93.
 (pdftex.def)             Requested size: 332.68385pt x 166.34541pt.
 
-Underfull \vbox (badness 2951) has occurred while \output is active []
+Underfull \vbox (badness 4967) has occurred while \output is active []
 
- [73 <./images/lda.png>] [74] [75] <./images/anmm.png, id=1021, 839.135pt x 776
+ [75 <./images/lda.png>] [76] [77] <./images/anmm.png, id=1059, 839.135pt x 776
 .9025pt>
 File: ./images/anmm.png Graphic file (type png)
 
 <use ./images/anmm.png>
-Package pdftex.def Info: ./images/anmm.png used on input line 181.
+Package pdftex.def Info: ./images/anmm.png used on input line 176.
 (pdftex.def)             Requested size: 243.96951pt x 225.87682pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [76 <./images/anmm.png>] [77] <images/lmnn1.png, id=1041, 741.77126pt x 540.01
-75pt>
+ [78 <./images/anmm.png>] [79]
+<images/lmnn1.png, id=1080, 741.77126pt x 540.0175pt>
 File: images/lmnn1.png Graphic file (type png)
-
-<use images/lmnn1.png>
-Package pdftex.def Info: images/lmnn1.png used on input line 247.
+ <use images/lmnn1.png>
+Package pdftex.def Info: images/lmnn1.png used on input line 242.
 (pdftex.def)             Requested size: 195.41396pt x 142.26378pt.
- <images/lmnn2.png, id=1042, 752.8125pt x 492.84125pt>
-File: images/lmnn2.png Graphic file (type png)
 
-<use images/lmnn2.png>
-Package pdftex.def Info: images/lmnn2.png used on input line 251.
+<images/lmnn2.png, id=1081, 752.8125pt x 492.84125pt>
+File: images/lmnn2.png Graphic file (type png)
+ <use images/lmnn2.png>
+Package pdftex.def Info: images/lmnn2.png used on input line 246.
 (pdftex.def)             Requested size: 217.31065pt x 142.26378pt.
 
-Overfull \hbox (2.32141pt too wide) in paragraph at lines 251--252
+Overfull \hbox (2.32141pt too wide) in paragraph at lines 246--247
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[78] [79 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn1.png> </h
-ome/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn2.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [80]
-Underfull \vbox (badness 2426) has occurred while \output is active []
-
- [81]
-[82] [83] <images/ncm_problem.png, id=1100, 867.24pt x 433.62pt>
+[80] [81 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn1.png> </h
+ome/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn2.png>] [82] [83]
+[84] <images/ncm_problem.png, id=1130, 867.24pt x 433.62pt>
 File: images/ncm_problem.png Graphic file (type png)
 
 <use images/ncm_problem.png>
-Package pdftex.def Info: images/ncm_problem.png used on input line 389.
+Package pdftex.def Info: images/ncm_problem.png used on input line 372.
 (pdftex.def)             Requested size: 443.57848pt x 221.79169pt.
- [84 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/ncm_problem.png>] 
-[85] [86] [87] [88] [89] [90] [91]
-Overfull \hbox (1.51443pt too wide) in paragraph at lines 635--635
+ [85 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/ncm_problem.png>] 
+[86] [87] [88] [89] [90] [91] [92]
+Overfull \hbox (1.51443pt too wide) in paragraph at lines 601--601
 []\OT1/cmr/bx/n/14.4 Otras t^^Secni-cas de apren-di-za-je de m^^Setri-cas de di
 s-tan-cia 
  []
 
 
-Overfull \hbox (10.06573pt too wide) in paragraph at lines 643--644
+Overfull \hbox (10.06573pt too wide) in paragraph at lines 609--610
 \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g ^^Z \U/msb/m
 /n/10 R[]$ \OT1/cmr/m/n/10 (-20) y co-no-ce-mos adi-cio-nal-men-te el con-jun-t
 o $\OML/cmm/m/it/10 S \OT1/cmr/m/n/10 (-20) = \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10
@@ -2002,61 +1998,66 @@ o $\OML/cmm/m/it/10 S \OT1/cmr/m/n/10 (-20) = \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10
 .
  []
 
-[92]
-Overfull \hbox (3.64926pt too wide) in paragraph at lines 671--672
+[93]
+Overfull \hbox (3.64926pt too wide) in paragraph at lines 636--637
 []\OT1/cmr/m/n/10 (-20) Consideramos, al igual que en el ca-so an-te-rior, un c
 on-jun-to de da-tos de en-tre-na-mien-to $\OMS/cmsy/m/n/10 X \OT1/cmr/m/n/10 (-
 20) = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g ^^Z
  []
 
-[93] [94] <images/logistica.png, id=1222, 1462.46375pt x 614.295pt>
+[94] [95] <images/logistica.png, id=1258, 1462.46375pt x 614.295pt>
 File: images/logistica.png Graphic file (type png)
 
 <use images/logistica.png>
-Package pdftex.def Info: images/logistica.png used on input line 733.
-(pdftex.def)             Requested size: 443.57848pt x 186.32393pt.
- [95 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/logistica.png>] [9
-6]
-<images/svm_example.png, id=1242, 433.62pt x 433.62pt>
+Package pdftex.def Info: images/logistica.png used on input line 704.
+(pdftex.def)             Requested size: 288.32329pt x 121.10399pt.
+ [96 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/logistica.png>] <i
+mages/svm_example.png, id=1271, 433.62pt x 433.62pt>
 File: images/svm_example.png Graphic file (type png)
 
 <use images/svm_example.png>
-Package pdftex.def Info: images/svm_example.png used on input line 774.
+Package pdftex.def Info: images/svm_example.png used on input line 745.
 (pdftex.def)             Requested size: 221.78923pt x 221.79169pt.
 
-<images/svm_problem.png, id=1244, 433.62pt x 216.81pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[97] <images/svm_problem.png, id=1283, 433.62pt x 216.81pt>
 File: images/svm_problem.png Graphic file (type png)
 
 <use images/svm_problem.png>
-Package pdftex.def Info: images/svm_problem.png used on input line 782.
+Package pdftex.def Info: images/svm_problem.png used on input line 753.
 (pdftex.def)             Requested size: 221.78923pt x 110.89584pt.
- [97 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_example.png> <
-/home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_problem.png>] <image
-s/svm_solution.png, id=1256, 867.24pt x 433.62pt>
+
+<images/svm_solution.png, id=1285, 867.24pt x 433.62pt>
 File: images/svm_solution.png Graphic file (type png)
 
 <use images/svm_solution.png>
-Package pdftex.def Info: images/svm_solution.png used on input line 789.
+Package pdftex.def Info: images/svm_solution.png used on input line 760.
 (pdftex.def)             Requested size: 354.86412pt x 177.43468pt.
- [98 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_solution.png>]
- [99]
-Underfull \hbox (badness 10000) in paragraph at lines 843--845
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[98 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_example.png> </
+home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_problem.png>]
+[99 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/svm_solution.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 814--816
 
  []
 
 [100] [101]
-Overfull \hbox (57.56618pt too wide) in paragraph at lines 905--905
+Overfull \hbox (57.56618pt too wide) in paragraph at lines 887--887
 [] 
  []
 
-[102] [103] [104]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 1019.
- (/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-[105]) [106] [107
+[102]
+Underfull \vbox (badness 1533) has occurred while \output is active []
 
-] [108]
+ [103]
+[104] [105] [106]) [107] [108
+
+] [109] [110]
 (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/software.tex
 Cap\'{\i }tulo 7.
 
@@ -2065,9 +2066,9 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
  []
 
 ) (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/chapters/experiments.tex
-[109
+[111
 
-] [110
+] [112
 
 ]
 Cap\'{\i }tulo 8.
@@ -2076,34 +2077,34 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 1--1
 [][]  
  []
 
-) [111] [112
+) [113] [114
 
-] [113] 
+] [115] 
 AED: lastpage setting LastPage
-[114]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 181.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 181.
+[116]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 163.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 163.
  (/home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.aux
 LaTeX Info: Redefining \. on input line 22.
 LaTeX Info: Redefining \% on input line 22.
 LaTeX Info: Redefining \. on input line 30.
 LaTeX Info: Redefining \% on input line 30.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 181.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 181.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 163.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 163.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 5C85F305CADE444B308EA3C963D6A948;3294.
+(rerunfilecheck)             Checksum: 981AC451863DCB2B53F4C1632ABDF8D7;3310.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 163.
  ) 
 Here is how much of TeX's memory you used:
- 36029 strings out of 493029
- 658997 string characters out of 6136234
- 1084437 words of memory out of 5000000
- 38266 multiletter control sequences out of 15000+600000
- 22354 words of font info for 151 fonts, out of 8000000 for 9000
+ 36071 strings out of 493029
+ 659845 string characters out of 6136235
+ 1083408 words of memory out of 5000000
+ 38294 multiletter control sequences out of 15000+600000
+ 22518 words of font info for 151 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,18n,77p,10397b,2047s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/jlsuarezdiaz/.texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk>{/usr/
@@ -2131,11 +2132,11 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.pdf (114
- pages, 1491456 bytes).
+Output written on /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.pdf (116
+ pages, 1556343 bytes).
 PDF statistics:
- 1601 PDF objects out of 1728 (max. 8388607)
- 1406 compressed objects within 15 object streams
- 510 named destinations out of 1000 (max. 500000)
+ 1638 PDF objects out of 1728 (max. 8388607)
+ 1441 compressed objects within 15 object streams
+ 523 named destinations out of 1000 (max. 500000)
  17844 words of extra memory for PDF output out of 20736 (max. 10000000)
 

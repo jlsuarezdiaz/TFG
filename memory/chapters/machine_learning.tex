@@ -4,10 +4,62 @@ En este capítulo se realiza una descripción general del aprendizaje automátic
 
 \section{Introducción}
 
+El objetivo del aprendizaje automático es, como se ha indicado al comienzo del capítulo, aprender de los datos. Este aprendizaje se realiza mediante la elaboración de algoritmos de aprendizaje. Tradicionalmente, un algoritmo clásico recibe como entrada un conjunto de datos y produce como salida valores en función a dichos datos de entrada. En los algoritmos de aprendizaje, la técnica difiere notablemente. En este caso, el algoritmo recibe como entrada un conjunto de datos (y, posiblemente, un conjunto de valores asociados a esos datos), que se denominan datos de entrenamiento, y produce como salida una función o un algoritmo aplicable a nuevos datos. Esta función es el resultado del aprendizaje realizado con los datos de entrada.
 
+El aprendizaje automático surge cuando la complejidad o la variabilidad del problema a resolver impiden la elaboración de un programa que pueda resolverlo de forma determinista o heurística. Entre este tipo de problemas nos encontramos:
+
+\begin{itemize}
+    \item \textit{Realizar tareas humanas o animales.} Hay muchas tareas que los seres humanos realizamos diariamente, pero sin tener la suficiente consciencia de cómo las hacemos, de forma que no disponemos del suficiente conocimiento como para extraer un algoritmo que pueda ejecutarlas automáticamente. Entre este tipo de tareas se encuentran, por ejemplo, la conducción y el reconocimiento de sonidos o imágenes. En estos casos, son de gran utilidad los programas que sean capaces de aprender de experiencias previas.
+
+    \item \textit{Tareas inabordables por el ser humano.} Este tipo de tareas está relacionado con el análisis de conjuntos de datos de gran tamaño y la búsqueda de patrones en ellos. En la era digital que vivimos actualmente, es posible disponer de inmensas cantidades de datos en cualquier ámbito. Aprender de estos datos para convertirlos en conocimiento es de gran importancia en campos como la medicina, la meteorología, la biología y la administración de empresas.
+
+    \item \textit{Variablilidad de los problemas.} Los algoritmos clásicos son rígidos, en el sentido de que una vez creados, permanecen invariables a lo largo del tiempo. Sin embargo, la realización de determinadas tareas puede variar con el tiempo, con los factores del entorno, o según quién la realiza. Problemas de estas características son el reconocimiento de dígitos escritos a mano o la detección de spam en los correos electrónicos. Los algoritmos de aprendizaje son, por su naturaleza, capaces de adaptarse a esta variabilidad.
+\end{itemize}
+
+Aunque existen distintas formas de clasificar los problemas de aprendizaje automático, la clasificación más popular divide estos problemas principalmente en dos grupos: aprendizaje no supervisado y aprendizaje supervisado.
+
+En el aprendizaje supervisado el algoritmo de aprendizaje dispone de un conjunto de datos de entrenamiento para los cuales se conoce el valor de la función que se quiere aprender. Se dice en este caso que los datos están etiquetados. A partir de los datos etiquetados, se busca una función capaz de etiquetar nuevos datos. Estudiaremos este problema en la siguiente sección.
+
+En el aprendizaje no supervisado los datos no están etiquetados, es decir, solo disponemos de la información presente en los datos, sin saber cómo debe actuar la función que queremos aprender sobre estos. Dentro de estos problemas, destaca el de segmentación o \emph{clustering}, que trataremos brevemente en alguno de los algoritmos que estudiaremos en los próximos capítulos. El problema de clustering consiste en, dado el conjunto de datos de entrenamiento sin etiquetar, encontrar una forma de agrupar los datos en distintos \emph{clusters}, de forma que los datos en un mismo cluster sean similares, y a su vez diferentes a los datos en distintos clusters. Otro problema interesante de aprendizaje no supervisado es el aprendizaje de reglas de asociación, que consiste en extraer relaciones de causa y consecuencia en el conjunto de datos, obteniendo así reglas que permitan interpretarlos.
 
 \section{El aprendizaje supervisado}
 
+Como ya se ha comentado, el aprendizaje supervisado consiste en aprender de datos etiquetados. Existen diversas formas de modelar este problema \cite{learningfromdata,understandingml}. Siguiendo el enfoque de \cite{understandingml}, los elementos de un algoritmo de aprendizaje supervisado son:
+
+\begin{itemize}
+    \item \textbf{La entrada del algoritmo de aprendizaje.} Esta está compuesta por los siguiente elementos:
+    \begin{itemize}
+        \item \textbf{El dominio del problema.} Es un conjunto arbitrario, denominado usualmente $\mathcal{X}$. Normalmente es producto cartesiano de otros conjuntos, $\mathcal{X} = \mathcal{X}_1 \times \dots \times \mathcal{X}_d$, de forma que sus elementos son vectores, denominados \emph{vectores de atributos}. Un caso importante sucede al tratar con datos numéricos. En esta situación se suele tomar $\mathcal{X} = \R^d$.
+        \item \textbf{El conjunto de etiquetas.} Es otro conjunto arbitrario, denominado $\mathcal{Y}$. Las elecciones más comunes para $\mathcal{Y}$ son conjuntos finitos, destacando el de dos elementos, o, por otro lado, el conjunto de los números reales.
+        \item \textbf{El conjunto de los datos de entrenamiento.} Es una muestra finita $S =\{(x_1,y_1),\dots,(x_N,y_N)\} \subset \mathcal{X}\times\mathcal{Y}$. Son los datos a los que tiene acceso el algoritmo de aprendizaje.
+    \end{itemize}
+
+    \item \textbf{La salida del algoritmo de aprendizaje.} El algoritmo de aprendizaje elabora una \emph{regla de predicción}, \emph{predictor} o \emph{hipótesis}, $h\colon \mathcal{X} \to \mathcal{Y}$. Esta función permite predecir la etiqueta de nuevos puntos en el dominio.
+
+    \item \textbf{Un modelo de generación de datos.} Se asume que las instancias de datos se generan siguiendo una determinada distribución de probabilidad sobre el conjunto $\mathcal{X}$. Notamos dicha distribución por $\mathcal{D}$. Los datos de entrenamiento son $N$ muestras de esta distribución. Para el etiquetado, se asume que existe una función ``correcta'' (y desconocida) de etiquetado, $f \colon \mathcal{X} \to \mathcal{Y}$, de forma que las etiquetas de los datos de entrenamiento son generadas como $y_i = f(x_i)$, para $i=1,\dots,N$. Esta función es la que busca encontrar el algoritmo de aprendizaje.
+
+    \item \textbf{Medidas del error.} Asociado al predictor aprendido $h$, se define su error como la probabilidad de que no asigne la etiqueta correcta a un punto aleatorio $x \sim \mathcal{D}$, es decir,
+    \[ L_{\mathcal{D},f}(h) = \mathbb{P}_{x \sim \mathcal{D}}[h(x) \ne f(x)]. \]
+    Este error se denomina también \emph{error de generalización} o \emph{riesgo} de $h$. Notemos que este error no podemos conocerlo, pues depende de $\mathcal{D}$ y $f$, que son desconocidas. Se harán estimaciones de este error con los datos de entrenamiento.
+\end{itemize}
+
+Aunque los elementos anteriores son los que modelan el aprendizaje supervisado, como se ha comentado en las líneas previas, muchos de los elementos no son conocidos. En particular, no podemos conocer el error  real de los predictores que aprendamos. Por ello, es común utilizar otros conceptos de error que dependen únicamente de los datos de entrenamiento, y que por tanto pueden ser calculados por el algoritmo de aprendizaje. Este error dependerá del tipo de problema de aprendizaje supervisado que estemos tratando, y se denomina \emph{error empírico} o \emph{riesgo empírico}, notándose como $L_S$. Aprender predictores que minimicen este error conforma un paradigma de aprendizaje denominado \emph{minimización del riesgo empírico} o ERM.
+
+Sin embargo, la minimización del riesgo empírico puede conducir a predictores erróneos, pues un predictor que se ajuste demasiado a los datos puede perder capacidad de generalización, aprendiendo características específicas de los datos de entrenamiento que no son relevantes en su distribución real. Esto se manifiesta de forma más severa si en los datos hay presente ruido, debido por ejemplo a errores de medición durante la recogida de estos. Este fenómeno se conoce como \emph{sobreaprendizaje}. Una solución usual para evitar este problema consiste en restringir la búsqueda de predictores a un conjunto de hipótesis $\mathcal{H}$
+, y seleccionar el predictor dentro de dicha clase que minimice el riesgo empírico. Si se tiene algún conocimiento a priori sobre los datos, puede utilizarse para determinar la clase de hipótesis $\mathcal{H}$ sobre la que aprender.
+
+La minimización del riesgo empírico no es el único paradigma de aprendizaje popular. Existen otros paradigmas, como la minimización del riesgo estructural (SRM), en el cual la selección de hipótesis viene determinada, además de por la minimización del riesgo empírico, por un parámetro de regularización que asigna un peso distinto a determinados subconjuntos de hipótesis, según la simplicidad (y por tanto, capacidad de generalización) de estos. Esta modelización del aprendizaje supervisado se profundiza con mayor detalle dentro de la teoría PAC, en la que se proporciona un marco teórico amplio sobre las capacidades de generalización de los algoritmos de aprendizaje \cite{understandingml}.
+
+Para concluir presentamos los problemas más comunes del aprendizaje supervisado.
+
+\begin{itemize}
+    \item \textbf{Clasificación.} Es, probablemente, el problema más popular del aprendizaje supervisado. En este caso, el conjunto $\mathcal{Y}$ es finito y, salvo excepciones, no aporta información cardinal ni ordinal. Los distintos elementos que lo componen se denominan clases. Los predictores en este caso se denominan \emph{clasificadores}. El error empírico de los clasificadores se mide como el número de clases no acertadas, normalizado, es decir, $L_S(h) = |\{i \in \{1,\dots,N\} \colon h(x_i) \ne y_i \}|/N$.
+    \item \textbf{Regresión}. En este caso, el conjunto $\mathcal{Y}$ es $\R$. Los datos tienen asociado un valor real como etiqueta, y el predictor aprendido es por tanto una función real que intenta aproximar los datos del conjunto de entrenamiento. En este caso, se utiliza como medida del error empírico el error cuadrático medio, es decir, $L_S(h) = \sum_{i=1}^N(h(x_i)-y_i)^2/N$. 
+\end{itemize}
 
 
 \section{El problema de clasificación}
+
+El problema de clasificación consiste, por tanto, en aprender una función (clasificador) que asigne a cada dato en el dominio $\mathcal{X}$ una clase de entre un conjunto finito de clases, que conforman $\mathcal{Y}$. El problema de clasificación más común es el binario, donde el conjunto $\mathcal{Y}$ tiene únicamente dos elementos. Se suele representar en estos casos $\mathcal{Y} = \{-1,1\}$ o $\mathcal{Y} = \{0,1\}$. La clasificación binaria es de gran importancia, pues cualquier otro problema de clasificación puede reducirse a subproblemas de clasificación binaria. Muchos algoritmos de clasificación trabajan, por tanto, con problemas binarios, y reducen los problemas con más clases a subproblemas de este tipo. Los problemas de clasificación con más de dos clases se conocen como multiclase. Veremos que, para el problema que vamos a tratar, que haya más de dos clases no supondrá ningún inconveniente, no habiendo por tanto necesidad de descomponer el problema.
+
+Los problemas de clasificación tienen gran cantidad de aplicaciones en ámbitos muy variados, como por ejemplo, la detección de enfermedades, el reconocimiento de imágenes o sonidos, la detección de correos de spam, el desarrollo de motores de búsqueda en Internet, la taxonomía dentro de la biología o la clasificación de documentos.

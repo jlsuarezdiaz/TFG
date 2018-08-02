@@ -54,7 +54,6 @@ El lema anterior nos permite reformular nuestro problema en términos únicament
 \end{equation}
 
 Notemos ahora que, para $x \in \R^d$ y $L \in \mathcal{M}_{d'\times d}(\R)$ con $LL^T = I$, se verifica
-
 \begin{align*}
     \|x - L^TLx\|_2^2 &= \langle x - L^TLx, x - L^TLx \rangle \\
                       &= \|x\|^2 - 2\langle x,L^TLx \rangle + \langle L^TLx, L^TLx \rangle \\
@@ -65,7 +64,6 @@ Notemos ahora que, para $x \in \R^d$ y $L \in \mathcal{M}_{d'\times d}(\R)$ con 
 \end{align*}
 
 Por tanto, si eliminamos los términos que no dependen de $L$, podemos transformar el problema \ref{eq:pca:compress2} en el siguiente problema equivalente:
-
 \begin{equation} \label{eq:pca:traceproblem}
     \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) \\LL^T = I}} \quad \tr\left(L \Sigma L^T\right),
 \end{equation}
@@ -117,9 +115,8 @@ Y la matriz de dispersión intra-clase,
 \end{equation}  
 
 Notemos que estas matrices, representan, salvo constantes multiplicativas, las covarianzas entre los datos de las distintas clases tomando las medias como representantes de cada clase en el primer caso, y la suma, para cada clase, de las covarianzas para los datos de dicha clase, en el segundo caso. Como queremos maximizar la separación vamos a formular el problema de optimización como la búsqueda función de una proyección $L \in \mathcal{M}_{d'\times d}(\R)$ que maximice el cociente entre las varianzas entre clase y las varianzas intra clase determinadas por las matrices anteriores. El problema se establece como
-
 \begin{equation} \label{eq:lda}
-    \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) }} \quad \tr\left(\frac{L S_b L^T}{LS_wL^T}\right).
+    \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) }} \quad \tr\left((LS_wL^T)^{-1}(L S_b L^T)\right).
 \end{equation}
 
 
@@ -160,13 +157,11 @@ Lo que va a tratar de maximizar ANMM es el concepto de margen promedio de vecind
 
 \begin{definition}
     Dado $x_i \in \mathcal{X}$, se define su margen promedio de vecindario, y se nota $\gamma_i$, como
-    
     \begin{equation}
         \gamma_i = \sum\limits_{k \colon x_k \in \mathcal{N}_i^e} \frac{\|x_i - x_k \|^2}{|\mathcal{N}_i^e|} - \sum\limits_{j \colon x_j \in \mathcal{N}_i^o} \frac{\|x_i - x_j \|^2}{|\mathcal{N}_i^o|}.
     \end{equation}
     
     Se define el margen promedio (global) de vecindario como
-    
     \begin{equation}
         \gamma = \sum_{i=1}^N \gamma_i.
     \end{equation}
@@ -255,17 +250,14 @@ En términos matemáticos, si nuestra distancia está determinada por la aplicac
 \end{figure}
 
 A continuación, procedemos a definir de forma precisa los términos de la función objetivo. Como ya se ha mencionado, va a estar compuesta de dos términos. El primero penalizará a los vecinos objetivo lejanos y el segundo penalizará a los impostores cercanos. El primer término se define como
-
 \[ \varepsilon_{pull}(L) = \sum_{i=1}^N \sum_{j\istargetof i} \|L(x_i-x_j)\|^2. \]
 
 Notemos que su minimización genera una fuerza de atracción entre los datos. El segundo término se define como
-
 \[ \varepsilon_{push}(L) = \sum_{i=1}^{N}\sum_{j\istargetof i}\sum_{l=1}^{N} (1 - y_{il})[1 + \|L(x_i-x_j)\|^2 - \|L(x_i-x_l)\|^2]_{+}, \]
 
 donde $y_{il}$ es una variable binaria, que vale $1$ y $y_i = y_l$ y $0$ si $y_i \ne y_l$, y el operador $[ \cdot ]_{+}\colon  \R \to \R^+_0$ se define como $[z]_{+} = \max\{z,0\}$. De esta forma, este error suma cuando $y_{il} = 0$ (es decir, $x_l$ es de distinta clase que $x_i$), y el segundo factor es estrictamente positivo (es decir, se sobrepasa el margen definido para los impostores). La minimización de este segundo término genera una fuerza de repulsión entre los datos.
 
 Finalmente, la función objetivo resulta de combinar estos dos términos. Fijado $\mu \in ]0,1[$, definimos
-
 \begin{equation} \label{eq:lmnn:L}
 \varepsilon(L) = (1 - \mu)\varepsilon_{pull}(L) + \mu\varepsilon_{push}(L).
 \end{equation}
@@ -276,7 +268,6 @@ Los autores afirman que, experimentalmente, la elección de $\mu$ no provoca gra
 \end{equation}
 
 es una función convexa en $M$ que tiene toma los mismos valores que $\varepsilon(L)$. La minimización de $\varepsilon(M)$ en este caso está sujeta a la restricción $M \succeq 0$, por lo que podemos efectuarla mediante programación semidefinida, desplazándonos en la dirección del gradiente y proyectando el resultado sobre el cono semidefinido en sucesivas iteraciones. Además, podemos calcular un subgradiente $G \in \partial \varepsilon / \partial M$ dado por
-
 \[ G = (1-\mu) \sum_{i,j\istargetof i} O_{ij} + \mu \sum_{(i,j,l) \in \mathcal{N}} (O_{ij} - O_{il}), \]
 
 donde $\mathcal{N}$ es el conjunto de tripletas $(i,j,l)$ para las cuales $x_l$ es un impostor sobre $x_i$ con el margen determinado por $x_j$, y $O_{ij} = (x_i - x_j)(x_i - x_j)^T$ son los productos tensoriales obtenidos de derivar las distancias. El primer término del gradiente es constante, mientras que el segundo solo varía en cada iteración con los cambios de los impostores que entran o salen de el conjunto $\mathcal{N}$. Estas consideraciones permiten realizar un cálculo del gradiente bastante eficiente.
@@ -284,7 +275,6 @@ donde $\mathcal{N}$ es el conjunto de tripletas $(i,j,l)$ para las cuales $x_l$ 
 En cuanto a la reducción de dimensionalidad, se presentan dos alternativas diferentes. Si mantenemos la optimización respecto a $M$, no es factible añadir restricciones de rango y seguir obteniendo un problema de programación semidefinida. Por tanto, se propone el uso de PCA previamente a la ejecución del algoritmo, para proyectar los datos sobre sus componentes principales, y aplicar LMNN sobre los datos proyectados. La otra alternativa es optimizar la función objetivo respecto a $L \in \mathcal{M}_{d'\times d(\R)}$, con $d' < d$, usando algún algoritmo de gradiente descendente. En este caso la optimización no es convexa, pero aprendemos directamente una transformación lineal que reduce la dimensionalidad sin realizar cambios en el problema de optimización. Los autores afirman además, basados en los resultados empíricos, que esta optimización no convexa da buenos resultados.
 
 Otras propuestas realizadas para la mejora de este algoritmo consisten en aplicar LMNN múltiples veces, aprendiendo así nuevas métricas cada vez, e ir utilizando estas métricas para determinar vecinos objetivo cada vez más precisos, o bien aprender métricas localmente. Por último, aunque la distancia aprendida está diseñada para que pueda ser utilizada por el kNN, también es posible utilizar la propia función objetivo como método para clasificar. Estos modelos de clasificación se denominan basados en energía. De este modo, para clasificar un dato test $x_t$, para cada posible valor de clase $y_t$, buscamos $k$ vecinos objetivo en el conjunto de entrenamiento de clase $y_t$, y evaluamos la \emph{energía} para la métrica aprendida, asignando finalmente a $x_t$ el valor de $y_t$ que proporcione menor energía. De acuerdo con la funión objetivo, la energía penalizará distancias grandes entre $x_t$ y sus vecinos objetivo, los impostores en el perímetro de $x_t$ y perímetros de otras clases invadidas por $x_t$. Por tanto,
-
 \begin{equation}
 \begin{split}
  y_t^{pred} &= \arg\min_{y_t} \left\{ (1-\mu) \sum_{j \istargetof t} \|x_t-x_j\|_M^2 \right. \\
@@ -316,7 +306,6 @@ Sin embargo, la función que para cada $L$ asigna el error LOO para la distancia
 Para ello, NCA trata de abordar el problema de forma estocástica, esto es, en vez de operar con el error LOO directamente, lo hace sobre su valor esperado para la probabilidad que vamos a definir a continuación.
 
 Dados dos ejemplos $x_i, x_j \in \mathcal{X}$, definimos la probabilidad de que $x_i$ tenga a $x_j$ como su vecino más cercano para la distancia $L$ como
-
 \begin{equation}
     \begin{split}
     p_{ij}^L = \frac{\exp\left( - \|Lx_i - Lx_j \|^2 \right)}{\sum\limits_{k \ne i} \exp\left(-\|Lx_i - Lx_k \|^2\right)}\ \ (j \ne i),  
@@ -328,19 +317,16 @@ Dados dos ejemplos $x_i, x_j \in \mathcal{X}$, definimos la probabilidad de que 
 \end{equation}
 
 Notemos que, efectivamente, $p_{i*}$ define una medida de probabilidad sobre el conjunto $\{1,\dots,N\}$, para cada $i \in \{1,\dots,N\}$. Bajo esta ley de probabilidad, podemos definir la probabilidad de que el ejemplo $x_i$ esté correctamente clasificado como la suma de las probabilidades de que $x_i$ tenga como vecino más cercano a cada ejemplo de su misma clase, esto es,
-
 \begin{equation}
     p_i^L = \sum_{j \in C_i} p_{ij}^L \text{, donde } C_i = \{j \in \{1,\dots,N\}\colon y_j = y_i\}.
 \end{equation}
 
 Finalmente, el número esperado de ejemplos correctamente clasificados, y la función que vamos a maximizar, la obtenemos como
-
 \begin{equation}
     f(L) = \sum_{i=1}^N p_i^L = \sum_{i=1}^N \sum_{j \in C_i} p_{ij}^L = \sum_{i=1}^N \sum_{\substack{j \in C_i \\ j \ne i}} \frac{\exp\left(-\|Lx_i - Lx_j \|^2\right)}{\sum\limits_{k \ne i} \exp\left( -\|Lx_i - Lx_k\|^2 \right)}.
 \end{equation}
 
 Esta función sí es diferenciable, y su derivada es
-
 \begin{equation}
     \frac{\partial f}{\partial L}(L) = 2L \sum_{i=1}^N \left( p_i^L \sum_{k=1}^N p_{ik}^L x_{ik}x_{ik}^T - \sum_{j \in C_i} p_{ij}^Lx_{ij}x_{ij}^T \right).
 \end{equation}
@@ -357,19 +343,16 @@ Finalmente, notemos que el mismo procedimiento es aplicable a cualquier matriz $
 NCMML (\emph{Nearest Class Mean Metric Learning}) \cite{ncmml} es un algoritmo de aprendizaje de métricas de distancia orientado a mejorar específicamente el clasificador NCM. Para ello, utiliza un enfoque probabilístico simiar al utilizado por NCA para mejorar la precisión del kNN.
 
 Consideramos el conjunto de datos de entrenamiento $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d$, con etiquetas $y_1,\dots,y_N \in \mathcal{C}$, donde $\mathcal{C} = \{c_1,\dots,c_r\}$ es el conjunto de clases. Para cada $c \in \mathcal{C}$, llamamos $\mu_c \in \R^d$ al vector media de los datos pertenecientes a la clase $c$, es decir, $\mu_c = \frac{1}{N_c}\sum_{i\colon y_i = c}x_i$, donde $N_c$ es el número de elementos de $\mathcal{X}$ que pertenecen a la clase $c$. Dada una transformación lineal $L \in \mathcal{M}_{d'\times d}(\R)$, vamos a definir, para cada $x \in \mathcal{X}$ y cada $c \in \mathcal{C}$, la probabilidad de que $x$ sea etiquetado don la clase $c$ (de acuerdo con el criterio NCM) como
-
 \begin{equation}
     p_L(c|x) = \frac{\exp\left(-\frac{1}{2} \|L(x - \mu_c)\|^2\right)}{\sum\limits_{c' \in \mathcal{C}} \exp\left(-\frac{1}{2} \|L(x - \mu_{c'})\|^2\right)}.
 \end{equation} 
 
 Notemos que efectivamente $p_L(\cdot|x)$ define una probabilidad en el conjunto $\mathcal{C}$. Una vez definida la probabilidad anterior, la función objetivo que trata de maximizar NCMML es el logaritmo de la verosimilitud para los datos etiquetados del conjunto de entrenamiento, esto es,
-
 \begin{equation}
 \mathcal{L}(L) = \frac{1}{N}\sum_{i=1}^N\log p_L(y_i|x_i).
 \end{equation} 
 
 Esta función es diferenciable y su gradiente viene dado por
-
 \begin{equation}
 \frac{\partial \mathcal{L}}{\partial L}(L) = \frac{1}{N} \sum_{i=1}^N \sum\limits_{c\in \mathcal{C}} \alpha_{ic} L (\mu_c - x_i)(\mu_c - x_i)^T,
 \end{equation}
@@ -415,17 +398,14 @@ Para la clasificación con NCMC, el uso de K-Means se reduce a aplicar el algori
 \subsubsection{Aprendiendo distancias para NCMC}
 
 Una vez definido el clasificador NCMC, el proceso de aprendizaje de distancias es análogo al de NCM. Siguiendo la notación utilizada en NCMML, en este caso, en lugar de un conjunto de centros de clase $\{\mu_c\}$, con $c \in \mathcal{C}$, disponemos de un conjunto de centroides, $\{m_{c_j}\}_{j=1}^{k_c}$, con $k_c \in \mathbb{N}$, para cada $c \in \mathcal{C}$. En este caso, las probabilidades asociadas a cada clase para la predicción correcta de $x \in \mathcal{X}$ vienen dadas por $p_L(c|x) = \sum_{j=1}^{k_c} p_L(m_{c_j}|x)$, donde son los centroides aquellos cuya probabilidad viene dada por la función softmax
-
 \begin{equation}
     p_L(m_{c_j}|x) = \frac{\exp\left( -\frac{1}{2} \|L(x-m_{c_j})\|^2 \right)}{ \sum\limits_{c \in \mathcal{C}} \sum\limits_{i=1}^{k_c} \exp\left( -\frac{1}{2} \|L(x-m_{c_i})\|^2 \right) }.
 \end{equation}
 
 De nuevo, maximizamos el logaritmo de la verosimilitud, $\mathcal{L}(L) = \frac{1}{N}\sum_{i=1}^N p_L(y_i|x_i)$, cuyo gradiente en este caso viene dado por
-
 \begin{equation*}
     \frac{\partial \mathcal{L}}{\partial L}(L) = \frac{1}{N} \sum_{i=1}^N \sum_{c \in \mathcal{C}} \sum_{j=1}^{k_c} \alpha_{ic_j} L (m_{c_j}-x_i)(m_{c_j}-x_i)^T,
 \end{equation*}
-
 donde $\alpha_{ic_j} = p_L(m_{c_j}|x_i) - [\![ y_i = c ]\!] \frac{p_L(m_{c_j}|x_i)}{\sum_{j'=1}^{k_c} p_L(m_{c_{j'}}|x_i)}$. La maximización de la verosimilitud por métodos de gradiente es la tarea llevada a cabo por la técnica de aprendizaje de distancias para NCMC, que denominaremos con el mismo nombre que dicho clasificador.
 
 
@@ -443,12 +423,11 @@ ITML parte de un conjunto de datos $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d
 A partir de los datos con las restricciones indicadas, ITML considera una métrica inicial asociada a una matriz $M_0$ definida positiva, y trata de encontrar una matriz definida positiva $M$, lo más parecida posible a $M_0$, y que respete las restricciones de similitud impuestas. La forma de medir el parecido entre $M$ y $M_0$ se realiza utilizando herramientas de la teoría de la información.
 
 Es conocido que hay una correspondencia entre las matrices definidas positivas y las distribuciones normales multivariante, fijado un mismo vector media $\mu$. Dada $M \in \mathcal{M}_d(\R)^+$, podemos construir una distribución normal a través de su función de densidad,
-\[ p(x;M) = \frac{1}{(2\pi)^{n/2}|\Sigma|^{1/2}}\exp\left( (x-\mu)^T\Sigma^{-1}(x-\mu) \right). \]
+\[ p(x;M) = \frac{1}{(2\pi)^{n/2}\det(M)^{1/2}}\exp\left( (x-\mu)^TM^{-1}(x-\mu) \right). \]
 Recíprocamente, a partir de dicha distribución, si calculamos la matriz de covarianza recuperamos la matriz $M$. Usando esta correspondencia, vamos a medir la cercanía entre $M_0$ y $M$ a través de la divergencia KL entre sus correspondientes gaussianas,
 \[ \kl(p(x;M_0))\|p(x;M)) = \int p(x;M_0)\log\frac{p(x;M_0)}{p(x;M)}dx. \]
 
 Una vez definido el mecanismo con el que vamos a medir la cercanía de las métricas, podemos establecer la formulación del problema a optimizar por la técnica ITML. Si denominamos $S$ y $D$ a los conjuntos de pares de índices sobre los elementos de $\mathcal{X}$ que representan a los datos considerados similares y no similares, respectivamente, y partimos de la métrica inicial $M_0$, el problema es
-
 \begin{equation} \label{eq:itml:prob1}
     \begin{split}
     \min_{M \succeq 0} &\quad \kl(p(x;M_0)\|p(x;M))  \\
@@ -458,22 +437,21 @@ Una vez definido el mecanismo con el que vamos a medir la cercanía de las métr
 \end{equation}
 
 Para tratar este problema computacionalmente, se hace uso de la divergencia matricial \emph{log-det}, la cual viene dada por
-\[ D_{ld}(M,M_0) = \tr(MM_0^{-1}) - \log\det(MM_0^{-1}) -d, \quad M,M_0 \in \mathcal{M}_d(\R)^+. \]
+\[ D_{ld}(M\|M_0) = \tr(MM_0^{-1}) - \log\det(MM_0^{-1}) -d, \quad M,M_0 \in \mathcal{M}_d(\R)^+. \]
 
-Hemos visto que la divergencia KL entre dos gaussianas con la misma media se puede expresar en términos de la divergencia \emph{log-det} como
-\[ \kl(p(x;M_0)\|p(x;M)) = \frac{1}{2}D_{ld}(M_0^{-1},M^{-1}) = \frac{1}{2}D_{ld}(M,M_0). \]
+Hemos visto en el teorema \ref{prop:caract_kl:2} que la divergencia KL entre dos gaussianas con la misma media se puede expresar en términos de la divergencia \emph{log-det} como
+\[ \kl(p(x;M_0)\|p(x;M)) = \frac{1}{2}D_{ld}(M_0\|M). \]
 
 Esto nos permite reformular el problema \ref{eq:itml:prob1} de la siguiente forma:
-
 \begin{equation} \label{eq:itml:prob2}
     \begin{split}
-    \min_{M \succeq 0} &\quad D_{ld}(M,M_0)  \\
+    \min_{M \succeq 0} &\quad D_{ld}(M_0\|M)  \\
     \text{s.a.: } &\quad \tr(M(x_i-x_j)(x_i-x_j)^T) \le u, \quad (i,j) \in S \\
                   &\quad \tr(M(x_i-x_j)(x_i-x_j)^T) \ge l, \quad (i,j) \in D.
     \end{split}
 \end{equation}
 
-Es posible que no se pueda encontrar una métrica que satisfaga simultáneamente todas las restricciones, por lo que el problema podría no tener solución. Por ello, ITML introduce en el problema \ref{eq:itml:prob2} variables de holgura mediante las cuales se obtiene un problema en cuya optimización se establece un equilibrio entre la minimización de la divergencia y la satisfacción de las restricciones, para poder llegar así a una solución aproximada del problema original, en caso de no tener solución. Finalmente, la técnica computacional utilizada en la resolución de este problema de optimización es la conocida como el método de las \emph{proyecciones de Bregman}.
+Es posible que no se pueda encontrar una métrica que satisfaga simultáneamente todas las restricciones, por lo que el problema podría no tener solución. Por ello, ITML introduce en el problema \ref{eq:itml:prob2} variables de holgura mediante las cuales se obtiene un problema en cuya optimización se establece un equilibrio entre la minimización de la divergencia y la satisfacción de las restricciones, para poder llegar así a una solución aproximada del problema original, en caso de no tener solución. Finalmente, la técnica computacional utilizada en la resolución de este problema de optimización es la conocida como el método de las \emph{proyecciones de Bregman} \cite{bregman_projections}, el cual es una generalización del método de las proyecciones iteradas.
 %% *** Completar cuando se haga el tema de teoría de la información.
 
 \subsection{DMLMJ}
@@ -498,20 +476,16 @@ Consideramos el conjunto de entrenamiento $\mathcal{X} = \{x_1,\dots,x_N\} \subs
 Los conjuntos $S$ y $D$ representan, por tanto, los vectores con las diferencias entre los datos y sus $k$ vecinos más cercanos, de igual o de distinta clase, respectivamente. Llamamos $P$ y $Q$ a las distribuciones en los espacios $S$ y $D$, respectivamente, asumiendo que son gaussianas multivariante. Asumiremos, además, que ambas distribuciones tienen media 0. Esta asunción es razonable, puesto que en la práctica, en la mayoría de los casos, si $x_i$ es vecino de $x_j$, $x_j$ también lo es de $x_i$, luego ambas diferencias aparecerán en el espacio de diferencias, haciendo la media cero. Por último, llamaremos a las correspondientes matrices de covarianza $\Sigma_S$ y $\Sigma_D$, respectivamente.
 
 Si ahora aplicamos una transformación lineal a los datos, $x \mapsto Lx$, con $L \in \mathcal{M}_{d'\times d}(\R)$, las distribuciones transformadas seguirán teniendo media 0 y covarianzas $L\Sigma_S L^T$ y $L\Sigma_D L^T$, respectivamente. A dichas distribuciones las denominaremos $P_L$ y $Q_L$. El objetivo de DMLMJ es encontrar una transformación que maximice la divergencia de Jeffrey entre $P_L$ y $Q_L$:
-
 \[ \max_{L \in \mathcal{M}_{d'\times d}(\R)} \quad f(L) =  \jf(P_L\|Q_L) = \kl(P_L\|Q_L) + \kl(Q_L\|P_L).\]
 
 Como se demostró en la proposición \ref{prop:caract_jeffrey:2}, la divergencia de Jeffrey entre las distribuciones gaussianas $P_L$ y $Q_L$ se puede expresar como 
 \[ f(L) = \frac{1}{2} \tr\left( (L\Sigma_S L^T)^{-1} (L\Sigma_D L^T) + (L \Sigma_D L^T)^{-1} (L \Sigma_S L^T) \right) - d'. \]
 
 Como $d'$ es constante, obtenemos el problema equivalente
-
 \[ \max_{L \in \mathcal{M}_{d'\times d}(\R)} \quad J(L) =  \tr\left( (L\Sigma_S L^T)^{-1} (L\Sigma_D L^T) + (L \Sigma_D L^T)^{-1} (L \Sigma_S L^T) \right).\]
 
 Si calculamos el gradiente de la función anterior, obtenemos
-
 \[ \nabla J(L) = \left( 2 \Sigma_D L^T\Sigma_{2S}^{-1} - 2\Sigma_S L^T \Sigma_{2S}^{-1}\Sigma_{2D}\Sigma_{2S}^{-1} \right) + \left( 2\Sigma_S L^T \Sigma_{2D}^{-1} - 2 \Sigma_D L^T \Sigma_{2D}^{-1}\Sigma_{2S} \Sigma_{2D}^{-1} \right),\]
-
 donde $\Sigma_{2S} = L \Sigma_S L^T$ y $\Sigma_{2D} = L\Sigma_D L^T$.
 
 Cada uno de los términos entre paréntesis se anula, respectivamente, cuando $\Sigma_S^{-1} \Sigma_D L^T = L^T \Sigma_{2S}^{-1} \Sigma_{2D}$ y cuando $\Sigma_{D}^{-1}\Sigma_S L^T = L^T \Sigma_{2D}^{-1} \Sigma_{2S}$. Queremos resolver estas dos ecuaciones. Para ello, enunciamos los siguientes resultados.
@@ -519,7 +493,6 @@ Cada uno de los términos entre paréntesis se anula, respectivamente, cuando $\
 \begin{thm}
 
     Sean $\Sigma_1, \Sigma_2 \in \mathcal{M}_d(\R)^+$ y sea $L \in \mathcal{M}_{d'\times d}(\R)$ una matriz que contiene, por filas, $d'$ vectores propios linealmente independientes de $\Sigma_1^{-1}\Sigma_2$. Entonces,
-
     \begin{equation} \label{eq:jef:thm1}
         \Sigma_1^{-1}\Sigma_2L^T = L^T(L\Sigma_1L^T)^{-1}(L\Sigma_2L^T).
     \end{equation}
@@ -527,7 +500,6 @@ Cada uno de los términos entre paréntesis se anula, respectivamente, cuando $\
 
 \begin{proof} \label{thm:dmlmj1}
     Sea $D \in \mathcal{M}_{d'}(\R)$ la matriz diagonal que contiene, en el mismo orden, los $d'$ valores propios de $\Sigma_1^{-1}\Sigma_2$ asociados a los vectores propios presentes en $L$. Se verifica entonces
-    
     \begin{equation}\label{eq:jef:formula_vp}
         \Sigma_1^{-1}\Sigma_2L^T = L^TD.
     \end{equation} 
@@ -550,7 +522,6 @@ Cada uno de los términos entre paréntesis se anula, respectivamente, cuando $\
 
 \begin{cor} \label{cor:dmlmj1}
     Sean $\Sigma_1, \Sigma_2 \in \mathcal{M}_d(\R)^+$ y sea $L \in \mathcal{M}_{d'\times d}(\R)$ una matriz que contiene, por filas, $d'$ vectores propios linealmente independientes de $\Sigma_1^{-1}\Sigma_2$. Sea $D \in \mathcal{M}_{d'}(\R)$ la matriz diagonal con los correspondientes $d'$ valores propios. Entonces,
-
     \[ \tr\left( (L\Sigma_1L^T)^{-1}(L\Sigma_2L^T) \right) = \tr(D). \]
 \end{cor}
 
@@ -568,7 +539,6 @@ Cada uno de los términos entre paréntesis se anula, respectivamente, cuando $\
 \end{proof}
 
 De acuerdo con el teorema \ref{thm:dmlmj1}, podemos observar que es posible anular simultáneamente ambos términos del gradiente tomando $L$ como una matriz de vectores propios de $\Sigma_S^{-1}\Sigma_D$, o bien de $\Sigma_D^{-1}\Sigma_S$. Notemos que ambos casos comparten los mismos vectores propios y cada opción tiene como valores propios los inversos de la opción restante. Optamos por tomar $d'$ vectores propios del primer caso, de $\Sigma_S^{-1}\Sigma_D$. Entonces, $\nabla J(L) = 0$ y el corolario \ref{cor:dmlmj1} nos dice que
-
 \begin{align*}
     J(L) &= \tr\left( (L\Sigma_S L^T)^{-1} (L\Sigma_D L^T) + (L \Sigma_D L^T)^{-1} (L \Sigma_S L^T) \right) \\
          &= \tr\left( (L\Sigma_S L^T)^{-1} (L\Sigma_D L^T)\right) + \tr\left((L \Sigma_D L^T)^{-1} (L \Sigma_S L^T) \right) \\
@@ -580,7 +550,6 @@ donde $\Lambda = \diag(\lambda_1,\dots,\lambda_{d'})$ es la matriz diagonal con 
 Por tanto, para maximizar $J(L)$ debemos seleccionar los $d'$ vectores propios asociados a los $d'$ valores propios $\lambda$ para los cuales sea mayor la expresión $\lambda + 1/\lambda$. La transformación $L$ construida a partir de dichos vectores propios determina la distancia que es aprendida mediante la técnica DMLMJ.
 
 Finalmente, el único requerimiento adicional necesario para completar esta construcción es el cálculo de las matrices de covarianza. Teniendo en cuenta que se ha asumido que la media de las distribuciones es 0, podemos obtener dichas matrices de forma sencilla a partir de los vectores de diferencias, como se muestra a continuación.
-
 \begin{equation*}
     \Sigma_S = \frac{1}{|S|}\sum_{i=1}^{N} \left[ \sum_{x_j \in V_k^+(x_i)} (x_i-x_j)(x_i-x_j)^T\right], \quad \Sigma_D = \frac{1}{|D|}\sum_{i=1}^{N} \left[ \sum_{x_j \in V_k^-(x_i)} (x_i-x_j)(x_i-x_j)^T\right].
 \end{equation*}
@@ -607,13 +576,11 @@ Notemos que durante el entrenamiento conocemos las clases reales de los datos, l
 En efecto, supongamos que hay al menos $r + 2$ datos en cada clase, donde $r$ es el rango de $M$, y que $p^M(j|i) = p_0(j|i)$ para cualesquiera $i,j \in \{1,\dots,N\}$. Entonces, por un lado, de $p^M(j|i) = 0$ para $y_i \ne y_j$ se deduce que $\exp(-\|x_i-x_j\|^2_M) = 0$, lo que conduce indudablemente a que $x_i$ y $x_j$ estén infinitamente alejados cuando sus clases son distintas. Por otra parte, de $p^M(j|i) \propto 1$ para cualesquiera $x_i,x_j$ con $y_i = y_j$ se deduce que el valor $\exp(\|x_i-x_j\|_M^2)$ es constante para todos los miembros de una misma clase, y en consecuencia todos los puntos en una misma clase son equidistantes. Como $M$ tiene rango $r$ está induciendo una distancia sobre un subespacio de dimensión $r$, donde se sabe que a lo sumo puede haber $r+1$ puntos distintos y equidistantes entre sí (esto se debe a que los puntos distintos equidistantes para una distancia procedente de un producto escalar han de ser afinmente independientes). Como estamos asumiendo que hay al menos $r+2$ puntos por clase, todos los puntos de la misma clase han de tener distancia 0 entre sí respecto a $M$, colapsando por tanto en un único punto.
 
 Una vez establecidas ambas distribuciones, el objetivo de MCML es, como ya hemos comentado, aproximar $p^M(\cdot|i)$ a $p_0(\cdot|i)$ lo máximo posible, para cada $i$ utilizando para ello la entropía relativa entre ambas distribuciones. El problema de optimización consiste, por tanto, en minimizar esta divergencia,
-
 \begin{equation}
     \min_{M \succeq 0}\quad f(M) = \sum_{i=1}^N \kl \left[ p_0(j|i) \| p^M(j|i) \right].
 \end{equation} 
 
 Podemos reescribir la función objetivo en términos de funciones más elementales.
-
 \begin{equation} \label{eq:mcml:fobj2}
     \begin{split}
         f(M) &= \sum_{i=1}^N \sum_{j=1}^N p_0(j|i) \log \frac{p_0(j|i)}{p^M(j|i)} = \sum_{i=1}^N \sum_{j \colon y_i = y_j}\log\frac{1}{p^M(j|i)} \\
@@ -625,7 +592,6 @@ Podemos reescribir la función objetivo en términos de funciones más elemental
 Cada sumando de la expresión anterior es convexo en $M$, el primero por tratarse de una función distancia en $M$ (que es lineal), y el segundo por tratarse de una función logaritmo de suma de exponenciales (convexo) compuesto con una función distancia. Además, la restricción $M \succeq 0$ también es convexa, luego el problema a optimizar es convexo. La función objetivo es siempre no negativa, pues $\|x_i-x_j\|_M^2\ge - \log\sum_{k \ne i} \exp(-\|x_i-x_k\|^2)$, pues el lado derecho de la desigualdad siempre contiene al menos una exponencial con el término $-\|x_i-x_j\|_M^2$ y el logaritmo es creciente. Luego el problema es convexo y minorado, lo que nos garantiza que se alcanza un mínimo global y no hay mínimos locales. Podemos por tanto encontrar dicho óptimo utilizando los mecanismos de la optimización convexa.
 
 Concretamente, la técnica de optimización propuesta en MCML es la ya comentada programación semidefinida. Para ello, es necesario una expresión del gradiente de la función objetivo, el cual puede ser calculado a partir de su expresión en \ref{eq:mcml:fobj2}:
-
 \begin{equation*}
     \nabla f(M) = \sum_{i,j\colon y_i = y_j}(x_i - x_j)^T(x_i-x_j) - \sum_i \frac{-\sum\limits_{k \ne i} (x_i-x_k)^T(x_i-x_k) \exp(-\|x_i-x_k\|_M^2)}{ \sum\limits_{k \ne i} \exp(-\|x_i-x_k\|^2_M)}.
 \end{equation*}
@@ -643,7 +609,6 @@ LSI trata de aprender una métrica $M$ que respete esta información adicional. 
 Pasamos a formular el problema a optimizar. Supongamos que nuestro conjunto de datos es $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d$ y conocemos adicionalmente el conjunto $S = \{(x_i,x_j) \in \mathcal{X}\times\mathcal{X} \colon x_i \textit{ y } x_j \textit{ son similares.}\}$. De forma adicional, podemos conocer el conjunto $D = \{(x_i,x_j) \in \mathcal{X}\times\mathcal{X} \colon x_i \textit{ y } x_j \textit{ no son similares.} \}$. En caso de no disponer de este último, podemos tomar $D$ como el complemento de $S$ en $\mathcal{X} \times \mathcal{X}$.
 
 La primera intuición para abordar este problema, dada la información de la que disponemos, es minimizar las distancias entre los pares de puntos similares, esto es, minimizar $\sum_{(x_i,x_j)\in S} \|x_i - x_j \|_M^2$, donde $(x_i - x_j)^T M (x_i - x_j)$ y $M \in \mathcal{M}_{d}(\R)^+_0$. Sin embargo, esto nos conduce a la solución $M = 0$, lo cual no nos aportaría ninguna información productiva. Por eso, LSI añade la restricción adicional $\sum_{(x_i,x_j) \in D} \|x_i - x_j\|_M \ge 1$, lo que nos conduce al problema de optimización
-
 \begin{equation} \label{eq:lsi}
 \begin{split}
     \min_{M} &\quad \sum_{(x_i,x_j)\in S}  \|x_i - x_j \|_M^2 \\
@@ -662,14 +627,13 @@ Para la resolución de este problema los autores proponen el problema equivalent
                   &\quad M \succeq 0.
 \end{split}
 \end{equation}
-Este problema con dos restricciones convexas puede ser resuelto mediante métodos de gradiente ascendente combinados con proyecciones que satisfagan las restricciones del problema. En este problema, las restricciones son fáciles de satisfacer por separado. La primera restricción consiste en una proyección sobre un semiespacio afín, mientras que la segunda consiste en una proyección sobre el cono de matrices semidefinidas positivas. El método de las proyecciones iteradas justificado por el teorema \ref{thm:iter_proj} permite obtener satisfacer ambas restricciones proyectando repetidas veces sobre ambos conjuntos, hasta obtener la convergencia.
+Este problema con dos restricciones convexas puede ser resuelto mediante métodos de gradiente ascendente combinados con proyecciones que satisfagan las restricciones del problema. En este problema, las restricciones son fáciles de satisfacer por separado. La primera restricción consiste en una proyección sobre un semiespacio afín, mientras que la segunda consiste en una proyección sobre el cono de matrices semidefinidas positivas. El método de las proyecciones iteradas justificado por el teorema \ref{thm:iter_proj} permite satisfacer ambas restricciones proyectando repetidas veces sobre ambos conjuntos, hasta obtener la convergencia.
 
 \subsection{DML-eig}
 
 DML (\emph{Distance Metric Learning with Eigenvalue Optimization}) \cite{dmleig} es una técnica de aprendizaje de métricas de distancia inspirada en la técnica LSI de la sección anterior, proponiendo un problema de optimización muy similar pero ofreciendo un método de resolución completamente diferente, basado en la optimización de valores propios.
 
 Consideramos, al igual que en el caso anterior, un conjunto de datos de entrenamiento $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d$, del que conocemos dos subconjuntos $S$ y $D$ de $\mathcal{X}\times\mathcal{X}$ de datos considerados similares, y no similares, respectivamente. En la sección anterior, para optimizar el problema \ref{eq:lsi:equiv} se proponía un método de gradiente ascendente con proyecciones iteradas, el cual puede requerir bastante tiempo para converger. La propuesta de DML-eig consiste en una ligera modificación de la función objetivo, manteniendo las restricciones, que nos conduce al problema
-
 \begin{equation} \label{eq:dmleig:1}
 \begin{split}
     \max_{M} &\quad \min_{(x_i,x_j)\in D}  \|x_i - x_j \|_M^2 \\
@@ -679,7 +643,6 @@ Consideramos, al igual que en el caso anterior, un conjunto de datos de entrenam
 \end{equation}
 
 Para abordar la resolución de este problema resulta útil introducir una notación que simplifique la indexación de los datos. En primer lugar, denotaremos $X_{ij} = (x_i-x_j)(x_i-x_j)^T$ a los productos tensoriales entre las diferencias de elementos de $\mathcal{X}$. Para acceder a pares de elementos $(i,j)$ utilizaremos un único índice $\tau \equiv (i,j)$. Dicho índice lo podremos suponer ordenado cuando sea necesario para acceder a las distintas componentes de un vector de dimensión adecuada. Al producto tensorial anterior $X_{ij}$ también lo podremos notar como $X_{\tau}$. Por último, los conjuntos $S$ y $D$ también supondremos que están formados por índices $\tau$ asociados a un par $(i,j)$ tales que $x_i$ y $x_j$ son similares o no similares, respectivamente. De esta forma, si denotamos $X_S = \sum_{(i,j)\in S}X_{ij}$, el problema \ref{eq:dmleig:1} podemos reescribirlo en términos del producto escalar de Frobenius como
-
 \begin{equation} \label{eq:dmleig:2}
 \begin{split}
     \max_{M} &\quad \min_{\tau \in D}  \langle X_{\tau}, M \rangle \\
@@ -688,21 +651,28 @@ Para abordar la resolución de este problema resulta útil introducir una notaci
 \end{split}
 \end{equation}
 
-Vamos finalmente a establecer la formulación del problema que buscamos en términos de optimización de valores propios. Para cada matriz simétrica $X \in S_d(\R)$ denotamos a su mayor valor propio como $\lambda_{\max}(X)$. Asociado al conjunto $D$ de pares no similares vamos a definir el simplex
+Veamos cómo se establece la formulación del problema que buscamos en términos de optimización de valores propios. Para cada matriz simétrica $X \in S_d(\R)$ denotamos a su mayor valor propio como $\lambda_{\max}(X)$. Asociado al conjunto $D$ de pares no similares vamos a definir el simplex
 \[ \Delta = \left\{u \in \R^{|D|} \colon u_\tau \ge 0 \ \forall \tau \in D, \sum_{\tau \in D} u_{\tau} = 1 \right\}. \]
 También consideramos el conjunto
 \[ \mathcal{P} = \{M \in \mathcal{M}_d(\R)^+_0 \colon \tr(M) = 1 \}.  \]
-$\mathcal{P}$ es la intersección del cono de matrices semidefinidas positivas con un subespacio afín de $\mathcal{M}_d(\R)$. A los conjuntos que presentan esta estructura se les conoce como \emph{espectraedros}. El teorema que se muestra a continuación permite establecer la equivalencia entre el problema formulado y el problema de optimización de valores propios.
+$\mathcal{P}$ es la intersección del cono de matrices semidefinidas positivas con un subespacio afín de $\mathcal{M}_d(\R)$. A los conjuntos que presentan esta estructura se les conoce como \emph{espectraedros}. 
 
+Entonces, si $X_S$ es definida positiva y definimos, para cada $\tau \in D$, $\widetilde{X}_{\tau} = X_S^{-1/2}X_{\tau}X_S^{-1/2}$, se puede probar \cite{dmleig} que el problema \ref{eq:dmleig:2} es equivalente al siguiente problema
+  \begin{equation} \label{eq:dmleig:3}
+      \max_{S \in \mathcal{P}} \min_{u \in \Delta} \sum_{\tau \in D} u_{\tau}\langle \widetilde{X}_{\tau},S\rangle,
+  \end{equation}
+  el cual se puede reescribir a su vez como un problema de optimización de valores propios:
+  \begin{equation} \label{eq:dmleig:4}
+      \min_{u \in \Delta} \max_{S \in \mathcal{P}} \left\langle \sum_{\tau \in D} u_{\tau} \widetilde{X}_{\tau},S\right\rangle = \min_{u \in \Delta} \lambda_{\max}\left( \sum_{\tau\in D}u_{\tau}\widetilde{X}_{\tau} \right).
+  \end{equation}
+
+\begin{comment}
 \begin{thm}
     Supongamos que $X_S$ es definida positiva y definimos, para cada $\tau \in D$, definimos $\widetilde{X}_{\tau} = X_S^{-1/2}X_{\tau}X_S^{-1/2}$. Entonces, el problema \ref{eq:dmleig:2} es equivalente al siguiente problema
-
     \begin{equation} \label{eq:dmleig:3}
         \max_{S \in \mathcal{P}} \min_{u \in \Delta} \sum_{\tau \in D} u_{\tau}\langle \widetilde{X}_{\tau},S\rangle,
     \end{equation}
-
     el cual se puede reescribir a su vez como un problema de optimización de valores propios:
-
     \begin{equation} \label{eq:dmleig:4}
         \min_{u \in \Delta} \max_{S \in \mathcal{P}} \left\langle \sum_{\tau \in D} u_{\tau} \widetilde{X}_{\tau},S\right\rangle = \min_{u \in \Delta} \lambda_{\max}\left( \sum_{\tau\in D}u_{\tau}\widetilde{X}_{\tau} \right).
     \end{equation}
@@ -711,6 +681,7 @@ $\mathcal{P}$ es la intersección del cono de matrices semidefinidas positivas c
 \begin{proof}
 
 \end{proof}
+\end{comment}
 
 El problema de minimizar el mayor valor propio de una matriz simétrica es conocido y se conocen algoritmos iterativos que permiten alcanzar dicho mínimo \cite{overton1988minimizing}. Además, en \cite{dmleig} se propone un algoritmo para resolver el problema $\max_{S \in \mathcal{P}} \min_{u \in \Delta} \sum_{\tau \in D} u_{\tau}\langle \widetilde{X}_{\tau},S\rangle + \mu \sum_{\tau \in D} u_{\tau} \log u_{\tau}$, donde $\mu > 0$ es un parámetro de suavizado, mediante el cual se puede aproximar el problema \ref{eq:dmleig:4}.
 
@@ -730,7 +701,7 @@ Esta función presenta una gráfica con una forma sigmoidal, es diferenciable, e
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.0\textwidth]{images/logistica.png}
+    \includegraphics[width=0.65\textwidth]{images/logistica.png}
     \caption{La función logística.} \label{fig:funcion_logistica}
 \end{figure}
 
@@ -860,8 +831,17 @@ El uso de las funciones kernel es factible en muchos de los algoritmos del apren
     \end{split}
 \end{equation}
 
-El siguiente problema común a todos los algoritmos de aprendizaje de métricas basados en kernels consiste en cómo tratar la transformación aprendida. En este caso, el aprendizaje consistirá en aprender una aplicación lineal en el espacio de características $L \colon \mathcal{F} \to \R^d$ que, como ocurre en los algoritmos ya estudiados, inducirá una distancia en el espacio de destino. El problema en esta situación es que $\mathcal{F}$ podría ser de muy alta dimensionalidad, o incluso de dimensión infinita, luego $L$ podría no ser tratable matricialmente. Retomando el ejemplo de las máquinas de vectores soporte, surge un problema similar, pues el hiperplano aprendido puede representarse mediante un vector $w$, que de nuevo podría tener dimensión muy alta o infinita. En este caso, se conocen \emph{teoremas de representación} que permiten expresar $w$ como combinación lineal de los datos en el espacio de características, y dicha combinación lineal permite utilizar las funciones kernel para la transformación. Vamos a ver que en el aprendizaje de métricas de distancia podemos seguir el mismo planteamiento, gracias al teorema que se enuncia a continuación.
+El siguiente problema común a todos los algoritmos de aprendizaje de métricas basados en kernels consiste en cómo tratar la transformación aprendida. En este caso, el aprendizaje consistirá en aprender una aplicación lineal en el espacio de características $L \colon \mathcal{F} \to \R^d$ que, como ocurre en los algoritmos ya estudiados, inducirá una distancia en el espacio de destino. El problema en esta situación es que $\mathcal{F}$ podría ser de muy alta dimensionalidad, o incluso de dimensión infinita, luego $L$ podría no ser tratable matricialmente. Retomando el ejemplo de las máquinas de vectores soporte, surge un problema similar, pues el hiperplano aprendido puede representarse mediante un vector $w$, que de nuevo podría tener dimensión muy alta o infinita. En este caso, se conocen \emph{teoremas de representación} que permiten expresar $w$ como combinación lineal de los datos en el espacio de características, y dicha combinación lineal permite utilizar las funciones kernel para la transformación.
 
+En el aprendizaje de métricas de distancia, si suponemos la aplicación lineal que queremos aprender $L$ también continua (es decir, $L \in \mathcal{L}(\mathcal{F},\R^d)$), podemos expresarla como un vector de funcionales lineales y continuos, los cuales, por el teorema de representación de Riesz, están determinados por el producto escalar por un determinado vector, es decir, $L = (\langle \cdot, w_1 \rangle, \dots, \langle \cdot , w_d \rangle)$. Para los algoritmos que vamos a estudiar, se conocen diversos teoremas de representación \cite{neurocomputing,hofmann2008kernel,kda,dmlmj,kpca} que permiten expresar los vectores $w_i$ como combinación lineal de los datos en el espacio de características, esto es, para cada $i \in \{1,\dots,d'\}$ existe un vector $\alpha^i = (\alpha_1^i,\dots,\alpha_{N}^i) \in \R^{N}$ tal que $w_i = \sum_{j=1}^N \alpha_j^i \phi(x_j)$. En consecuencia, se verifica que
+\[L\phi(x) = A \begin{pmatrix} K(x_1,x) \\ \vdots \\ K(x_N,x) \end{pmatrix},\]
+donde $A \in \mathcal{M}_{d'\times N}(\R)$ viene dada por $A_{ij} = \alpha_j^i$.
+
+\begin{comment}
+Vamos a ver que en el aprendizaje de métricas de distancia podemos seguir el mismo planteamiento, gracias al teorema que se enuncia a continuación.
+\end{comment}
+
+\begin{comment}
 \begin{thm}[Teorema de representación para el aprendizaje de métricas de distancia] \label{thm:representer}
     Sea $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d$, $\mathcal{F}$ un espacio de Hilbert de características, y $\phi \colon \mathcal{X} \to \mathcal{F}$ una aplicación. Consideramos también la función kernel $K \colon \R^d \times \R^d \to \R$. Sean $d' \le d$ y $L\colon \mathcal{F} \to \R^{d'}$ una aplicación lineal y continua. Entonces, podemos escribir $L = (L_1, \dots, L_{d'})$, donde $L_i \colon \mathcal{F} \to \R$ viene dado por $L_i(u) = \langle w_i, u \rangle$ para todo $u \in \mathcal{F}$. Supongamos que $L$ verifica alguna de las siguientes condiciones:
 
@@ -879,8 +859,9 @@ El siguiente problema común a todos los algoritmos de aprendizaje de métricas 
     \[L\phi(x) = A \begin{pmatrix} K(x_1,x) \\ \vdots \\ K(x_N,x) \end{pmatrix},\]
     donde $A \in \mathcal{M}_{d'\times N}(\R)$ viene dada por $A_{ij} = \alpha_j^i$  .
 \end{thm}
+\end{comment}
 
-Gracias a este teorema, si conseguimos que $L$ verifique alguna de las hipótesis indicadas, podemos tratar el problema computacionalmente si somos capaces de calcular los coeficientes de la matriz $A$. A la hora de transformar los datos de $\mathcal{X}$ bastará con multiplicar $A$ por la columna adecuada de la matriz del kernel. Si queremos transformar nuevos datos podemos de la misma forma definir una matriz (en este caso, no necesariamente cuadrada) con los productos escalares entre los datos de entrenamiento y los nuevos datos. De nuevo, escogiendo la columna adecuada en dicha matriz podremos transformar los datos según la aplicación definida por $L$.
+Gracias a estos teoremas, podemos tratar el problema computacionalmente si somos capaces de calcular los coeficientes de la matriz $A$. A la hora de transformar los datos de $\mathcal{X}$ bastará con multiplicar $A$ por la columna adecuada de la matriz del kernel. Si queremos transformar nuevos datos podemos de la misma forma definir una matriz (en este caso, no necesariamente cuadrada) con los productos escalares entre los datos de entrenamiento y los nuevos datos. De nuevo, escogiendo la columna adecuada en dicha matriz podremos transformar los datos según la aplicación definida por $L$.
 
 Cada técnica de aprendizaje de métricas que admita el uso de kernels utilizará herramientas distintas para su funcionamiento, cada una de ellas basada en los algoritmos originales. En las siguientes secciones se describirán las kernelizaciones de algunos de los algoritmos estudiados.
 
@@ -892,11 +873,12 @@ KLMNN \cite{klmnn} es la versión kernelizada de LMNN. En ella, los datos del co
 Aunque el problema formulado en la versión no kernelizada se realizó respecto a una matriz de métrica $M$, mediante la función de error \ref{eq:lmnn:M}, a la hora de trabajar en espacios de características nos interesará más trabajar con una aplicación lineal, aunque se pierda la convexidad del problema, para poder utilizar el teorema de representación. Por tanto, adaptando al espacio de características la función de error propuesta en \ref{eq:lmnn:L}, el problema formulado para la versión kernelizada consiste en
 \begin{equation} \label{eq:klmnn:L}
 \begin{split}
-    \min_{L\colon \mathcal{F} \to \R^{d}} \quad \varepsilon(L) &= (1-\mu)\sum_{i=1}^N\sum_{j \istargetof i} \|L(\phi(x_i) - \phi(x_j))\|^2 \\
+    \min_{L\in \mathcal{L}(\mathcal{F},\R^{d})} \quad \varepsilon(L) &= (1-\mu)\sum_{i=1}^N\sum_{j \istargetof i} \|L(\phi(x_i) - \phi(x_j))\|^2 \\
                 &+ \mu \sum_{i=1}^N\sum_{j \istargetof i} \sum_{l=1}^N(1-y_{il})[1 + \|L(\phi(x_i) - \phi(x_j))\|^2-\|L(\phi(x_i) - \phi(x_l))\|^2]_+. 
  \end{split}
 \end{equation}
-En este caso es claro que una solución $L$ al problema \ref{eq:klmnn:L} verifica la hipótesis \ref{item:representer:2} del teorema de representación \ref{thm:representer}. Por tanto, se verifica que, para cada $x_i \in \mathcal{X}$, $L\phi(x_i) = AK_{.i}$, donde $A \in \mathcal{M}_{d' \times N}(\R)$ es la matriz dada por el teorema de representación, y $K_{.i}$ es la $i$-ésima columna de la matriz de kernel. Utilizando esto en la expresión del error, obtenemos
+
+Como consecuencia del teorema de representación, se verifica que, para cada $x_i \in \mathcal{X}$, $L\phi(x_i) = AK_{.i}$, donde $A \in \mathcal{M}_{d' \times N}(\R)$ es la matriz dada por el teorema de representación, y $K_{.i}$ es la $i$-ésima columna de la matriz de kernel. Utilizando esto en la expresión del error, obtenemos
 \begin{align*}
 & (1-\mu)\sum_{i=1}^N\sum_{j \istargetof i} \|L(\phi(x_i) - \phi(x_j))\|^2 
                 + \mu \sum_{i=1}^N\sum_{j \istargetof i} \sum_{l=1}^N(1-y_{il})[1 + \|L(\phi(x_i) - \phi(x_j))\|^2-\|L(\phi(x_i) - \phi(x_l))\|^2]_+ \\
@@ -925,11 +907,13 @@ Las matrices (o endomorfismos, más en general) de dispersión y compacidad en e
 \end{align*}
 
 El problema a optimizar se expresa, por tanto, como
-\begin{align}
-    \max_{L \colon \mathcal{F} \to \R^{d'}} &\quad \tr\left(L(S^{\phi}-C^{\phi})L^T\right)  \\
+\begin{equation}
+\begin{split}
+    \max_{L \in \mathcal{L}(\mathcal{F},\R^{d'})} &\quad \tr\left(L(S^{\phi}-C^{\phi})L^T\right)  \\
     \text{s.a.: } &\quad LL^T = I
-\end{align}
-Una de las aplicaciones $L$ que resuelve este problema verifica, como ya se mostró durante la descripción de ANMM, la hipótesis \ref{item:representer:1} del teorema de representación \ref{thm:representer}. Por tanto, cada uno de los vectores $w_i, i = 1,\dots,d'$ de $\mathcal{F}$ que caracterizan $L$ verifican $w_i = \sum_{j=1}^N \alpha_j^i \phi(x_j)$. En consecuencia, $L\phi(x_i) = AK_{.i}$, donde $A$ es la matriz de coeficientes del teorema de representación y $K_{.i}$ representa la $i$-ésima columna de la matriz del kernel. Entonces,
+\end{split}
+\end{equation}
+De acuerdo con los teoremas de representación, cada uno de los vectores $w_i, i = 1,\dots,d'$ de $\mathcal{F}$ que caracterizan $L$ verifican $w_i = \sum_{j=1}^N \alpha_j^i \phi(x_j)$. En consecuencia, $L\phi(x_i) = AK_{.i}$, donde $A$ es la matriz de coeficientes del teorema de representación y $K_{.i}$ representa la $i$-ésima columna de la matriz del kernel. Entonces,
 \begin{equation*}
     \begin{split}
         L(\phi(x_i)-\phi(x_j))(\phi(x_i)-\phi(x_j))^TL^T = A(K_{.i}-K_{.j})(K_{.i}-K_{.j})^TA^T,
@@ -957,8 +941,8 @@ De nuevo, es posible calcular los vecindarios $k$-positivo y $k$-negativo $V_k^+
     \Sigma_D^{\phi} &= \frac{1}{|D|}\sum_{i=1}^{N} \left[ \sum_{\phi(x_j) \in V_k^-(\phi(x_i))} (\phi(x_i)-\phi(x_j))(\phi(x_i)-\phi(x_j))^T\right].
 \end{align*}
 El problema de optimización viene dado por
-\[ \max_{L \colon \mathcal{F} \to \R^{d'}} \quad J(L) =  \tr\left( (L\Sigma_S^{\phi} L^T)^{-1} (L\Sigma_D^{\phi} L^T) + (L \Sigma_D^{\phi} L^T)^{-1} (L \Sigma_S^{\phi} L^T) \right).\]
-De nuevo la solución de este problema verifica la hipótesis \ref{item:representer:1} del teorema de representación \ref{thm:representer}. De nuevo se tiene, por tanto, que $L\phi(x_i) = AK_{.i}$ para cada $x_i \in \mathcal{X}$, donde $A$ es la matriz del teorema de representación y $K_{.i}$ es la $i$-ésima columna de la matriz de kernel. Si, razonando como en la sección anterior, definimos las matrices
+\[ \max_{L \in \mathcal{L}(\mathcal{F}, \R^{d'})} \quad J(L) =  \tr\left( (L\Sigma_S^{\phi} L^T)^{-1} (L\Sigma_D^{\phi} L^T) + (L \Sigma_D^{\phi} L^T)^{-1} (L \Sigma_S^{\phi} L^T) \right).\]
+ De nuevo se tiene, por los teoremas de representación, que $L\phi(x_i) = AK_{.i}$ para cada $x_i \in \mathcal{X}$, donde $A$ es la matriz del teorema de representación y $K_{.i}$ es la $i$-ésima columna de la matriz de kernel. Si, razonando como en la sección anterior, definimos las matrices
 \begin{align*}
     U &= \frac{1}{|S|}\sum_{i=1}^{N} \left[ \sum_{\phi(x_j) \in V_k^+(\phi(x_i))} (K_{.i}-K_{.j})(K_{.i}-K_{.j})^T\right] \\
     V &= \frac{1}{|D|}\sum_{i=1}^{N} \left[ \sum_{\phi(x_j) \in V_k^-(\phi(x_i))} (K_{.i}-K_{.j})(K_{.i}-K_{.j})^T\right],
@@ -979,7 +963,7 @@ KDA (\emph{Kernel Discriminant Analysis}) \cite{kda} es la versión kernelizada 
 
 Supongamos, al igual que en LDA, que el conjunto de posibles clases es $\mathcal{C}$, de cardinal $r$, y para cada $c \in \mathcal{C}$ definimos $\mathcal{C}_c = \{i \in \{1,\dots,N\} \colon y_i = c\}$ y $N_c = |\mathcal{C}_c|$, con $\mu_c^{\phi}$ el vector media de la clase $c$ y $\mu^{\phi}$ el vector media de todos los datos, considerándolos dentro del espacio de características. El problema que buscamos resolver en este caso es
 \begin{equation} \label{eq:kda}
-    \max_{\substack{L \colon \mathcal{F} \to \R^{d'} }} \quad \tr\left(\frac{L S_b^{\phi} L^T}{LS_w^{\phi}L^T}\right),
+    \max_{\substack{L \in \mathcal{L}(\mathcal{F}, \R^{d'}) }} \quad \tr\left(\frac{L S_b^{\phi} L^T}{LS_w^{\phi}L^T}\right),
 \end{equation}
 donde $S_b^{\phi}$ y $S_w^{\phi}$ son los operadores que miden la dispersión entre clases e intra-clase, respectivamente, y vienen dados por
 
@@ -988,7 +972,7 @@ donde $S_b^{\phi}$ y $S_w^{\phi}$ son los operadores que miden la dispersión en
     S_w^{\phi} &= \sum_{c \in \mathcal{C}}\sum_{i \in \mathcal{C}_c}(\phi(x_i)-\mu_c^{\phi})(\phi(x_i)-\mu_c^{\phi})^T,
 \end{align*}
 
-De nuevo este problema verifica la hipótesis \ref{item:representer:1} del teorema de representación \ref{thm:representer}, por lo que si $L = (\langle w_1,\cdot\rangle, \dots, \langle w_{d'}, \cdot \rangle)$, se verifica que $w_i = \sum_{j=1}^N \alpha_j^i \phi(x_j)$ para cada $i = 1,\dots,d'$ y
+De nuevo hacemos uso de los teoremas de representación, de forma que si $L = (\langle w_1,\cdot\rangle, \dots, \langle w_{d'}, \cdot \rangle)$, se verifica que $w_i = \sum_{j=1}^N \alpha_j^i \phi(x_j)$ para cada $i = 1,\dots,d'$ y
 \[L\phi(x) = A \begin{pmatrix} K(x_1,x) \\ \vdots \\ K(x_N,x) \end{pmatrix}, \]
 para los coeficientes $\alpha_j^i$ y la matriz $A$ en las condiciones del teorema de representación. Vamos a buscar de nuevo una expresión del problema \ref{eq:kda} que dependa únicamente de la función kernel y de la matriz $A$. Para ello, observemos que para los vectores media de cada clase se verifica
 \[ L\mu_c^{\phi} = L\left(\frac{1}{N_c} \sum_{i \in \mathcal{C}_c} \phi(x_i)\right) = \frac{1}{N_c}\sum_{i \in \mathcal{C}_c}L\phi(x_i) = \frac{1}{N_c}\sum_{i \in \mathcal{C}_c}AK_{.i},  \]

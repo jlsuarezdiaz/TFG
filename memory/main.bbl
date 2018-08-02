@@ -19,6 +19,37 @@
 
 \refsection{0}
   \sortlist[entry]{nty/global}
+    \entry{learningfromdata2}{book}{}
+      \name{author}{3}{}{%
+        {{hash=de934bfee8ca33b64a9ad2bfd699ba84}{%
+           family={Abu-Mostafa},
+           family_i={A\bibinithyphendelim M\bibinitperiod},
+           given={Yaser\bibnamedelima S},
+           given_i={Y\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=e1d3e42e9c8545276945df1724e0d498}{%
+           family={Magdon-Ismail},
+           family_i={M\bibinithyphendelim I\bibinitperiod},
+           given={Malik},
+           given_i={M\bibinitperiod}}}%
+        {{hash=ec4aa4123f07d57016afedecdf45ed9e}{%
+           family={Lin},
+           family_i={L\bibinitperiod},
+           given={Hsuan-Tien},
+           given_i={H\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AMLBook New York, NY, USA:}%
+      }
+      \strng{namehash}{489525f18e6388f1948ca5e16c0dfb38}
+      \strng{fullhash}{489525f18e6388f1948ca5e16c0dfb38}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning from data}
+      \field{volume}{4}
+      \field{year}{2012}
+    \endentry
     \entry{survey_dml_2}{article}{}
       \name{author}{3}{}{%
         {{hash=cecab514c728aed99e81691d0adc2d82}{%
@@ -71,6 +102,71 @@
       \field{labeltitlesource}{title}
       \field{title}{Convex optimization}
       \field{year}{2004}
+    \endentry
+    \entry{bregman_projections}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ad142f4bac91faa1c6a056e34da2082d}{%
+           family={Bregman},
+           family_i={B\bibinitperiod},
+           given={Lev\bibnamedelima M},
+           given_i={L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{ad142f4bac91faa1c6a056e34da2082d}
+      \strng{fullhash}{ad142f4bac91faa1c6a056e34da2082d}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{USSR computational mathematics and mathematical physics}
+      \field{number}{3}
+      \field{title}{The relaxation method of finding the common point of convex sets and its application to the solution of problems in convex programming}
+      \field{volume}{7}
+      \field{year}{1967}
+      \field{pages}{200\bibrangedash 217}
+      \range{pages}{18}
+    \endentry
+    \entry{neurocomputing}{article}{}
+      \name{author}{4}{}{%
+        {{hash=2c997e63d91bbac66ccaab75be50d6da}{%
+           family={Chatpatanasiri},
+           family_i={C\bibinitperiod},
+           given={Ratthachat},
+           given_i={R\bibinitperiod}}}%
+        {{hash=5496527d165e627a6bfcd6bd3321c1d8}{%
+           family={Korsrilabutr},
+           family_i={K\bibinitperiod},
+           given={Teesid},
+           given_i={T\bibinitperiod}}}%
+        {{hash=df2f26f2bfdc75eaa9662b3e9ac683bb}{%
+           family={Tangchanachaianan},
+           family_i={T\bibinitperiod},
+           given={Pasakorn},
+           given_i={P\bibinitperiod}}}%
+        {{hash=e0201244c1a9718ed91d9bb14acc1e83}{%
+           family={Kijsirikul},
+           family_i={K\bibinitperiod},
+           given={Boonserm},
+           given_i={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{ffd46917360ac2a12d4c6a8dd8dccb87}
+      \strng{fullhash}{d8b64b3d6edb78151c739a6a70d0345c}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neurocomputing}
+      \field{number}{10-12}
+      \field{title}{A new kernelization framework for Mahalanobis distance learning algorithms}
+      \field{volume}{73}
+      \field{year}{2010}
+      \field{pages}{1570\bibrangedash 1579}
+      \range{pages}{10}
     \endentry
     \entry{proximity_convex}{article}{}
       \name{author}{2}{}{%
@@ -429,6 +525,39 @@
       \field{pages}{103\bibrangedash 118}
       \range{pages}{16}
     \endentry
+    \entry{hofmann2008kernel}{article}{}
+      \name{author}{3}{}{%
+        {{hash=ee42cfed2ff3020233d2de97c356eaee}{%
+           family={Hofmann},
+           family_i={H\bibinitperiod},
+           given={Thomas},
+           given_i={T\bibinitperiod}}}%
+        {{hash=ca31cc11ec9370460148c3a9c48fce45}{%
+           family={Schölkopf},
+           family_i={S\bibinitperiod},
+           given={Bernhard},
+           given_i={B\bibinitperiod}}}%
+        {{hash=e7334f58c8702e4cc6d5dad2a53b10c9}{%
+           family={Smola},
+           family_i={S\bibinitperiod},
+           given={Alexander\bibnamedelima J},
+           given_i={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{abb13e1520404fef6863094547384564}
+      \strng{fullhash}{abb13e1520404fef6863094547384564}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The annals of statistics}
+      \field{title}{Kernel methods in machine learning}
+      \field{year}{2008}
+      \field{pages}{1171\bibrangedash 1220}
+      \range{pages}{50}
+    \endentry
     \entry{matrix_analysis}{book}{}
       \name{author}{3}{}{%
         {{hash=ab14f8165351f3a134a2ac987e0b1493}{%
@@ -459,6 +588,42 @@
       \field{title}{Matrix analysis}
       \field{year}{1990}
     \endentry
+    \entry{james2013introduction}{book}{}
+      \name{author}{4}{}{%
+        {{hash=df184c5fa522ac8a515ec4de13aef234}{%
+           family={James},
+           family_i={J\bibinitperiod},
+           given={Gareth},
+           given_i={G\bibinitperiod}}}%
+        {{hash=1ab16961e0de50711fa6bd9425f9b4a6}{%
+           family={Witten},
+           family_i={W\bibinitperiod},
+           given={Daniela},
+           given_i={D\bibinitperiod}}}%
+        {{hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           family_i={H\bibinitperiod},
+           given={Trevor},
+           given_i={T\bibinitperiod}}}%
+        {{hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           family_i={T\bibinitperiod},
+           given={Robert},
+           given_i={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{fullhash}{da61646157a6be769f34984f5cb603b0}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An introduction to statistical learning}
+      \field{volume}{112}
+      \field{year}{2013}
+    \endentry
     \entry{courant_fischer}{book}{}
       \name{author}{2}{}{%
         {{hash=f8069af10f00083d34bfc39fd26ee7b3}{%
@@ -483,31 +648,6 @@
       \field{labeltitlesource}{title}
       \field{title}{The theory of matrices: with applications}
       \field{year}{1985}
-    \endentry
-    \entry{loeve1978probability}{article}{}
-      \name{author}{1}{}{%
-        {{hash=f652596c4aae06dcdf794e75e7f82967}{%
-           family={Loeve},
-           family_i={L\bibinitperiod},
-           given={Michel},
-           given_i={M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer-Verlag New York-Heidelberg}%
-      }
-      \strng{namehash}{f652596c4aae06dcdf794e75e7f82967}
-      \strng{fullhash}{f652596c4aae06dcdf794e75e7f82967}
-      \field{sortinit}{L}
-      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Graduate texts in mathematics}
-      \field{title}{Probability theory, vol. ii}
-      \field{volume}{46}
-      \field{year}{1978}
-      \field{pages}{\bibrangedash 387}
-      \range{pages}{-1}
-      \warn{\item Range field 'pages' in entry 'loeve1978probability' is malformed, skipping}
     \endentry
     \entry{maulik2002performance}{article}{}
       \name{author}{2}{}{%
@@ -679,6 +819,34 @@
       \field{pages}{256\bibrangedash 268}
       \range{pages}{13}
     \endentry
+    \entry{petersen2008matrix}{article}{}
+      \true{moreauthor}
+      \name{author}{2}{}{%
+        {{hash=c50452aa51c8ed01b64ea61d7fad94ca}{%
+           family={Petersen},
+           family_i={P\bibinitperiod},
+           given={Kaare\bibnamedelima Brandt},
+           given_i={K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=b9fe1de8e9bfc2b2634917acc2f3fb1b}{%
+           family={Pedersen},
+           family_i={P\bibinitperiod},
+           given={Michael\bibnamedelima Syskind},
+           given_i={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{29015f61b0f21e306ecde9761381dc72}
+      \strng{fullhash}{ba053b2fa2fa40113a980816b326a52b}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Technical University of Denmark}
+      \field{number}{15}
+      \field{title}{The matrix cookbook}
+      \field{volume}{7}
+      \field{year}{2008}
+      \field{pages}{510}
+      \range{pages}{1}
+    \endentry
     \entry{convexanalysis}{book}{}
       \name{author}{1}{}{%
         {{hash=f1f20782c9839f6f33e03ba2e0ad251d}{%
@@ -718,6 +886,41 @@
       \field{labeltitlesource}{title}
       \field{title}{Real and complex analysis}
       \field{year}{1987}
+    \endentry
+    \entry{kpca}{article}{}
+      \name{author}{3}{}{%
+        {{hash=ca31cc11ec9370460148c3a9c48fce45}{%
+           family={Schölkopf},
+           family_i={S\bibinitperiod},
+           given={Bernhard},
+           given_i={B\bibinitperiod}}}%
+        {{hash=1817acab40d9caaac71e1597049b7f5e}{%
+           family={Smola},
+           family_i={S\bibinitperiod},
+           given={Alexander},
+           given_i={A\bibinitperiod}}}%
+        {{hash=9f1b6144a45b1967e989e74552e37ada}{%
+           family={Müller},
+           family_i={M\bibinitperiod},
+           given={Klaus-Robert},
+           given_i={K\bibinithyphendelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{8bbec8bef3418303f4926c0829c71fe1}
+      \strng{fullhash}{8bbec8bef3418303f4926c0829c71fe1}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neural computation}
+      \field{number}{5}
+      \field{title}{Nonlinear component analysis as a kernel eigenvalue problem}
+      \field{volume}{10}
+      \field{year}{1998}
+      \field{pages}{1299\bibrangedash 1319}
+      \range{pages}{21}
     \endentry
     \entry{understandingml}{book}{}
       \name{author}{2}{}{%

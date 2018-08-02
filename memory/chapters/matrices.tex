@@ -1,4 +1,4 @@
-\chapter{Álgebra matricial avanzado} \label{chapter:matrices}
+\chapter{Análisis matricial} \label{chapter:matrices}
 
 En el aprendizaje de métricas de distancia, las matrices tendrán un papel fundamental, pues serán la estructura que definirá las distancias y sobre la que se aplicarán los métodos de optimización estudiados en el capítulo anterior. Dentro del conjunto de todas las matrices, las matrices semidefinidas serán de aún mayor importancia, por lo que para comprender mejor los problemas de aprendizaje con los que trataremos será necesario profundizar en algunas de sus numerosas propiedades.
 
@@ -238,7 +238,7 @@ Continuando la extensión de conceptos sobre los números no negativos a matrice
     \[ |A| = (A^TA)^{1/2} \in \mathcal{M}_d(\R)^+_0. \]
 
     Se denominan \emph{valores singulares} de $A$ a los valores propios de $|A|$. Observemos que los valores singulares de cualquier matriz cuadrada son reales no negativos.
-\end{definition},
+\end{definition}
 
 \begin{remark}
     Si $A$ es simétrica y $A = UDU^T$ es una descomposición espectral, entonces los valores singulares de $A$ son el valor absoluto de sus valores propios y $|A| = U|D|U^T$.
@@ -286,6 +286,10 @@ El módulo y los valores singulares permiten deducir nuevos teoremas de descompo
 
 \begin{remark}
     Si $A$ es regular, $|A|$ también lo es, y la descomposición polar es única, donde la matriz $U$ viene dada por $U = A|A|^{-1}$.
+\end{remark}
+
+\begin{remark} \label{rem:polar_generalized}
+    El módulo se puede definir de la misma forma para matrices no cuadradas $A \in \mathcal{M}_{d \times d'}(\R)$. En tal caso, $|A| \in \mathcal{M}_{d'}(\R)^+_0$. También es posible probar de forma análoga la existencia de descomposición polar y valores singulares. Para el caso de los valores singulares, las matrices $V$ y $W$ serán ortogonales con la dimensión adecuada para poder ser multiplicadas. En el caso de la descomposición polar, se tiene que $A = U|A|$, donde $U \in \mathcal{d \times d'}(\R)$ verifica $U^TU = I$, siempre que $d' \le d$.
 \end{remark}
 
 La descomposición polar tiene una interpretación geométrica muy interesante, y es que nos dice que todo endomorfismo lineal en $\R^d$ es, salvo una isometría, un escalado sobre una determinada base ortonormal (la base donde diagonaliza $|A|$), entendiendo por escalado sobre dicha base una aplicación que a cada vector de la base (eje) lo envía a otro vector con la misma dirección y sentido (incluyendo el $0$), pudiendo variar la constante de escala en cada eje.
@@ -463,7 +467,7 @@ El teorema de Rayleigh-Ritz nos muestra que $\rho(\R^d \setminus \{0\}) = [\lamb
 \end{lem}
 
 \begin{proof}
-    Si $x \in \lin\{u_1,\dots,u_{d-k+1}$, entonces $x = \sum_{i=1}^{d-k+1} \langle x, u_i \rangle u_i$, y por la identidad de Parseval,
+    Si $x \in \lin\{u_1,\dots,u_{d-k+1}\}$, entonces $x = \sum_{i=1}^{d-k+1} \langle x, u_i \rangle u_i$, y por la identidad de Parseval,
     \begin{align*}
         x^Tx &= \langle x, x \rangle = \sum_{i=1}^{d-k+1} \langle x, u_i \rangle^2 \\
         x^TAx &= \langle x, Ax \rangle = \sum_{i=1}^{d-k+1} \lambda_i \langle x, u_i \rangle^2.
@@ -504,7 +508,7 @@ El teorema de Rayleigh-Ritz nos muestra que $\rho(\R^d \setminus \{0\}) = [\lamb
 
 Los teoremas de Rayleigh-Ritz y de Courant-Fischer tienen consecuencias muy interesantes. Por ejemplo, una de ellas es el teorema de Weyl, que relaciona los valores propios de dos matrices simétricas con el de su suma. De este teorema se puede deducir que el orden de Löwner sobre las matrices es equivalente al orden producto sobre los vectores con los valores propios. Estos resultados no se usarán a lo largo de este trabajo, pero pueden consultarse en \cite{matrix_analysis,zhang2011matrix}. Sí que utilizaremos el conocido como teorema de entrelace de Cauchy.
 
-\begin{thm}[Entrelace de Cauchy]
+\begin{thm}[Entrelace de Cauchy] \label{thm:interlacing}
     Supongamos que $\lambda_1 \le \dots \le \lambda_d$ son los valores propios de $A$. Sea $J \subset \{1, \dots, d\}$ de cardinal $|J| = d'$, y sea $A_J \in S_{d'}(\R)$ la matriz $A_J = (A_{ij})_{i,j \in J}$, es decir, la submatriz de $A$ con las entradas de $A$ cuyos índices están en $J \times J$. Entonces, si $\tau_1 \le \dots \le \tau_{d'}$ son los valores propios de $A_J$, se tiene que, para cada $k \in \{1,\dots,d'\}$,
     \[ \lambda_k \le \tau_k \le \lambda_{k+d-d'}. \]
 \end{thm}
@@ -523,7 +527,7 @@ Los teoremas de Rayleigh-Ritz y de Courant-Fischer tienen consecuencias muy inte
 \end{cor}
 
 \begin{proof}
-
+    La condición $LL^T = I$ nos dice que $L$ es parcialmente una isometría de un subespacio $V$ de $\R^d$ de dimensión $d'$  sobre $\R^{d'}$. Si fijamos una base en $\R^{d'}$, la imagen de dicha base por $L^T$ es una base de $V$. Extendiendo a una base de $\R^d$, la matriz de $A$ (como aplicación lineal fijada la base usual) en esta nueva base es una matriz semejante a $A$. Llamémosla $A'$. Entonces, la matriz de la aplicación $LAL^T$ sobre la base escogida de $\R^{d'}$ es una submatriz de $A'$, y en consecuencia $LAL^T$ es submatriz de una matriz semejante a $A$, por lo que podemos aplicar el teorema de entrelace \ref{thm:interlacing} sobre $A$ y $LAL^T$. La desigualdad buscada se deduce al reordenar de forma descendente los valores propios del enunciado.
 \end{proof}
 
 A continuación planteamos el problema de optimización que buscamos resolver en esta sección. Queremos, para cada $d' \le d$, maximizar la suma de cocientes de Rayleigh sobre vectores ortogonales, esto es,
@@ -540,10 +544,12 @@ Veamos cómo resolver este problema.
 \begin{thm}[Optimización de la traza por vectores propios] \label{thm:eigen_trace_opt}
     Sean $d',d \in \N $, con $d' \le d$. Sea $A \in \mathcal{S}_d(\R)$, y consideramos el problema de optimización
     
-    \begin{align*}
-    \max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(LAL^T\right)  \\
-    \text{s.a.: } &\quad LL^T = I.
-    \end{align*}
+    \begin{equation}
+    \begin{split}
+        \max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(LAL^T\right)  \\
+        \text{s.a.: } &\quad LL^T = I.
+    \end{split}
+    \end{equation}
     
     Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
     \text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
@@ -562,7 +568,7 @@ Veamos cómo resolver este problema.
 
 Finalmente, aplicamos los resultados ya probados al cociente de Rayleigh generalizado. Para ello, veamos que podemos diagonalizar (por congruencia) las matrices $A$ y $B$ simultáneamente.
 
-\begin{lem}[Diagonalización simultánea de matrices]
+\begin{lem}[Diagonalización simultánea de matrices] \label{lem:diag_simult}
     Sea $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+_0$. Entonces existe una matriz regular $P \in \gl_d(\R)$ y una matriz diagonal $D \in \mathcal{M}_d(\R)$ tales que $P^TAP = D$ y $P^TBP = I$.
 \end{lem}
 
@@ -576,12 +582,80 @@ Finalmente, aplicamos los resultados ya probados al cociente de Rayleigh general
 
 El lema anterior nos permite expresar el cociente de Rayleigh generalizado a partir de un cociente de Rayleigh para la matriz $D$ diagonal anterior. En efecto, para $x \in \R^d \setminus \{0\}$, tomando la matriz regular $P$ del lema anterior, podemos tomar $y = P^{-1}x \in \R^d\setminus\{0\}$, y entonces
 \[ \mathcal{R}(x) = \frac{x^TAx}{x^TBx} = \frac{(Py)^TA(Py)}{(Py)^TB(Py)} = \frac{y^TP^TAPy}{y^TP^TBPy} = \frac{y^TDy}{y^Ty} = \rho_D(y). \]
-Por tanto, $\mathcal{R}(x) = \rho_D(P^{-1}x)$, y maximizar o minimizar $\mathcal{R}$ equivale a maximizar o minimizar $\rho_D$. Observemos que podemos suponer $D = \diag(\lambda_1,\dots,\lambda_d)$, con $\lambda_1 \ge \dots \ge \lambda_d$ ($D$ contiene los valores propios de $B^{-1/2}AB^{-1/2}$, como se muestra en el lema previo). Entonces, la imagen de $\mathcal{R}$ está en el intervalo $[\lambda_d,\lambda_1]$, e igualmente se puede probar un teorema de Courant-Fischer asociado a $\mathcal{R}$. Notemos además que para la base canónica $\{e_1,\dots,e_d\}$ de $\R^d$, se tiene que $\rho_D(e_i) = \lambda_i$, y en consecuencia $\mathcal{R}(Pe_i) = \lambda_i$. Por otra parte, de $P^TAP = D$ y $P^TBP = I$, se deduce que
+Por tanto, $\mathcal{R}(x) = \rho_D(P^{-1}x)$, y maximizar o minimizar $\mathcal{R}$ equivale a maximizar o minimizar $\rho_D$. Observemos que podemos suponer $D = \diag(\lambda_1,\dots,\lambda_d)$, con $\lambda_1 \ge \dots \ge \lambda_d$ ($D$ contiene los valores propios de $B^{-1/2}AB^{-1/2}$, como se muestra en el lema previo). Entonces, la imagen de $\mathcal{R}$ está en el intervalo $[\lambda_d,\lambda_1]$, e igualmente se puede probar un teorema de Courant-Fischer asociado a $\mathcal{R}$.
+
+De la misma forma, podemos concluir el siguiente resultado de optimización, que extiende al del problema del teorema \ref{thm:eigen_trace_opt}.
+
+\begin{comment}
+Notemos además que para la base canónica $\{e_1,\dots,e_d\}$ de $\R^d$, se tiene que $\rho_D(e_i) = \lambda_i$, y en consecuencia $\mathcal{R}(Pe_i) = \lambda_i$. Por otra parte, de $P^TAP = D$ y $P^TBP = I$, se deduce que
 \[ D = P^TAP = (P^TBP)^{-1}(P^TAP) = P^{-1}B^{-1}P^{-T}P^TAP = P^{-1}B^{-1}AP, \]
 luego $D$ es una matriz diagonal semejante a $B^{-1}A$. Por tanto, si $v_1, \dots, v_d$ son vectores propios de $B^{-1}A$ asociados a $\lambda_1,\dots,\lambda_d$, se tiene que $Av_i = \lambda_iBv_i$, y entonces
 \[ \mathcal{R}(v_i) = \frac{v_i^TAv_i}{v_i^TBv_i} = \lambda_i\frac{v_i^TBv_i}{v_i^TBv_i} = \lambda_i, \]
-y por tanto estos vectores propios maximizan el problema del teorema \ref{thm:eigen_trace_opt} asociado a la matriz $D$.
+y por tanto estos vectores propios maximizan el problema del teorema \ref{thm:eigen_trace_opt} asociado a la matriz $D$. Podemos concluir el siguiente resultado sobre optimización, que extiende al del problema del teorema \ref{thm:eigen_trace_opt}.
+\end{comment}
+
+\begin{thm} \label{thm:eigen_trace_ratio_opt}
+    Sean $d',d \in \N $, con $d' \le d$. Sean $A \in \mathcal{S}_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$, y consideramos el problema de optimización
+    
+    \begin{equation} \label{eq:eigen_trace_ratio_opt}
+    \max_{L \in \mathcal{M}_{d'\times d}(\R)} \quad \tr\left((LBL^T)^{-1}(LAL^T)\right)
+    \end{equation}
+    
+    Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
+    \text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
+    & \dots &  \\
+    \text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
+    \end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son los vectores propios de $B^{-1}A$ correspondientes a sus $d'$ mayores valores propios.
+\end{thm}
+
+\begin{proof}
+    Llamamos $U = L^T \in \mathcal{M}_{d\times d'}(\R)$. Si tomamos la matriz $P$ del lema de diagonalización simultánea \ref{lem:diag_simult} y una matriz $V \in \mathcal{M}_{d\times d'}(\R)$ tal que $U = PV$ (existe y es única por ser $P$ regular), se tiene 
+    \begin{align*}
+        \tr\left((LBL^T)^{-1}(LAL^T)\right) &= \tr\left((U^TBU)^{-1}(U^TAU)\right) = \tr\left((V^TP^TBPV)^{-1}(V^TP^TAPV)\right) \\
+        &=\tr((V^TV)^{-1}(V^TDV)),
+    \end{align*}
+    luego maximizar la ecuación \ref{eq:eigen_trace_ratio_opt} equivale a maximizar en $V$ $\tr((V^TV)^{-1}(V^TDV))$, pues el cambio de parámetros entre $L$ y $V$ es biyectivo. Si ahora consideramos $V = Q|V|$ una descomposición polar de $V$ (generalizada, según la observación \ref{rem:polar_generalized}), donde $Q \in \mathcal{M}_{d\times d'}(\R)$ verifica $Q^TQ=I$, se tiene que
+    \begin{align*}
+        \tr((V^TV)^{-1}(V^TDV)) &= \tr((|V|^TQ^TQ|V|)^{-1}(|V|^TQ^TDQ|V|^T)) = \tr(|V|^{-1}|V|^{-T}(|V|^TQ^TDQ|V|))\\
+                                &= \tr(|V|^{-1}Q^TDQ|V|) = \tr(Q^TDQ|V||V|^{-1}) = \tr(Q^TDQ).
+    \end{align*}
+    Si llamamos $W = Q^T$, lo que hemos obtenido es que la maximización del problema \ref{eq:eigen_trace_ratio_opt} equivale a la maximización en $W$ de $\tr(WDW^T)$, sujeto a que $WW^T = I$, puesto que $Q^TQ = I$, obteniendo justamente el problema del teorema \ref{thm:eigen_trace_opt}. Si suponemos la diagonal de $D$ ordenada de mayor a menor, una matriz $W$ que resuelve este problema se obtiene añadiendo por filas los vectores $e_1,\dots,e_{d'}$ de la base canónica de $\R^d$. Entonces $Q$ contiene los mismos vectores, pero por columnas. Observemos que el valor de la traza del cociente $T(X) = \tr\left((X^TBX)^{-1}(X^TAX)\right)$, con $X \in \mathcal{M}_{d \times d'}(\R)$ no varía al multiplicar a la derecha por una matriz regular. En efecto, si $R \in \gl_{d'}(\R)$,
+    \begin{align*}
+        T(XR) &= tr\left((R^TX^TBXR)^{-1}(R^TX^TAXR)\right) = \tr(R^{-1}(X^TBX)^{-1}R^{-T}R^T(X^TAX)R) \\
+              &= \tr((X^TBX)^{-1}(X^TAX)RR^{-1}) = T(X).
+    \end{align*}
+    Como $U$ maximiza $T$ y $U = PQ|V|$, se tiene que $PQ$ también maximiza $T$. Además, como de $P^TAP = D$ y $P^TBP = I$ se obtiene que
+    \[ D = P^TAP = (P^TBP)^{-1}(P^TAP) = P^{-1}B^{-1}P^{-T}P^TAP = P^{-1}B^{-1}AP, \]
+    se concluye que $P$ diagonaliza a $B^{-1}A$ y, por tanto, contiene por columnas los vectores propios de dicha matriz. Como $Q$ contiene los $d'$ primeros vectores propios de la base usual por columnas, $PQ$ tiene por columnas los primeros vectores propios de $B^{-1}A$, que son los asociados a los mayores valores propios. Esto termina la prueba, pues entonces una solución del problema \ref{eq:eigen_trace_ratio_opt}, que es igual que el de maximizar $T$ salvo una traspocición, consiste en añadir estos vectores por filas.
+\end{proof}
 
 \section{Últimas consideraciones}
 
-TODO
+\subsection{Producto tensorial de vectores}
+
+\begin{definition}
+    Sean $x,y \in \R^d$. Se define el \emph{producto tensorial} de $x$ e $y$ como
+    \[ x \otimes y = xy^T \in \mathcal{M}_d(\R). \]
+\end{definition}
+
+El producto tensorial de vectores es también conocido en inglés como \emph{outer product}, en contraposición con el \emph{inner product}, que hace referencia al producto escalar usual $\langle x, y \rangle = x^Ty$. Observemos que el elemento $(i,j)$ de este producto viene dada por $(x \bigotimes y)_{ij} = x_iy_j$. Una propiedad importante es que esta matriz tiene siempre rango menor o igual que 1, siendo este 1 si y solo $x$ e $y$ son distintos de 0. De hecho, cuando hay alguna fila (resp. columna) no nula, el resto de filas (resp. columnas) son proporcionales a ella.
+
+Un último detalle a destacar es que el producto $xx^T$, para $x \in \R^{d}\setminus \{0\}$, es siempre semidefinido positivo de rango 1. En efecto, dado $v \in \R^d$, $v^Txx^Tv = \langle v,x \rangle\langle x,v \rangle = \langle v,x \rangle^2 \ge 0$. El producto tensorial de vectores será de gran importancia, ya que aparecerá en el cálculo de muchos gradientes, como veremos a continuación, y también formará parte de numerosas matrices de covarianza, compacidad o dispersión que veremos en próximos capítulos.
+
+\subsection{Optimización matricial}
+
+Gracias a la norma de Frobenius introducida sobre las matrices, podemos establecer una teoría de derivación en $\mathcal{M}_{d' \times d}(\R)$ idéntica a la de $\R^{d'\times d}$. De esta forma, podemos extender todos los resultados de derivación a matrices. Un concepto que será de gran interés será el de gradiente de una función $f \colon \mathcal{M}_{d' \times d}(\R) \to \R$ diferenciable. Lo podemos construir, al igual que en $\R^{d'\times d}$ a partir de las derivadas parciales de $f$, vista la matriz variable como un vector. Sin embargo, debemos conservar la estructura matricial para el gradiente, para ser tratable en el espacio de matrices. Por ello, el gradiente de $f$ en el punto $M = (M_{ij})_{\substack{i \in \{1,\dots,d\}\\j \in \{1,\dots,d'\}}}$, vendrá dado por la matriz $\nabla f(M) \in \mathcal{M}_{d'\times d}(\R)$, donde
+\[ (\nabla f(M))_{ij} = \frac{\partial f}{\partial M_{ij}}(M), \]
+donde las derivadas parciales respecto de $M_{ij}$ se toman en el sentido del análisis real. El gradiente así definido conserva todas las propiedades vectoriales de $\R^{d'\times d}$ (en particular, la regla de adaptación del gradiente descendente sigue siendo válida), y permite además trabajar con él a través del producto de matrices. Será interesante conocer algunas reglas de derivación.
+
+\begin{prop}~
+    \begin{enumerate}
+        \item Sea $f \colon \mathcal{M}_{d' \times d}(\R)$ dada por $f(L) = \|Lx\|_2^2$. Entonces, $\nabla f(L) = 2Lxx^T$.
+        \item Sea $f \colon S_d(\R) \to \R$ dada por $f(M) = x^TMy$. Entonces, $\nabla f(M) = xy^T$.
+        \item Sea $f \colon \mathcal{M}_d(\R)^+ \to \R$ dada por $f(M) = \log\det(M)$. Entonces, $\nabla f(M) = M^{-T} = M^{-1}$.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    Los dos primeros apartados se comprueban fácilmente desarrollando $f$ en función de los elementos de la matriz, y tomando derivadas parciales. Para el último caso hay que considerar el desarrollo del determinante por adjuntos. De aquí es inmediato observar que el gradiente del determinante de una matriz $M$ es la matriz adjunta, $M^*$. Al componer con el logaritmo, se obtiene que $\nabla f(M) = M^*/\det(M) = M^{-T}$. La última igualdad se tiene por ser $M$ simétrica.
+\end{proof}
