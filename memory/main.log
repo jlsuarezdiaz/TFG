@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  2 AUG 2018 20:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  3 AUG 2018 12:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2157,11 +2157,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-)
-Underfull \vbox (badness 3989) has occurred while \output is active []
-
- [113]
-[114] [115] [116] [117] [118] [119] [120] [121] [122
+) [113] [114] [115] [116] [117] [118] [119] [120] [121] [122
 
 ] [123]
 
@@ -2187,7 +2183,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 163.
 Here is how much of TeX's memory you used:
  36187 strings out of 493029
  663119 string characters out of 6136235
- 1273171 words of memory out of 5000000
+ 1274171 words of memory out of 5000000
  38348 multiletter control sequences out of 15000+600000
  22518 words of font info for 151 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2218,7 +2214,7 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 Output written on /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.pdf (124
- pages, 1584002 bytes).
+ pages, 1587104 bytes).
 PDF statistics:
  1695 PDF objects out of 1728 (max. 8388607)
  1490 compressed objects within 15 object streams
