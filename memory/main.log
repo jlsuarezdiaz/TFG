@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  3 AUG 2018 12:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.8.1)  4 AUG 2018 11:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1966,7 +1966,7 @@ Package pdftex.def Info: ./images/lda.png used on input line 93.
 
 Underfull \vbox (badness 4967) has occurred while \output is active []
 
- [75 <./images/lda.png>] [76] [77] <./images/anmm.png, id=1059, 839.135pt x 776
+ [75 <./images/lda.png>] [76] [77] <./images/anmm.png, id=1061, 839.135pt x 776
 .9025pt>
 File: ./images/anmm.png Graphic file (type png)
 
@@ -1974,13 +1974,13 @@ File: ./images/anmm.png Graphic file (type png)
 Package pdftex.def Info: ./images/anmm.png used on input line 176.
 (pdftex.def)             Requested size: 243.96951pt x 225.87682pt.
  [78 <./images/anmm.png>] [79]
-<images/lmnn1.png, id=1080, 741.77126pt x 540.0175pt>
+<images/lmnn1.png, id=1082, 741.77126pt x 540.0175pt>
 File: images/lmnn1.png Graphic file (type png)
  <use images/lmnn1.png>
 Package pdftex.def Info: images/lmnn1.png used on input line 242.
 (pdftex.def)             Requested size: 195.41396pt x 142.26378pt.
 
-<images/lmnn2.png, id=1081, 752.8125pt x 492.84125pt>
+<images/lmnn2.png, id=1083, 752.8125pt x 492.84125pt>
 File: images/lmnn2.png Graphic file (type png)
  <use images/lmnn2.png>
 Package pdftex.def Info: images/lmnn2.png used on input line 246.
@@ -1995,7 +1995,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [80] [81 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn1.png> </h
 ome/jlsuarezdiaz/Documentos/Github/TFG/memory/images/lmnn2.png>] [82] [83]
-[84] <images/ncm_problem.png, id=1130, 867.24pt x 433.62pt>
+[84] <images/ncm_problem.png, id=1132, 867.24pt x 433.62pt>
 File: images/ncm_problem.png Graphic file (type png)
 
 <use images/ncm_problem.png>
@@ -2025,14 +2025,14 @@ on-jun-to de da-tos de en-tre-na-mien-to $\OMS/cmsy/m/n/10 X \OT1/cmr/m/n/10 (-
 20) = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g ^^Z
  []
 
-[94] [95] <images/logistica.png, id=1258, 1462.46375pt x 614.295pt>
+[94] [95] <images/logistica.png, id=1261, 1462.46375pt x 614.295pt>
 File: images/logistica.png Graphic file (type png)
 
 <use images/logistica.png>
 Package pdftex.def Info: images/logistica.png used on input line 704.
 (pdftex.def)             Requested size: 288.32329pt x 121.10399pt.
  [96 </home/jlsuarezdiaz/Documentos/Github/TFG/memory/images/logistica.png>] <i
-mages/svm_example.png, id=1271, 433.62pt x 433.62pt>
+mages/svm_example.png, id=1273, 433.62pt x 433.62pt>
 File: images/svm_example.png Graphic file (type png)
 
 <use images/svm_example.png>
@@ -2042,14 +2042,14 @@ Package pdftex.def Info: images/svm_example.png used on input line 745.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[97] <images/svm_problem.png, id=1283, 433.62pt x 216.81pt>
+[97] <images/svm_problem.png, id=1285, 433.62pt x 216.81pt>
 File: images/svm_problem.png Graphic file (type png)
 
 <use images/svm_problem.png>
 Package pdftex.def Info: images/svm_problem.png used on input line 753.
 (pdftex.def)             Requested size: 221.78923pt x 110.89584pt.
 
-<images/svm_solution.png, id=1285, 867.24pt x 433.62pt>
+<images/svm_solution.png, id=1287, 867.24pt x 433.62pt>
 File: images/svm_solution.png Graphic file (type png)
 
 <use images/svm_solution.png>
@@ -2181,11 +2181,11 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 163.
  ) 
 Here is how much of TeX's memory you used:
- 36187 strings out of 493029
- 663119 string characters out of 6136235
+ 36189 strings out of 493029
+ 663137 string characters out of 6136235
  1274171 words of memory out of 5000000
  38348 multiletter control sequences out of 15000+600000
- 22518 words of font info for 151 fonts, out of 8000000 for 9000
+ 22626 words of font info for 152 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,18n,77p,10397b,2047s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/jlsuarezdiaz/.texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk>{/usr/
@@ -2214,10 +2214,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
 Output written on /home/jlsuarezdiaz/Documentos/Github/TFG/memory/main.pdf (124
- pages, 1587104 bytes).
+ pages, 1587161 bytes).
 PDF statistics:
- 1695 PDF objects out of 1728 (max. 8388607)
- 1490 compressed objects within 15 object streams
+ 1696 PDF objects out of 1728 (max. 8388607)
+ 1491 compressed objects within 15 object streams
  543 named destinations out of 1000 (max. 500000)
  17844 words of extra memory for PDF output out of 20736 (max. 10000000)
 

@@ -1,14 +1,14 @@
 [0] Config.pm:340> INFO - This is Biber 2.4
-[0] Config.pm:343> INFO - Logfile is 'main.blg'
-[33] biber:287> INFO - === jue ago  2, 2018, 18:40:03
-[114] Biber.pm:348> INFO - Reading 'main.bcf'
-[241] Biber.pm:739> INFO - Using all citekeys in bib section 0
-[245] Biber.pm:3151> INFO - Processing section 0
-[272] Biber.pm:3308> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
-[316] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
-[354] bibtex.pm:974> INFO - Found BibTeX data source 'bibliography.bib'
-[985] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[985] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[985] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'es-ES'
-[1060] bbl.pm:519> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1176] bbl.pm:615> INFO - Output to main.bbl
+[1] Config.pm:343> INFO - Logfile is 'main.blg'
+[50] biber:287> INFO - === sáb ago  4, 2018, 11:55:57
+[170] Biber.pm:348> INFO - Reading 'main.bcf'
+[294] Biber.pm:739> INFO - Using all citekeys in bib section 0
+[323] Biber.pm:3151> INFO - Processing section 0
+[493] Biber.pm:3308> INFO - Looking for bibtex format file 'bibliography.bib' for section 0
+[537] bibtex.pm:1113> INFO - Decoding LaTeX character macros into UTF-8
+[576] bibtex.pm:974> INFO - Found BibTeX data source 'bibliography.bib'
+[1364] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1364] UCollate.pm:65> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1364] Biber.pm:3028> INFO - Sorting list 'nty/global' of type 'entry' with scheme 'nty' and locale 'es-ES'
+[1460] bbl.pm:519> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1579] bbl.pm:615> INFO - Output to main.bbl

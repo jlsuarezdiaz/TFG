@@ -165,7 +165,7 @@ Acabamos de obtener el siguiente resultado.
 De forma inmediata se obtienen expresiones para la divergencia de Jeffrey.
 \begin{cor} \label{prop:caract_jeffrey:1}
     La divergencia de Jeffrey entre dos distribuciones gaussianas multivariante definidas por funciones de densidad $p_1(x|\mu_1,\Sigma_1)$ y $p_2(x|\mu_2,\Sigma_2)$, con $\mu_1,\mu_2 \in \R^d$ y $\Sigma_1,\Sigma_2 \in \mathcal{M}_d(\R)^+$, verifica
-    \[  \jf(p_1\|p_2) = \frac{1}{2}\tr(\Sigma_1^{-1}\Sigma_2+\Sigma_1^{-1}\Sigma_2) -d + \frac{1}{2}\|\mu_1-\mu_2\|_{\Sigma_1^{-1}+\Sigma_2^{-1}}^2. \]
+    \[  \jf(p_1\|p_2) = \frac{1}{2}\tr(\Sigma_1\Sigma_2^{-1}+\Sigma_1^{-1}\Sigma_2) -d + \frac{1}{2}\|\mu_1-\mu_2\|_{\Sigma_1^{-1}+\Sigma_2^{-1}}^2. \]
 \end{cor}
 \begin{proof}
     \begin{equation*}
@@ -174,11 +174,11 @@ De forma inmediata se obtienen expresiones para la divergencia de Jeffrey.
                     &= \frac{1}{2}D_{ld}(\Sigma_1\|\Sigma_2) + \frac{1}{2}(\mu_1-\mu_2)^T\Sigma_2^{-1}(\mu_1-\mu_2) + \frac{1}{2}D_{ld}(\Sigma_2\|\Sigma_1) + (\mu_1-\mu_2)^T\Sigma_1^{-1}(\mu_1-\mu_2) \\
                     &= \frac{1}{2}\left[\tr(\Sigma_1\Sigma_2^{-1})+\tr(\Sigma_1^{-1}\Sigma_2)\right] - \frac{1}{2}\left[\log\det(\Sigma_1\Sigma_2^{-1})+\log\det(\Sigma_1^{-1}\Sigma_2)\right]\\&+\frac{1}{2}(\mu_1-\mu_2)^T(\Sigma_1^{-1}+\Sigma_2^{-1})(\mu_1-\mu_2) - \frac{1}{2}(d+d) \\
                     &= \frac{1}{2} \tr(\Sigma_1\Sigma_2^{-1}+\Sigma_1^{-1}\Sigma_2) -d + \frac{1}{2}\|\mu_1-\mu_2\|_{\Sigma_1^{-1}+\Sigma_2^{-1}}^2 - \frac{1}{2}(\log\det\Sigma_1-\log\det\Sigma_2+\log\det\Sigma_2-\log\det\Sigma_1) \\
-                    &= \frac{1}{2}\tr(\Sigma_1^{-1}\Sigma_2+\Sigma_1^{-1}\Sigma_2) -d + \frac{1}{2}\|\mu_1-\mu_2\|_{\Sigma_1^{-1}+\Sigma_2^{-1}}^2.
+                    &= \frac{1}{2}\tr(\Sigma_1\Sigma_2^{-1}+\Sigma_1^{-1}\Sigma_2) -d + \frac{1}{2}\|\mu_1-\mu_2\|_{\Sigma_1^{-1}+\Sigma_2^{-1}}^2.
         \end{split}
     \end{equation*}
 \end{proof}
 \begin{cor} \label{prop:caract_jeffrey:2}
     La divergencia de Jeffrey entre dos distribuciones gaussianas multivariante definidas por funciones de densidad $p_1$ y $p_2$ con igual media, y covarianzas $\Sigma_1$ y $\Sigma_2$, verifica
-    \[  \jf(p_1\|p_2) = \frac{1}{2}\tr(\Sigma_1^{-1}\Sigma_2+\Sigma_1^{-1}\Sigma_2) -d. \]
+    \[  \jf(p_1\|p_2) = \frac{1}{2}\tr(\Sigma_1\Sigma_2^{-1}+\Sigma_1^{-1}\Sigma_2) -d. \]
 \end{cor}

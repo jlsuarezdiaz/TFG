@@ -139,7 +139,7 @@ Para concluir, aunque hemos visto que LDA permite reducir la dimensionalidad añ
 
 \subsection{ANMM}
 
-ANMM (\emph{Average Neighbor Margin Maximization}) es una técnica de aprendizaje de métricas de distancia orientada específicamente a la reducción de dimensionalidad. Sigue por tanto el mismo camino que los ya comentados PCA y LDA, intentando solventar algunas de las limitaciones que presentan estos últimos.
+ANMM (\emph{Average Neighbor Margin Maximization}) \cite{anmm} es una técnica de aprendizaje de métricas de distancia orientada específicamente a la reducción de dimensionalidad. Sigue por tanto el mismo camino que los ya comentados PCA y LDA, intentando solventar algunas de las limitaciones que presentan estos últimos.
 
 El objetivo de ANMM es aprender una transformación lineal $L \in \mathcal{M}_{d'\times d}(\mathbb{R})$, con $d' \le d$,  que proyecte los datos a un espacio de menor dimensión, de forma que se maximice la similitud entre elementos de la misma clase y la separación entre elementos de distintas clases, siguiendo el criterio de maximización de márgenes que vamos a mostrar a continuación.
 
