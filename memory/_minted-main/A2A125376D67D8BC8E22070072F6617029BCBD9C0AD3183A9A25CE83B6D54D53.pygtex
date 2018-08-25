@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    devtools\PYG{o}{::}install\PYGZus{}github\PYG{p}{(}\PYG{l+s}{\PYGZdq{}jlsuarezdiaz/rDML\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

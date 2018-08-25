@@ -45,8 +45,8 @@
 %-----------------------------------------------------------------------------------------------------
 
 % Chooses the footer words in english or spanish.
-\newcommand{\pageWord}{\iflanguage{english}{Page}{P\'agina}}
-\newcommand{\ofWord}{\iflanguage{english}{of}{de}}
+%\newcommand{\pageWord}{\iflanguage{english}{Page}{P\'agina}}
+%\newcommand{\ofWord}{\iflanguage{english}{of}{de}}
 
 %-----------------------------------------------------------------------------------------------------
 %	PAGE STYLE
@@ -94,67 +94,67 @@
   }
 }
 
-% Chooses the header style
-\renewcommand\headrule{
-  \begin{minipage}{\textwidth}
-    \hrule width \hsize
-  \end{minipage}
-}
+%% Chooses the header style
+%\renewcommand\headrule{
+%  \begin{minipage}{\textwidth}
+%    \hrule width \hsize
+%  \end{minipage}
+%}
 
-% Computes the right header text.
-% The rheader contains the subject, title and subtitle
-% of the document. If any of those is not specified, then
-% it is omitted.
-\newcommand{\rheadtext}{
-  \ifthenelse{\equal{\subject}{}}{}{\subject \ -}
-  \doctitle \ifthenelse{\equal{\docsubtitle}{}}{}{\ - \docsubtitle}
-}
+%% Computes the right header text.
+%% The rheader contains the subject, title and subtitle
+%% of the document. If any of those is not specified, then
+%% it is omitted.
+%%\newcommand{\rheadtext}{
+%%  \ifthenelse{\equal{\subject}{}}{}{\subject \ -}
+%%  \doctitle \ifthenelse{\equal{\docsubtitle}{}}{}{\ - \docsubtitle}
+%%}
 
-% Left part of the header.
-% If the user has specified an specific lhead by defining the command,
-% then this header is used. Otherwise, the lhead is the author.
-\fancyhead[L]{
-  \ifthenelse{\equal{\doclhead}{}}{\docauthor}{\doclhead}
-}
-% Right part of the header.
-% If the user has specified an specific lhead by defining the command,
-% then this header is used. Otherwise, the lhead is the author.
-\fancyhead[R]{\chaptername\nouppercase{\leftmark}  
-%  \ifthenelse{\equal{\docrhead}{}}{\rheadtext}{\docrhead}
-}
+%% Left part of the header.
+%% If the user has specified an specific lhead by defining the command,
+%% then this header is used. Otherwise, the lhead is the author.
+%\fancyhead[L]{
+%  \ifthenelse{\equal{\doclhead}{}}{\docauthor}{\doclhead}
+%}
+%% Right part of the header.
+%% If the user has specified an specific lhead by defining the command,
+%% then this header is used. Otherwise, the lhead is the author.
+%\fancyhead[R]{\chaptername\nouppercase{\leftmark}  
+%%  \ifthenelse{\equal{\docrhead}{}}{\rheadtext}{\docrhead}
+%}
 
 %-----------------------------------------------------------------------------------------------------
 %	FOOTER
 %-----------------------------------------------------------------------------------------------------
 
-% Chooses the footer style
-\renewcommand\footrule{
-  \begin{minipage}{\textwidth}
-    \hrule width \hsize
-  \end{minipage}\par
-}
+%% Chooses the footer style
+%\renewcommand\footrule{
+%  \begin{minipage}{\textwidth}
+%    \hrule width \hsize
+%  \end{minipage}\par
+%}
 
-% Left part of the footer
-\fancyfoot[L]{}
-% Center part of the footer
-\fancyfoot[C]{}
-% Right part of the footer
-\fancyfoot[R]{\pageWord\ \thepage\ \ofWord\ \protect\pageref{LastPage}}
+%% Left part of the footer
+%\fancyfoot[L]{}
+%% Center part of the footer
+%\fancyfoot[C]{}
+%% Right part of the footer
+%\fancyfoot[R]{\pageWord\ \thepage\ \ofWord\ \protect\pageref{LastPage}}
 
 %-----------------------------------------------------------------------------------------------------
 %	PLAIN PAGE STYLE
 %-----------------------------------------------------------------------------------------------------
 
-\fancypagestyle{plain}{%
-  \fancyhead{}%
-  \renewcommand*{\headrule}{}%
-  % Left part of the footer
-  \fancyfoot[L]{}
-  % Center part of the footer
-  \fancyfoot[C]{}
-  % Right part of the footer
-  \fancyfoot[R]{\pageWord\ \thepage\ \ofWord\ \protect\pageref{LastPage}}
-}
+%\fancypagestyle{plain}{%
+%  \fancyhead{}%
+%  \renewcommand*{\headrule}{}%
+%  % Left part of the footer
+%  \fancyfoot[L]{}
+%  % Center part of the footer
+%  \fancyfoot[C]{}
+%  % Right part of the footer
+%  \fancyfoot[R]{\pageWord\ \thepage\ \ofWord\ \protect\pageref{LastPage}}
+%}
 
 %-----------------------------------------------------------------------------------------------------
 %	Chapter style
@@ -194,4 +194,11 @@
 }
 
 \usepackage{booktabs}
+
+\usepackage{color}
+\definecolor{LightGray}{gray}{0.9}
+\usepackage{minted}
+\usepackage{cleveref}
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+\usepackage[T1]{fontenc}
 

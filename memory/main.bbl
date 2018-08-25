@@ -50,6 +50,58 @@
       \field{volume}{4}
       \field{year}{2012}
     \endentry
+    \entry{keel}{article}{}
+      \name{author}{7}{}{%
+        {{hash=ef3fd55e5cdf215ec6f1c13fb310fca1}{%
+           family={Alcalá-Fdez},
+           family_i={A\bibinithyphendelim F\bibinitperiod},
+           given={Jesús},
+           given_i={J\bibinitperiod}}}%
+        {{hash=4418d7e26434ffd004127af1a68d9330}{%
+           family={Fernández},
+           family_i={F\bibinitperiod},
+           given={Alberto},
+           given_i={A\bibinitperiod}}}%
+        {{hash=9b961613b7246367ba81e7015db77421}{%
+           family={Luengo},
+           family_i={L\bibinitperiod},
+           given={Julián},
+           given_i={J\bibinitperiod}}}%
+        {{hash=326598f55585de95b3e267ddc1235fc6}{%
+           family={Derrac},
+           family_i={D\bibinitperiod},
+           given={Joaquín},
+           given_i={J\bibinitperiod}}}%
+        {{hash=1691f3ff4356c12149ac4f858ead7e04}{%
+           family={García},
+           family_i={G\bibinitperiod},
+           given={Salvador},
+           given_i={S\bibinitperiod}}}%
+        {{hash=238bb3160b7af1893fb5d309fb6be511}{%
+           family={Sánchez},
+           family_i={S\bibinitperiod},
+           given={Luciano},
+           given_i={L\bibinitperiod}}}%
+        {{hash=9f81f46436ba77791311a5db20ff5c25}{%
+           family={Herrera},
+           family_i={H\bibinitperiod},
+           given={Francisco},
+           given_i={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{9257c6844e00ebcc49fe7a15899aff15}
+      \strng{fullhash}{cd33bc710b177e0f7429e117e5c9fe42}
+      \field{sortinit}{A}
+      \field{sortinithash}{b685c7856330eaee22789815b49de9bb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Multiple-Valued Logic \& Soft Computing}
+      \field{title}{Keel data-mining software tool: data set repository, integration of algorithms and experimental analysis framework.}
+      \field{volume}{17}
+      \field{year}{2011}
+    \endentry
     \entry{survey_dml_2}{article}{}
       \name{author}{3}{}{%
         {{hash=cecab514c728aed99e81691d0adc2d82}{%
@@ -272,6 +324,36 @@
       \field{title}{Elements of Information Theory (Wiley Series in Telecommunications and Signal Processing)}
       \field{year}{2006}
     \endentry
+    \entry{cover1967nearest}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a3f15729585b7b2e933595818ac72f13}{%
+           family={Cover},
+           family_i={C\bibinitperiod},
+           given={Thomas},
+           given_i={T\bibinitperiod}}}%
+        {{hash=5f7d498e6ea16510d746ba3d22fd28db}{%
+           family={Hart},
+           family_i={H\bibinitperiod},
+           given={Peter},
+           given_i={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{009363c68fe9e8fdbf90620bf270d3f5}
+      \strng{fullhash}{009363c68fe9e8fdbf90620bf270d3f5}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE transactions on information theory}
+      \field{number}{1}
+      \field{title}{Nearest neighbor pattern classification}
+      \field{volume}{13}
+      \field{year}{1967}
+      \field{pages}{21\bibrangedash 27}
+      \range{pages}{7}
+    \endentry
     \entry{variations_convex}{book}{}
       \name{author}{1}{}{%
         {{hash=e6908e0eeee954987c8751d41e2e6e7d}{%
@@ -362,6 +444,28 @@
       \field{year}{2007}
       \field{pages}{209\bibrangedash 216}
       \range{pages}{8}
+    \endentry
+    \entry{python}{online}{}
+      \name{author}{1}{}{%
+        {{hash=e916da348163d73c23a44e14dd07cb27}{%
+           family={Foundation},
+           family_i={F\bibinitperiod},
+           given={Python\bibnamedelima Software},
+           given_i={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e916da348163d73c23a44e14dd07cb27}
+      \strng{fullhash}{e916da348163d73c23a44e14dd07cb27}
+      \field{sortinit}{F}
+      \field{sortinithash}{c6a7d9913bbd7b20ea954441c0460b78}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Python}
+      \field{urlday}{01}
+      \field{urlmonth}{09}
+      \field{urlyear}{2018}
+      \verb{url}
+      \verb https://www.python.org/
+      \endverb
     \endentry
     \entry{ovoova}{article}{}
       \name{author}{5}{}{%
@@ -559,12 +663,7 @@
       \range{pages}{50}
     \endentry
     \entry{matrix_analysis}{book}{}
-      \name{author}{3}{}{%
-        {{hash=ab14f8165351f3a134a2ac987e0b1493}{%
-           family={Horn},
-           family_i={H\bibinitperiod},
-           given={Roger\bibnamedelima A},
-           given_i={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      \name{author}{2}{}{%
         {{hash=ab14f8165351f3a134a2ac987e0b1493}{%
            family={Horn},
            family_i={H\bibinitperiod},
@@ -579,8 +678,8 @@
       \list{publisher}{1}{%
         {Cambridge university press}%
       }
-      \strng{namehash}{d359644c1f9a9351131310253db392c5}
-      \strng{fullhash}{d359644c1f9a9351131310253db392c5}
+      \strng{namehash}{fdb4982b23144d499d05892b2c951667}
+      \strng{fullhash}{fdb4982b23144d499d05892b2c951667}
       \field{sortinit}{H}
       \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
       \field{labelnamesource}{author}
@@ -794,6 +893,26 @@
       \field{pages}{215\bibrangedash 225}
       \range{pages}{11}
     \endentry
+    \entry{nilsson1965learning}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e9faff856759ec610339157efa76767b}{%
+           family={Nilsson},
+           family_i={N\bibinitperiod},
+           given={Nils\bibnamedelima J},
+           given_i={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill}%
+      }
+      \strng{namehash}{e9faff856759ec610339157efa76767b}
+      \strng{fullhash}{e9faff856759ec610339157efa76767b}
+      \field{sortinit}{N}
+      \field{sortinithash}{925374ca63e7594de7fafdb83e64d41d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Learning machines: foundations of trainable pattern-classifying systems}
+      \field{year}{1965}
+    \endentry
     \entry{overton1988minimizing}{article}{}
       \name{author}{1}{}{%
         {{hash=e6cc2ab7dd065a7edc73262d3ca60d3d}{%
@@ -922,6 +1041,26 @@
       \field{pages}{1299\bibrangedash 1319}
       \range{pages}{21}
     \endentry
+    \entry{sebestyen1962decision}{article}{}
+      \name{author}{1}{}{%
+        {{hash=995485c17d370bcb975097bebc6b34bb}{%
+           family={Sebestyen},
+           family_i={S\bibinitperiod},
+           given={George\bibnamedelima S},
+           given_i={G\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Macmillan}%
+      }
+      \strng{namehash}{995485c17d370bcb975097bebc6b34bb}
+      \strng{fullhash}{995485c17d370bcb975097bebc6b34bb}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Decision-making processes in pattern recognition}
+      \field{year}{1962}
+    \endentry
     \entry{understandingml}{book}{}
       \name{author}{2}{}{%
         {{hash=a6c5827676b0a2058e5b904c3dd7f878}{%
@@ -974,6 +1113,28 @@
       \field{year}{2012}
       \field{pages}{6\bibrangedash 6}
       \range{pages}{1}
+    \endentry
+    \entry{R}{online}{}
+      \name{author}{1}{}{%
+        {{hash=d7689b212ec7da4731c41e0b675e468e}{%
+           family={Team},
+           family_i={T\bibinitperiod},
+           given={R\bibnamedelima Core},
+           given_i={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d7689b212ec7da4731c41e0b675e468e}
+      \strng{fullhash}{d7689b212ec7da4731c41e0b675e468e}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The R Project for Statistical Computing}
+      \field{urlday}{01}
+      \field{urlmonth}{09}
+      \field{urlyear}{2018}
+      \verb{url}
+      \verb https://www.r-project.org/
+      \endverb
     \endentry
     \entry{thompson_inequality}{article}{}
       \name{author}{1}{}{%

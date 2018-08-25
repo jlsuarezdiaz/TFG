@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} import numpy as np \PYGZsh{} Biblioteca NumPy}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} from sklearn.datasets import iris \PYGZsh{} Iris dataset}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} from dml import NCA \PYGZsh{} Importamos el algoritmo NCA}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} iris = load\PYGZus{}iris() \PYGZsh{} Cargamos los datos de iris}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} X = iris[\PYGZsq{}data\PYGZsq{}]}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} y = iris[\PYGZsq{}target\PYGZsq{}]}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} nca = NCA()  \PYGZsh{} Construcción del algoritmo (con parámetros por defecto)}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} nca.fit(X,y) \PYGZsh{} Aprendemos la distancia con fit.}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} nca.metadata() \PYGZsh{} Podemos consultar los metadatos asociados al algoritmo}
+\PYG{x}{    \PYGZob{}\PYGZsq{}final\PYGZus{}expectance\PYGZsq{}: 0.95771240234375,}
+\PYG{x}{     \PYGZsq{}initial\PYGZus{}expectance\PYGZsq{}: 0.8380491129557291,}
+\PYG{x}{     \PYGZsq{}num\PYGZus{}iters\PYGZsq{}: 3\PYGZcb{}}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} nca.metric() \PYGZsh{} También podemos ver la métrica aprendida}
+\PYG{x}{    array([[ 1.19098678,  0.51293714, \PYGZhy{}2.15818151, \PYGZhy{}2.01464351],}
+\PYG{x}{           [ 0.51293714,  1.58128238, \PYGZhy{}2.14573777, \PYGZhy{}2.10714773],}
+\PYG{x}{           [\PYGZhy{}2.15818151, \PYGZhy{}2.14573777,  6.46881853,  5.86280474],}
+\PYG{x}{           [\PYGZhy{}2.01464351, \PYGZhy{}2.10714773,  5.86280474,  6.83271473]])}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} nca.transformer() \PYGZsh{} o la aplicación lineal asociada.}
+\PYG{x}{    array([[ 0.77961001, \PYGZhy{}0.01911998, \PYGZhy{}0.35862791, \PYGZhy{}0.23992861],}
+\PYG{x}{           [\PYGZhy{}0.04442949,  1.00747788, \PYGZhy{}0.29936559, \PYGZhy{}0.25812144],}
+\PYG{x}{           [\PYGZhy{}0.60744415, \PYGZhy{}0.57288453,  2.16095076,  1.35212555],}
+\PYG{x}{           [\PYGZhy{}0.46068713, \PYGZhy{}0.48755353,  1.25732916,  2.20913531]])}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} \PYGZsh{} Por último, podemos transformar los datos según la aplicación aprendida}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} Lx = nca.transform()}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} Lx[:5,:] \PYGZsh{} Los 5 primeros datos transformados}
+\PYG{x}{    array([[ 3.35902632,  2.8288461 , \PYGZhy{}1.80730485, \PYGZhy{}1.85385382],}
+\PYG{x}{           [ 3.21266431,  2.33399305, \PYGZhy{}1.39937375, \PYGZhy{}1.51793964],}
+\PYG{x}{           [ 3.0887811 ,  2.57431109, \PYGZhy{}1.60855691, \PYGZhy{}1.64904583],}
+\PYG{x}{           [ 2.94100652,  2.41813313, \PYGZhy{}1.05833389, \PYGZhy{}1.30275593],}
+\PYG{x}{           [ 3.27915332,  2.93403684, \PYGZhy{}1.80384889, \PYGZhy{}1.85654046]])}
+
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} \PYGZsh{} O también podemos transformar nuevos datos}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} X\PYGZus{} = np.array([[1.0,0.0,0.0,0.0],[1.0,1.0,0.0,0.0],[1.0,1.0,1.0,0.0]])}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} Lx\PYGZus{} = nca.transform(X\PYGZus{})}
+\PYG{x}{    \PYGZgt{}\PYGZgt{}\PYGZgt{} Lx\PYGZus{}}
+\PYG{x}{    array([[ 0.77961001, \PYGZhy{}0.04442949, \PYGZhy{}0.60744415, \PYGZhy{}0.46068713],}
+\PYG{x}{           [ 0.76049003,  0.9630484 , \PYGZhy{}1.18032868, \PYGZhy{}0.94824066],}
+\PYG{x}{           [ 0.40186212,  0.66368281,  0.98062208,  0.3090885 ]])}
+\end{Verbatim}

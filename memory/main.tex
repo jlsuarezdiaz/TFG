@@ -1,21 +1,22 @@
+% !TEX options=--shell-escape
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Apuntes de la asignatura Análisis de Fourier
+% Trabajo de Fin de Grado
 %
-% Autores: Andrés Herrera Poyatos (https://github.com/andreshp)
-%          Juan Luis Suárez Díaz (https://github.com/jlsuarezdiaz)
+% Autores: Juan Luis Suárez Díaz (https://github.com/jlsuarezdiaz)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %-----------------------------------------------------------------------------------------------------
 %	INCLUSIÓN DE PAQUETES BÁSICOS
 %-----------------------------------------------------------------------------------------------------
 
-\documentclass{book}
+\documentclass[openany]{book}
 
 % Utiliza el paquete de español.
 \usepackage{spanish}
 
 % Utiliza la plantilla para reports.
-\usepackage{template}
+% \usepackage{template}
 
 %---------------------------------------------------------------------------------------------------
 %	OTROS PAQUETES
@@ -23,6 +24,9 @@
 
 \usepackage{mathematics}
 \usepackage{comment}
+
+\usepackage{modern-thesis}
+\usepackage{title-ugr}
 
 % Change the space before and anfer chapter titles.
 % https://tex.stackexchange.com/questions/111643/decrease-space-before-and-after-chapter-in-fncychap
@@ -55,7 +59,7 @@
 
 % Elija uno de los siguientes formatos.
 % No olvide incluir los archivos .sty asociados en el directorio del documento.
-\usepackage{title1}
+%\usepackage{title1}
 %\usepackage{title2}
 %\usepackage{title3}
 
@@ -73,12 +77,14 @@ backend=biber
 %	DATOS DEL DOCUMENTO
 %-----------------------------------------------------------------------------------------------------
 
-\newcommand{\doctitle}{Trabajo de Fin de Grado}
-\newcommand{\docsubtitle}{El aprendizaje de métricas de distancia: análisis y revisión de técnicas desarrolladas en alta dimensionalidad}
+\newcommand{\doctitle}{El aprendizaje de métricas de distancia}
+\newcommand{\docsubtitle}{Análisis y revisión de técnicas desarrolladas en alta dimensionalidad}
 \newcommand{\docdate}{\date}
-\newcommand{\subject}{}
+\newcommand{\subject}{Trabajo de Fin de Grado}
+\newcommand{\degree}{Doble Grado en Ingeniería Informática y Matemáticas}
 \newcommand{\docauthor}{Juan Luis Suárez Díaz}
-\newcommand{\docaddress}{Universidad de Granada}
+\newcommand{\tutors}{Francisco Herrera Triguero \\ Salvador García López}
+\newcommand{\docaddress}{Facultad de Ciencias \\ E.T.S.  Ingenierías Informática y de Telecomunicación}
 \newcommand{\docemail}{jlsuarezdiaz@correo.ugr.es}
 \newcommand{\doclhead}{J. L. Suárez}
 \newcommand{\docrhead}{}
@@ -92,37 +98,68 @@ backend=biber
 \newcommand{\docabstract}{}
 %\newcommand{\docabstract}{En este texto puedes incluir un resumen del documento. Este informa al lector sobre el contenido del texto, indicando el objetivo del mismo y qué se puede aprender de él.}
 
+\usepackage{tocloft}
+\setlength{\cftchapnumwidth}{1.5em}
+   
 \begin{document}
 
-%\hypersetup{pageanchor=false}
-%\maketitle
-%\hypersetup{pageanchor=true}
+\frontmatter
+
+\hypersetup{pageanchor=false}
+\maketitle
+\hypersetup{pageanchor=true}
+
+%\pagestyle{plain}
+%\setcounter{chapter}{-3}
+\renewcommand{\chaptername}{}
+
+\refstepcounter{dummy}
+\pdfbookmark[1]{Resumen}{Resumen}
+\input{chapters/resumen}
+\newpage
+
+\refstepcounter{dummy}
+\pdfbookmark[1]{Abstract}{Abstract}
+\input{chapters/abstract}
+\newpage
+
+\refstepcounter{dummy}
+\pdfbookmark[1]{Agradecimientos}{Agradecimientos}
+\input{chapters/acknowledgements}
+\newpage
+
 
 %-----------------------------------------------------------------------------------------------------
 %	ÍNDICE
 %-----------------------------------------------------------------------------------------------------
 
 % Profundidad del Índice:
-\setcounter{tocdepth}{1}
+\refstepcounter{dummy}
+\pdfbookmark[1]{\contentsname}{tableofcontents}
+\setcounter{tocdepth}{1} % <-- 2 includes up to subsections in the ToC
+\setcounter{secnumdepth}{3} % <-- 3 numbers up to subsubsections
 
 \thispagestyle{plain}
-\tableofcontents
+\begingroup\hypersetup{linkcolor=black}\tableofcontents\endgroup
+%\tableofcontents
 \vspace*{\fill}
-\doclicenseThis
+%\doclicenseThis
 \newpage
-\thispagestyle{plain}
+
+
+\mainmatter
+\renewcommand{\chaptername}{Capítulo}
+
+%\pagestyle{plain}
+
+\part{Introducción}
+
+
+%% INTRODUCCIÓN
+\input{chapters/introduction}
 
 
 \part{Matemáticas}
-
-
-\begin{comment}
-\begin{prop}[Caracterizaciones de distancias asociadas a métricas] \label{prop:caract_distancias}
-	
-\end{prop}
-\end{comment}
-
-
 
 %% CAPÍTULO 1 - ANÁLISIS CONVEXO
 \input{chapters/convex_analysis}
@@ -134,7 +171,6 @@ backend=biber
 
 %% CAPÍTULO 3 - TEORÍA DE LA INFORMACIÓN
 \input{chapters/information_theory}
-
 
 \part{Informática teórica}
 
@@ -149,15 +185,26 @@ backend=biber
 
 \part{Informática práctica}
 
+%% CAPÍTULO 7 - SOFTWARE DESARROLLADO
 \input{chapters/software}
 
+%% CAPÍTULO 8 - EXPERIMENTACIÓN
 \input{chapters/experiments}
+
+\part{Conclusión}
+
+\input{chapters/conclussion}
  
 %-----------------------------------------------------------------------------------------------------
 %	BIBLIOGRAFÍA
 %-----------------------------------------------------------------------------------------------------
 
-\printbibliography
+\renewcommand{\chaptername}{}
+
+%\refstepcounter{dummy}
+%\addtocontents{toc}{\protect\vspace{\beforebibskip}} % to have the bib a bit from the rest in the toc
+%\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+\printbibliography[heading=bibintoc]
 \nocite{*}
 
 \end{document}

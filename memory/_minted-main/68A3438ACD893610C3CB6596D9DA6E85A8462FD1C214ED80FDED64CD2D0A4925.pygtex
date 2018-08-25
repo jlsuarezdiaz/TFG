@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+pip install \PYGZlt{}nombre\PYGZus{}paquete\PYGZgt{}
+\end{Verbatim}

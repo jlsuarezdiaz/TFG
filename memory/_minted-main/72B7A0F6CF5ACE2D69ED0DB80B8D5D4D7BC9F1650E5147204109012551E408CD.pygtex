@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np} \PYG{c+c1}{\PYGZsh{} Biblioteca NumPy}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{k+kn}{from} \PYG{n+nn}{sklearn.datasets} \PYG{k+kn}{import} \PYG{n}{iris} \PYG{c+c1}{\PYGZsh{} Iris dataset}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{k+kn}{from} \PYG{n+nn}{dml} \PYG{k+kn}{import} \PYG{n}{NCA} \PYG{c+c1}{\PYGZsh{} Importamos el algoritmo NCA}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{iris} \PYG{o}{=} \PYG{n}{load\PYGZus{}iris}\PYG{p}{()} \PYG{c+c1}{\PYGZsh{} Cargamos los datos de iris}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{X} \PYG{o}{=} \PYG{n}{iris}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}data\PYGZsq{}}\PYG{p}{]}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{y} \PYG{o}{=} \PYG{n}{iris}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}target\PYGZsq{}}\PYG{p}{]}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{nca} \PYG{o}{=} \PYG{n}{NCA}\PYG{p}{()}  \PYG{c+c1}{\PYGZsh{} Construcción del algoritmo (con parámetros por defecto)}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{nca}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{y}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} Aprendemos la distancia con fit.}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{nca}\PYG{o}{.}\PYG{n}{metadata}\PYG{p}{()} \PYG{c+c1}{\PYGZsh{} Podemos consultar los metadatos asociados al algoritmo}
+    \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}final\PYGZus{}expectance\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mf}{0.95771240234375}\PYG{p}{,}
+     \PYG{l+s+s1}{\PYGZsq{}initial\PYGZus{}expectance\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mf}{0.8380491129557291}\PYG{p}{,}
+     \PYG{l+s+s1}{\PYGZsq{}num\PYGZus{}iters\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}\PYG{p}{\PYGZcb{}}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{nca}\PYG{o}{.}\PYG{n}{metric}\PYG{p}{()} \PYG{c+c1}{\PYGZsh{} También podemos ver la métrica aprendida}
+    \PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{1.19098678}\PYG{p}{,}  \PYG{l+m+mf}{0.51293714}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.15818151}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.01464351}\PYG{p}{],}
+           \PYG{p}{[} \PYG{l+m+mf}{0.51293714}\PYG{p}{,}  \PYG{l+m+mf}{1.58128238}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.14573777}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.10714773}\PYG{p}{],}
+           \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.15818151}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.14573777}\PYG{p}{,}  \PYG{l+m+mf}{6.46881853}\PYG{p}{,}  \PYG{l+m+mf}{5.86280474}\PYG{p}{],}
+           \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.01464351}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.10714773}\PYG{p}{,}  \PYG{l+m+mf}{5.86280474}\PYG{p}{,}  \PYG{l+m+mf}{6.83271473}\PYG{p}{]])}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{nca}\PYG{o}{.}\PYG{n}{transformer}\PYG{p}{()} \PYG{c+c1}{\PYGZsh{} o la aplicación lineal asociada.}
+    \PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{0.77961001}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.01911998}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.35862791}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.23992861}\PYG{p}{],}
+           \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.04442949}\PYG{p}{,}  \PYG{l+m+mf}{1.00747788}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.29936559}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.25812144}\PYG{p}{],}
+           \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.60744415}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.57288453}\PYG{p}{,}  \PYG{l+m+mf}{2.16095076}\PYG{p}{,}  \PYG{l+m+mf}{1.35212555}\PYG{p}{],}
+           \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.46068713}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.48755353}\PYG{p}{,}  \PYG{l+m+mf}{1.25732916}\PYG{p}{,}  \PYG{l+m+mf}{2.20913531}\PYG{p}{]])}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} Por último, podemos transformar los datos según la aplicación aprendida}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{Lx} \PYG{o}{=} \PYG{n}{nca}\PYG{o}{.}\PYG{n}{transform}\PYG{p}{()}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{Lx}\PYG{p}{[:}\PYG{l+m+mi}{5}\PYG{p}{,:]} \PYG{c+c1}{\PYGZsh{} Los 5 primeros datos transformados}
+    \PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{3.35902632}\PYG{p}{,}  \PYG{l+m+mf}{2.8288461} \PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.80730485}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.85385382}\PYG{p}{],}
+           \PYG{p}{[} \PYG{l+m+mf}{3.21266431}\PYG{p}{,}  \PYG{l+m+mf}{2.33399305}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.39937375}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.51793964}\PYG{p}{],}
+           \PYG{p}{[} \PYG{l+m+mf}{3.0887811} \PYG{p}{,}  \PYG{l+m+mf}{2.57431109}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.60855691}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.64904583}\PYG{p}{],}
+           \PYG{p}{[} \PYG{l+m+mf}{2.94100652}\PYG{p}{,}  \PYG{l+m+mf}{2.41813313}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.05833389}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.30275593}\PYG{p}{],}
+           \PYG{p}{[} \PYG{l+m+mf}{3.27915332}\PYG{p}{,}  \PYG{l+m+mf}{2.93403684}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.80384889}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.85654046}\PYG{p}{]])}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} O también podemos transformar nuevos datos}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{X\PYGZus{}} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([[}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{l+m+mf}{0.0}\PYG{p}{],[}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{l+m+mf}{0.0}\PYG{p}{,}\PYG{l+m+mf}{0.0}\PYG{p}{],[}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{l+m+mf}{1.0}\PYG{p}{,}\PYG{l+m+mf}{0.0}\PYG{p}{]])}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{Lx\PYGZus{}} \PYG{o}{=} \PYG{n}{nca}\PYG{o}{.}\PYG{n}{transform}\PYG{p}{(}\PYG{n}{X\PYGZus{}}\PYG{p}{)}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{Lx\PYGZus{}}
+    \PYG{n}{array}\PYG{p}{([[} \PYG{l+m+mf}{0.77961001}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.04442949}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.60744415}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.46068713}\PYG{p}{],}
+           \PYG{p}{[} \PYG{l+m+mf}{0.76049003}\PYG{p}{,}  \PYG{l+m+mf}{0.9630484} \PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.18032868}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{0.94824066}\PYG{p}{],}
+           \PYG{p}{[} \PYG{l+m+mf}{0.40186212}\PYG{p}{,}  \PYG{l+m+mf}{0.66368281}\PYG{p}{,}  \PYG{l+m+mf}{0.98062208}\PYG{p}{,}  \PYG{l+m+mf}{0.3090885} \PYG{p}{]])}
+\end{Verbatim}

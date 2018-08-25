@@ -1,0 +1,276 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package which include a template for writing a book in latex.
+%
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% You can put this package in the directory ~/texmf/tex/latex/ and use it with \usepackage{book}
+% whenever you want.
+%
+% The template does not provide a title environment. You have to use one of the titlex.sty packages
+% in order to define a title environment.
+% Furthermore, the template requires you to define the following variables:
+
+% Title of the document.
+%\newcommand{\doctitle}{This is the title}
+% Subtitle.
+%\newcommand{\docsubtitle}{A cool subtitle}
+% Date.
+%\newcommand{\docdate}{March 17th, 2017}
+% Subject.
+%\newcommand{\subject}{LaTeX}
+% Author.
+%\newcommand{\docauthor}{Andrés Herrera Poyatos}
+%\newcommand{\docaddress}{University of Granada}
+%\newcommand{\docemail}{andreshp9@gmail.com}
+% Document's abstract. If you leave it empty, then it won't be used.
+%\newcommand{\docabstract}{}
+
+\ProvidesPackage{modern-thesis}[2018]
+
+
+%-----------------------------------------------------------------------------------------------------
+% FONT SELECTION
+%-----------------------------------------------------------------------------------------------------
+
+%\usepackage{courier}
+% Improves the font rendering.
+\usepackage{microtype}
+\usepackage{caption}
+\captionsetup[figure]{font=footnotesize}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}[2011/08/13]
+
+%-----------------------------------------------------------------------------------------------------
+%	LANGUAGE CHOICE
+%-----------------------------------------------------------------------------------------------------
+
+% Chooses the footer words in english or spanish.
+\newcommand{\pageWord}{\iflanguage{english}{Page}{P\'agina}}
+\newcommand{\ofWord}{\iflanguage{english}{of}{de}}
+
+%-----------------------------------------------------------------------------------------------------
+%	PAGE STYLE
+%-----------------------------------------------------------------------------------------------------
+
+% Package to format the header and the footer.
+\usepackage{fancyhdr}
+\usepackage{lastpage}               % Referencia a la última página. Utilizado para el pie de página.
+\usepackage{calc}
+\usepackage{extramarks}             % Marcas extras. Utilizado en pie de página y cabecera.
+
+\usepackage{geometry}               % Asigna la "geometría" de las páginas.
+\usepackage{bbm}
+
+% Chooses the margins
+\geometry{left=3cm, right=3cm, top=2.5cm, bottom=2.5cm, headheight=1cm, headsep=0.3cm}
+%\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm,headheight=0.8cm,headsep=0.3cm}
+
+% Chooses the fancy page style.
+\pagestyle{fancy}
+
+% Spaces of the document:
+% Chooses the space between lines.
+\linespread{1.1}
+% Selects the indentation for each paragraph beginning.
+\usepackage[parfill]{parskip}
+\setlength\parindent{0pt}
+
+%-----------------------------------------------------------------------------------------------------
+% HEADER
+%-----------------------------------------------------------------------------------------------------
+
+% Modifies the \chaptermark command
+\AtBeginDocument {
+  \def\chaptermark#1{
+    \markboth{
+      \MakeUppercase{
+        \ifnum \c@secnumdepth >\m@ne
+        \if@mainmatter
+        \thechapter \ -
+        \fi
+        \fi
+        #1}
+    }{}
+  }
+}
+
+% Chooses the header style
+\renewcommand\headrule{
+  \begin{minipage}{\textwidth}
+    \hrule width \hsize
+  \end{minipage}
+}
+
+% Computes the right header text.
+% The rheader contains the subject, title and subtitle
+% of the document. If any of those is not specified, then
+% it is omitted.
+\newcommand{\rheadtext}{
+  \ifthenelse{\equal{\doclhead}{}}{
+    \ifthenelse{\equal{\subject}{}}{}{\subject \ -}
+    \doctitle \ifthenelse{\equal{\docsubtitle}{}}{}{\ - \docsubtitle}
+  }
+  {\docrhead}
+}
+
+% Left part of the header.
+% If the user has specified an specific lhead by defining the command,
+% then this header is used. Otherwise, the lhead is the author.
+\fancyhead[L]{
+  \ifthenelse{\equal{\doclhead}{}}{\docauthor}{\doclhead}
+}
+% Right part of the header.
+% If the user has specified an specific lhead by defining the command,
+% then this header is used. Otherwise, the lhead is the author.
+\fancyhead[R]{
+  \ifnum \c@secnumdepth >\m@ne
+    \ifthenelse{\equal{\docrhead}{}}{\chaptername\nouppercase{\leftmark}}{\docrhead}
+  \else
+    \ifthenelse{\equal{\docrhead}{}}{\nouppercase{\leftmark}}{\docrhead}
+  \fi
+}
+
+%-----------------------------------------------------------------------------------------------------
+% FOOTER
+%-----------------------------------------------------------------------------------------------------
+
+% Chooses the footer style
+\renewcommand\footrule{
+  \if@mainmatter
+    \begin{minipage}{\textwidth}
+      \hrule width \hsize
+    \end{minipage}\par
+  \fi
+}
+
+% Left part of the footer
+\fancyfoot[L]{}
+% Center part of the footer
+\fancyfoot[C]{
+  \if@mainmatter
+    %
+  \else
+    \thepage%
+  \fi
+}
+% Right part of the footer
+\fancyfoot[R]{
+\if@mainmatter
+  \pageWord\ \thepage\ \ofWord\ \protect\pageref{LastPage}%
+\fi
+}
+
+%-----------------------------------------------------------------------------------------------------
+% PLAIN PAGE STYLE
+%-----------------------------------------------------------------------------------------------------
+
+\fancypagestyle{plain}{%
+  \fancyhead{}%
+  \renewcommand*{\headrule}{}%
+
+%  \fancyhead[L]{
+%    \ifthenelse{\equal{\doclhead}{}}{\docauthor}{\doclhead}
+%  }
+%  \fancyhead[R]{
+%    \ifthenelse{\equal{\docrhead}{}}{\chaptername\nouppercase{\leftmark}}{\docrhead}
+%  }
+  % Left part of the footer
+  \fancyfoot[L]{}
+  % Center part of the footer
+  \fancyfoot[C]{
+  \if@mainmatter
+    %
+  \else
+    \thepage%
+  \fi
+  }
+  % Right part of the footer
+  \fancyfoot[R]{
+  \if@mainmatter
+    \pageWord\ \thepage\ \ofWord\ \protect\pageref{LastPage}%
+  \fi
+  }
+}
+
+%-----------------------------------------------------------------------------------------------------
+%	CHAPTER TITLE
+%-----------------------------------------------------------------------------------------------------
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Lenny]{fncychap}
+
+% Change the font size
+\ChTitleVar{\huge\bfseries}
+\ChNameVar{\huge\bfseries}
+%\ChNumVar{\fontsize{60}{62}\bfseries}
+
+% Change the space before and anfer chapter titles.
+% https://tex.stackexchange.com/questions/111643/decrease-space-before-and-after-chapter-in-fncychap
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-30\p@}}{}{}
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-30\p@}}{}{}
+\patchcmd{\DOTI}{\vskip 80\p@}{\vskip 40\p@}{}{}
+\patchcmd{\DOTIS}{\vskip 40\p@}{\vskip 0\p@}{}{}
+\makeatother
+
+
+%-----------------------------------------------------------------------------------------------------
+%	IMAGES
+%-----------------------------------------------------------------------------------------------------
+
+% Allows the H placement in images.
+\usepackage{float}
+
+%-----------------------------------------------------------------------------------------------------
+%	HYPERREF SET UP
+%-----------------------------------------------------------------------------------------------------
+\newcounter{dummy} % necessary for correct hyperlinks (to index, bib, etc.)
+
+\usepackage[pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures,bookmarksopen=true,bookmarksdepth=2]{hyperref}
+\usepackage{bookmark}
+
+%\hypersetup{
+%    % Removes the boxes and puts the links with color:
+%    colorlinks   = true,                    
+%    % Color selection:
+%    linkcolor    = [rgb]{0,0.2,0.5},
+%    anchorcolor  = gray,
+%    citecolor    =  [HTML]{c6474b},
+%    filecolor    = red,
+%    menucolor    = green,
+%    runcolor     = red,
+%    urlcolor     = [HTML]{c6474b}
+%}
+
+\hypersetup{%
+    %draft, % = no hyperlinking at all (useful in b/w printouts)
+    colorlinks=true, linktocpage=true, linktoc=all, pdfstartpage=3, pdfstartview=FitV,%
+    % uncomment the following line if you want to have black links (e.g., for printing)
+    %colorlinks=false, linktocpage=false, pdfstartpage=3, pdfstartview=FitV, pdfborder={0 0 0},%
+    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+    hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+    urlcolor=TealBlue, linkcolor=RoyalBlue, citecolor=Plum, %pagecolor=RoyalBlue,%
+    %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+    pdftitle={El aprendizaje de métricas de distancia},%
+    pdfauthor={Juan Luis Suárez Díaz},%\textcopyright\ \myName, \myUni, \myFaculty},%
+    pdfsubject={Trabajo de Fin de Grado},%
+    pdfkeywords={},%
+    pdfcreator={pdfLaTeX},%
+    pdfproducer={LaTeX with hyperref and classicthesis}%
+}   
+
+\usepackage{booktabs}
+
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{LightGray}{gray}{0.9}
+\usepackage{minted}
+\usepackage{cleveref}
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+\usepackage[T1]{fontenc}
+
+
+

@@ -1,0 +1,89 @@
+\chapter{Introducción}
+
+\section{Contextualización}
+
+En este trabajo se estudiará la disciplina del aprendizaje de métricas de distancia, una rama del aprendizaje automático cuya finalidad es aprender distancias a partir de los datos.
+
+El uso de distancias en el aprendizaje automático está presente desde sus inicios, sirviendo como medidas de semejanza entre los datos. Los datos más cercanos serán considerados similares, mientras que datos alejados serán poco similares. Esta idea es utilizada en la regla de clasificación por vecinos cercanos, mediante la cual, dado un conjunto de datos etiquetados y un nuevo elemento a clasificar, se calcula la clase de dicho elemento como la clase mayoritaria dentro de sus vecinos más cercanos. Este clasificador fue presentado como tal en 1967 \cite{cover1967nearest}, si bien la idea ya había sido mencionada en publicaciones incluso anteriores \cite{sebestyen1962decision,nilsson1965learning}.
+
+Algoritmos del estilo del clasificador de vecinos cercanos son de los principales motivadores del aprendizaje de métricas de distancia. La búsqueda de una distancia que acerque lo máximo posible datos similares, alejando a su vez datos no similares puede incrementar notablemente la calidad de estos algoritmos. 
+
+Aunque desde mediados del siglo XX son populares en el ámbito estadístico técnicas como el análisis de componentes principales o el análisis discriminante lineal, no es hasta principios del siglo XXI cuando se habla propiamente del aprendizaje de métricas de distancia, siendo quizás el algoritmo de Xing y col. \cite{lsi} el que da a conocer por primera vez este concepto.
+
+Durante la primera década del siglo XXI se desarrollaron algunos de los algoritmos más populares del aprendizaje de distancias, que siguen gozando de popularidad en la actualidad. Serán presentadas a lo largo de este trabajo. En los últimos años el aprendizaje de métricas de distancia sigue teniendo actividad, tanto en la búsqueda de nuevas propuestas de algoritmos de aprendizaje de distancias innovadores, como en el perfeccionamiento de las técnicas ya empleadas a lo largo de la década pasada. Algunas de estas técnicas también serán presentadas en este trabajo.
+
+\section{Descripción del problema}
+
+El problema que se trata en este trabajo puede dividirse en dos partes fundamentales. La primera de ellas consiste en analizar teóricamente el problema del aprendizaje de métricas de distancia y de algunos de los algoritmos más populares utilizados en esta disciplina. La segunda parte consiste en elaborar un software que integre estos algoritmos, y evaluarlos con distintos experimentos.
+
+El problema del aprendizaje de métricas de distancia, como ya hemos mencionado, consiste en aprender distancias a partir de los datos. El aprendizaje de una distancia que se adapte bien a los datos puede mejorar la precisión de clasificadores basados en distancias, reducir la dimensionalidad del conjunto de datos, mejorando así la eficiencia de posteriores algoritmos, e incluso es de gran interés en muchos problemas del aprendizaje no supervisado y semi-supervisado.
+
+Aprender una distancia abstracta puede resultar inabordable desde el punto de vista computacional. Por ello, se analizará una familia de distancias especial, las cuales se conocen como distancias de Mahalanobis. Veremos que esta familia cubre una gran cantidad de distancias sobre espacios vectoriales reales, pudiendo parametrizarlas además a través de matrices, bien mediante una matriz semidefinida positiva que define una distancia asociada a un producto escalar, o bien mediante matrices arbitrarias que definen aplicaciones lineales entre espacios vectoriales reales. La parametrización por matrices nos permitirá desarrollar los algoritmos que estudiaremos. El análisis de las matrices, especialmente de aquellas semidefinidas positivas, será de gran importancia en este trabajo.
+
+Por otra parte, se analizarán teóricamente los distintos algoritmos presentados en el trabajo. Los algoritmos a estudiar están orientados al aprendizaje supervisado. Veremos que estos algoritmos suelen seguir estructuras parecidas. Muchos de ellos buscarán minimizar una función diferenciable definida sobre un subconjunto de matrices. Estas funciones representarán distintas formas de ponderar la cercanía entre datos similares y la lejanía entre datos no similares. En muchos casos, la función a minimizar será además convexa, pudiendo añadir restricciones. El estudio del análisis convexo y de algunos métodos de optimización, como extensiones del gradiente descendente, serán de gran ayuda para oomprender estos algoritmos.
+
+También veremos cómo la reducción de dimensionalidad puede convertirse en una aplicación del aprendizaje de métricas de distancia, analizando algoritmos cuyo principal cometido es este. La mayoría de estos algoritmos pueden construirse mediante el cálculo de valores y vectores propios, por lo que será necesario estudiar algunos problemas de optimización basados en vectores propios. Por otra parte, observaremos cómo algunos algoritmos utilizan la teoría de la información para aprender una distancia, introduciendo la necesidad de conocer algunos de los conceptos básicos de esta disciplina.
+
+En cuanto al software, se ha elaborado una biblioteca, pyDML, para el lenguaje Python, que recoge todos los algoritmos analizados en este trabajo y los pone a disposición de los usuarios de este lenguaje. Python es un lenguaje muy popular en el aprendizaje automático, gracias principalmente a la biblioteca Scikit-Learn, que contiene una gran variedad de algoritmos de aprendizaje. Sin embargo, hasta ahora no hay una biblioteca extensa con algoritmos de aprendizaje de métricas de distancia en este lenguaje. PyDML busca añadir esta funcionalidad, siguiendo las metodologías de la biblioteca Scikit-Learn. Adicionalmente, se ha desarrollado una biblioteca para el lenguaje R, rDML, que recoge los mismos algoritmos, actuando como un \emph{wrapper} en R para la biblioteca pyDML.
+
+Por último, el desarrollo de la biblioteca pyDML ha permitido desarrollar un conjunto de experimentos para los distintos algoritmos. Con estos experimentos se ha buscado evaluar la capacidad de aprendizaje de los distintos algoritmos en determinadas circunstancias. Los experimentos se han evaluado con clasificadores basados en distancias, utilizando validación cruzada con diferentes datasets.
+
+\section{Estructura del trabajo}
+
+El trabajo se presenta dividido en tres partes:
+
+\begin{itemize}
+    \item Matemáticas: se exponen los fundamentos matemáticos del aprendizaje de métricas de distancias. En estos se incluyen nociones básicas de análisis convexo y problemas de optimización, análisis avanzado sobre matrices y una introducción a la teoría de la información y al cálculo de divergencias.
+    \item Informática teórica: se describen los conceptos de aprendizaje automático y aprendizaje de métricas de distancia, y se analizan teóricamente los algoritmos de aprendizaje de métricas de distancia presentados.
+    \item Informática práctica: se describe el software desarrollado y se explican los experimentos realizados, con los resultados obtenidos.
+\end{itemize}
+
+Dentro de la parte matemática, el capítulo \ref{chapter:convex_analysis} presenta un estudio geométrico de los conjuntos convexos, se recuerdan propiedades de las funciones convexas y se introducen los problemas de optimización y algunos métodos de resolución. El capítulo \ref{chapter:matrices} desarrolla varias teorías matriciales cuyos resultados serán utilizados en el análisis teórico del aprendizaje de métricas de distancia. Por último, el capítulo \ref{chapter:information_theory} introduce algunos conceptos de teoría de la información, y define las divergencias, que serán utilizadas en varios algoritmos.
+
+En la parte informática teórica, el capítulo \ref{chapter:machine_learning} realiza una breve introducción al aprendizaje automático. El capítulo \ref{chapter:dml_theory} describe detalladamente el problema del aprendizaje de métricas de distancia, cómo abordarlo y algunas de sus aplicaciones. Por último, el capítulo \ref{chapter:dml_algorithms} realiza presenta y analiza teóricamente los algoritmos que se estudiarán en este trabajo.
+
+Finalmente, en la parte informática práctica, el capítulo \ref{chapter:software} presenta el software elaborado y el capítulo \ref{chapter:experiments} los experimentos y sus resultados.
+
+\section{Bibliografía fundamental}
+
+Aunque se han consultado numerosas fuentes a lo largo de este trabajo, entre ellas se puede destacar la siguiente bibliografía:
+\begin{itemize}
+    \item Los artículos de los algoritmos estudiados: ANMM y KANMM \cite{anmm}, LMNN y KLMNN \cite{lmnn}, NCA \cite{nca}, NCMML y NCMC \cite{ncmml}, ITML \cite{itml}, DMLMJ y KDMLMJ \cite{dmlmj}, MCML \cite{mcml}, LSI \cite{lsi}, DML-eig \cite{dmleig}, LDML \cite{ldml} y KDA \cite{kda}. En la mayoría de ellos se describe además el problema del aprendizaje de métricas de distancia.
+    \item \emph{Convex Optimization} \cite{convexoptimization}, de Stephen Boyd y Lieven Vandenberghe, para el estudio del análisis convexo.
+    \item \emph{Matrix Analysis} \cite{matrix_analysis}, de Roger A. Horn y Charles R. Johnson, para el estudio del análisis matricial.
+    \item \emph{Elements of information theory} \cite{information_theory}, de Thomas M. Cover y Joy A. Thomas, para el estudio de los fundamentos de la teoría de la información.
+    \item \emph{Understanding Machine Learning} \cite{understandingml}, de Shai Shalev-Shwartz y Shai Ben-David, para el estudio de distintos fundamentos teóricos sobre determinados conceptos del aprendizaje automático.
+\end{itemize}
+
+\section{Objetivos}
+
+Los objetivos inicialmente previstos en la propuesta del TFG fueron:
+\begin{itemize}
+    \item Conocer y entender la disciplina del aprendizaje de métricas de distancia, y su funcionamiento.
+    \item Recopilar y analizar los fundamentos de los principales algoritmos del aprendizaje de métricas de distancia.
+    \item Desarrollar un software que integre los algoritmos del aprendizaje de métricas de distancia estudiados.
+    \item Exponer los fundamentos matemáticos subyacentes al aprendizaje de métricas de distancia.
+\end{itemize}
+
+Los dos primeros objetivos están muy ligados, pues es difícil analizar los algoritmos de esta disciplina sin entender la disciplina primero, y para dar sentido al aprendizaje de métricas de distancia es necesario conocer los principales algoritmos. Estos objetivos se han cumplido exitosamente, si bien ha sido necesario dar rigor o deducir los fundamentos de algunas de las afirmaciones presentadas en los distintos artículos sobre el aprendizaje de métricas de distancia, lo que ha supuesto una dificultad adicional. Estos objetivos han sido desarrollados en la parte informática teórica de este trabajo.
+
+El tercer objetivo también se ha cumplido, habiendo desarrollado una biblioteca en el lenguaje Python, y se ha extendido, añadiendo varias funcionalidades adicionales, como es el caso de clasificadores basados en distancias no presentes en la librería Scikit-Learn, un módulo de funciones para el dibujado de regiones determinadas por distintos clasificadores y distancias, y otro módulo orientado a la estimación de hiperparámetros de los algoritmos mediante validación cruzada. Además, se ha extendido esta biblioteca al lenguaje R, presentando una interfaz que permite acceder a la biblioteca desarrollada también desde este lenguaje. Este objetivo se desarrolla en la parte informática práctica del trabajo.
+
+En cuanto al último objetivo, también se ha cumplido en gran medida. Este objetivo se ha desarrollado en la parte matemática del trabajo. En ella, se han expuesto los principales teoremas sobre los que se apoyan el aprendizaje de métricas de distancia y sus algoritmos, desarrollando para ello teorías previas orientadas a probar estos resultados, intentando llegar a ellos de la forma más directa posible. Las tres teorías fundamentales estudiadas han sido el análisis convexo, el análisis matricial y la teoría de la información.
+
+\section{Materias relacionadas}
+
+Las materias más utilizadas en la realización de este trabajo han sido:
+\begin{itemize}
+\item Geometría I, II y III.
+\item Análisis I y II.
+\item Métodos numéricos I.
+\item Probabilidad.
+\item Análisis funcional.
+\item Topología I.
+\item Estructuras de Datos.
+\item Algorítmica.
+\item Inteligencia Artificial.
+\item Aprendizaje Automático.
+\item Inteligencia de Negocio.
+\end{itemize}

@@ -1,93 +1,317 @@
-\chapter{Experimentación}
+\chapter{Experimentación} \label{chapter:experiments}
+
+Con la biblioteca pyDML desarrollada y explicada en el capítulo anterior, se han realizado varios experimentos con los distintos algoritmos implementados. En este capítulo se describen dichos experimentos y se muestran los resultados.
 
 \section{Descripción de los experimentos}
 
+Para los algoritmos de aprendizaje de métricas de distancia estudiados, se ha desarrollado una batería de experimentos compuesta por los siguientes procedimientos:
+
+\begin{enumerate}
+    \item Evaluación de todos los algoritmos capaces de aprender a dimensión máxima aplicados a la clasificación de $k$-vecinos cercanos, para distintos valores de $k$. \label{exp:normal}
+    \item Evaluación de los algoritmos orientados a mejorar los clasificadores de centroides cercanos, aplicados a los correspondientes clasificadores asociados. \label{exp:ncm}
+    \item Evaluación de los algoritmos basados en kernels, experimentando con distintos kernels, aplicados a la clasificación de vecinos cercanos. \label{exp:ker}
+    \item Evaluación de los algoritmos capaces de reducir la dimensionalidad, para distintas dimensiones, aplicados a la clasificación de vecinos cercanos. \label{exp:dim}
+\end{enumerate}
+
+Cuando en \ref{exp:normal} se habla de algoritmos ``capaces de aprender a dimensión máxima'' se están excluyendo aquellos algoritmos de reducción de dimensionalidad que solo aprenden un cambio de ejes, como es el caso de PCA y ANMM, que a dimensión máxima aprenden una transformacion cuya distancia asociada sigue siendo la euclidea. LDA se mantiene, asumiendo que siempre tomará la dimensión máxima que pueda, según el número de clases del problema. También se excluyen de \ref{exp:normal} los algoritmos orientados a los clasificadores de centroides y los basados en kernels, los cuales se analizarán en los experimentos \ref{exp:ncm} y \ref{exp:ker}, respectivamente.
+
+Los experimentos enunciados nos indican que la magnitud con la que vamos a medir la capacidad de los algoritmos es el resultado de la clasificación k-NN, salvo en el caso de los algoritmos basados en centroides, que utilizarán su correspondiente clasificador. La forma de evaluar estos clasificadores será mediante validación cruzada de 10 particiones. Se incluirán también los resultados obtenidos de las predicciones sobre el propio conjunto de entrenamiento, para evaluar posibles sobreaprendizajes. Los algoritmos se ejecutarán utilizando todos sus parámetros por defecto, los cuales pueden consultarse en la documentación de pyDML\cref{pydml_doc_url}. Estos parámetros por defecto han sido establecidos según las recomendaciones de los autores de los distintos algoritmos. Se realizarán las siguientes excepciones a los parámetros por defecto:
+\begin{itemize}
+\item El algoritmo LSI tendrá el parámetro \texttt{supervised = True}, ya que será utilizado para aprendizaje supervisado.
+\item En el experimento \ref{exp:dim} de reducción de dimensionalidad, los algoritmos tendrán el parámetro que especifica la dimensión establecido según la dimensión que se esté evaluando.
+\item LMNN y KLMNN tendrán su parámetro \texttt{k} igual al número de vecinos que se esté considerando en la clasificación de vecinos cercanos.
+\item LMNN se ejecutará con gradiente descendente estocástico, en lugar de con programación semidefinida, en los experimentos de reducción de dimensionalidad, aprendiendo así una transformación en lugar de una métrica.
+\item ANMM y KANMM tendrán sus parámetros \texttt{n\_friends} y \texttt{n\_enemies} igual al número de vecinos que se esté considerando en la clasificación de vecinos cercanos.
+\item DMLMJ y KDMLMJ tendrán su parámetro \texttt{n\_neighbors} igual al número de vecinos que se esté considerando en la clasificación de vecinos cercanos.
+\item NCMC tendrá su parámetro \texttt{centroids\_num} igual al parámetro \texttt{centroids\_num} que se esté considerando en su correspondiente clasificador \texttt{NCMC\_Classifier}.
+\end{itemize}
+
+En cuanto a los conjuntos de datos utilizados, se han recogido hasta 34 datasets, todos ellos disponibles en KEEL\footnote{KEEL, Knowledge Extraction based on Evolutionary Learning, es una herramienta software desarrollada en Java para diversas tareas de análisis de datos. KEEL proporciona además distintos datasets, que pueden tomarse incluso directamente particionados para la validación cruzada \cite{keel}. \url{http://www.keel.es/}}. Estos datasets son todos numéricos y sin valores perdidos, estando orientados a problemas de clasificación estándar. Además, aunque algunos de los algoritmos de aprendizaje de métricas de distancia escalan bien con el número de ejemplos, algunos no pueden tratar conjuntos demasiado grandes, por lo que se ha optado por seleccionar, para los conjuntos con un número elevado de ejemplos, un subconjunto de tamaño tratable por todos los algoritmos, manteniendo la distribución de clases. De esta forma, las características de los conjuntos de datos se describen en la figura \ref{fig:exp:datasets}. Todos los conjuntos de datos han sido normalizados al intervalo $[0,1]$, atributo por atributo, previamente a la ejecución de los experimentos.
+
+\begin{figure}[h]
+\centering
+\resizebox{0.7\textwidth}{!}{%
+    \input{results/datasets.tex}
+}
+\caption{Conjuntos de datos utilizados en la experimentación.} \label{fig:exp:datasets}
+\end{figure}
+
+Por último, se describen los detalles de cada uno de los experimentos \ref{exp:normal}, \ref{exp:ncm}, \ref{exp:ker} y \ref{exp:dim}.
+\begin{enumerate}
+    \item Los algoritmos se evaluarán con los clasificadores 3-NN, 5-NN y 7-NN.
+    \item Se evaluará NCMML con el clasificador NCM de Scikit-Learn, mientras que NCMC se evaluará con el clasificador asociado de pyDML para dos valores distintos: 2 centroides por clase y 3 centroides por clase.
+    \item Los algoritmos se evaluarán para el clasificador 3-NN. Se utilizarán los kernels lineal (\texttt{Linear}), polinomiales de grado 2 y 3 (\texttt{Poly-2} y \texttt{Poly-3}), gaussiano (\texttt{RBF}) y laplaciano (\texttt{Laplacian}). Se añadirá además para la comparación KPCA, la versión kernel de PCA\footnote{Se encuentra implementado en Scikit-Learn: \url{http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html}. Sus detalles teóricos pueden encontrarse en \cite{kpca}.}. En este caso se considerarán solo los datasets de menor tamaño, para que puedan ser aplicables a los algoritmos que peor escalan con la dimensión (recordemos que el kernel trick obliga a trabajar en dimensiones del orden del número de ejemplos).
+    \item Los algoritmos se evaluarán con los clasificadores 3-NN, 5-NN y 7-NN. Las dimensiones a utilizar serán: $1, 2, 3, 5, 10, 20, 30, 40, 50, $ la dimensión máxima del conjunto de datos, y el número de clases del conjunto de datos menos 1. En este caso se seleccionan los siguientes conjuntos de alta dimensionalidad: \texttt{sonar}, \texttt{movement\_libras} y \texttt{spambase}. Los algoritmos que se evaluarán en este experimento serán: PCA, LDA, ANMM, DMLMJ, LMNN y NCA.
+\end{enumerate}
+
 \section{Resultados}
+
+En esta sección se muestran los resultados de la validación cruzada para los distintos experimentos. Las figuras \ref{results:normal:3nn:train} y \ref{results:normal:3nn:test} muestran los resultados obtenidos para el primer experimento con el 3-NN sobre los conjuntos de entrenamiento y test, respectivamente. Las figuras \ref{results:normal:5nn:train}, \ref{results:normal:5nn:test}, \ref{results:normal:7nn:train} y \ref{results:normal:7nn:test} muestran resultados análogos para los clasificadores 5-NN y 7-NN. A estos resultados se les ha añadido, como medidas de valoración, la puntuación promedia obtenida, y el ranking promedio. Este ranking se ha obtenido asignando valores enteros entre 1 y 10 (añadiendo medias fracciones en caso de empate) según la posición de los algoritmos en cada dataset, obteniendo un 1 el algoritmo que ha quedado en mejor posición, y un 10 el aquel que quede en la última. Las celdas que no muestran resultados se deben a que el algoritmo no ha convergido.
+
+En las figuras \ref{results:ncm:train} y \ref{results:ncm:test} se muestran los resultados para los clasificadores basados en centroides cercanos, y las figuras \ref{results:ker:3nn:train:1}, \ref{results:ker:3nn:train:2}, \ref{results:ker:3nn:test:1} y \ref{results:ker:3nn:test:2} muestran los resultados de los experimentos con kernels. Por último, entre las figuras \ref{results:dim:sonar:3nn} y \ref{results:dim:spambase:7nn} se muestran los resultados de los experimentos de dimensionalidad.
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-train-3nn.tex}
 }
-\caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 3-NN.}
+\caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 3-NN.} \label{results:normal:3nn:train}
 \end{figure}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-test-3nn.tex}
 }
-\caption{Resultados de la validación cruzada sobre el conjunto de test para el 3-NN.}
+\caption{Resultados de la validación cruzada sobre el conjunto de test para el 3-NN.} \label{results:normal:3nn:test}
 \end{figure}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-train-5nn.tex}
 }
-\caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 5-NN.}
+\caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 5-NN.} \label{results:normal:5nn:train}
 \end{figure}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-test-5nn.tex}
 }
-\caption{Resultados de la validación cruzada sobre el conjunto de test para el 5-NN.}
+\caption{Resultados de la validación cruzada sobre el conjunto de test para el 5-NN.} \label{results:normal:5nn:test}
 \end{figure}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-train-7nn.tex}
 }
-\caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 7-NN.}
+\caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 7-NN.} \label{results:normal:7nn:train}
 \end{figure}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-test-7nn.tex}
 }
-\caption{Resultados de la validación cruzada sobre el conjunto de test para el 7-NN.}
+\caption{Resultados de la validación cruzada sobre el conjunto de test para el 7-NN.} \label{results:normal:7nn:test}
 \end{figure}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/ncm-experiments-train.tex}
 }
-\caption{Resultados de los experimentos sobre NCM y NCMC en el conjunto de entrenamiento.}
+\caption{Resultados de los experimentos sobre NCM y NCMC en el conjunto de entrenamiento.} \label{results:ncm:train}
 \end{figure}
 
 \begin{figure}[h]
 \resizebox{\textwidth}{!}{%
     \input{results/ncm-experiments-test.tex}
 }
-\caption{Resultados de los experimentos sobre NCM y NCMC en el conjunto test.}
+\caption{Resultados de los experimentos sobre NCM y NCMC en el conjunto test.} \label{results:ncm:test}
 \end{figure}
 
 \begin{figure}[h]
-\resizebox{\textwidth}{!}{%
+\makebox[\textwidth][c]{%
+\resizebox{1.2\textwidth}{!}{%
     \input{results/ker-train-a.tex}
+}%
 }
-\caption{Resultados de los experimentos con kernels en el conjunto de entrenamiento (primera parte).}
+\caption{Resultados de los experimentos con kernels en el conjunto de entrenamiento (primera parte).} \label{results:ker:3nn:train:1}
 \end{figure}
 
 \begin{figure}[h]
-\resizebox{\textwidth}{!}{%
+\makebox[\textwidth][c]{%
+\resizebox{1.2\textwidth}{!}{%
     \input{results/ker-train-b.tex}
+}%
 }
-\caption{Resultados de los experimentos con kernels en el conjunto de entrenamiento (segunda parte).}
+\caption{Resultados de los experimentos con kernels en el conjunto de entrenamiento (segunda parte).} \label{results:ker:3nn:train:2}
 \end{figure}
 
 
 \begin{figure}[h]
-\resizebox{\textwidth}{!}{%
+\makebox[\textwidth][c]{%
+\resizebox{1.2\textwidth}{!}{%
     \input{results/ker-test-a.tex}
+}%
 }
-\caption{Resultados de los experimentos con kernels en el conjunto test (primera parte).}
+\caption{Resultados de los experimentos con kernels en el conjunto test (primera parte).} \label{results:ker:3nn:test:1}
 \end{figure}
 
 \begin{figure}[h]
-\resizebox{\textwidth}{!}{%
+\makebox[\textwidth][c]{%
+\resizebox{1.2\textwidth}{!}{%
     \input{results/ker-test-b.tex}
+}%
 }
-\caption{Resultados de los experimentos con kernels en el conjunto test (segunda parte).}
+\caption{Resultados de los experimentos con kernels en el conjunto test (segunda parte).} \label{results:ker:3nn:test:2}
 \end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-sonar-train-3nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-sonar-test-3nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{sonar} para el clasificador 3-NN (train - test)} \label{results:dim:sonar:3nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-sonar-train-5nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-sonar-test-5nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{sonar} para el clasificador 5-NN (train - test)} \label{results:dim:sonar:5nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-sonar-train-7nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-sonar-test-7nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{sonar} para el clasificador 7-NN (train - test)} \label{results:dim:sonar:7nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-movement_libras-train-3nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-movement_libras-test-3nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{movement\_libras} para el clasificador 3-NN (train - test)} \label{results:dim:libras:3nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-movement_libras-train-5nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-movement_libras-test-5nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{movement\_libras} para el clasificador 5-NN (train - test)} \label{results:dim:libras:5nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-movement_libras-train-7nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-movement_libras-test-7nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{movement\_libras} para el clasificador 7-NN (train - test)} \label{results:dim:libras:7nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-spambase-train-3nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-spambase-test-3nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{spambase} para el clasificador 3-NN (train - test)} \label{results:dim:spambase:3nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-spambase-train-5nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-spambase-test-5nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{spambase} para el clasificador 5-NN (train - test)} \label{results:dim:spambase:5nn}
+\end{figure}
+
+\begin{figure}[h]
+\makebox[\textwidth][c]{%
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+        \input{results/dim-exp-spambase-train-7nn.tex}
+    }%
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \resizebox{\textwidth}{!}{%
+            \input{results/dim-exp-spambase-test-7nn.tex}
+    }%
+\end{subfigure}
+
+}
+\caption{Resultados de los experimentos de dimensionalidad sobre \texttt{spambase} para el clasificador 7-NN (train - test)} \label{results:dim:spambase:7nn}
+\end{figure}
+
 
 \section{Conclusiones}
+
+Sobre los resultados obtenidos en el primer experimento, se puede observar claramente que NCA es el que mejores resultados ha obtenido. Esto se debe, en parte, a que los algoritmos se han evaluado con clasificadores de vecinos cercanos, y NCA es un algoritmo diseñado específicamente para mejorar este clasificador. NCA ha quedado primero en la gran mayoría de validaciones sobre el conjunto de entrenamiento, lo que demuestra su capacidad de adaptarse a los datos, pero también ha obtenido victorias claras en muchos de los datasets sobre el conjunto test, demostrando así también una gran capacidad de generalización.
+
+También podemos ver que se destacan los algoritmos DMLMJ y LMNN, aunque a bastante distancia de NCA. Estos algoritmos, especialmente LMNN, también estaban orientados a la clasificación por vecinos cercanos, lo que justifica estos buenos resultados.  LSI es un algoritmo capaz de obtener muy buenos resultados sobre determinados conjuntos, pero resulta penalizado por otros tantos, donde no es capaz de optimizar lo suficiente, llegando incluso a no converger en varios datasets.
+
+ITML y MCML son dos algoritmos que, a pesar de conseguir los mejores resultados en un número muy reducido de ocasiones, mantienen resultados buenos en la mayoría de datasets, resultando bastante regulares. ITML no aprende demasiado las características del conjunto de entrenamiento pero es capaz de generalizar lo aprendido de forma bastante efectiva, siendo posiblemente el algoritmo que menos precisión pierde sobre el conjunto de test, respecto al conjunto de entrenamiento. En cambio, MCML tiene más capacidad de aprendizaje, llegando a mostrar incluso un ligero sobreaprendizaje, pues sus resultados empeoran a los de muchos otros algoritmos sobre el conjunto test.
+
+Otro de los algoritmos donde se aprecia sobreaprendizaje, quizá de forma más clara, es LDA. Este algoritmo es capaz de obtener muy buenos resultados sobre el conjunto de entrenamiento, superando a la mayoría de algoritmos, pero empeora notablemente sus números al ser evaluado sobre los datos test. Recordemos que LDA es capaz de aprender únicamente una dimensión máximia igual al número de clases del dataset menos uno. Esto puede estar provocando que en muchos datasets se esté perdiendo información importante, haciendo que la proyección aprendida esté demasiado ajustada a los datos de entrenamiento.
+
+Por último, aunque DML-eig y LDML son capaces de mejorar a la distancia euclidea sobre el conjunto de entrenamiento, sobre algunos datasets han obtenido resultados de bastanta baja calidad. Sobre los datos test, llegan a ser superados por la distancia euclídea sobre muchos de los conjuntos de datos utilizados.
+
+Si analizamos los resultados de los clasificadores basados en centroides, se puede comprobar a simple vista que en la gran mayoría de casos el clasificador ha funcionado mejor tras aprender la distancia con su algoritmo de aprendizaje asociado, que utilizando la distancia euclídea. También se puede observar que los resultados están sometidos a gran variabilidad, según el número de centroides escogido. Esto muestra que la elección de un número de centroides adecuado, que se adapte bien a la disposición de las distintas clases, es fundamental para conseguir un aprendizaje exitoso con estos algoritmos.
+
+Centrándonos ahora en los algoritmos basados en kernels, es interesante destacar cómo KLMNN con el kernel laplaciano es capaz de ajustarse al máximo a los datos, llegando a obtener un 100 \% de acierto sobre una gran parte de los conjuntos de entrenamiento. Esta tasa de acierto no se traslada, en general, a los datos test, mostrando que este algoritmo sobreaprende con el kernel laplaciano. También se observa que los mejores resultados se distribuyen de forma variada entre las distintas opciones evaluadas. La elección de un kernel adecuado que se ajuste bien a la disposición de los datos es determinante para el funcionamiento adecuado de los algoritmos basados en kernels.
+
+Para concluir, los experimentos de dimensionalidad nos permiten observar que no siempre se obtienen los mejores resultados en dimensión máxima. Esto puede deberse a que los algoritmos son capaces de eliminar el posible ruido presente en los datos, haciendo que el clasificador usado posteriormente no sobreaprenda. También vemos que no podemos reducir la dimensión todo lo que queramos, ya que en algún momento empezaremos a perder información, lo que ocurre en muchos casos con LDA, lo cual es su gran limitación. En general, se aprecia que todos los algoritmos mejoran sus resultados al reducir dimensionalidad hasta determinado punto, aunque los mejores resultados los proporcionan LMNN, DMLMJ y NCA. Los resultados obtenidos por LMNN abren la posibilidad de utilizar este algoritmo optimizando con gradiente descendente estocástico, en lugar de con la programación semidefinida utilizada en el primer experimento, ya que los resultados que proporciona son bastante buenos. Aunque estos algoritmos hayan obtenido mejores resultados, el uso de ANMM y LDA (siempre que la dimensión lo permita) es importante para la estimación de una dimensión adecuada, pues son mucho más eficientes que los primeros. En cuanto a PCA, es el que más empeora en dimensiones bajas, debido probablemente a no considerar la información de las etiquetas.
 

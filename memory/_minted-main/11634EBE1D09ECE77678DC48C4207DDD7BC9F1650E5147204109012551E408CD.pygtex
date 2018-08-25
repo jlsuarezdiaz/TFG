@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k+kn}{as} \PYG{n+nn}{np}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{k+kn}{from} \PYG{n+nn}{sklearn.datasets} \PYG{k+kn}{import} \PYG{n}{load\PYGZus{}iris}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{k+kn}{from} \PYG{n+nn}{dml} \PYG{k+kn}{import} \PYG{n}{NCA}\PYG{p}{,} \PYG{n}{LDA}\PYG{p}{,} \PYG{n}{NCMC\PYGZus{}Classifier}\PYG{p}{,} \PYG{n}{dml\PYGZus{}multiplot}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{iris} \PYG{o}{=} \PYG{n}{load\PYGZus{}iris}\PYG{p}{()}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{X} \PYG{o}{=} \PYG{n}{iris}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}data\PYGZsq{}}\PYG{p}{]}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{y} \PYG{o}{=} \PYG{n}{iris}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}target\PYGZsq{}}\PYG{p}{]}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} Inicializamos los algoritmos de aprendizaje}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{nca} \PYG{o}{=} \PYG{n}{NCA}\PYG{p}{()}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{lda} \PYG{o}{=} \PYG{n}{LDA}\PYG{p}{()}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{ncmc} \PYG{o}{=} \PYG{n}{NCMC}\PYG{p}{()}
+
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} Vamos a ver cómo cambian los clasificadores 3\PYGZhy{}NN y NCMC aprendiendo una distancia previamente}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} Dibujaremos 4 figuras: \PYGZob{}NCMC, NCMC+NCA, 3\PYGZhy{}NN, 3\PYGZhy{}NN+LDA\PYGZcb{}}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} NCMC lo añadimos como parámetro en la lista de clasificadores (clfs)}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} 3\PYGZhy{}NN lo añadimos como parámetro en la lista de vecinos (ks)}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} LDA y NCA lo añadimos en la lista de algoritmos de aprendizaje de distancias (dmls)}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{c+c1}{\PYGZsh{} No queremos transformar los datos, sino ver cómo cambia la región (transforms)}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{dml\PYGZus{}multiplot}\PYG{p}{(}\PYG{n}{X}\PYG{p}{[:,[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]],}\PYG{n}{y}\PYG{p}{,}\PYG{n}{nrow}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{ncol}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{ks}\PYG{o}{=}\PYG{p}{[}\PYG{n+nb+bp}{None}\PYG{p}{,}\PYG{n+nb+bp}{None}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{],}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}               \PYG{n}{clfs}\PYG{o}{=}\PYG{p}{[}\PYG{n}{ncmc}\PYG{p}{,}\PYG{n}{ncmc}\PYG{p}{,}\PYG{n+nb+bp}{None}\PYG{p}{,}\PYG{n+nb+bp}{None}\PYG{p}{],}\PYG{n}{dmls}\PYG{o}{=}\PYG{p}{[}\PYG{n+nb+bp}{None}\PYG{p}{,}\PYG{n}{nca}\PYG{p}{,}\PYG{n+nb+bp}{None}\PYG{p}{,}\PYG{n}{lda}\PYG{p}{],}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}               \PYG{n}{transforms}\PYG{o}{=}\PYG{p}{[}\PYG{n+nb+bp}{False}\PYG{p}{,}\PYG{n+nb+bp}{False}\PYG{p}{,}\PYG{n+nb+bp}{False}\PYG{p}{,}\PYG{n+nb+bp}{False}\PYG{p}{],}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Comparing\PYGZdq{}}\PYG{p}{,}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}               \PYG{n}{subtitles}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}NCMC\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}NCMC + NCA\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}3\PYGZhy{}NN\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}3\PYGZhy{}NN + LDA\PYGZdq{}}\PYG{p}{],}
+    \PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}               \PYG{n}{cmap}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}rainbow\PYGZdq{}}\PYG{p}{,}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{))}
+\end{Verbatim}

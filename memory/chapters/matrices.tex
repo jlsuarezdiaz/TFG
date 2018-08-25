@@ -424,7 +424,7 @@ En esta sección estudiaremos varios problemas de optimización matricial cuya r
     \[ \mathcal{R}_{A,B}(x) = \frac{x^TAx}{x^TBx} = \frac{\langle Ax ,x \rangle}{\|x\|_B^2} \quad \forall x \in \R^d \setminus \{0\}.\]
 \end{definition}
 
-Ambas aplicaciones están bien definidas, pues los cocientes solo pueden anularse cuando $x = 0$. Notemos que el cociente de Rayleigh es un caso particular del cociente generalizado cuando $B = I$. A lo largo de la sección supondremos $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$ fijas, y nos referiremos a los cocientes de Rayleigh como $\rho = \rho_A$ y $\mathcal{R} = \mathcal{R}_{a,b}$.
+Ambas aplicaciones están bien definidas, pues los cocientes solo pueden anularse cuando $x = 0$. Notemos que el cociente de Rayleigh es un caso particular del cociente generalizado cuando $B = I$. A lo largo de la sección supondremos $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$ fijas, y nos referiremos a los cocientes de Rayleigh como $\rho = \rho_A$ y $\mathcal{R} = \mathcal{R}_{A,B}$.
 
 Una primera observación sobre estas aplicaciones es que, para $x \in \R^d \setminus \{0\}$ y $\lambda \in \R^*$, se verifica que
 \[ \mathcal{R}(\lambda x) = \frac{(\lambda x)^TA(\lambda x)}{(\lambda x)^TB(\lambda x)} = \frac{\lambda^2(x^TAx)}{\lambda^2(x^TBx)} = \mathcal{R}(x). \]
