@@ -74,7 +74,7 @@ Para concluir, el segundo enfoque desde el que se puede tratar el problema de lo
 
 Por último, es importante destacar que la matriz $L \in \mathcal{M}_{d}(\R)$ (tomando todas las dimensiones) que se construye añadiendo por filas los vectores propios de $\Sigma$ es la matriz ortonormal que diagonaliza $\Sigma$, y por tanto, al aplicar $L$ sobre los datos, los datos transformados tienen como matriz de covarianza la matriz diagonal $L\Sigma L^T = \diag(\lambda_1,\dots,\lambda_d)$, donde $\lambda_1,\dots,\lambda_d$ son los valores propios de $\Sigma$. Esto nos dice que los valores propios de la matriz de covarianza representan la cantidad de varianza explicada por cada una de las direcciones principales. Esto proporciona una ventaja adicional al PCA, ya que permite analizar el porcentaje de varianza que explica cada componente principal para poder a posteriori elegir una dimensión que se ajuste a la cantidad de varianza que se quiera conservar en los datos transformados.
 
-La figura \ref{fig:pca} ejemplifica gráficamente el funcionamiento del análisis de componentes principales.
+La Figura \ref{fig:pca} ejemplifica gráficamente el funcionamiento del análisis de componentes principales.
 
 \begin{figure}[h]
     \centering
@@ -86,7 +86,7 @@ La figura \ref{fig:pca} ejemplifica gráficamente el funcionamiento del análisi
 
 \subsection{LDA}
 
-El análisis discriminante lineal (LDA, \emph{Linear Discriminant Analysis}) es una técnica clásica de aprendizaje de métricas de distancia cuya finalidad es aprender una matriz de proyección que maximice la separación entre clases en el espacio proyectado, es decir, trata de encontrar las direcciones que mejor permiten distinguir las distintas clases, como se muestra en la figura \ref{fig:lda}.
+El análisis discriminante lineal (LDA, \emph{Linear Discriminant Analysis}) es una técnica clásica de aprendizaje de métricas de distancia cuya finalidad es aprender una matriz de proyección que maximice la separación entre clases en el espacio proyectado, es decir, trata de encontrar las direcciones que mejor permiten distinguir las distintas clases, como se muestra en la Figura \ref{fig:lda}.
 
 \begin{figure}[h]
     \centering
@@ -96,9 +96,9 @@ El análisis discriminante lineal (LDA, \emph{Linear Discriminant Analysis}) es 
 \end{figure}
 
 
-La figura \ref{fig:lda} nos permite, además, comparar los resultados de las proyecciones obtenidas por PCA y LDA, mostrando la diferencia más notable entre ambas técnicas: PCA no tiene en cuenta la información de las clases, buscando las direcciones que maximizan la varianza del conjunto total de datos, mientras que LDA sí que utiliza la información presente en las etiquetas, obteniendo direcciones en las que mejor se pueden proyectar los datos para tener una buena separación de clases. Se puede apreciar que las direcciones obtenidas por PCA y LDA no presentan ningún tipo de relación, siendo esta última la única de las dos que proporciona una proyección de los datos orientada al aprendizaje supervisado. 
+La Figura \ref{fig:lda} nos permite, además, comparar los resultados de las proyecciones obtenidas por PCA y LDA, mostrando la diferencia más notable entre ambas técnicas: PCA no tiene en cuenta la información de las clases, buscando las direcciones que maximizan la varianza del conjunto total de datos, mientras que LDA sí que utiliza la información presente en las etiquetas, obteniendo direcciones en las que mejor se pueden proyectar los datos para tener una buena separación de clases. Se puede apreciar que las direcciones obtenidas por PCA y LDA no presentan ningún tipo de relación, siendo esta última la única de las dos que proporciona una proyección de los datos orientada al aprendizaje supervisado. 
 
-También es posible observar en la figura \ref{fig:lda} que no tiene sentido buscar una segunda dirección independiente que siga maximizando la separación de las clases, mientras que en PCA siempre tiene sentido ir buscando inductivamente direcciones ortogonales que maximicen la varianza. Si el conjunto de datos mostrado en la figura tuviera una tercera clase, podríamos encontrar una segunda dirección que maximizara la separación entre clases, ofreciendo así la posibilidad de proyectar sobre el plano. En general, vamos a ver que si tenemos $r$ clases podremos encontrar como mucho (y siempre que lo permita la dimensión del espacio original) $r-1$ direcciones que maximicen la separación. Esto nos indica que las proyecciones que va a aprender LDA van a ser, en general, hacia una dimensión bastante baja, y siempre limitada por el número de clases en el conjunto de datos.
+También es posible observar en la Figura \ref{fig:lda} que no tiene sentido buscar una segunda dirección independiente que siga maximizando la separación de las clases, mientras que en PCA siempre tiene sentido ir buscando inductivamente direcciones ortogonales que maximicen la varianza. Si el conjunto de datos mostrado en la figura tuviera una tercera clase, podríamos encontrar una segunda dirección que maximizara la separación entre clases, ofreciendo así la posibilidad de proyectar sobre el plano. En general, vamos a ver que si tenemos $r$ clases podremos encontrar como mucho (y siempre que lo permita la dimensión del espacio original) $r-1$ direcciones que maximicen la separación. Esto nos indica que las proyecciones que va a aprender LDA van a ser, en general, hacia una dimensión bastante baja, y siempre limitada por el número de clases en el conjunto de datos.
 
 Supongamos el conjunto de datos etiquetados $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d$ donde $\mathcal{C}$ es el conjunto de clases del problema, e $y_1,\dots,y_N \in \mathcal{C}$ son las etiquetas asociadas a cada dato de $\mathcal{X}$. Supongamos que el número de clases del problema es $|\mathcal{C}| = r$. Para cada $c \in \mathcal{C}$ definimos el conjunto $\mathcal{C}_c = \{ i \in \{1,\dots,N\} \colon y_i = c \}$, y $N_c = |\mathcal{C}_c|$. Consideramos los vectores media de cada clase,
 \[\mu_c = \frac{1}{N_c} \sum_{i \in \mathcal{C}_c} x_i,\]
@@ -169,7 +169,7 @@ Lo que va a tratar de maximizar ANMM es el concepto de margen promedio de vecind
     
 \end{definition}
 
-Observemos que, para cada $x_i \in \mathcal{X}$, su margen promedio representa la diferencia entre la distancia media de $x_i$ a sus vecinos heterogéneos y la distancia media de $x_i$ a sus vecinos homogéneos. Por tanto, la maximización de este margen permite, localmente, alejar los datos de distintas clases y atraer a aquellos de la misma clase. En la figura \ref{fig:average_neighbor_margin} se describe gráficamente el concepto de margen promedio de vecindario.
+Observemos que, para cada $x_i \in \mathcal{X}$, su margen promedio representa la diferencia entre la distancia media de $x_i$ a sus vecinos heterogéneos y la distancia media de $x_i$ a sus vecinos homogéneos. Por tanto, la maximización de este margen permite, localmente, alejar los datos de distintas clases y atraer a aquellos de la misma clase. En la Figura \ref{fig:average_neighbor_margin} se describe gráficamente el concepto de margen promedio de vecindario.
 
 \begin{figure}[h]
     \centering
@@ -233,7 +233,7 @@ Supongamos que tenemos un conjunto de datos $\mathcal{X} = \{x_1,\dots,x_N\} \su
 
 Una vez establecidos los vecinos objetivo, para cada distancia y para cada ejemplo que manejemos podemos establecer un perímetro determinado por el vecino más lejano a dicho ejemplo. Buscamos distancias para las cuales no haya ejemplos de otras clases en dicho perímetro. Hay que destacar que con este perímetro no hay suficientes garantías de separación, pues la distancia encontrada podría haber colapsado todos los vecinos objetivo en un punto y entonces el perímetro tendría radio cero. Por ello se considera un margen determinado por el radio del perímetro, al que se añade una constante positiva. Veremos que no hay pérdida de generalidad, por la función objetivo que vamos a definir, en suponer que dicha constante es 1. A cualquier ejemplo de distinta clase que invada este margen lo llamaremos \emph{impostor}. Nuestro objetivo, por tanto, será, además de acercar cada ejemplo a sus vecinos objetivo lo máximo posible, intentar alejar lo máximo posible a los impostores.
 
-En términos matemáticos, si nuestra distancia está determinada por la aplicación lineal $L \in \mathcal{M}_{d}(\R)$, y $x_i, x_j \in \mathcal{X}$ con $j \istargetof i$, diremos que $x_l \in \mathcal{X}$ es un impostor para los datos anteriores si $y_l \ne y_i$ y $\|L(x_i - x_j)\|^2 \le \|L(x_i - x_j)\|^2+1$. En la figura \ref{fig:targets_impostors} se describen gráficamente los conceptos de vecino objetivo e impostor. Notemos por último que el margen está definido en términos de la distancia al cuadrado, en lugar de considerar solo la distancia. Esto facilitará la resolución del problema que vamos a formular.
+En términos matemáticos, si nuestra distancia está determinada por la aplicación lineal $L \in \mathcal{M}_{d}(\R)$, y $x_i, x_j \in \mathcal{X}$ con $j \istargetof i$, diremos que $x_l \in \mathcal{X}$ es un impostor para los datos anteriores si $y_l \ne y_i$ y $\|L(x_i - x_j)\|^2 \le \|L(x_i - x_j)\|^2+1$. En la Figura \ref{fig:targets_impostors} se describen gráficamente los conceptos de vecino objetivo e impostor. Notemos por último que el margen está definido en términos de la distancia al cuadrado, en lugar de considerar solo la distancia. Esto facilitará la resolución del problema que vamos a formular.
 
 \begin{figure}[h]
     \centering
@@ -365,7 +365,7 @@ donde $\alpha_{ic} = p_L(c|x_i) - [\![ y_i = c ]\!]$ y $[\![ \cdot ]\!]$ denota 
 
 \subsubsection{Generalizando NCM: El clasificador de múltiples centroides}
 
-Aunque el clasificador NCM es un clasificador sencillo, intuitivo y eficiente tanto en el proceso de aprendizaje como el proceso de predicción, tiene un gran inconveniente, y es que presupone que las clases están agrupadas alrededor de su centro, lo cual es una hipótesis demasiado restrictiva. En la figura \ref{fig:problema_ncm} podemos ver un ejemplo en el que NCM es incapaz de dar buenos resultados.
+Aunque el clasificador NCM es un clasificador sencillo, intuitivo y eficiente tanto en el proceso de aprendizaje como el proceso de predicción, tiene un gran inconveniente, y es que presupone que las clases están agrupadas alrededor de su centro, lo cual es una hipótesis demasiado restrictiva. En la Figura \ref{fig:problema_ncm} podemos ver un ejemplo en el que NCM es incapaz de dar buenos resultados.
 
 \begin{figure}[h]
     \centering
@@ -697,7 +697,7 @@ LDML (\emph{Logistic Discriminant Metric Learning}) \cite{ldml} es una técnica 
 Recordamos que la función sigmoide es la aplicación $\sigma\colon \R \to \R$ dada por
 \[ \sigma(x) = \frac{1}{1+e^{-x}}. \]
 
-Esta función presenta una gráfica con una forma sigmoidal, es diferenciable, estrictamente creciente y toma valores entre 0 y 1, alcanzando dichos valores en sus límites en menos infinito y más infinito, respectivamente. Estas propiedades permiten que la función logística sea la función de distribución de una variable aleatoria, lo que le da una importante utilidad probabilística. Su gráfica presenta  un comportamiento asintótico a partir de valores pequeños (en valor absoluto), con un crecimiento exponencial en zonas cercanas al cero. Esto hace que sea de gran utilidad para modelar señales binarias. También presenta una derivada fácil de calcular, y expresable en términos de la propia función logística, $\sigma'(x) = \sigma(x)(1-\sigma(x))$. En la figura \ref{fig:funcion_logistica} se muestra la gráfica de esta función. La función logística es también de gran utilidad en otras ramas del aprendizaje automático, como es el caso de la regresión logística o de las redes neuronales.
+Esta función presenta una gráfica con una forma sigmoidal, es diferenciable, estrictamente creciente y toma valores entre 0 y 1, alcanzando dichos valores en sus límites en menos infinito y más infinito, respectivamente. Estas propiedades permiten que la función logística sea la función de distribución de una variable aleatoria, lo que le da una importante utilidad probabilística. Su gráfica presenta  un comportamiento asintótico a partir de valores pequeños (en valor absoluto), con un crecimiento exponencial en zonas cercanas al cero. Esto hace que sea de gran utilidad para modelar señales binarias. También presenta una derivada fácil de calcular, y expresable en términos de la propia función logística, $\sigma'(x) = \sigma(x)(1-\sigma(x))$. En la Figura \ref{fig:funcion_logistica} se muestra la gráfica de esta función. La función logística es también de gran utilidad en otras ramas del aprendizaje automático, como es el caso de la regresión logística o de las redes neuronales.
 
 \begin{figure}[h]
     \centering
@@ -738,7 +738,7 @@ los métodos iterativos de gradiente ascendente combinados con proyecciones sobr
 
 Los métodos de kernel conforman un paradigma dentro del aprendizaje automático que resulta de gran utilidad en muchos de los problemas que se abordan en esta disciplina. Normalmente surgen en problemas en los que el algoritmo de aprendizaje ve mermada su capacidad, generalmente, debido a la forma del conjunto de datos. Esto ocurre, por ejemplo, en las máquinas de vectores soporte. Aunque no vamos a entrar en los detalles de este algoritmo, nos va a servir para ilustrar la necesidad de los métodos de kernel en el aprendizaje automático.
 
-Las \emph{máquinas de vectores soporte} (SVM, \emph{Support Vector Machines}) son un modelo de clasificación lineal binario que, en su versión más sencilla, cuando los datos son separables, busca establecer el hiperplano que mejor que mejor separa los datos, esto es, aquel para el cual se maximiza la distancia (margen) a los conjuntos que determinan cada clase. Los puntos de ambos conjuntos donde se materializa dicho margen son los denominados \emph{vectores soporte}. En la figura \ref{fig:svm_ejemplo} se muestra cómo actúa este clasificador.
+Las \emph{máquinas de vectores soporte} (SVM, \emph{Support Vector Machines}) son un modelo de clasificación lineal binario que, en su versión más sencilla, cuando los datos son separables, busca establecer el hiperplano que mejor que mejor separa los datos, esto es, aquel para el cual se maximiza la distancia (margen) a los conjuntos que determinan cada clase. Los puntos de ambos conjuntos donde se materializa dicho margen son los denominados \emph{vectores soporte}. En la Figura \ref{fig:svm_ejemplo} se muestra cómo actúa este clasificador.
 
 \begin{figure}[h]
     \centering
@@ -746,7 +746,7 @@ Las \emph{máquinas de vectores soporte} (SVM, \emph{Support Vector Machines}) s
     \caption{Clasificación realizada por las máquinas de vectores soporte en su versión básica.} \label{fig:svm_ejemplo}
 \end{figure} 
 
-Sin embargo, en muchas ocasiones, aunque los datos sean visiblemente separables, puede resultar imposible separarlos mediante un hiperplano, como sucede en el ejemplo de la figura \ref{fig:svm_ejemplo2}. En ella, se ha considerado un subconjunto finito $\mathcal{X}$ de números reales, de forma que a aquellos $x \in \mathcal{X}$ con $|x| > 1$ se les ha asignado la clase $1$ y a aquellos con $|x| \le 1$ la clase $-1$. Es inmediato observar que, aunque las regiones de las dos clases están claramente diferenciadas, no es posible separarlas mediante un hiperplano.
+Sin embargo, en muchas ocasiones, aunque los datos sean visiblemente separables, puede resultar imposible separarlos mediante un hiperplano, como sucede en el ejemplo de la Figura \ref{fig:svm_ejemplo2}. En ella, se ha considerado un subconjunto finito $\mathcal{X}$ de números reales, de forma que a aquellos $x \in \mathcal{X}$ con $|x| > 1$ se les ha asignado la clase $1$ y a aquellos con $|x| \le 1$ la clase $-1$. Es inmediato observar que, aunque las regiones de las dos clases están claramente diferenciadas, no es posible separarlas mediante un hiperplano.
 
 \begin{figure}[h]
     \centering
@@ -754,12 +754,12 @@ Sin embargo, en muchas ocasiones, aunque los datos sean visiblemente separables,
     \caption{Conjunto de datos para el que SVM no puede establecer un hiperplano separador.} \label{fig:svm_ejemplo2}
 \end{figure} 
 
-A pesar de esto, es posible establecer una transformación en los datos que los incluya en un espacio de dimensión mayor en el cual los datos sí sean separables mediante hiperplanos. En efecto, si definimos la aplicación $\phi\colon \R \to \R^2$ por $\phi(x) = (x,x^2)$, los datos de $\phi(\mathcal{X})$ sí que son separables en $\R^2$. Concretamente, podemos tomar el hiperplano $H = \{(x,y) \in \R^2 \colon y = 1\}$ como hiperplano separador. Esta misma idea podemos utilizarla sobre SVM: transformamos los datos y aplicamos el algoritmo en el espacio transformado obteniendo el hiperplano. Si después queremos predecir la clase de un nuevo dato, podemos aplicarle la transformación y asignarle la clase según el lado del hiperplano en el que ha caído. La figura \ref{fig:svm_ejemplo3} muestra el resultado de aplicar SVM en el espacio transformado sobre el ejemplo dado.
+A pesar de esto, es posible establecer una transformación en los datos que los incluya en un espacio de dimensión mayor en el cual los datos sí sean separables mediante hiperplanos. En efecto, si definimos la aplicación $\phi\colon \R \to \R^2$ por $\phi(x) = (x,x^2)$, los datos de $\phi(\mathcal{X})$ sí que son separables en $\R^2$. Concretamente, podemos tomar el hiperplano $H = \{(x,y) \in \R^2 \colon y = 1\}$ como hiperplano separador. Esta misma idea podemos utilizarla sobre SVM: transformamos los datos y aplicamos el algoritmo en el espacio transformado obteniendo el hiperplano. Si después queremos predecir la clase de un nuevo dato, podemos aplicarle la transformación y asignarle la clase según el lado del hiperplano en el que ha caído. La Figura \ref{fig:svm_ejemplo3} muestra el resultado de aplicar SVM en el espacio transformado sobre el ejemplo dado.
 
 \begin{figure}[h]
     \includegraphics[width=0.8\textwidth]{images/svm_solution.png}
     \centering
-    \caption{Resolución mediante máquinas de vectores soporte del problema de la figura \ref{fig:svm_ejemplo2} en el espacio de características. A la derecha se muestra el efecto del clasificador aprendido en el espacio de características sobre el conjunto de datos original.} \label{fig:svm_ejemplo3}
+    \caption{Resolución mediante máquinas de vectores soporte del problema de la Figura \ref{fig:svm_ejemplo2} en el espacio de características. A la derecha se muestra el efecto del clasificador aprendido en el espacio de características sobre el conjunto de datos original.} \label{fig:svm_ejemplo3}
 \end{figure} 
 
 En general, cuando nos encontramos con este tipo de problemas siempre podemos enviar los datos a un nuevo espacio de dimensión mayor, definiendo una aplicación $\phi\colon \mathcal{X} \to \mathcal{F}$. El espacio $\mathcal{F}$ lo tomamos como espacio de Hilbert y recibe el nombre de \emph{espacio de características}. Aunque con el ejemplo anterior hemos podido comprobar el potencial de esta herramienta, tiene un gran inconveniente, y es que enviar los datos a un espacio de características puede aumentar en gran medida la dimensión del problema, y por lo tanto la aplicación de los algoritmos en el espacio de características puede ser muy costoso computacionalmente. Además, si quisiéramos trabajar en espacios de características de dimensión infinita sería imposible tratar los datos computacionalmente de esta forma. Para solventar estos problemas surge el concepto de \emph{kernel trick}.
