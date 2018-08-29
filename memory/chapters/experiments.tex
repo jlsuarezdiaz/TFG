@@ -26,15 +26,15 @@ Los experimentos enunciados nos indican que la magnitud con la que vamos a medir
 \item NCMC tendrá su parámetro \texttt{centroids\_num} igual al parámetro \texttt{centroids\_num} que se esté considerando en su correspondiente clasificador \texttt{NCMC\_Classifier}.
 \end{itemize}
 
-En cuanto a los conjuntos de datos utilizados, se han recogido hasta 34 datasets, todos ellos disponibles en KEEL\footnote{KEEL, Knowledge Extraction based on Evolutionary Learning, es una herramienta software desarrollada en Java para diversas tareas de análisis de datos. KEEL proporciona además distintos datasets, que pueden tomarse incluso directamente particionados para la validación cruzada \cite{keel}. \url{http://www.keel.es/}}. Estos datasets son todos numéricos y sin valores perdidos, estando orientados a problemas de clasificación estándar. Además, aunque algunos de los algoritmos de aprendizaje de métricas de distancia escalan bien con el número de ejemplos, algunos no pueden tratar conjuntos demasiado grandes, por lo que se ha optado por seleccionar, para los conjuntos con un número elevado de ejemplos, un subconjunto de tamaño tratable por todos los algoritmos, manteniendo la distribución de clases. De esta forma, las características de los conjuntos de datos se describen en la Figura \ref{fig:exp:datasets}. Todos los conjuntos de datos han sido normalizados al intervalo $[0,1]$, atributo por atributo, previamente a la ejecución de los experimentos.
+En cuanto a los conjuntos de datos utilizados, se han recogido hasta 34 datasets, todos ellos disponibles en KEEL\footnote{KEEL, Knowledge Extraction based on Evolutionary Learning, es una herramienta software desarrollada en Java para diversas tareas de análisis de datos. KEEL proporciona además distintos datasets, que pueden tomarse incluso directamente particionados para la validación cruzada \cite{keel}. \url{http://www.keel.es/}}. Estos datasets son todos numéricos y sin valores perdidos, estando orientados a problemas de clasificación estándar. Además, aunque algunos de los algoritmos de aprendizaje de métricas de distancia escalan bien con el número de ejemplos, algunos no pueden tratar conjuntos demasiado grandes, por lo que se ha optado por seleccionar, para los conjuntos con un número elevado de ejemplos, un subconjunto de tamaño tratable por todos los algoritmos, manteniendo la distribución de clases. De esta forma, las características de los conjuntos de datos se describen en la Tabla \ref{fig:exp:datasets}. Todos los conjuntos de datos han sido normalizados al intervalo $[0,1]$, atributo por atributo, previamente a la ejecución de los experimentos.
 
-\begin{figure}[h]
+\begin{table}[h]
 \centering
 \resizebox{0.7\textwidth}{!}{%
     \input{results/datasets.tex}
 }
 \caption{Conjuntos de datos utilizados en la experimentación.} \label{fig:exp:datasets}
-\end{figure}
+\end{table}
 
 Por último, se describen los detalles de cada uno de los experimentos \ref{exp:normal}, \ref{exp:ncm}, \ref{exp:ker} y \ref{exp:dim}.
 \begin{enumerate}
@@ -46,258 +46,280 @@ Por último, se describen los detalles de cada uno de los experimentos \ref{exp:
 
 \section{Resultados}
 
-En esta sección se muestran los resultados de la validación cruzada para los distintos experimentos. Las Figuras \ref{results:normal:3nn:train} y \ref{results:normal:3nn:test} muestran los resultados obtenidos para el primer experimento con el 3-NN sobre los conjuntos de entrenamiento y test, respectivamente. Las Figuras \ref{results:normal:5nn:train}, \ref{results:normal:5nn:test}, \ref{results:normal:7nn:train} y \ref{results:normal:7nn:test} muestran resultados análogos para los clasificadores 5-NN y 7-NN. A estos resultados se les ha añadido, como medidas de valoración, la puntuación promedia obtenida, y el ranking promedio. Este ranking se ha obtenido asignando valores enteros entre 1 y 10 (añadiendo medias fracciones en caso de empate) según la posición de los algoritmos en cada dataset, obteniendo un 1 el algoritmo que ha quedado en mejor posición, y un 10 el aquel que quede en la última. Las celdas que no muestran resultados se deben a que el algoritmo no ha convergido.
+En esta sección se muestran los resultados de la validación cruzada para los distintos experimentos. A continuación se describe el contenido de las diferentes tablas elaboradas:
+
+\begin{itemize}
+    \item La Tabla \ref{results:normal:3nn:train} muestra los resultados de la validación cruzada obtenidos sobre el conjunto de entrenamiento para el experimento \ref{exp:normal} utilizando como medida de evaluación el clasificador 3-NN. La Tabla \ref{results:normal:3nn:test} muestra los resultados análogos sobre el conjunto test.
+    \item Las Tablas \ref{results:normal:5nn:train} y \ref{results:normal:5nn:test} muestran los resultados del experimento \ref{exp:normal} utilizando como medida de evaluación el clasificador 5-NN sobre los conjuntos de entrenamiento y test, respectivamente, en la misma línea de los resultados anteriores.
+    \item Las Tablas \ref{results:normal:7nn:train} y \ref{results:normal:7nn:test} muestran los resultados del experimento \ref{exp:normal} utilizando como medida de evaluación el clasificador 7-NN sobre los conjuntos de entrenamiento y test, respectivamente. A todos los resultados del experimento \ref{exp:normal} se les ha añadido, como medidas de valoración, la puntuación promedia obtenida, y el ranking promedio. Este ranking se ha obtenido asignando valores enteros entre 1 y 10 (añadiendo medias fracciones en caso de empate) según la posición de los algoritmos en cada dataset, obteniendo un 1 el algoritmo que ha quedado en mejor posición, y un 10 el aquel que quede en la última. Las celdas que no muestran resultados se deben a que el algoritmo no ha convergido.
+    \item La Tabla \ref{results:ncm:train} muestra los resultados del experimento \ref{exp:ncm} sobre el conjunto de entrenamiento. Las medidas de evaluación utilizadas han sido los clasificadores NCM y NCMC con 2 y 3 centroides por clase. Para cada clasificador se ha evaluado la distancia euclidea (\texttt{Euclidean + CLF}) y el algoritmo de aprendizaje de distancias asociado al clasificador (\texttt{NCMML / NCMC (2 ctrd) / NCMC (3 ctrd)}). La Tabla \ref{results:ncm:test} muestra los resultados análogos sobre el conjunto test.
+    \item Las Tablas \ref{results:ker:3nn:train:1} y \ref{results:ker:3nn:train:2} muestran los resultados de la validación cruzada obtenidos sobre el conjunto de entrenamiento para los algoritmos basados en kernels utilizando como clasificador el 3-NN. Las Tablas \ref{results:ker:3nn:test:1} y \ref{results:ker:3nn:test:2} muestran los correspondientes resultados sobre el conjunto test.
+    \item La Tabla \ref{results:dim:sonar:3nn} muestra los resultados de la validación cruzada para el experimento \ref{exp:dim} en el dataset \texttt{sonar} utilizando el clasificador 3-NN. A la izquierda se muestran los resultados sobre el conjunto de entrenamiento y a la derecha los resultados sobre el conjunto test. Cada fila muestra los resultados sobre las distintas dimensiones evaluadas. Las Tablas \ref{results:dim:sonar:5nn} y \ref{results:dim:sonar:7nn} muestran resultados análogos para los clasificadores 5-NN y 7-NN, respectivamente.
+    \item Las Tablas desde \ref{results:dim:libras:3nn} hasta \ref{results:dim:spambase:7nn} muestran los resultados del experimento \ref{exp:dim} sobre los datasets \texttt{movement\_libras} y \texttt{spambase}, siguiendo la misma línea que los resultados sobre el conjunto \texttt{sonar}.
+
+\end{itemize}
+
+\begin{comment}
+Las Figuras \ref{results:normal:3nn:train} y \ref{results:normal:3nn:test} muestran los resultados obtenidos para el primer experimento con el 3-NN sobre los conjuntos de entrenamiento y test, respectivamente. Las Figuras \ref{results:normal:5nn:train}, \ref{results:normal:5nn:test}, \ref{results:normal:7nn:train} y \ref{results:normal:7nn:test} muestran resultados análogos para los clasificadores 5-NN y 7-NN. A estos resultados se les ha añadido, como medidas de valoración, la puntuación promedia obtenida, y el ranking promedio. Este ranking se ha obtenido asignando valores enteros entre 1 y 10 (añadiendo medias fracciones en caso de empate) según la posición de los algoritmos en cada dataset, obteniendo un 1 el algoritmo que ha quedado en mejor posición, y un 10 el aquel que quede en la última. Las celdas que no muestran resultados se deben a que el algoritmo no ha convergido.
 
 En las Figuras \ref{results:ncm:train} y \ref{results:ncm:test} se muestran los resultados para los clasificadores basados en centroides cercanos, y las Figuras \ref{results:ker:3nn:train:1}, \ref{results:ker:3nn:train:2}, \ref{results:ker:3nn:test:1} y \ref{results:ker:3nn:test:2} muestran los resultados de los experimentos con kernels. Por último, entre las Figuras \ref{results:dim:sonar:3nn} y \ref{results:dim:spambase:7nn} se muestran los resultados de los experimentos de dimensionalidad.
+\end{comment}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-train-3nn.tex}
 }
 \caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 3-NN.} \label{results:normal:3nn:train}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-test-3nn.tex}
 }
 \caption{Resultados de la validación cruzada sobre el conjunto de test para el 3-NN.} \label{results:normal:3nn:test}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-train-5nn.tex}
 }
 \caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 5-NN.} \label{results:normal:5nn:train}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-test-5nn.tex}
 }
 \caption{Resultados de la validación cruzada sobre el conjunto de test para el 5-NN.} \label{results:normal:5nn:test}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-train-7nn.tex}
 }
 \caption{Resultados de la validación cruzada sobre el conjunto de entrenamiento para el 7-NN.} \label{results:normal:7nn:train}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/basic-experiments-test-7nn.tex}
 }
 \caption{Resultados de la validación cruzada sobre el conjunto de test para el 7-NN.} \label{results:normal:7nn:test}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/ncm-experiments-train.tex}
 }
 \caption{Resultados de los experimentos sobre NCM y NCMC en el conjunto de entrenamiento.} \label{results:ncm:train}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \resizebox{\textwidth}{!}{%
     \input{results/ncm-experiments-test.tex}
 }
 \caption{Resultados de los experimentos sobre NCM y NCMC en el conjunto test.} \label{results:ncm:test}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\clearpage
+
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
 \resizebox{1.2\textwidth}{!}{%
     \input{results/ker-train-a.tex}
 }%
 }
 \caption{Resultados de los experimentos con kernels en el conjunto de entrenamiento (primera parte).} \label{results:ker:3nn:train:1}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
 \resizebox{1.2\textwidth}{!}{%
     \input{results/ker-train-b.tex}
 }%
 }
 \caption{Resultados de los experimentos con kernels en el conjunto de entrenamiento (segunda parte).} \label{results:ker:3nn:train:2}
-\end{figure}
+\end{table}
 
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
 \resizebox{1.2\textwidth}{!}{%
     \input{results/ker-test-a.tex}
 }%
 }
 \caption{Resultados de los experimentos con kernels en el conjunto test (primera parte).} \label{results:ker:3nn:test:1}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
 \resizebox{1.2\textwidth}{!}{%
     \input{results/ker-test-b.tex}
 }%
 }
 \caption{Resultados de los experimentos con kernels en el conjunto test (segunda parte).} \label{results:ker:3nn:test:2}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-sonar-train-3nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-sonar-test-3nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{sonar} para el clasificador 3-NN (train - test)} \label{results:dim:sonar:3nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-sonar-train-5nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-sonar-test-5nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{sonar} para el clasificador 5-NN (train - test)} \label{results:dim:sonar:5nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-sonar-train-7nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-sonar-test-7nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{sonar} para el clasificador 7-NN (train - test)} \label{results:dim:sonar:7nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\FloatBarrier
+
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-movement_libras-train-3nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-movement_libras-test-3nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{movement\_libras} para el clasificador 3-NN (train - test)} \label{results:dim:libras:3nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-movement_libras-train-5nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-movement_libras-test-5nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{movement\_libras} para el clasificador 5-NN (train - test)} \label{results:dim:libras:5nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-movement_libras-train-7nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-movement_libras-test-7nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{movement\_libras} para el clasificador 7-NN (train - test)} \label{results:dim:libras:7nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\FloatBarrier
+
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-spambase-train-3nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-spambase-test-3nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{spambase} para el clasificador 3-NN (train - test)} \label{results:dim:spambase:3nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-spambase-train-5nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-spambase-test-5nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{spambase} para el clasificador 5-NN (train - test)} \label{results:dim:spambase:5nn}
-\end{figure}
+\end{table}
 
-\begin{figure}[h]
+\begin{table}[!htbp]
 \makebox[\textwidth][c]{%
-\begin{subfigure}{0.5\textwidth}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
         \input{results/dim-exp-spambase-train-7nn.tex}
     }%
-\end{subfigure}
-\begin{subfigure}{0.5\textwidth}
+\end{subtable}
+\begin{subtable}{0.5\textwidth}
     \resizebox{\textwidth}{!}{%
             \input{results/dim-exp-spambase-test-7nn.tex}
     }%
-\end{subfigure}
+\end{subtable}
 
 }
 \caption{Resultados de los experimentos de dimensionalidad sobre \texttt{spambase} para el clasificador 7-NN (train - test)} \label{results:dim:spambase:7nn}
-\end{figure}
+\end{table}
 
+\FloatBarrier
 
-\section{Conclusiones}
+\section{Análisis de resultados}
 
 Sobre los resultados obtenidos en el primer experimento, se puede observar claramente que NCA es el que mejores resultados ha obtenido. Esto se debe, en parte, a que los algoritmos se han evaluado con clasificadores de vecinos cercanos, y NCA es un algoritmo diseñado específicamente para mejorar este clasificador. NCA ha quedado primero en la gran mayoría de validaciones sobre el conjunto de entrenamiento, lo que demuestra su capacidad de adaptarse a los datos, pero también ha obtenido victorias claras en muchos de los datasets sobre el conjunto test, demostrando así también una gran capacidad de generalización.
 
@@ -305,7 +327,7 @@ También podemos ver que se destacan los algoritmos DMLMJ y LMNN, aunque a basta
 
 ITML y MCML son dos algoritmos que, a pesar de conseguir los mejores resultados en un número muy reducido de ocasiones, mantienen resultados buenos en la mayoría de datasets, resultando bastante regulares. ITML no aprende demasiado las características del conjunto de entrenamiento pero es capaz de generalizar lo aprendido de forma bastante efectiva, siendo posiblemente el algoritmo que menos precisión pierde sobre el conjunto de test, respecto al conjunto de entrenamiento. En cambio, MCML tiene más capacidad de aprendizaje, llegando a mostrar incluso un ligero sobreaprendizaje, pues sus resultados empeoran a los de muchos otros algoritmos sobre el conjunto test.
 
-Otro de los algoritmos donde se aprecia sobreaprendizaje, quizá de forma más clara, es LDA. Este algoritmo es capaz de obtener muy buenos resultados sobre el conjunto de entrenamiento, superando a la mayoría de algoritmos, pero empeora notablemente sus números al ser evaluado sobre los datos test. Recordemos que LDA es capaz de aprender únicamente una dimensión máximia igual al número de clases del dataset menos uno. Esto puede estar provocando que en muchos datasets se esté perdiendo información importante, haciendo que la proyección aprendida esté demasiado ajustada a los datos de entrenamiento.
+Otro de los algoritmos donde se aprecia sobreaprendizaje, quizá de forma más clara, es LDA. Este algoritmo es capaz de obtener muy buenos resultados sobre el conjunto de entrenamiento, superando a la mayoría de algoritmos, pero empeora notablemente sus números al ser evaluado sobre los datos test. Recordemos que LDA es capaz de aprender únicamente una dimensión máxima igual al número de clases del dataset menos uno. Esto puede estar provocando que en muchos datasets se esté perdiendo información importante, haciendo que la proyección aprendida esté demasiado ajustada a los datos de entrenamiento.
 
 Por último, aunque DML-eig y LDML son capaces de mejorar a la distancia euclidea sobre el conjunto de entrenamiento, sobre algunos datasets han obtenido resultados de bastanta baja calidad. Sobre los datos test, llegan a ser superados por la distancia euclídea sobre muchos de los conjuntos de datos utilizados.
 
