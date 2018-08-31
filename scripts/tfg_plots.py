@@ -184,6 +184,14 @@ rcParams['text.latex.preamble'] = r'\usepackage{amsmath}'
 #f = dml_multiplot(X,y,nrow=1,ncol=3,ks=[1,1,1],fitted=True,dmls=[None,nca,nca],transforms=[False,False,True],cmap="gist_rainbow",subtitles=[r'$M=\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}$',r'$M \approx \begin{pmatrix} 0 & -0.004 \\ -0.004 & 27.5 \end{pmatrix}$',r'$L \approx \begin{pmatrix} -0.0001 & 0.073 \\ -0.0008 & 5.24 \end{pmatrix}$'],figsize=(18,6))
 #f.savefig('plots/ex_learning_nca.png')
 
+f0, ax = plt.subplots(figsize=(12,12))
+ax.set_ylim([-1,1])
+ax.set_xlim([-12,12])
+f0 = knn_plot(X,y,k=1,transform=False,f=f0,ax=ax,cmap="gist_rainbow",title=r'1-NN',yrange=[-1,1],figsize=(12,12),plot_regions=False)
+#fa = knn_plot(X,y,k=1,transform=False,cmap="gist_rainbow",title=r'$M=\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}$',yrange=[-1,1],figsize=(12,12))
+#fb = knn_plot(X,y,k=1,dml=nca,transform=False,cmap="gist_rainbow",title=r'$M \approx \begin{pmatrix} 0 & -0.004 \\ -0.004 & 27.5 \end{pmatrix}$',yrange=[-1,1],figsize=(12,12))
+#fc = knn_plot(X,y,k=1,dml=nca,transform=True,cmap="gist_rainbow",title=r'$L \approx \begin{pmatrix} -0.0001 & 0.073 \\ -0.0008 & 5.24 \end{pmatrix}$',yrange=[-1.5,1.5],figsize=(12,12))
+
 np.random.seed(28)
 
 X = [[i,0.2*np.random.random()-0.1] for i in np.linspace(-1,1,50)]
@@ -222,6 +230,25 @@ ax[2].set_ylim((-1.2,1.2))
 ax[2].set_title(r'$L=\begin{pmatrix}\sqrt{2}/2 & \sqrt{2}/2\end{pmatrix}$')
 ax[2].scatter(LLX2[:,0],LLXy)
 #f.savefig('plots/ex_mover_ejes.png')
+
+
+fa, axa = plt.subplots(figsize=(12,12))
+axa.set_xlim((-1.2,1.2))
+axa.set_ylim((-1.2,1.2))
+axa.scatter(LX[:,0],LX[:,1])  
+axa.set_title(r'$L=\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}$')
+
+fb, axb = plt.subplots(figsize=(12,12))
+axb.set_xlim((-1.2,1.2))
+axb.set_ylim((-1.2,1.2))
+axb.set_title(r'$L=\begin{pmatrix}\sqrt{2}/2 & \sqrt{2}/2 \\ \sqrt{2}/2 & -\sqrt{2}/2 \end{pmatrix}$')
+axb.scatter(LLX[:,0],LLX[:,1])
+
+fc, axc = plt.subplots(figsize=(12,12))
+axc.set_xlim((-1.2,1.2))
+axc.set_ylim((-1.2,1.2))
+axc.set_title(r'$L=\begin{pmatrix}\sqrt{2}/2 & \sqrt{2}/2\end{pmatrix}$')
+axc.scatter(LLX2[:,0],LLXy)
 
 np.random.seed(28)
 X,y = toy_datasets.circular_toy_dataset(rads = [1,2], samples = [200,200], noise = [0.0,0.0])
