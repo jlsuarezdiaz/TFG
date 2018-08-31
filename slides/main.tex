@@ -9,6 +9,7 @@
 
 \usepackage{spanish}
 \usepackage{slides}
+\usepackage{mathematics}
 
 \usepackage{booktabs}
 \usepackage{comment}
@@ -205,12 +206,53 @@
 \subsection{Análisis convexo}
 
 \begin{frame}{Hiperplanos soporte}
+  \begin{definition}[Hiperplano soporte]
+    Sean $T \colon \R^d \to \R$ lineal, $\alpha \in \R$ y $P = \{x \in \R^d \colon T(x) = \alpha \}$ hiperplano. Definimos $P^+ = \{x \in \R^d \colon T(x) \ge \alpha \}$ y $P^- = \{x \in \R^d \colon T(x) \le \alpha \}$.
 
+    $P$ es un \emph{hiperplano soporte} para $K \subset \R^d$ si $P \cap \closure{K} \ne \emptyset$ y $K \subset P^+$ o $K \subset P^-$.
+  \end{definition}
+
+  \begin{columns}
+    \column{0.7\textwidth}
+    \begin{theorem}[Teorema del hiperplano soporte]
+      \begin{enumerate}
+        \item Si $K \subset \R^d$ es convexo y cerrado, para cada $x_0 \in \fr K$ existe un hiperplano soporte $P$ de $K$ tal que $x_0 \in P$.
+        \item Todo conjunto convexo cerrado y propio de $\R^d$ es la intersección de todos sus semiespacios soporte.
+        \item Sea $K \subset \R^d$ un conjunto cerrado con interior no vacío. Entonces, $K$ es convexo si y solo si para todo $x \in \fr K$ existe un hiperplano soporte $P$ de $K$ con $x \in P$.
+      \end{enumerate}
+    \end{theorem}
+
+    \column{0.3\textwidth}
+    \includegraphics[width=0.9\textwidth]{images/supporting_hyperplane.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Proyecciones convexas}
+  \begin{theorem}[Proyección convexa]
+    Si $K \subset \R^d$ es no vacío, cerrado y convexo, entonces, para cada $x \in \R^d$ existe un único punto $P_K(x) \in K$ tal que $d(x,K) = d(x,P_K(x))$: la proyección convexa de $x$ sobre $K$.
+  \end{theorem}
+  \centering\includegraphics[height=0.5\textheight]{images/convex_projection.png}
+\end{frame}
+
+\begin{frame}{Métodos de optimización: gradiente descendente y gradiente con proyecciones}
+  \centering\includegraphics<1-1>[width=\textwidth]{images/gradient1_lq.png}
+  \centering\includegraphics<2-2>[width=\textwidth]{images/gradient2_lq.png}
+  \centering\includegraphics<3-3>[width=\textwidth]{images/gradient3_lq.png}
+  \centering\includegraphics<4-4>[width=\textwidth]{images/gradient4_lq.png}
+  \centering\includegraphics<5-5>[width=\textwidth]{images/gradient5_lq.png}
+\end{frame}
+
+
+\begin{frame}{Método de las proyecciones iteradas}
+  \centering\includegraphics<1-1>[width=\textwidth]{images/proyecciones_iteradas1.png}
+  \centering\includegraphics<2-2>[width=\textwidth]{images/proyecciones_iteradas2.png}
 \end{frame}
 
 \subsection{Análisis matricial}
 
 \subsection{Teoría de la información}
+
+\section{Conclusiones y vías futuras}
 
 \begin{comment}
 
