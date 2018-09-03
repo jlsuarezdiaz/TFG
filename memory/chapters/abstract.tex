@@ -2,7 +2,7 @@
 
 \chapter*{Abstract}
 
-In this work we study the distance metric learning model, and we analyze its theoretical foundations, together with the main distance metric learning algorithms proposed over the years. Also, we present a software that collects all the studied algorithms. This software has also been used to develop several experiments to evaluate these algorithms.
+In this work we study the distance metric learning model, and we analyze its theoretical foundations, together with the main distance metric learning algorithms proposed over the years. Furthermore, we present a software that collects all the studied algorithms. This software has also been used to develop several experiments to evaluate these algorithms.
 
 \section*{Description of the addressed problem}
 
@@ -10,7 +10,7 @@ The distance metric learning problem consists in learning distances from the dat
 
 Similarity learning algorithms have commonly used standard distances, like Euclidean distance, in its learning process. However, a standard distance may ignore some important properties available in our dataset, so that the learning results could be non optimal. Distance metric learning algorithms try to learn an optimal distance from the data, in order to be used later in other learning tasks.
 
-Learning an abstract distance can be approachless, from a computational perspective. That is why in distance metric learning, a particular family of distance are considered: Mahalanobis distances. It will be shown that these distances can be easily parameterized, hence their importance.
+Learning an abstract distance can be approachless, from a computational perspective. That is why in distance metric learning, a particular family of distances are considered: Mahalanobis distances. It will be shown that these distances can be easily parameterized, hence their importance.
 
 Several distance metric learning algorithms will also be studied in this work, from some of the classical distance metric learning algorithms, that are still popular nowadays, to some of the newest proposals and classic techniques improvements. These algorithms have been grouped in: dimensionality reduction techniques, nearest neighbors oriented techniques, nearest centroids oriented techniques, information theory based algorithms, and kernel based techniques.
 
@@ -36,7 +36,7 @@ As said above, distance metric learning consists in learning a distance from the
 
 Focusing on supervised learning, distance metric learning problems consist on optimizing a function of a mahalanobis distance, that depends on the training set and its labels. This function can be viewed as a function of $M$ or a function of $L$. Both approaches are valid and each one has particular advantages. Distance metric learning has applications in improving distance based classifiers and similarity learning algorithms in general, in dimensionality reduction and even in non-supervised and semi-supervised learning.
 
-The dimensionality reduction algorithms studied in this work are PCA, LDA and ANMM. PCA is an important dimensionality reduction technique that finds directions that maximize the variance. Even it is not supervised, it is useful in other supervised techniques that don't allow dimensionality reduction. LDA is a supervised technique similar to the PCA's idea. In this case, LDA maximizes a ratio that involves between-class variances and within-class variances. ANMM is another dimensionality reduction technique that defines the concept of \emph{average neighborhood margin} and maximizes it.
+The dimensionality reduction algorithms studied in this work are PCA, LDA and ANMM. PCA is an important dimensionality reduction technique that finds directions that maximize the variance. Despite it is not supervised, it is useful in other supervised techniques that don't allow dimensionality reduction. LDA is a supervised technique similar to the PCA's idea. In this case, LDA maximizes a ratio that involves between-class variances and within-class variances. ANMM is another dimensionality reduction technique that defines the concept of \emph{average neighborhood margin} and maximizes it.
 
 Two of the most important nearest neighbors oriented techniques are LMNN and NCA. The first one defines the \emph{target neighbors}, the candidates to be nearest neighbors after learning the distance, and the \emph{impostors}, the samples that invade a perimeter defined by the target neighbors. LMNN learns a distance that tries to bring near the target neighbors, while keeping away the impostors. In the other hand, NCA optimization consists in maximizing the expected leave one out score for nearest neighbors classification.
 
@@ -49,11 +49,11 @@ Finally, some of these algorithms can work in high dimensional Hilbert spaces th
 
 \section*{Software implementation and experiments}
 
-Together with the theoretical analysis of distance metric learning, two software packages have been developed. This packages make all the algorithms studied available for the user. The first package is \texttt{pyDML}, a library for Python. Python is a programming language widely used for machine learning. A lot of machine learning libraries are available for this language, specially Scikit-Learn, an efficient library with powerful machine learning tools. However, there is not any complete distance metric learning library, hence this choice.
+Together with the theoretical analysis of distance metric learning, two software packages have been developed. These packages make all the studied algorithms available for the user. The first package is \texttt{pyDML}, a library for Python. Python is a programming language widely used for machine learning. A lot of machine learning libraries are available for this language, specially Scikit-Learn, an efficient library with powerful machine learning tools. However, there is not any complete distance metric learning library, hence this choice.
 
 The pyDML software is easy to use, and follows the same scheme as the Scikit-Learn algorithms. It allows to use all the distance metric learning algorithms studied in this work, and it also provides utilities such as distance based classifiers, tuning functions or distance regions plotting. In this document, the main structure of the software is introduced, with some examples and links to the full documentation.
 
-In relation to the second software package, it has been made for the R programmming language, and called \texttt{rDML}. R is another library widely used for machine learning, and neither has a complete distance metric learning library. The rDML is a wrapper for pyDML. In this document the main features of rDML are also shown.
+In relation to the second software package, it has been made for the R programmming language, and called \texttt{rDML}. R is another library widely used for machine learning, and neither has a complete distance metric learning library. The rDML package is a wrapper for pyDML. In this document the main features of rDML are also shown.
 
 Finally, this work presents a battery of tests to evaluate the performance of the studied algorithms. Among this tests, we can find standard experiments that use as score the nearest neighbors classification score, specific nearest centroid algorithms experiments, dimensionality reduction experiments and kernel experiments. The experiments were done using pyDML library. The results are shown at the end of the document.
 

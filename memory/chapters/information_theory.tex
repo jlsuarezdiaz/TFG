@@ -73,7 +73,7 @@ Tenemos por tanto que, mediante la divergencia de Kullback-Leibler podemos medir
     Se define la divergencia de Jeffrey para dos distribuciones $p$ y $q$ para las que existan $\kl(p \| q)$ y $\kl(q \| p)$ como
     \[ \jf(p\|q) = \kl(p \| q) + \kl(q \| p). \]
     En el caso discreto, se tiene que
-    \[ \jf(p\| q) = \sum_{x =1}^N (p(x_i)-q(x_i))(\log p(x_i) - \log q(x_i)).\]
+    \[ \jf(p\| q) = \sum_{i =1}^N (p(x_i)-q(x_i))(\log p(x_i) - \log q(x_i)).\]
     Para el caso continuo, se verifica que
     \[ \jf(p\|q) = \int_{-\infty}^{+\infty} (p(x) - q(x))(\log p(x) - \log q(x)) \ dx. \]
 \end{definition}
@@ -86,10 +86,10 @@ Para concluir la sección, vamos a estudiar las aplicaciones de las divergencias
 \[ p(x|\mu,\Sigma) = \frac{1}{(2\pi)^{d/2} \det(\Sigma)^{1/2}} \exp\left(-\frac{1}{2} (x-\mu)^T\Sigma^{-1}(x-\mu)\right). \]
 Se verifica que $\mathbb{E}[X] = \mu$ y $\cov(X) = \mathbb{E}[(X-\mathbb{E}[X])(X - \mathbb{E}[X])^T] = \Sigma$, y por tanto las distribuciones gaussianas quedan determinadas por su media y su covarianza. Es importante recordar que, si $L \in \mathcal{M}_d(\R)$ es una aplicación lineal, entonces, el vector aleatorio $LX$ sigue una distribución normal multivariante de media $L\mu$ y covarianza $L\Sigma L^T$.
 
-Queremos establecer, para distribuciones normales multivariante, correspondencias entre las divergencias estudiadas y divergencias matriciales. Las divergencias matriciales proporcionan una alternativa para medir la cercanía entre matrices a la ya estudiada en el capítulo \ref{chapter:matrices} con la norma de Frobenius. Nos centraremos en las conocidad como divergencias de Bregman.
+Queremos establecer, para distribuciones normales multivariante, correspondencias entre las divergencias estudiadas y divergencias matriciales. Las divergencias matriciales proporcionan una alternativa para medir la cercanía entre matrices a la ya estudiada en el capítulo \ref{chapter:matrices} con la norma de Frobenius. Nos centraremos en las conocidas como divergencias de Bregman.
 
 \begin{definition}
-    Sea $K \subset \mathcal{M}_d(\R)$ un conjunto convexo y abierto, y $\phi \colon K \to \R$ una función estrictamente convexa y diferenciable. Se define la \emph{divergencia de Bregman} asociada a $\phi$ a la aplicación $D_{\phi}(\cdot \| \cdot) \colon K \times K \to \R$ dada por
+    Sea $K \subset \mathcal{M}_d(\R)$ un conjunto convexo y abierto, y $\phi \colon K \to \R$ una función estrictamente convexa y diferenciable. Se define la \emph{divergencia de Bregman} asociada a $\phi$ como la aplicación $D_{\phi}(\cdot \| \cdot) \colon K \times K \to \R$ dada por
     \[ D_{\phi}(A\|B) = \phi(A) - \phi(B) - \tr(\nabla\phi(B)^T(A-B)) = \phi(A) - \phi(B) - \langle \nabla\phi(B), B-A\rangle_F.\]
 \end{definition}
 
@@ -120,7 +120,7 @@ Como consecuencia de la proposición, $\phi_{ld}$ determina una divergencia de B
 Si llamamos $a_1,\dots,a_d$ a los vectores propios de $A$, con correspondientes valores propios $\lambda_1, \dots,\lambda_d$ y llamamos $b_1,\dots,b_d$ a los vectores propios de $B$ con valores propios $\mu_1,\dots,\mu_d$, se tiene entonces la expresión
 \[ D_{ld}(A\|B) = \sum_{i=1}^d\sum_{j=1}^d \frac{\lambda_i}{\mu_j}\langle a_i,b_j\rangle^2 - \sum_{i=1}^d \log \frac{\lambda_i}{\mu_i} - d.\]
 
-Vamos finalmente a calcular la entropía entre dos distribuciones normales. Sean $\mu_1,\mu_2 \in \R^d$ y $\Sigma_1,\Sigma_2 \in \mathcal{M}_d(\R)^+$. Consideramos las distribuciones gaussianas asociadas a $(\mu_1,\Sigma_1)$ y $(\mu_2,\Sigma_2)$, respectivamente, determinadas por sus funciones de densidad $p(x|\mu_1,\Sigma_1)$ y $p(x|\mu_2,\Sigma_2)$. Buscamos calcular $\kl(p(x|\mu_1,\Sigma_1)\|p(x|\mu_2,\Sigma_2))$. Si abreviamos las distribuciones por $p_1$ y $p_2$, respectivamente, tenemos, en primer lugar, que
+Vamos finalmente a calcular la entropía relativa entre dos distribuciones normales. Sean $\mu_1,\mu_2 \in \R^d$ y $\Sigma_1,\Sigma_2 \in \mathcal{M}_d(\R)^+$. Consideramos las distribuciones gaussianas asociadas a $(\mu_1,\Sigma_1)$ y $(\mu_2,\Sigma_2)$, respectivamente, determinadas por sus funciones de densidad $p(x|\mu_1,\Sigma_1)$ y $p(x|\mu_2,\Sigma_2)$. Buscamos calcular $\kl(p(x|\mu_1,\Sigma_1)\|p(x|\mu_2,\Sigma_2))$. Si abreviamos las distribuciones por $p_1$ y $p_2$, respectivamente, tenemos, en primer lugar, que
 \[ \kl(p_1\|p_2) = \int p_1(x)\log\frac{p_1(x)}{p_2(x)}\ dx = \int p_1(x) \log p_1(x) - \int p_1(x) \log p_2(x) = -H(p_1) - \int p_1 \log p_2(x). \]
 Podemos calcular la entropía asociada a $p_1$, como
 \begin{equation} \label{eq:kl_gaussian:sum_1}

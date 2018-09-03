@@ -24,6 +24,7 @@ Para encontrar una solución a este problema, en primer lugar vamos a ver que la
 
 \begin{lem}
     %% **** Tal vez seria mejor poner existe una solucion (U,L) del problema tal que ...
+    %Existe una solución $(U,L)$ del problema \ref{eq:pca:compress}, donde $LL^T = I$ (en $\mathbb{R}^{d'}$) y $U = L^T$.
     Si $(U,L)$ es una solución del problema \ref{eq:pca:compress}, entonces $LL^T = I$ (en $\mathbb{R}^{d'}$) y $U = L^T$.
 \end{lem}
 
@@ -68,7 +69,7 @@ Por tanto, si eliminamos los términos que no dependen de $L$, podemos transform
     \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) \\LL^T = I}} \quad \tr\left(L \Sigma L^T\right),
 \end{equation}
 
-donde $\Sigma = \sum_{i=1}^N x_ix_i^T$ es, salvo una constante, la matriz de covarianza asociada a los datos de $\mathcal{X}$. Esta matriz es simétrica, y el teorema \ref{thm:eigen_trace_opt} garantiza que podemos encontrar un máximo del problema si construimos $L$ añadiendo los $d'$ vectores propios de $\Sigma$ correspondientes a sus $d'$ mayores valores propios. Estos vectores los podemos tomar ortonormales, por la simetría de $\Sigma$. Las direcciones que determinan estos vectores son las \emph{direcciones principales}, y las componentes de los datos transformados en el sistema ortonormal determinado por las direcciones principales son las llamadas \emph{componentes principales}.
+donde $\Sigma = \sum_{i=1}^N x_ix_i^T$ es, salvo una constante, la matriz de covarianza asociada a los datos de $\mathcal{X}$. Esta matriz es simétrica, y el teorema \ref{thm:eigen_trace_opt} garantiza que podemos encontrar un máximo del problema si construimos $L$ añadiendo los $d'$ vectores propios ortonormales de $\Sigma$ correspondientes a sus $d'$ mayores valores propios. Las direcciones que determinan estos vectores son las \emph{direcciones principales}, y las componentes de los datos transformados en el sistema ortonormal determinado por las direcciones principales son las llamadas \emph{componentes principales}.
 
 Para concluir, el segundo enfoque desde el que se puede tratar el problema de los componentes principales consiste en la selección de las direcciones ortogonales para las que se maximice la varianza. Sabemos que si $\Sigma$ es la matriz de covarianza de $\mathcal{X}$, al aplicar una transformación $L$ a los datos la nueva matriz de covarianza viene dada por $L\Sigma L^T$. Si queremos una transformación que reduzca la dimensionalidad y para la cual se maximice la varianza en cada variable lo que buscamos es tomar la traza de la matriz anterior, lo que nos conduce de nuevo al problema \ref{eq:pca:traceproblem}. La simetría de $\Sigma$ garantiza que podamos tomar las direcciones principales ortonormales que maximicen la varianza para cada posible valor de $d'$.
 
@@ -201,7 +202,7 @@ Y por tanto, combinando ambas expresiones,
     \gamma^L = \tr(L(S-C)L^T).
 \end{equation}
 
-La maximización de $\gamma^L$ tal como se presenta en la fórmula \ref{eq:margin_caract} no es lo suficientemente restrictiva, pues basta multiplicar $L$ por constantes positivas para obtener un valor de $\gamma^L$ tan grande como queremos. Por eso, se añade la restricción $LL^T = I$, por lo que acabamos obteniendo el siguiente problema de optimización:
+La maximización de $\gamma^L$ tal como se presenta en la fórmula \ref{eq:margin_caract} no es lo suficientemente restrictiva, pues basta multiplicar $L$ por constantes positivas para obtener un valor de $\gamma^L$ tan grande como queramos. Por eso, se añade la restricción $LL^T = I$, por lo que acabamos obteniendo el siguiente problema de optimización:
 
 \begin{align*}
     \max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(L(S-C)L^T\right)  \\
@@ -246,7 +247,7 @@ En términos matemáticos, si nuestra distancia está determinada por la aplicac
         \fbox{\includegraphics[height = 5cm]{images/lmnn2.png}}
     \end{subfigure}
     %\includegraphics[width=0.5\textwidth]{targets_impostors.png}
-    \caption{Descripción gráfica de vecinos objetivo e impostores (para $k = 3$) para el dato $x_i$. El círculo azul representa el margen que determinan los vecinos objetivo. Todos los puntos de distintas clases en dicho círculo son impostores. El objetivo LMNN será acercar los vecinos objetivos lo máximo posible y eliminar los impostores del círculo. Por tanto, no influirán los datos de la misma clase que no sean vecinos objetivo y se dejarán de penalizar los impostores en cuanto salgan del margen, como se muestra a la derecha. Esto da un carácter local a esta técnica de aprendizaje.} \label{fig:targets_impostors}
+    \caption{Descripción gráfica de vecinos objetivo e impostores (para $k = 3$) para el dato $x_i$. El círculo azul representa el margen que determinan los vecinos objetivo. Todos los puntos de distintas clases en dicho círculo son impostores. El objetivo de LMNN será acercar los vecinos objetivos lo máximo posible y eliminar los impostores del círculo. Por tanto, no influirán los datos de la misma clase que no sean vecinos objetivo y se dejarán de penalizar los impostores en cuanto salgan del margen, como se muestra a la derecha. Esto da un carácter local a esta técnica de aprendizaje.} \label{fig:targets_impostors}
 \end{figure}
 
 A continuación, procedemos a definir de forma precisa los términos de la función objetivo. Como ya se ha mencionado, va a estar compuesta de dos términos. El primero penalizará a los vecinos objetivo lejanos y el segundo penalizará a los impostores cercanos. El primer término se define como
@@ -267,7 +268,7 @@ Los autores afirman que, experimentalmente, la elección de $\mu$ no provoca gra
  \varepsilon(M) = (1-\mu) \sum_{i=1}^{N}\sum_{j\istargetof i} \|x_i - x_j\|_M^2 + \mu \sum_{i=1}^{N}\sum_{j\istargetof i}\sum_{l=1}^N [ 1 + \|x_i - x_j\|_M^2 - \|x_i - x_l\|_M^2]_{+}
 \end{equation}
 
-es una función convexa en $M$ que tiene toma los mismos valores que $\varepsilon(L)$. La minimización de $\varepsilon(M)$ en este caso está sujeta a la restricción $M \succeq 0$, por lo que podemos efectuarla mediante programación semidefinida, desplazándonos en la dirección del gradiente y proyectando el resultado sobre el cono semidefinido en sucesivas iteraciones. Además, podemos calcular un subgradiente $G \in \partial \varepsilon / \partial M$ dado por
+es una función convexa en $M$ que toma los mismos valores que $\varepsilon(L)$. La minimización de $\varepsilon(M)$ en este caso está sujeta a la restricción $M \succeq 0$, por lo que podemos efectuarla mediante programación semidefinida, desplazándonos en la dirección del gradiente y proyectando el resultado sobre el cono semidefinido en sucesivas iteraciones. Además, podemos calcular un subgradiente $G \in \partial \varepsilon / \partial M$ dado por
 \[ G = (1-\mu) \sum_{i,j\istargetof i} O_{ij} + \mu \sum_{(i,j,l) \in \mathcal{N}} (O_{ij} - O_{il}), \]
 
 donde $\mathcal{N}$ es el conjunto de tripletas $(i,j,l)$ para las cuales $x_l$ es un impostor sobre $x_i$ con el margen determinado por $x_j$, y $O_{ij} = (x_i - x_j)(x_i - x_j)^T$ son los productos tensoriales obtenidos de derivar las distancias. El primer término del gradiente es constante, mientras que el segundo solo varía en cada iteración con los cambios de los impostores que entran o salen de el conjunto $\mathcal{N}$. Estas consideraciones permiten realizar un cálculo del gradiente bastante eficiente.
@@ -305,7 +306,7 @@ Sin embargo, la función que para cada $L$ asigna el error LOO para la distancia
 
 Para ello, NCA trata de abordar el problema de forma estocástica, esto es, en vez de operar con el error LOO directamente, lo hace sobre su valor esperado para la probabilidad que vamos a definir a continuación.
 
-Dados dos ejemplos $x_i, x_j \in \mathcal{X}$, definimos la probabilidad de que $x_i$ tenga a $x_j$ como su vecino más cercano para la distancia $L$ como
+Dados dos ejemplos $x_i, x_j \in \mathcal{X}$, definimos la probabilidad de que $x_i$ tenga a $x_j$ como su vecino más cercano para la distancia determinada por la aplicación $L$ como
 \begin{equation}
     \begin{split}
     p_{ij}^L = \frac{\exp\left( - \|Lx_i - Lx_j \|^2 \right)}{\sum\limits_{k \ne i} \exp\left(-\|Lx_i - Lx_k \|^2\right)}\ \ (j \ne i),  
@@ -328,7 +329,7 @@ Finalmente, el número esperado de ejemplos correctamente clasificados, y la fun
 
 Esta función sí es diferenciable, y su derivada es
 \begin{equation}
-    \frac{\partial f}{\partial L}(L) = 2L \sum_{i=1}^N \left( p_i^L \sum_{k=1}^N p_{ik}^L x_{ik}x_{ik}^T - \sum_{j \in C_i} p_{ij}^Lx_{ij}x_{ij}^T \right).
+   \nabla f(L) = 2L \sum_{i=1}^N \left( p_i^L \sum_{k=1}^N p_{ik}^L x_{ik}x_{ik}^T - \sum_{j \in C_i} p_{ij}^Lx_{ij}x_{ij}^T \right).
 \end{equation}
 
 Una vez obtenido el gradiente, podemos optimizar la función objetivo aplicando algún método de gradiente ascendente. Notemos que la función objetivo no es cóncava, y por tanto puede quedar atrapada en óptimos locales. Por otra parte, respecto al posible sobreajuste, los autores afirman que, basados en los resultados experimentales, no se produce sobreaprendizaje aunque se ascienda mucho en la función objetivo.
@@ -354,7 +355,7 @@ Notemos que efectivamente $p_L(\cdot|x)$ define una probabilidad en el conjunto 
 
 Esta función es diferenciable y su gradiente viene dado por
 \begin{equation}
-\frac{\partial \mathcal{L}}{\partial L}(L) = \frac{1}{N} \sum_{i=1}^N \sum\limits_{c\in \mathcal{C}} \alpha_{ic} L (\mu_c - x_i)(\mu_c - x_i)^T,
+\nabla \mathcal{L}(L) = \frac{1}{N} \sum_{i=1}^N \sum\limits_{c\in \mathcal{C}} \alpha_{ic} L (\mu_c - x_i)(\mu_c - x_i)^T,
 \end{equation}
 
 donde $\alpha_{ic} = p_L(c|x_i) - [\![ y_i = c ]\!]$ y $[\![ \cdot ]\!]$ denota la función indicadora de la condición $\cdot$. La maximización por métodos de gradiente de esta función es la tarea llevada a cabo por NCMML.
@@ -386,7 +387,7 @@ En primer lugar describimos la función objetivo. Consideramos el conjunto de da
     G(C_1,\dots,C_k) = \min_{\mu_1,\dots,\mu_k \in \R^d} \sum_{i=1}^{k}\sum_{x\in C_i} \|x-\mu_i\|^2.
 \end{equation}
 
-A continuación se describe el algoritmo iterativo que se utiliza normalmente para la búsqueda de los centroides. Inicialmente, se parte de unos centroides $\mu_1^{(0)},\dots,\mu_k^{(0)}$ escogidos al azar. En cada iteración $t$, se determina la partición $\{C_1^{(t)},\dots,C_k^{(t)}$ a partir de los centroides $\mu_1^{(t-1)},\dots,\mu_k^{(t-1)}$ de forma que a cada $x \in \mathcal{X}$ se le asigna el cluster del centroide más cercano. Finalmente, se calculan los nuevos centroides $\mu_1^{(t)},\dots,\mu_k^{(t)}$ como el vector media de los datos en $\{C_1^{(t)},\dots,C_k^{(t)}$, respectivamente. El proceso se repite hasta que en una iteración no se produzca ningún cambio en los clusters generados, momento en el que el algoritmo habrá convergido.
+A continuación se describe el algoritmo iterativo que se utiliza normalmente para la búsqueda de los centroides. Inicialmente, se parte de unos centroides $\mu_1^{(0)},\dots,\mu_k^{(0)}$ escogidos al azar. En cada iteración $t$, se determina la partición $\{C_1^{(t)},\dots,C_k^{(t)}\}$ a partir de los centroides $\mu_1^{(t-1)},\dots,\mu_k^{(t-1)}$ de forma que a cada $x \in \mathcal{X}$ se le asigna el cluster del centroide más cercano. Finalmente, se calculan los nuevos centroides $\mu_1^{(t)},\dots,\mu_k^{(t)}$ como el vector media de los datos en $\{C_1^{(t)},\dots,C_k^{(t)}\}$, respectivamente. El proceso se repite hasta que en una iteración no se produzca ningún cambio en los clusters generados, momento en el que el algoritmo habrá convergido.
 
 Como ya se ha mencionado, este algoritmo garantiza que la función objetivo \ref{eq:obj:kmeans} decrece conforme aumenta el número de iteraciones. A pesar de esto, no se puede asegurar que el algoritmo alcance un óptimo global (en ocasiones es posible incluso que ni siquiera se alcance un óptimo local). Sin embargo, el carácter aleatorio y la eficiencia del algoritmo permite realizar distintas ejecuciones eligiendo diferentes centroides iniciales, lo que facilita el encuentro de soluciones aceptables. 
 
@@ -404,7 +405,7 @@ Una vez definido el clasificador NCMC, el proceso de aprendizaje de distancias e
 
 De nuevo, maximizamos el logaritmo de la verosimilitud, $\mathcal{L}(L) = \frac{1}{N}\sum_{i=1}^N p_L(y_i|x_i)$, cuyo gradiente en este caso viene dado por
 \begin{equation*}
-    \frac{\partial \mathcal{L}}{\partial L}(L) = \frac{1}{N} \sum_{i=1}^N \sum_{c \in \mathcal{C}} \sum_{j=1}^{k_c} \alpha_{ic_j} L (m_{c_j}-x_i)(m_{c_j}-x_i)^T,
+    \nabla \mathcal{L}(L) = \frac{1}{N} \sum_{i=1}^N \sum_{c \in \mathcal{C}} \sum_{j=1}^{k_c} \alpha_{ic_j} L (m_{c_j}-x_i)(m_{c_j}-x_i)^T,
 \end{equation*}
 donde $\alpha_{ic_j} = p_L(m_{c_j}|x_i) - [\![ y_i = c ]\!] \frac{p_L(m_{c_j}|x_i)}{\sum_{j'=1}^{k_c} p_L(m_{c_{j'}}|x_i)}$. La maximización de la verosimilitud por métodos de gradiente es la tarea llevada a cabo por la técnica de aprendizaje de distancias para NCMC, que denominaremos con el mismo nombre que dicho clasificador.
 
@@ -456,7 +457,7 @@ Es posible que no se pueda encontrar una métrica que satisfaga simultáneamente
 
 \subsection{DMLMJ}
 
-DMLMJ (\emph{Distance Metric Learning through the maximization of the Jeffrey divergence}) \cite{dmlmj} es una técnica de aprendizaje de métricas de distancia basada, al igual que ITML, en conceptos de teoría de la información. Concretamente, la herramienta que utiliza es la conocida como divergencia de Jeffrey, a través de la cual pretende separar lo máximo posible la distribución asociada a los puntos similares de aquella asociada a los puntos no similares, en los términos que veremos a continuación.
+DMLMJ (\emph{Distance Metric Learning through the maximization of the Jeffrey divergence}) \cite{dmlmj} es una técnica de aprendizaje de métricas de distancia basada, al igual que ITML, en conceptos de teoría de la información. Concretamente, la herramienta que utiliza es la divergencia de Jeffrey, a través de la cual pretende separar lo máximo posible la distribución asociada a los puntos similares de aquella asociada a los puntos no similares, en los términos que veremos a continuación.
 
 Consideramos el conjunto de entrenamiento $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d$ con correspondientes etiquetas $y_1,\dots,y_N$, y fijamos $k \in \N, k \ge 1$. Como ya hemos comentado, DMLMJ busca maximizar, respecto a la divergencia de Jeffrey, la separación entre las distribuciones de puntos similares y no similares. Para ello, introduciremos los siguientes conceptos:
 
@@ -589,9 +590,9 @@ Podemos reescribir la función objetivo en términos de funciones más elemental
     \end{split}
 \end{equation}
 
-Cada sumando de la expresión anterior es convexo en $M$, el primero por tratarse de una función distancia en $M$ (que es lineal), y el segundo por tratarse de una función logaritmo de suma de exponenciales (convexo) compuesto con una función distancia. Además, la restricción $M \succeq 0$ también es convexa, luego el problema a optimizar es convexo. La función objetivo es siempre no negativa, pues $\|x_i-x_j\|_M^2\ge - \log\sum_{k \ne i} \exp(-\|x_i-x_k\|^2)$, pues el lado derecho de la desigualdad siempre contiene al menos una exponencial con el término $-\|x_i-x_j\|_M^2$ y el logaritmo es creciente. Luego el problema es convexo y minorado, lo que nos garantiza que se alcanza un mínimo global y no hay mínimos locales. Podemos por tanto encontrar dicho óptimo utilizando los mecanismos de la optimización convexa.
+Cada sumando de la expresión anterior es convexo en $M$, el primero por tratarse de una función distancia en $M$ (que es lineal), y el segundo por tratarse de una función logaritmo de suma de exponenciales (convexo) compuesto con una función distancia. Además, la restricción $M \succeq 0$ también es convexa, luego el problema a optimizar es convexo. La función objetivo es siempre no negativa, pues $\|x_i-x_j\|_M^2\ge - \log\sum_{k \ne i} \exp(-\|x_i-x_k\|^2)$, pues el lado derecho de la desigualdad siempre contiene al menos una exponencial con el término $-\|x_i-x_j\|_M^2$ y el logaritmo es creciente. Luego el problema es convexo y minorado, por lo que podemos utilizar algoritmos de programación semidefinida para minimizar la función. %lo que nos garantiza que se alcanza un mínimo global y no hay mínimos locales. Podemos por tanto encontrar dicho óptimo utilizando los mecanismos de la optimización convexa.
 
-Concretamente, la técnica de optimización propuesta en MCML es la ya comentada programación semidefinida. Para ello, es necesario una expresión del gradiente de la función objetivo, el cual puede ser calculado a partir de su expresión en \ref{eq:mcml:fobj2}:
+Concretamente, la técnica de optimización propuesta en MCML es el gradiente con proyecciones sobre el cono de matrices semidefinidas. Para ello, es necesario una expresión del gradiente de la función objetivo, el cual puede ser calculado a partir de su expresión en \ref{eq:mcml:fobj2}:
 \begin{equation*}
     \nabla f(M) = \sum_{i,j\colon y_i = y_j}(x_i - x_j)^T(x_i-x_j) - \sum_i \frac{-\sum\limits_{k \ne i} (x_i-x_k)^T(x_i-x_k) \exp(-\|x_i-x_k\|_M^2)}{ \sum\limits_{k \ne i} \exp(-\|x_i-x_k\|^2_M)}.
 \end{equation*}
@@ -602,7 +603,7 @@ La minimización de la función objetivo \ref{eq:mcml:fobj2} de forma iterativa 
 
 \subsection{LSI} \label{lsi}
 
-LSI (\emph{Learning with Side Information}) \cite{lsi}, también denominado a veces MMC (\emph{Mahalanobis Metric for Clustering}) es una técnica de aprendizaje de métricas de distancia que trabaja con un conjunto de datos, no necesariamente etiquetados, sobre los que se conoce, como información adicional, determinadas parejas de puntos que se sabe que son similares y, opcionalmente, parejas de puntos que se sabe que no lo son.
+LSI (\emph{Learning with Side Information}) \cite{lsi}, también denominado a veces MMC (\emph{Mahalanobis Metric for Clustering}) es una técnica de aprendizaje de métricas de distancia que trabaja con un conjunto de datos, no necesariamente etiquetados, sobre los que se conoce, como información adicional, determinadas parejas de puntos que se sabe que son similares y, opcionalmente, parejas de puntos que se sabe que no lo son. Es posiblemente de los primeros algoritmos que dan a conocer el concepto de aprendizaje de métricas de distancia.
 
 LSI trata de aprender una métrica $M$ que respete esta información adicional. Es por ello que puede ser utilizado tanto en aprendizaje supervisado, donde los pares similares corresponderán a datos con la misma etiqueta, como en aprendizaje no supervisado con restricciones de similaridad, como por ejemplo, problemas de clustering donde se conoce que determinados datos deben ser agrupados en el mismo cluster.
 
@@ -631,7 +632,7 @@ Este problema con dos restricciones convexas puede ser resuelto mediante método
 
 \subsection{DML-eig}
 
-DML (\emph{Distance Metric Learning with Eigenvalue Optimization}) \cite{dmleig} es una técnica de aprendizaje de métricas de distancia inspirada en la técnica LSI de la sección anterior, proponiendo un problema de optimización muy similar pero ofreciendo un método de resolución completamente diferente, basado en la optimización de valores propios.
+DML-eig (\emph{Distance Metric Learning with Eigenvalue Optimization}) \cite{dmleig} es una técnica de aprendizaje de métricas de distancia inspirada en la técnica LSI de la sección anterior, proponiendo un problema de optimización muy similar pero ofreciendo un método de resolución completamente diferente, basado en la optimización de valores propios.
 
 Consideramos, al igual que en el caso anterior, un conjunto de datos de entrenamiento $\mathcal{X} = \{x_1,\dots,x_N\} \subset \R^d$, del que conocemos dos subconjuntos $S$ y $D$ de $\mathcal{X}\times\mathcal{X}$ de datos considerados similares, y no similares, respectivamente. En la sección anterior, para optimizar el problema \ref{eq:lsi:equiv} se proponía un método de gradiente ascendente con proyecciones iteradas, el cual puede requerir bastante tiempo para converger. La propuesta de DML-eig consiste en una ligera modificación de la función objetivo, manteniendo las restricciones, que nos conduce al problema
 \begin{equation} \label{eq:dmleig:1}
@@ -718,7 +719,7 @@ La función que busca maximizar la técnica LDML es el logaritmo de la verosimil
     \mathcal{L}(M) = \sum_{i,j=1}^N y_{ij}\log p_{ij,M} + (1-y_{ij})\log(1-p_{ij,M}),
 \end{equation}
 
-donde $y_{ij}$ es una variable binaria que toma el valor 1 si $y_i = y_j$, y 0 en caso contrario. Esta función es diferenciable, cóncava (es una combinación positiva de funciones que se pueden expresar como un menos logaritmo de suma de exponenciales, que son cóncavos) y está mayorada, luego tenemos la garantía de poder alcanzar un máximo global. Teniendo en cuenta que, si $x_{ij} \equiv (x_i-x_j)^T(x_i-x_j)$ y $p_{ij} \equiv p_{ij,M}$, y por las propiedades de la derivada de la función logística su gradiente presenta la expresión
+donde $y_{ij}$ es una variable binaria que toma el valor 1 si $y_i = y_j$, y 0 en caso contrario. Esta función es diferenciable y cóncava (es una combinación positiva de funciones que se pueden expresar como un menos logaritmo de suma de exponenciales, que son cóncavos), luego estamos ante un problema de maximización convexo. Teniendo en cuenta que, si $x_{ij} \equiv (x_i-x_j)^T(x_i-x_j)$ y $p_{ij} \equiv p_{ij,M}$, y por las propiedades de la derivada de la función logística su gradiente presenta la expresión
 \begin{align*}
     \mathcal{\nabla L}(M) &= \sum_{i,j=1}^N y_{ij}\frac{-x_{ij} p_{ij}(1 - p_{ij})}{p_{ij}} + (1-y_{ij})\frac{x_{ij}p_{ij}(1-p_{ij})}{1-p_{ij}} \\
                           &= \sum_{i,j=1}^N -y_{ij}x_{ij}(1 - p_{ij}) + (1-y_{ij})x_{ij}p_{ij} \\
@@ -754,7 +755,7 @@ Sin embargo, en muchas ocasiones, aunque los datos sean visiblemente separables,
     \caption{Conjunto de datos para el que SVM no puede establecer un hiperplano separador.} \label{fig:svm_ejemplo2}
 \end{figure} 
 
-A pesar de esto, es posible establecer una transformación en los datos que los incluya en un espacio de dimensión mayor en el cual los datos sí sean separables mediante hiperplanos. En efecto, si definimos la aplicación $\phi\colon \R \to \R^2$ por $\phi(x) = (x,x^2)$, los datos de $\phi(\mathcal{X})$ sí que son separables en $\R^2$. Concretamente, podemos tomar el hiperplano $H = \{(x,y) \in \R^2 \colon y = 1\}$ como hiperplano separador. Esta misma idea podemos utilizarla sobre SVM: transformamos los datos y aplicamos el algoritmo en el espacio transformado obteniendo el hiperplano. Si después queremos predecir la clase de un nuevo dato, podemos aplicarle la transformación y asignarle la clase según el lado del hiperplano en el que ha caído. La Figura \ref{fig:svm_ejemplo3} muestra el resultado de aplicar SVM en el espacio transformado sobre el ejemplo dado.
+A pesar de esto, es posible establecer una transformación en los datos que los incluya en un espacio de dimensión mayor en el cual los datos sí sean separables mediante hiperplanos. En efecto, si definimos la aplicación $\phi\colon \R \to \R^2$ por $\phi(x) = (x,x^2)$, los datos de $\phi(\mathcal{X})$ sí que son separables en $\R^2$. Concretamente, podemos tomar el hiperplano $H = \{(x,y) \in \R^2 \colon y = 1\}$ como hiperplano separador. Esta misma idea podemos utilizarla sobre SVM: transformamos los datos y aplicamos el algoritmo en el espacio transformado obteniendo el hiperplano. Si después queremos predecir la clase de un nuevo dato, podemos aplicarle la transformación y asignarle la clase según el lado del semiespacio en el que ha caído. La Figura \ref{fig:svm_ejemplo3} muestra el resultado de aplicar SVM en el espacio transformado sobre el ejemplo dado.
 
 \begin{figure}[h]
     \includegraphics[width=0.8\textwidth]{images/svm_solution.png}
@@ -765,7 +766,7 @@ A pesar de esto, es posible establecer una transformación en los datos que los 
 En general, cuando nos encontramos con este tipo de problemas siempre podemos enviar los datos a un nuevo espacio de dimensión mayor, definiendo una aplicación $\phi\colon \mathcal{X} \to \mathcal{F}$. El espacio $\mathcal{F}$ lo tomamos como espacio de Hilbert y recibe el nombre de \emph{espacio de características}. Aunque con el ejemplo anterior hemos podido comprobar el potencial de esta herramienta, tiene un gran inconveniente, y es que enviar los datos a un espacio de características puede aumentar en gran medida la dimensión del problema, y por lo tanto la aplicación de los algoritmos en el espacio de características puede ser muy costoso computacionalmente. Además, si quisiéramos trabajar en espacios de características de dimensión infinita sería imposible tratar los datos computacionalmente de esta forma. Para solventar estos problemas surge el concepto de \emph{kernel trick}.
 
 Si $\phi\colon \mathcal{X} \to \mathcal{F}$ es la aplicación de envío al espacio de características, se define la \emph{función kernel} asociada como la forma bilineal simétrica $K \colon \mathcal{X} \times \mathcal{X} \to \R$ que determina los productos escalares de los datos en el espacio de características, esto es,
-$K(x,x') = \langle \phi(x), \phi(x') \rangle$. La clave del éxito de las funciones kernel es que, en muchos algoritmos, como ocurre en el caso de SVM, no es necesario tratar con los valores de los datos, sino únicamente con los productos escalares entre ellos. Por tanto, conociendo la función kernel disponemos de la información necesaria para trabajar en el espacio de características, sea cual sea su dimensión. Notemos por último que, si $X = \{x_1,\dots,x_N\}$, el tamaño, la función kernel puede verse como una matriz $K \in S_N(\R)$ donde $K_{ij} = \langle \phi(x_i), \phi(x_j) \rangle$, por lo que la complejidad del problema va a depender únicamente del tamaño del conjunto de datos, independientemente de la dimensión del espacio de características.
+$K(x,x') = \langle \phi(x), \phi(x') \rangle$. La clave del éxito de las funciones kernel es que, en muchos algoritmos, como ocurre en el caso de SVM, no es necesario tratar con los valores de los datos, sino únicamente con los productos escalares entre ellos. Por tanto, conociendo la función kernel disponemos de la información necesaria para trabajar en el espacio de características, sea cual sea su dimensión. Notemos por último que, si $X = \{x_1,\dots,x_N\}$, la función kernel puede verse como una matriz $K \in S_N(\R)$ donde $K_{ij} = \langle \phi(x_i), \phi(x_j) \rangle$, por lo que la complejidad del problema va a depender únicamente del tamaño del conjunto de datos, independientemente de la dimensión del espacio de características.
 
 A continuación vamos a ver algunas de las funciones kernel más utilizadas. Con ellas podremos observar también cómo es posible utilizar las funciones kernel para trabajar en espacios de dimensión infinita.
 
@@ -935,7 +936,7 @@ Si imponemos la restricción $AA^T = I$, el teorema \ref{thm:eigen_trace_opt} no
 
 KDMLMJ \cite{dmlmj} es la versión kernelizada de DMLMJ. En ella, los datos del conjunto $\mathcal{X}$ se envían al espacio de características mediante la aplicación $\phi\colon \mathcal{X} \to \mathcal{F}$, en el cual se aplica DMLMJ para obtener una aplicación lineal.
 
-De nuevo, es posible calcular los vecindarios $k$-positivo y $k$-negativo $V_k^+(\phi(x_i))$ y $V_k^-(\phi(x_i))$ para cada $x_i \in \mathcal{X}$ gracias a la igualdad \ref{eq:dist_features}. No ocurre lo mismo con los endomorfismos asociadas a los espacios de diferencias,
+De nuevo, es posible calcular los vecindarios $k$-positivo y $k$-negativo $V_k^+(\phi(x_i))$ y $V_k^-(\phi(x_i))$ para cada $x_i \in \mathcal{X}$ gracias a la igualdad \ref{eq:dist_features}. No ocurre lo mismo con los endomorfismos asociados a los espacios de diferencias,
 \begin{align*}
     \Sigma_S^{\phi} &= \frac{1}{|S|}\sum_{i=1}^{N} \left[ \sum_{\phi(x_j) \in V_k^+(\phi(x_i))} (\phi(x_i)-\phi(x_j))(\phi(x_i)-\phi(x_j))^T\right] \\
     \Sigma_D^{\phi} &= \frac{1}{|D|}\sum_{i=1}^{N} \left[ \sum_{\phi(x_j) \in V_k^-(\phi(x_i))} (\phi(x_i)-\phi(x_j))(\phi(x_i)-\phi(x_j))^T\right].
@@ -963,7 +964,7 @@ KDA (\emph{Kernel Discriminant Analysis}) \cite{kda} es la versión kernelizada 
 
 Supongamos, al igual que en LDA, que el conjunto de posibles clases es $\mathcal{C}$, de cardinal $r$, y para cada $c \in \mathcal{C}$ definimos $\mathcal{C}_c = \{i \in \{1,\dots,N\} \colon y_i = c\}$ y $N_c = |\mathcal{C}_c|$, con $\mu_c^{\phi}$ el vector media de la clase $c$ y $\mu^{\phi}$ el vector media de todos los datos, considerándolos dentro del espacio de características. El problema que buscamos resolver en este caso es
 \begin{equation} \label{eq:kda}
-    \max_{\substack{L \in \mathcal{L}(\mathcal{F}, \R^{d'}) }} \quad \tr\left(\frac{L S_b^{\phi} L^T}{LS_w^{\phi}L^T}\right),
+    \max_{\substack{L \in \mathcal{L}(\mathcal{F}, \R^{d'}) }} \quad \tr\left((L S_w^{\phi} L^T)^{-1} (LS_b^{\phi}L^T)\right),
 \end{equation}
 donde $S_b^{\phi}$ y $S_w^{\phi}$ son los operadores que miden la dispersión entre clases e intra-clase, respectivamente, y vienen dados por
 
@@ -1015,6 +1016,6 @@ Si finalmente definimos
 \end{equation*}
 se concluye que
 \begin{equation*}
-    \tr\left(\frac{L S_b^{\phi} L^T}{LS_w^{\phi}L^T}\right) = \tr\left(\frac{AUA^T}{AVA^T} \right),
+    \tr\left((L S_w^{\phi} L^T)^{-1}(LS_b^{\phi}L^T)\right) = \tr\left((AVA^T)^{-1}(AUA^T) \right),
 \end{equation*}
-donde $U$ y $V$ son calculables a partir de funciones kernel. Por tanto, obtenemos un problema equivalente al original en términos de $A$, para el cual el teorema \ref{thm:eigen_trace_ratio_opt} nos dice que, si $U$ es definida positiva, podemos maximizar el valor de la traza tomando como filas de $A$ los vectores propios de $U^{-1}V$ asociados a sus $d'$ mayores valores propios. De esta forma, puesto que $A$ determina a $L$ gracias al teorema de representación, obtenemos un método basado en kernels para la aplicación del análisis discriminante en espacios de características.
+donde $U$ y $V$ son calculables a partir de funciones kernel. Por tanto, obtenemos un problema equivalente al original en términos de $A$, para el cual el teorema \ref{thm:eigen_trace_ratio_opt} nos dice que, si $U$ es definida positiva, podemos maximizar el valor de la traza tomando como filas de $A$ los vectores propios de $V^{-1}U$ asociados a sus $d'$ mayores valores propios. De esta forma, puesto que $A$ determina a $L$ gracias al teorema de representación, obtenemos un método basado en kernels para la aplicación del análisis discriminante en espacios de características.

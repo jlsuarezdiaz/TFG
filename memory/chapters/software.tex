@@ -75,7 +75,7 @@ Es importante destacar, para finalizar la descripción de los algoritmos, que es
     \item \textbf{Número de dimensiones.} Dimensión deseada para la transformación a aprender. Está presente en todos los algoritmos de reducción de dimensionalidad, aunque la mayoría de los algoritmos que aprenden aplicaciones lineales admiten este parámetro.
     \item \textbf{Número de vecinos.} Los parámetros de este tipo determinan cuántos datos se eligen para la construcción de vecindarios en los algoritmos que realizan estas construcciones, como es el caso de ANMM, LMNN o DMLMJ.
     \item \textbf{Método de descenso o algoritmo de resolución.} En los algoritmos que minimizan una función diferenciable puede establecerse el método de descenso deseado. Entre las opciones válidas, que dependerán del algoritmo y de las restricciones de la función, destacan el gradiente descendente clásico (BGD), el gradiente descendente estocástico (SGD, una variante del primero donde la regla de adaptación se aplica dato por dato, en lugar de considerar todo el gradiente; la dirección esperada final sigue siendo la del gradiente y suele proporcionar mejores resultados) o la programación semidefinida (SDP) consistente en gradiente descendente con proyecciones sobre el cono de las matrices semidefinidas positivas.
-    \item \textbf{Tasa de aprendizaje.} En los algoritmos basados en gradiente descendente, se puede establecer un valor inicial para la tasa de aprendizaje, y cómo varía esta: constante, o adaptiva. En el último caso, si la iteración del gradiente a mejorado el valor de la función objetivo, la tasa se incrementa. En caso contrario, se reduce. Los factores de aumento y reducción también son parámetros que se pueden establecer.
+    \item \textbf{Tasa de aprendizaje.} En los algoritmos basados en gradiente descendente, se puede establecer un valor inicial para la tasa de aprendizaje, y cómo varía esta: constante, o adaptiva. En el último caso, si la iteración del gradiente ha mejorado el valor de la función objetivo, la tasa se incrementa. En caso contrario, se reduce. Los factores de aumento y reducción también son parámetros que se pueden establecer.
     \item \textbf{Criterios de parada.} En los algoritmos basados en gradiente descendente, es necesario establecer criterios de parada. Los criterios disponibles en la mayoría de algoritmos consisten en número máximo de iteraciones, precisión (cercanía de la norma del gradiente al valor nulo) o tolerancia (diferencia entre dos iteraciones del gradiente).
     \item \textbf{Parámetros de regularización.} Algunos algoritmos requieren parámetros de regularización para, por ejemplo, evitar matrices singulares (la proposición \ref{prop:pd_regularization} nos dice cómo utilizar estos parámetros). Tanto los parámetros de regularización como los criterios que determinan su aplicación pueden establecerse en los algoritmos que lo requieran.
 \end{itemize}
@@ -196,7 +196,7 @@ linenos
 \caption{Dibujo de clasificadores basados en distancias con pyDML} \label{fig:ex_dmlplot}
 \end{figure}
 
-En cuanto a la biblioteca rDML, la instalación puede realizarse a través del paquete \texttt{devtools}, ejecutando en la terminal de R el comando
+En cuanto a la biblioteca rDML, la instalación puede realizarse a través del paquete \texttt{devtools}, ejecutando en la consola de R el comando
 \begin{minted}{r}
     devtools::install_github("jlsuarezdiaz/rDML")
 \end{minted}

@@ -125,13 +125,14 @@ backend=biber
 \renewcommand{\chaptername}{Abstract}
 \input{chapters/abstract}
 \newpage
+
+\refstepcounter{dummy}
+\pdfbookmark[1]{Agradecimientos}{Agradecimientos}
+\renewcommand{\chaptername}{Agradecimientos}
+\input{chapters/acknowledgements}
+\newpage
+
 \renewcommand{\chaptername}{}
-
-%\refstepcounter{dummy}
-%\pdfbookmark[1]{Agradecimientos}{Agradecimientos}
-%\input{chapters/acknowledgements}
-%\newpage
-
 
 %-----------------------------------------------------------------------------------------------------
 %	ÍNDICE

@@ -2,7 +2,7 @@
 
 En el aprendizaje de métricas de distancia, las matrices tendrán un papel fundamental, pues serán la estructura que definirá las distancias y sobre la que se aplicarán los métodos de optimización estudiados en el capítulo anterior. Dentro del conjunto de todas las matrices, las matrices semidefinidas serán de aún mayor importancia, por lo que para comprender mejor los problemas de aprendizaje con los que trataremos será necesario profundizar en algunas de sus numerosas propiedades.
 
-Este capítulo profundiza en el estudio de las matrices, partiendo de los resultados más conocidos de diagonalización en el álgebra lineal. Desde esta base, se introducirá un producto escalar en el espacio de las matrices, convirtiéndolas así en un espacio de Hilbert, añadiendo de esta forma propiedades métricas y topológicas que analizaremos. A continuación nos centraremos en las matrices definidas positivas, estudiando varios teoremas de descomposición que serán de gran utilidad. También veremos cómo el producto escalar que hemos añadido permite demostrar un teorema de proyección que motivará muchos de los algoritmos que se estudiarán más adelante. Por último, analizaremos cómo trabajar con problemas de optimización basados en matrices, haciendo especial hincapié en determinados problemas de optimización que se pueden resolver mediante vectores propios.
+Este capítulo profundiza en el estudio de las matrices, partiendo de los resultados más conocidos de diagonalización en el álgebra lineal. Desde esta base, se introducirá un producto escalar en el espacio de las matrices, convirtiéndolas así en un espacio de Hilbert, añadiendo de esta forma propiedades métricas y topológicas que analizaremos. A continuación nos centraremos en las matrices semidefinidas positivas, estudiando varios teoremas de descomposición que serán de gran utilidad. También veremos cómo el producto escalar que hemos añadido permite demostrar un teorema de proyección que motivará muchos de los algoritmos que se estudiarán más adelante. Por último, analizaremos cómo trabajar con problemas de optimización basados en matrices, haciendo especial hincapié en determinados problemas de optimización que se pueden resolver mediante vectores propios.
 
 \section{Preliminares}
 
@@ -10,7 +10,7 @@ Nos centraremos en el estudio de las matrices con entradas reales, pues el probl
 
 Notaremos el espacio de las matrices reales de dimensión $d' \times d$ como $\mathcal{M}_{d'\times d}(\R)$. Cuando $d' = d$, entonces abreviaremos, notando el espacio de las matrices cuadradas de orden $d$ como $\mathcal{M}_d(\R)$. Una matriz $A \in \mathcal{M}_{d'\times d}(\R)$ también la podremos expresar, aludiendo a sus entradas, como $A = (A_{ij})_{\substack{i=1,\dots,d' \\ j=1,\dots,d}}$, donde $A_{ij} \in \R$ representa la entrada en la fila $i$-ésima y columna $j$-ésima. También usaremos la notación $A_{.j}$ para aludir a la columna $j$-ésima completa de la matriz, vista como vector, y análogamente $A_{i.}$ para la fila $i$-ésima. Los vectores $v = (v_1,\dots,v_d) \in \R^d$ los trataremos como matrices columna.
 
-Dada $A = (A_{ij}) \in \mathcal{M}_{d'\times d}(\R)$, notaremos la matriz traspuesta de $A$ como $A^T = (A_{ji}) \in \mathcal{d\times d'}(\R)$. El conjunto de las matrices simétricas de orden $d$ lo notaremos por $S_d(\R) = \{ A \in \mathcal{M}_d(\R) \colon A = A^T\}$. Al conjunto de las matrices antisimétricas lo expresaremos como $A_d(\R) = \{A \in \mathcal{M}_d(\R) \colon A = -A^T$. El conjunto de las matrices regulares de orden $d$ o grupo lineal de orden $d$ lo escribiremos como
+Dada $A = (A_{ij}) \in \mathcal{M}_{d'\times d}(\R)$, notaremos la matriz traspuesta de $A$ como $A^T = (A_{ji}) \in \mathcal{M}_{d\times d'}(\R)$. El conjunto de las matrices simétricas de orden $d$ lo notaremos por $S_d(\R) = \{ A \in \mathcal{M}_d(\R) \colon A = A^T\}$. Al conjunto de las matrices antisimétricas lo expresaremos como $A_d(\R) = \{A \in \mathcal{M}_d(\R) \colon A = -A^T\}$. El conjunto de las matrices regulares de orden $d$ o grupo lineal de orden $d$ lo escribiremos como
 \begin{align*}
 \gl_d(\R) &= \{A \in \mathcal{M}_d(\R) \colon \exists A^{-1} \in \mathcal{M}_d(\R) \colon AA^{-1} = A^{-1}A = I \}\\
           &= \{A \in \mathcal{M}_d(\R) \colon \det(A) \ne 0\} = \{A \in \mathcal{M}_d(\R) \colon r(A) = d\},
@@ -27,9 +27,9 @@ Sobre el conjunto de las matrices de determinada dimensión tenemos definida una
 
 \begin{definition}
     Se define el \emph{producto escalar de Frobenius} en el espacio de matrices de orden $d' \times d$ como la aplicación $\langle \cdot, \cdot \rangle_F \colon \mathcal{M}_{d' \times d}(\R) \times \mathcal{M}_{d' \times d}(\R) \to \R$ dada por
-    \[ \langle A, B \rangle_F = \sum_{i=1}^d\sum_{j=1}^{d'} A_{ij}B_{ij} = \tr(A^TB). \]
+    \[ \langle A, B \rangle_F = \sum_{i=1}^{d'}\sum_{j=1}^{d} A_{ij}B_{ij} = \tr(A^TB). \]
     Se define la \emph{norma de Frobenius} en el espacio de matrices de orden $d' \times d$ como la aplicación $\|\cdot \|_F \colon \mathcal{M}_{d' \times d}(\R) \to \R^+_0$ dada por
-    \[ \|A\|_F = \sqrt{\langle A^T, A \rangle} = \sqrt{\sum_{i=1}^d\sum_{j=1}^{d'}A_{ij}^2} = \sqrt{\tr(A^TA)} \]
+    \[ \|A\|_F = \sqrt{\langle A, A \rangle} = \sqrt{\sum_{i=1}^{d'}\sum_{j=1}^{d}A_{ij}^2} = \sqrt{\tr(A^TA)} \]
 \end{definition}
 
 Se tiene que $(\mathcal{M}_{d'\times d}(\R),\langle \cdot, \cdot \rangle_F)$ es un espacio de Hilbert, y su producto escalar es el mismo que si calculáramos el producto escalar usual de la matriz vista como vector en $\R^{d' \times d}$, añadiendo las filas al vector una detrás de otra.
@@ -204,7 +204,7 @@ Comenzaremos con una caracterización de las matrices semidefinidas positivas po
 \begin{proof}
     En primer lugar veamos que $L^TL$ es una matriz semidefinida positiva, para cualquier $L \in \mathcal{M}_d(\R)$. En efecto, dado $x \in \R^d$,
     \[ x^TL^TLx = (Lx)^T(Lx) = \|Lx\|^2_2 \ge 0. \]
-    Probaremos la segunda implicación del primer apartado viendo directamente la existencia de la matriz $N$ del segundo apartado. Para ello, consideramos la descomposición $M = UDU^T$, con $U \in O_d(\R)$ y $D = \diag(\lambda_1,\dots,\lambda_d)$, con $0 \le \lambda_1 \dots \lambda_d$ los valores propios de $M$. Definimos $D^{1/2} = \diag(\sqrt{\lambda_1},\dots,\sqrt{\lambda_d})$ y construimos la matriz $N = UD^{1/2}U^T$. Se tiene que $N$ es semidefinida positiva, pues sus valores propios son los de $D^{1/2}$, que son todos positivos, y además, 
+    Probaremos la segunda implicación del primer apartado viendo directamente la existencia de la matriz $N$ del segundo apartado. Para ello, consideramos la descomposición $M = UDU^T$, con $U \in O_d(\R)$ y $D = \diag(\lambda_1,\dots,\lambda_d)$, con $0 \le \lambda_1 \le \dots \le \lambda_d$ los valores propios de $M$. Definimos $D^{1/2} = \diag(\sqrt{\lambda_1},\dots,\sqrt{\lambda_d})$ y construimos la matriz $N = UD^{1/2}U^T$. Se tiene que $N$ es semidefinida positiva, pues sus valores propios son los de $D^{1/2}$, que son todos positivos, y además, 
     \[N^2 = UD^{1/2}U^TUD^{1/2}U^T = UD^{1/2}D^{1/2}U^T = UDU^T = M.\]
     También, la positividad estricta de los valores propios de $M$ equivale a la de los valores propios de $N$, luego $M \in \mathcal{M}_d(\R)^+ \iff N \in \mathcal{M}_d(\R)^+$. Veamos finalmente que $N$ es única.
 
@@ -289,7 +289,7 @@ El módulo y los valores singulares permiten deducir nuevos teoremas de descompo
 \end{remark}
 
 \begin{remark} \label{rem:polar_generalized}
-    El módulo se puede definir de la misma forma para matrices no cuadradas $A \in \mathcal{M}_{d \times d'}(\R)$. En tal caso, $|A| \in \mathcal{M}_{d'}(\R)^+_0$. También es posible probar de forma análoga la existencia de descomposición polar y valores singulares. Para el caso de los valores singulares, las matrices $V$ y $W$ serán ortogonales con la dimensión adecuada para poder ser multiplicadas. En el caso de la descomposición polar, se tiene que $A = U|A|$, donde $U \in \mathcal{d \times d'}(\R)$ verifica $U^TU = I$, siempre que $d' \le d$.
+    El módulo se puede definir de la misma forma para matrices no cuadradas $A \in \mathcal{M}_{d \times d'}(\R)$. En tal caso, $|A| \in \mathcal{M}_{d'}(\R)^+_0$. También es posible probar de forma análoga la existencia de descomposición polar y valores singulares. Para el caso de los valores singulares, las matrices $V$ y $W$ serán ortogonales con la dimensión adecuada para poder ser multiplicadas. En el caso de la descomposición polar, se tiene que $A = U|A|$, donde $U \in \mathcal{M}_{d \times d'}(\R)$ verifica $U^TU = I$, siempre que $d' \le d$.
 \end{remark}
 
 La descomposición polar tiene una interpretación geométrica muy interesante, y es que nos dice que todo endomorfismo lineal en $\R^d$ es, salvo una isometría, un escalado sobre una determinada base ortonormal (la base donde diagonaliza $|A|$), entendiendo por escalado sobre dicha base una aplicación que a cada vector de la base (eje) lo envía a otro vector con la misma dirección y sentido (incluyendo el $0$), pudiendo variar la constante de escala en cada eje.
@@ -355,9 +355,9 @@ Es conocido que las matrices definidas positivas se identifican con productos es
 
 \subsection{Proyección sobre las matrices semidefinidas}
 
-Para concluir la sección, retomamos la estructura del conjunto de matrices semidefinidas como cono convexo y cerrado. El teorema de la proyección convexa \ref{thm:convex_projection} nos dice toda matrix podemos proyectarla a dicho cono. Veremos que podemos calcular una proyección explícita.
+Para concluir la sección, retomamos la estructura del conjunto de matrices semidefinidas como cono convexo y cerrado. El teorema de la proyección convexa \ref{thm:convex_projection} nos dice toda matriz podemos proyectarla a dicho cono. Veremos que podemos calcular una proyección explícita.
 
-Antes de analizar la proyección sobre el cono de matrices semidefinidas, analizamos otra proyección importante desde el punto de vista algorítmico: la proyección sobre el espacio vectorial de las matrices simétricas. Es fácil comprobar que $S_d(\R) \perp A_d(\R)$, para el producto escalar de Frobenius, y además $S_d(\R) \bigoplus A_d(\R) = \mathcal{M}_d(\R)$, pues su intersección es vacía, al ser ortogonales, y sus dimensiones suman $d^2$ (el espacio de las matrices simétricas tiene dimensión $d(d+1)/2$ y el de las antisimétricas $d(d-1)/2$; esto se debe a que las matrices simétricas vienen determinadas por sus componentes en el triángulo superior con la diagonal, y las antisimétricas vienen determinadas por sus componentes en el triángulo superior sin la diagonal). Por tanto, $S_d(\R)$ y $A_d(\R)$ se complementan ortogonalmente. Observando que, para toda $A \in \mathcal{M}_d(\R)$, la descomposición de $A$ en estos subespacios es
+Antes de analizar la proyección sobre el cono de matrices semidefinidas, analizamos otra proyección importante desde el punto de vista algorítmico: la proyección sobre el espacio vectorial de las matrices simétricas. Es fácil comprobar que $S_d(\R) \perp A_d(\R)$, para el producto escalar de Frobenius, y además $S_d(\R) \bigoplus A_d(\R) = \mathcal{M}_d(\R)$, pues su intersección es $\{0\}$, al ser ortogonales, y sus dimensiones suman $d^2$ (el espacio de las matrices simétricas tiene dimensión $d(d+1)/2$ y el de las antisimétricas $d(d-1)/2$; esto se debe a que las matrices simétricas vienen determinadas por sus componentes en el triángulo superior con la diagonal, y las antisimétricas vienen determinadas por sus componentes en el triángulo superior sin la diagonal). Por tanto, $S_d(\R)$ y $A_d(\R)$ se complementan ortogonalmente. Observando que, para toda $A \in \mathcal{M}_d(\R)$, la descomposición de $A$ en estos subespacios es
 \[ A = \frac{A + A^T}{2} + \frac{A - A^T}{2}, \]
 donde el primer sumando es simétrico y el segundo antisimétrico, el teorema de la proyección ortogonal permite concluir que la proyección sobre $S_d(\R)$ viene dada por $A \mapsto (A + A^T)/2$.
 
@@ -409,7 +409,7 @@ Concluimos viendo la proyección semidefinida de una matriz cuadrada arbitraria.
 \end{remark}
 
 \begin{remark}
-    Análogamente se tiene que la proyección sobre el cono de matrices semidefinidas negativas de una matriz simétrica $A \in \mathcal{M}_d(\R)$ es $-A^-$. Las partes positiva y negativa, como ocurre con los números reales, permiten recuperar la matriz original, es decir, se verifica que $A = A^+ - A^-$. Igualmente ocurre con el módulo: $|A| = A^+ A^-$. Esto permite calcular la proyección semidefinida también como $A^+ = (A + |A|)/2.$
+    Análogamente se tiene que la proyección sobre el cono de matrices semidefinidas negativas de una matriz simétrica $A \in \mathcal{M}_d(\R)$ es $-A^-$. Las partes positiva y negativa, como ocurre con los números reales, permiten recuperar la matriz original, es decir, se verifica que $A = A^+ - A^-$. Igualmente ocurre con el módulo: $|A| = A^+ + A^-$. Esto permite calcular la proyección semidefinida también como $A^+ = (A + |A|)/2.$
 \end{remark}
 
 \section{Cociente de Rayleigh. Optimización con vectores propios.}
@@ -428,7 +428,7 @@ Ambas aplicaciones están bien definidas, pues los cocientes solo pueden anulars
 
 Una primera observación sobre estas aplicaciones es que, para $x \in \R^d \setminus \{0\}$ y $\lambda \in \R^*$, se verifica que
 \[ \mathcal{R}(\lambda x) = \frac{(\lambda x)^TA(\lambda x)}{(\lambda x)^TB(\lambda x)} = \frac{\lambda^2(x^TAx)}{\lambda^2(x^TBx)} = \mathcal{R}(x). \]
-Por tanto, $\mathcal{R}$ toma todos sus valores en la esfera unidad $d-1$-dimensional, es decir $\mathcal{R}(\R \setminus \{0\}) = \mathcal{R}(\mathbb{S}^{d-1}) \subset \R$. Como $\mathcal{R}$ es continua y la esfera $d-1$-dimensional es compacta, se tiene que $\mathcal{R}$ alcanza un máximo y un mínimo en $\R^d \setminus \{0\}$, los cuales no van a ser únicos. Igualmente ocurre con $\rho$.
+Por tanto, $\mathcal{R}$ toma todos sus valores en la esfera unidad $(d-1)$-dimensional, es decir $\mathcal{R}(\R \setminus \{0\}) = \mathcal{R}(\mathbb{S}^{d-1}) \subset \R$. Como $\mathcal{R}$ es continua y la esfera $d-1$-dimensional es compacta, se tiene que $\mathcal{R}$ alcanza un máximo y un mínimo en $\R^d \setminus \{0\}$, los cuales no van a ser únicos. Igualmente ocurre con $\rho$.
 
 Podemos encontrar los valores máximos y mínimos que toman los cocientes de Rayleigh. Comenzaremos analizando $\rho$.
 
@@ -467,10 +467,10 @@ El teorema de Rayleigh-Ritz nos muestra que $\rho(\R^d \setminus \{0\}) = [\lamb
 \end{lem}
 
 \begin{proof}
-    Si $x \in \lin\{u_1,\dots,u_{d-k+1}\}$, entonces $x = \sum_{i=1}^{d-k+1} \langle x, u_i \rangle u_i$, y por la identidad de Parseval,
+    Si $x \in \lin\{u_1,\dots,u_{k}\}$, entonces $x = \sum_{i=1}^{k} \langle x, u_i \rangle u_i$, y por la identidad de Parseval,
     \begin{align*}
-        x^Tx &= \langle x, x \rangle = \sum_{i=1}^{d-k+1} \langle x, u_i \rangle^2 \\
-        x^TAx &= \langle x, Ax \rangle = \sum_{i=1}^{d-k+1} \lambda_i \langle x, u_i \rangle^2.
+        x^Tx &= \langle x, x \rangle = \sum_{i=1}^{k} \langle x, u_i \rangle^2 \\
+        x^TAx &= \langle x, Ax \rangle = \sum_{i=1}^{k} \lambda_i \langle x, u_i \rangle^2.
     \end{align*}
     Si tomamos $y_i = \langle x, u_i \rangle$, tenemos una expresión análoga a la de \ref{eq:ray_ritz:1}, que en este caso tiene como valor máximo $\lambda_k$, y se alcanza en $u_k$. Razonando análogamente sobre $\lin\{u_k,\dots,u_{d}\}$, obtenemos que el cociente de Rayleigh en este subespacio tiene como mínimo $\lambda_k$ y se alcanza en $u_k$.
 \end{proof}
@@ -490,13 +490,13 @@ El teorema de Rayleigh-Ritz nos muestra que $\rho(\R^d \setminus \{0\}) = [\lamb
     \[ \lambda_k = \max_{\substack{x \in \lin\{u_1,\dots,u_k\} \\ \|x\|_2 = 1}} x^TAx. \]
     Como $\dim(\lin\{u_1,\dots,u_k\}) = k$, se tiene que
     \[ \min_{S_k \subset \R^d} \max_{\substack{x \in S_k \\ \|x\|_2 = 1}} x^TAx \le \lambda_k. \]
-    Por otro lado, sea $A = UDU^T$ con $U \in O_d(\R)$ y $D = \diag(\lambda_1,\dots,\lambda_d)$, donde $\lambda_1 \le \dots \le \lambda_d$ la descomposición espectral de $A$ asociada a la base $\{u_1,\dots,u_d\}$.
+    Por otro lado, sea $A = UDU^T$ con $U \in O_d(\R)$ y $D = \diag(\lambda_1,\dots,\lambda_d)$, donde $\lambda_1 \le \dots \le \lambda_d$ es la descomposición espectral de $A$ asociada a la base $\{u_1,\dots,u_d\}$.
     Fijado $S_k$ un subespacio de dimensión $k$, definimos los subespacios vectoriales
     \begin{align*}
         V &= \{ U^Tx \colon x \in S_k \} \\
         W &= \{ y \in \R^d \colon y_1 = \dots = y_{k-1} = 0 \} = \lin\{e_k,\dots,e_d\},
     \end{align*}
-    donde $\{e_1,\dots,e_d\}$ es la base canónica de $\R^d$. Como $\dim(V) = \dim(S_k) = k$ y $\dim(W) = d-k+1$. Como $\dim(V) + \dim(W) = d+1 > d$, necesariamente $\dim(V\cap W) \ge 1$. Por tanto, $V \cap W$ contiene vectores no nulos para cualquier $S_k$, y entonces,
+    donde $\{e_1,\dots,e_d\}$ es la base canónica de $\R^d$. Se tiene que $\dim(V) = \dim(S_k) = k$ y $\dim(W) = d-k+1$. Como $\dim(V) + \dim(W) = d+1 > d$, necesariamente $\dim(V\cap W) \ge 1$. Por tanto, $V \cap W$ contiene vectores no nulos para cualquier $S_k$, y entonces,
     \begin{align*}
          \min_{S_{k} \subset \R^d} \max_{\substack{x \in S_{k} \\ \|x\|_2 = 1}} x^TAx &= \min_{V \subset \R^d} \max_{\substack{y \in V \\ \|y\|_2 = 1}} y^TDy \\
                                                                                       &\ge \min_{V \subset \R^d} \max_{\substack{y \in V\cap W \\ \|y\|_2 = 1}} y^TDy \\
@@ -516,7 +516,7 @@ Los teoremas de Rayleigh-Ritz y de Courant-Fischer tienen consecuencias muy inte
 \begin{proof}
     Veamos la prueba para el caso en que $J = \{1,\dots,d'\}$. La prueba general es igual, eligiendo en cada caso un subespacio $W$ generado por vectores de la base canónica $e_1, \dots, e_d$ cuyos índices se adapten a los del conjunto $J$. 
 
-    Sea $k \in \{1,\dots,d\}$. Consideramos el subespacio $W = \lin\{e_1,\dots,e_{d'}\} = \{ x \in \R^d \colon e_{d'+1} = \dots = e_d = 0\}$. Dado $x \in W$ denotaremos $\pi(x) = (x_1,\dots,x_{d'}) \in \R^{d'}$ al vector con las componentes no nulas de $x$ (o la correspondiente identificación sobre $\R^{d'}$). Observemos que $\pi(x)^TA_J\pi(x) = \sum_{i,j=1}^{d'}A_{ij}x_ix_j = x^TAx$. Aplicando el teorema de Courant-Fischer \ref{thm:courant_fischer} restringiéndonos a subespacios de $W \equiv \R^{d'}$ de dimensión $k$, se tiene que
+    Sea $k \in \{1,\dots,d\}$. Consideramos el subespacio $W = \lin\{e_1,\dots,e_{d'}\} = \{ x \in \R^d \colon x_{d'+1} = \dots = x_d = 0\}$. Dado $x \in W$ denotaremos $\pi(x) = (x_1,\dots,x_{d'}) \in \R^{d'}$ al vector con las componentes no nulas de $x$ (o la correspondiente identificación sobre $\R^{d'}$). Observemos que $\pi(x)^TA_J\pi(x) = \sum_{i,j=1}^{d'}A_{ij}x_ix_j = x^TAx$. Aplicando el teorema de Courant-Fischer \ref{thm:courant_fischer} restringiéndonos a subespacios de $W \equiv \R^{d'}$ de dimensión $k$, se tiene que
     \[ \lambda_k = \min_{S_k \subset \R^d} \max_{\substack{x \in S_k \\ \|x\|_2 = 1}} x^TAx \le \min_{S_k \subset W} \max_{\substack{x \in S_k \\ \|x\|_2 = 1}} \pi(x)^TA_J\pi(x) = \tau_k  \]
     De la misma forma, si nos restringimos a subespacios de $W$ de dimensión $d' + 1 -k = d - (k+d-d') + 1$, obtenemos que
     \[  \lambda_{k+d-d'} = \max_{\substack{S_{d'+1-k} \subset \R^d}} \min_{\substack{x \in S_{d'+1-k} \\ \|x\|_2 = 1}} x^TAx \ge \max_{\substack{S_{d'+1-k} \subset W \equiv \R^{d'}}} \min_{\substack{x \in S_{d'+1-k} \\ \|x\|_2 = 1}} \pi(x)^TA_J\pi(x) = \tau_k \]
@@ -534,7 +534,7 @@ A continuación planteamos el problema de optimización que buscamos resolver en
 \begin{equation}
     \max_{\substack{u_1,\dots,u_{d'} \in  \R^d \\ u_i \ne 0 \\ \langle u_i, u_j \rangle = 0 (i \ne j)}} \sum_{i=1}^{d'} \rho(u_i).
 \end{equation}
-Teniendo en cuenta que maximizar el cociente de Rayleigh equivale a hacerlo sobre vectores unitarios, y si colocamos los vectores $u_i$ por columnas en una matriz $L \in \mathcal{M}_{d'\times d}(\R)$, que los vectores formen una conjunto ortonormal equivale a que $L^TL = I$, podemos reescribir el problema como
+Teniendo en cuenta que maximizar el cociente de Rayleigh equivale a hacerlo sobre vectores unitarios, y si colocamos los vectores $u_i$ por filas en una matriz $L \in \mathcal{M}_{d'\times d}(\R)$, que los vectores formen una conjunto ortonormal equivale a que $LL^T = I$, podemos reescribir el problema como
 \begin{equation}
     \max_{\substack{u_1,\dots,u_{d'} \in  \R^d \\ u_i \ne 0 \\ \langle u_i, u_j \rangle = 0 (i \ne j)}} \sum_{i=1}^{d'} \rho(u_i) = \max_{\substack{u_1,\dots,u_{d'} \in  \R^d \\ \|u_i\|_2 = 1 \\ \langle u_i, u_j \rangle = 0 (i \ne j)}} \sum_{i=1}^{d'} u_i^TAu_i = \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) \\ LL^T  = I}} \tr(LAL^T). 
 \end{equation}
@@ -569,7 +569,7 @@ Veamos cómo resolver este problema.
 Finalmente, aplicamos los resultados ya probados al cociente de Rayleigh generalizado. Para ello, veamos que podemos diagonalizar (por congruencia) las matrices $A$ y $B$ simultáneamente.
 
 \begin{lem}[Diagonalización simultánea de matrices] \label{lem:diag_simult}
-    Sea $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+_0$. Entonces existe una matriz regular $P \in \gl_d(\R)$ y una matriz diagonal $D \in \mathcal{M}_d(\R)$ tales que $P^TAP = D$ y $P^TBP = I$.
+    Sea $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$. Entonces existe una matriz regular $P \in \gl_d(\R)$ y una matriz diagonal $D \in \mathcal{M}_d(\R)$ tales que $P^TAP = D$ y $P^TBP = I$.
 \end{lem}
 
 \begin{proof}
@@ -626,7 +626,7 @@ y por tanto estos vectores propios maximizan el problema del teorema \ref{thm:ei
     \end{align*}
     Como $U$ maximiza $T$ y $U = PQ|V|$, se tiene que $PQ$ también maximiza $T$. Además, como de $P^TAP = D$ y $P^TBP = I$ se obtiene que
     \[ D = P^TAP = (P^TBP)^{-1}(P^TAP) = P^{-1}B^{-1}P^{-T}P^TAP = P^{-1}B^{-1}AP, \]
-    se concluye que $P$ diagonaliza a $B^{-1}A$ y, por tanto, contiene por columnas los vectores propios de dicha matriz. Como $Q$ contiene los $d'$ primeros vectores propios de la base usual por columnas, $PQ$ tiene por columnas los primeros vectores propios de $B^{-1}A$, que son los asociados a los mayores valores propios. Esto termina la prueba, pues entonces una solución del problema \ref{eq:eigen_trace_ratio_opt}, que es igual que el de maximizar $T$ salvo una traspocición, consiste en añadir estos vectores por filas.
+    se concluye que $P$ diagonaliza a $B^{-1}A$ y, por tanto, contiene por columnas los vectores propios de dicha matriz. Como $Q$ contiene los $d'$ primeros vectores propios de la base usual por columnas, $PQ$ tiene por columnas los primeros vectores propios de $B^{-1}A$, que son los asociados a los mayores valores propios. Esto termina la prueba, pues entonces una solución del problema \ref{eq:eigen_trace_ratio_opt}, que es igual que el de maximizar $T$ salvo una trasposición, consiste en añadir estos vectores por filas.
 \end{proof}
 
 \section{Últimas consideraciones}
@@ -644,7 +644,7 @@ Un último detalle a destacar es que el producto $xx^T$, para $x \in \R^{d}\setm
 
 \subsection{Optimización matricial}
 
-Gracias a la norma de Frobenius introducida sobre las matrices, podemos establecer una teoría de derivación en $\mathcal{M}_{d' \times d}(\R)$ idéntica a la de $\R^{d'\times d}$. De esta forma, podemos extender todos los resultados de derivación a matrices. Un concepto que será de gran interés será el de gradiente de una función $f \colon \mathcal{M}_{d' \times d}(\R) \to \R$ diferenciable. Lo podemos construir, al igual que en $\R^{d'\times d}$ a partir de las derivadas parciales de $f$, vista la matriz variable como un vector. Sin embargo, debemos conservar la estructura matricial para el gradiente, para ser tratable en el espacio de matrices. Por ello, el gradiente de $f$ en el punto $M = (M_{ij})_{\substack{i \in \{1,\dots,d\}\\j \in \{1,\dots,d'\}}}$, vendrá dado por la matriz $\nabla f(M) \in \mathcal{M}_{d'\times d}(\R)$, donde
+Gracias a la norma de Frobenius introducida sobre las matrices, podemos establecer una teoría de derivación en $\mathcal{M}_{d' \times d}(\R)$ idéntica a la de $\R^{d'\times d}$. De esta forma, podemos extender todos los resultados de derivación a matrices. Un concepto que será de gran interés será el de gradiente de una función $f \colon \mathcal{M}_{d' \times d}(\R) \to \R$ diferenciable. Lo podemos construir, al igual que en $\R^{d'\times d}$ a partir de las derivadas parciales de $f$, vista la matriz variable como un vector. Sin embargo, debemos conservar la estructura matricial para el gradiente, para ser tratable en el espacio de matrices. Por ello, el gradiente de $f$ en el punto $M = (M_{ij})_{\substack{i \in \{1,\dots,d'\}\\j \in \{1,\dots,d\}}}$, vendrá dado por la matriz $\nabla f(M) \in \mathcal{M}_{d'\times d}(\R)$, donde
 \[ (\nabla f(M))_{ij} = \frac{\partial f}{\partial M_{ij}}(M), \]
 donde las derivadas parciales respecto de $M_{ij}$ se toman en el sentido del análisis real. El gradiente así definido conserva todas las propiedades vectoriales de $\R^{d'\times d}$ (en particular, la regla de adaptación del gradiente descendente sigue siendo válida), y permite además trabajar con él a través del producto de matrices. Será interesante conocer algunas reglas de derivación.
 
