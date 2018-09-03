@@ -70,6 +70,19 @@ ax[1,1].set_ylim((-1,1))
 ax[1,1].scatter(UWX[:,0],UWX[:,1])
 ax[1,1].scatter(LX[:,0],LX[:,1],c='lightblue')
 
+ff, ax = plt.subplots(nrows=1,ncols=2,sharex='col',sharey='row',figsize=(8,4))
+ff.tight_layout()
+ax[0].set_xlim((-1,1))
+ax[0].set_ylim((-1,1))
+ax[0].scatter(LX[:,0],LX[:,1])
+draw_vector([0,0], 3*LL[:,0]*vv[0],ax[0],'red')
+draw_vector([0,0], 4*LL[:,1]*vv[1],ax[0],'green')
+
+ax[1].set_xlim((-1,1))
+ax[1].set_ylim((-1,1))
+ax[1].scatter(UWX[:,0],UWX[:,1])
+ax[1].scatter(LX[:,0],LX[:,1],c='lightblue')
+
 #plt.savefig('plots/pca.png')
 
 np.random.seed(28)
@@ -123,7 +136,7 @@ y=y.astype(int)
 #ax[0].scatter(X[:,0],X[:,1],c=y,cmap='rainbow')
 ncm = NearestCentroid()
 ncmc = NCMC_Classifier(centroids_num=[2,1])
-f=dml_multiplot(X,y,nrow=1,ncol=2,clfs=[ncm,ncmc],cmap='rainbow',subtitles=['NCM','NCMC'],figsize=(12,6))
+ff=dml_multiplot(X,y,nrow=1,ncol=2,clfs=[ncm,ncmc],cmap='rainbow',subtitles=['NCM','NCMC'],figsize=(6,3))
 #f.savefig('plots/ncm_problem.png')
 
 np.random.seed(28)
@@ -150,12 +163,32 @@ handles = [plt.plot([],color=sc.get_cmap()(sc.norm(c)),ls="",marker="o", mec="k"
 ax.legend(handles,[-1,1],loc = "lower right")
 #plt.savefig('plots/svm_problem.png')
 
+f1, ax1 = plt.subplots(figsize=(4,4))
+ax1.set_xlim([-1.6,1.6])
+ax1.set_ylim([-2.0,2.0])
+ax1.scatter(X[:,0],X[:,1],c=y,cmap='rainbow',s=20,edgecolor='k')
+handles = [plt.plot([],color=sc.get_cmap()(sc.norm(c)),ls="",marker="o", mec="k")[0] for c in [-1,1]]
+ax1.legend(handles,[-1,1],loc = "lower right")
+
 X[:,1] = X[:,0]*X[:,0]
 L=np.array([[1,0],[0,0]])
 proj = Transformer(L)
 svq = SVC(kernel='poly',degree=2)
 f=dml_multiplot(X,y,nrow=1,ncol=2,clfs=[svm,svq],transformers=[None,L],transforms=[False,True],cmap='rainbow',figsize=(12,6))
 #f.savefig('plots/svm_solution.png')
+
+
+f2, ax2 = plt.subplots(figsize=(4,4))
+ax2.set_xlim([-1.6,1.6])
+ax2.set_ylim([-0.1,2.5])
+ax2.scatter(X[:,0],X[:,1],c=y,cmap='rainbow',s=20,edgecolor='k')
+handles = [plt.plot([],color=sc.get_cmap()(sc.norm(c)),ls="",marker="o", mec="k")[0] for c in [-1,1]]
+ax2.legend(handles,[-1,1],loc = "lower right")
+
+f3 = dml_plot(X,y,clf=svm,transform=False,cmap='rainbow',figsize=(4,4),xrange=[-1.6,1.6],yrange=[-0.1,2.5])
+f4 = dml_plot(X,y,clf=svq, transformer=L,transform=True,cmap='rainbow',xrange=[-1.6,1.6],yrange=[-2.0,2.0],figsize=(4,4))
+
+
 
 X,y = datasets.digits([0,1,3,4,6,9])
 lda = LDA(num_dims=2)
@@ -232,23 +265,23 @@ ax[2].scatter(LLX2[:,0],LLXy)
 #f.savefig('plots/ex_mover_ejes.png')
 
 
-fa, axa = plt.subplots(figsize=(12,12))
-axa.set_xlim((-1.2,1.2))
-axa.set_ylim((-1.2,1.2))
-axa.scatter(LX[:,0],LX[:,1])  
-axa.set_title(r'$L=\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}$')
+#fa, axa = plt.subplots(figsize=(12,12))
+#axa.set_xlim((-1.2,1.2))
+#axa.set_ylim((-1.2,1.2))
+#axa.scatter(LX[:,0],LX[:,1])  
+#axa.set_title(r'$L=\begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}$')
 
-fb, axb = plt.subplots(figsize=(12,12))
-axb.set_xlim((-1.2,1.2))
-axb.set_ylim((-1.2,1.2))
-axb.set_title(r'$L=\begin{pmatrix}\sqrt{2}/2 & \sqrt{2}/2 \\ \sqrt{2}/2 & -\sqrt{2}/2 \end{pmatrix}$')
-axb.scatter(LLX[:,0],LLX[:,1])
+#fb, axb = plt.subplots(figsize=(12,12))
+#axb.set_xlim((-1.2,1.2))
+#axb.set_ylim((-1.2,1.2))
+#axb.set_title(r'$L=\begin{pmatrix}\sqrt{2}/2 & \sqrt{2}/2 \\ \sqrt{2}/2 & -\sqrt{2}/2 \end{pmatrix}$')
+#axb.scatter(LLX[:,0],LLX[:,1])
 
-fc, axc = plt.subplots(figsize=(12,12))
-axc.set_xlim((-1.2,1.2))
-axc.set_ylim((-1.2,1.2))
-axc.set_title(r'$L=\begin{pmatrix}\sqrt{2}/2 & \sqrt{2}/2\end{pmatrix}$')
-axc.scatter(LLX2[:,0],LLXy)
+#fc, axc = plt.subplots(figsize=(12,12))
+#axc.set_xlim((-1.2,1.2))
+#axc.set_ylim((-1.2,1.2))
+#axc.set_title(r'$L=\begin{pmatrix}\sqrt{2}/2 & \sqrt{2}/2\end{pmatrix}$')
+#axc.scatter(LLX2[:,0],LLXy)
 
 np.random.seed(28)
 X,y = toy_datasets.circular_toy_dataset(rads = [1,2], samples = [200,200], noise = [0.0,0.0])

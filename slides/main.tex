@@ -16,6 +16,9 @@
 \usepackage{fontawesome}
 \usepackage{physics}
 
+\usepackage{multicol}
+\usepackage{svg}
+
 % Differential command
 \newcommand\diff{\,\mathrm{d}}
 
@@ -110,7 +113,7 @@
 \end{block}
 
 \begin{definition}
-  Sea $X$ un conjunto no vacío. Una distancia sobre $X$ es una aplicación $d \colon X \times X \to \R$, verificando:
+  Sea $X$ un conjunto no vacío. Una \textbf{distancia} sobre $X$ es una aplicación $d \colon X \times X \to \R$, verificando:
   \begin{enumerate}
     \item $d(x,y) = 0 \iff x = y$ para cualesquiera $x, y \in X$ (coincidencia) \label{item:dist:1}
     \item $d(x,y) = d(y,x)$ para cualesquiera $x, y \in X$ (simetría)
@@ -146,7 +149,7 @@
   \begin{definition}[Distancias de Mahalanobis]
     Sea $M \in \mathcal{M}_d(\R)$ semidefinida positiva. Entonces, $d_M \colon \R^d \times \R^d \to \R$, dada por
     \[ d(x,y) = \sqrt{(x-y)^TM(x-y)} \]
-    es una (pseudo-)distancia, denominada distancia de Mahalanobis.
+    es una (pseudo-)distancia, denominada \textbf{distancia de Mahalanobis}.
   \end{definition}
 
   \begin{tcolorbox}[colback=ChetwodeBlue!10,colframe=ChetwodeBlue!60]
@@ -209,7 +212,7 @@
   \begin{definition}[Hiperplano soporte]
     Sean $T \colon \R^d \to \R$ lineal, $\alpha \in \R$ y $P = \{x \in \R^d \colon T(x) = \alpha \}$ hiperplano. Definimos $P^+ = \{x \in \R^d \colon T(x) \ge \alpha \}$ y $P^- = \{x \in \R^d \colon T(x) \le \alpha \}$.
 
-    $P$ es un \emph{hiperplano soporte} para $K \subset \R^d$ si $P \cap \closure{K} \ne \emptyset$ y $K \subset P^+$ o $K \subset P^-$.
+    $P$ es un \textbf{hiperplano soporte} para $K \subset \R^d$ si $P \cap \closure{K} \ne \emptyset$ y $K \subset P^+$ o $K \subset P^-$.
   \end{definition}
 
   \begin{columns}
@@ -250,9 +253,788 @@
 
 \subsection{Análisis matricial}
 
+\begin{frame}{Matrices como espacio de Hilbert}
+  \begin{definition}[Producto escalar y norma de frobenius]
+    \begin{align*}
+      \langle A, B \rangle_F &= \sum_{i=1}^{d'} \sum_{j=1}^{d} A_{ij}B_{ij} = \tr(A^TB)  \\
+      \|A\|_F &= \sqrt{\langle A, A \rangle_F} = \sqrt{\sum_{i=1}^{d'} \sum_{j=1}^{d} A_{ij}^2} = \sqrt{\tr(A^TA)}
+    \end{align*}
+  \end{definition}
+
+  \begin{equation*}
+    \begin{matrix}
+      \left(\mathcal{M}_{d' \times d}(\R), \langle \cdot, \cdot \rangle_F\right) & \longleftrightarrow & \left(\R^{d' \times d}, \langle \cdot, \cdot \rangle \right) \\
+      & & \\
+      \begin{pmatrix}
+        a_{11} & \dots & a_{1d} \\
+        \vdots & & \vdots \\
+        a_{d'1} & \dots & a_{d'd}
+      \end{pmatrix} & \longleftrightarrow & (a_{11},\dots,a_{1d}, \dots, a_{d'1},\dots,a_{d'd})
+    \end{matrix}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}[shrink]{Matrices semidefinidas positivas como cono}
+  \begin{columns}
+  \column{0.7\textwidth}
+  \begin{definition}[Cono]
+    \begin{itemize}
+      \item Un \textbf{cono} es un conjunto $C$ cerrado para combinaciones lineales con coeficientes no negativos.
+      \item $C$ es \textbf{sólido} si $\interior{C} \ne \emptyset$.
+      \item $C$ es \textbf{puntiagudo} si $C\cap(-C) = \{0\}$.
+      \item $C$ es \textbf{propio} si es cerrado, sólido y puntiagudo.
+    \end{itemize}
+
+  \end{definition}
+  \column{0.25\textwidth}
+  \centering\includegraphics[width=\textwidth]{images/cone.png}
+
+  \end{columns}
+
+  \begin{tcolorbox}[colback=ChetwodeBlue!10,colframe=ChetwodeBlue!60]
+    \begin{center}
+      {\color{TurkishRose} \small\textbf{El cono de las matrices semidefinidas positivas ($\mathcal{M}_d(\R)^+_0$)}} \\
+      Las matrices semidefinidas positivas forman un cono propio sobre el espacio de matrices simétricas, cuyo interior es $\mathcal{M}_d(\R)^+$.
+    \end{center}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[colback=ChetwodeBlue!10,colframe=ChetwodeBlue!60]
+    \begin{center}
+      {\color{TurkishRose} \small\textbf{Orden parcial de matrices como cono propio}}
+      \[A, B \in S_d(\R), \quad A \preceq B \iff B - A \in \mathcal{M}_d(\R)^+_0  \]
+      \[ \left(\mathcal{M}_d(\R)^+_0 \subset S_d(\R), \preceq \right) \quad \longleftrightarrow \quad \left( \R^+_0 \subset \R , \le \right)\]
+    \end{center}
+  \end{tcolorbox}
+
+\end{frame}
+
+\begin{frame}[shrink]{Teoremas de descomposición}
+  \begin{block}{Conceptos}
+    %Conceptos:
+    \begin{itemize}
+      \item \textbf{Raíz cuadrada: } Dada $M \in \mathcal{M}_d(\R)^+_0$, $\exists^1 N \in \mathcal{M}_d(\R)^+_0 \colon N^2 = M \quad (M^{1/2} := N)$
+      \item \textbf{Módulo: } Dada $A \in \mathcal{M}_d(\R)$, $|A| = (A^TA)^{1/2} \in \mathcal{M}_d(\R)^+_0$.
+      \item \textbf{Valores singulares: } Dada $A \in \mathcal{M}_d(\R)$, sus valores singulares son los valores propios de $|A|$.
+    \end{itemize}
+  \end{block}
+
+  \begin{alertblock}{Resultados}
+    %Resultados:
+    \begin{itemize}
+      \item \textbf{Descomposición polar: } $A \in \mathcal{M}_d(\R) \implies \exists U \in O_d(\R) \colon A = U|A|$.
+      \item \textbf{Descomposición en valores singulares: } $A \in \mathcal{M}_d(\R) \implies \exists V, W \in O_d(\R) \colon A = W\Sigma V^T$, donde $\Sigma$ es diagonal y contiene los valores singulares de $A$.
+      \item \textbf{Descomposición $L^TL$}:
+      \begin{enumerate}
+        \item $M \in \mathcal{M}_d(\R)^+_0 \iff M = L^TL$, con $L \in \mathcal{M}_d(\R)$.
+        \item En tal caso, si $M = K^TK$, entonces $K = UL$, con $U \in O_d(\R)$ ($L$ es única salvo isometrías).
+      \end{enumerate}
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Proyección semidefinida}
+  \begin{definition}[Parte positiva]
+    \begin{enumerate}
+      \item Si $D = \diag(\lambda_1,\dots,\lambda_d)$, $D^+ = \diag(\max\{\lambda_1,0\},\dots,\max\{\lambda_d,0\})$.
+      \item Si $A \in S_d(\R)$ y $A = UDU^T$, $A^+ = UD^+U^T$.
+    \end{enumerate}
+  \end{definition}
+
+  \begin{theorem}[Proyección semidefinida]
+    Si $A \in S_d(\R)$, $A^+$ es la proyección de $A$ sobre $\mathcal{M}_d(\R)^+_0$.
+  \end{theorem}
+
+  \centering\includegraphics[width=0.5\textwidth]{images/sdp.png}
+
+\end{frame}
+
+\begin{frame}{Cociente de Rayleigh}
+  \begin{definition}[Cociente de Rayleigh]
+    $A \in S_d(\R), \rho_A \colon \R^d \setminus \{0\} \to \R $
+    \[ \rho_A(x) = \frac{x^TAx}{x^Tx}\]
+  \end{definition}
+
+  \begin{definition}[Cociente de Rayleigh generalizado]
+    $ A \in S_d(\R), B \in \mathcal{M}_d(\R)^+, \mathcal{R}_{A.B} \colon \R^d \setminus \{0\} \to \R $
+    \[ \mathcal{R}_{A,B}(x) = \frac{x^TAx}{x^TBx}\]
+  \end{definition}
+\end{frame}
+
+\begin{frame}[shrink]{Optimización con vectores propios}
+  \begin{columns}
+  \column{0.49\textwidth}
+    \begin{theorem}\label{thm:eigen_trace_opt}
+      Sean $d',d \in \N $, con $d' \le d$. Sea $A \in S_d(\R)$, y consideramos el problema de optimización
+      
+      \begin{equation*}
+      \begin{split}
+          \max_{L \in \mathcal{M}_{d'\times d}(\R)} &\quad \tr\left(LAL^T\right)  \\
+          \text{s.a.: } &\quad LL^T = I.
+      \end{split}
+      \end{equation*}
+      
+      Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
+      \text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
+      & \dots &  \\
+      \text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
+      \end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son vectores propios ortonormales de $A$ correspondientes a sus $d'$ mayores valores propios.
+      
+    \end{theorem}
+
+  \column{0.49\textwidth}
+
+    \begin{theorem} \label{thm:eigen_trace_ratio_opt}
+      Sean $d',d \in \N $, con $d' \le d$. Sean $A \in S_d(\R)$ y $B \in \mathcal{M}_d(\R)^+$, y consideramos el problema de optimización
+    
+
+      \begin{equation*} \label{eq:eigen_trace_ratio_opt}
+      \max_{L \in \mathcal{M}_{d'\times d}(\R)} \quad \tr\left((LBL^T)^{-1}(LAL^T)\right)
+      \end{equation*}
+
+      Entonces, el problema alcanza un máximo si $L = \begin{pmatrix}
+      \text{---} \hspace{-0.2cm} & v_1 & \hspace{-0.2cm} \text{---} \\
+      & \dots &  \\
+      \text{---} \hspace{-0.2cm} & v_{d'} & \hspace{-0.2cm} \text{---}
+      \end{pmatrix}$, donde $v_1,\dots,v_{d'}$ son los vectores propios de $B^{-1}A$ correspondientes a sus $d'$ mayores valores propios.
+    \end{theorem}
+  \end{columns}
+\end{frame}
+
+
 \subsection{Teoría de la información}
 
+\begin{frame}{Divergencias}
+  \begin{definition}[Divergencia]
+    Sea $X$ un conjunto no vacío. Una \textbf{divergencia} es una aplicación $D(\cdot \| \cdot ) \colon X \times X \to \R$ verificando:
+    \begin{enumerate}
+      \item $D(x \| y ) \ge 0$ para todos $x, y \in X$ (no negatividad).
+      \item $D(x \| y ) = 0$ si y solo si $x = y$. 
+    \end{enumerate}
+  \end{definition}
+
+  \begin{definition}[Divergencia de Kullback-Leibler]
+    \[\kl(p \| q) = \mathbb{E}_p\left[ \log\frac{p(X)}{q(X)} \right]\]
+  \end{definition}
+
+  \begin{definition}[Divergencia de Jeffrey]
+    \[\jf(p \| q) = \kl(p\|q) + \kl(q\|p) \]
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Algunos resultados}
+  \begin{theorem}[Desigualdad de la información]
+    $\kl$ es una divergencia.
+  \end{theorem}
+
+  \begin{definition}[Divergencia log-det]
+    Sean $A, B \in \mathcal{M}_d(\R)^+$.
+    \[ D_{ld} (A \| B) = \tr(AB^{-1}) - \log\det(AB^{-1}) - d.\]
+
+  \end{definition}
+
+  \begin{theorem}
+    \begin{enumerate}
+      \item $D_{ld}$ es una divergencia matricial.
+      \item Si $p_1 \sim \mathcal{N}(x|\mu_1,\Sigma_1)$ y $p_2 \sim \mathcal{N}(x|\mu_2,\Sigma_2)$, entonces
+      \[ \kl(p_1\|p_2) = \frac{1}{2} D_{ld}(\Sigma_1\|\Sigma_2) + \frac{1}{2}d_{\Sigma_2^{-1}}^2(\mu_1,\mu_2).\]
+    \end{enumerate}
+  \end{theorem}
+\end{frame}
+
+\section{Informática teórica}
+
+\subsection{El aprendizaje de métricas de distancia}
+
+\begin{frame}
+  \begin{tcolorbox}[colback=ChetwodeBlue!10,colframe=ChetwodeBlue!60]
+    \begin{center}
+      {\color{TurkishRose} \small\textbf{Aprendizaje de métricas de distancia}}
+      \begin{itemize}
+        \item Aprender distancias a partir de los datos.
+        \item Dos enfoques: aprender $M$ o aprender $L$.
+        \item Mejoran algoritmos de aprendizaje por semejanza y pueden reducir dimensionalidad.
+      \end{itemize}
+    \end{center}
+  \end{tcolorbox}
+
+  \begin{tcolorbox}[colback=ChetwodeBlue!10,colframe=ChetwodeBlue!60]
+    \begin{center}
+      {\color{TurkishRose} \small\textbf{Algoritmos supervisados: estrategia}}
+      \[ \min_{M \in \mathcal{M}_d(\R)^+_0} \ell(d_M, (x_1,y_1), \dots, (x_N, y_N)) \]
+    \end{center}
+  \end{tcolorbox}
+\end{frame}
+
+\subsection{Análisis de algoritmos}
+
+\begin{frame}[shrink]{Algoritmos centrados en reducción de dimensionalidad}
+
+\begin{minipage}[t][0.4\textheight]{0.45\textwidth}
+  \begin{center}\textbf{PCA}\end{center}
+  \begin{center}\includegraphics[width=0.9\textwidth]{images/pca1.png}\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[t][0.4\textheight]{0.45\textwidth}
+  \begin{center}\textbf{LDA}\end{center}
+  \begin{center}\includegraphics[width=0.9\textwidth]{images/lda.png}\end{center}
+  
+\end{minipage}
+
+\begin{minipage}[t][0.45\textheight]{0.45\textwidth}
+  \begin{center}\textbf{ANMM}\end{center}
+  \begin{center}\includegraphics[height=0.7\textwidth]{images/anmm.png}\end{center}
+\end{minipage}
+\hfill
+\begin{minipage}[t][0.45\textheight]{0.45\textwidth}
+  \scalebox{.5}{%
+  \begin{minipage}[t]{0.9\textwidth}
+    \begin{itemize}
+      \item \textbf{PCA:} 
+            {\begin{equation*}
+                \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) \\LL^T = I}} \quad \tr\left(L \Sigma L^T\right),
+            \end{equation*}}
+      \item \textbf{LDA:} 
+            {\begin{equation*}
+            \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) }} \quad \tr\left((LS_wL^T)^{-1}(L S_b L^T)\right).
+            \end{equation*}}
+      \item \textbf{ANMM:} 
+            {\begin{equation*}
+                \max_{\substack{L \in \mathcal{M}_{d'\times d}(\R) \\LL^T = I}} \quad \tr\left(L (S - C) L^T\right),
+            \end{equation*}}
+      \scalebox{0.9}{%
+      \begin{minipage}[t]{2.22\textwidth}
+        \begin{thebibliography}{9}
+          \setbeamertemplate{bibliography item}[article]
+          \bibitem{anmm} Fei Wang y Changshui Zhang. “Feature extraction by maximizing the average neighborhood
+                          margin”. En: Computer Vision and Pattern Recognition, 2007. CVPR’07. IEEE Conference on.
+                          IEEE. 2007, págs. 1-8.
+        \end{thebibliography}
+      \end{minipage}
+      }
+    \end{itemize}
+  \end{minipage}
+  }
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}{Algoritmos orientados a mejorar el clasificador de vecinos cercanos}
+
+%\begin{columns}
+
+%\column{0.48\textwidth}
+\begin{minipage}[t][\textheight][t]{0.48\textwidth}
+
+\begin{center}\textbf{LMNN}\end{center}
+
+\scalebox{.6}{%
+\begin{minipage}[t][\textheight][t]{1.66\textwidth}
+
+\textbf{Conceptos:}
+\begin{itemize}
+  \item \textbf{Target neighbors: } Vecinos que queremos considerar en la clasificación.
+  \item \textbf{Impostores: } Invaden el perímetro determinado por los target neighbors.
+\end{itemize}
+
+\textbf{Objetivos:}
+\begin{itemize}
+  \item[\color{ChetwodeBlue}\textbullet] Acercar los target neighbors lo máximo posible.
+  \item[\color{ChetwodeBlue}\textbullet] Eliminar los impostores.
+\end{itemize}
+
+\fbox{\includegraphics[height=0.3\textwidth]{images/lmnn1.png}}%
+\fbox{\includegraphics[height=0.3\textwidth]{images/lmnn2.png}}
+
+\scalebox{1.0}{%
+\begin{minipage}[t]{\textwidth}
+  \begin{thebibliography}{9}
+    \setbeamertemplate{bibliography item}[article]
+    \bibitem{lmnn} Kilian Q Weinberger y Lawrence K Saul. “Distance metric learning for large margin nearest
+                   neighbor classification”. En: Journal of Machine Learning Research 10.Feb (2009), págs. 207-244.
+  \end{thebibliography}
+\end{minipage}
+}
+
+\end{minipage}
+}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t][\textheight][t]{0.48\textwidth}
+
+\begin{center}\textbf{NCA}\end{center}
+
+\scalebox{.6}{%
+\begin{minipage}[t][\textheight][t]{1.66\textwidth}
+
+\begin{itemize}
+  \item Enfoque probabilístico.
+  \item Maximización de la tasa de acierto esperada por la clasificación 1-NN.
+  \item Probabilidad de que $x_i$ tenga a $x_j$ como su vecino más cercano:
+  \begin{align*} p_{ij}^L &= \frac{\exp(-\|Lx_i - Lx_j\|^2)}{\sum\limits_{k \ne i}\exp(-\|Lx_i - Lx_k\|^2)}\quad (j \ne i),\\
+                 p_{ii}^L &= 0
+  \end{align*}
+  \item Enfoque probabilístico \\$\implies$ Objetivo diferenciable \\$\implies$ Métodos de gradiente \raisebox{-1mm}{\includegraphics[width=6mm]{./images/blue_tick.png}}
+\end{itemize}
+$ $\newline
+\scalebox{1.0}{%
+\begin{minipage}[t]{\textwidth}
+  \begin{thebibliography}{9}
+    \setbeamertemplate{bibliography item}[article]
+    \bibitem{nca} Jacob Goldberger y col. “Neighbourhood components analysis”. En: Advances in neural information
+                   processing systems. 2005, págs. 513-520.
+  \end{thebibliography}
+\end{minipage}
+}
+
+\end{minipage}
+}
+
+\end{minipage}
+%\end{columns}
+
+\end{frame}
+
+\begin{frame}{Algoritmos orientados a mejorar los clasificadores de centroides cercanos}
+  \scalebox{0.6}{%
+  \begin{minipage}[t]{1.66\textwidth}
+    \begin{block}{Clasificadores basados en centroides}
+        Establecen centroides en los datos y clasifican según el centroide más cercano.
+    \end{block}
+    \begin{exampleblock}{Tipos}
+      \begin{enumerate}
+        \item \textbf{NCM.} Utiliza las medias de cada clase (\textit{Nearest Class Mean}).
+        \item \textbf{NCMC.} Utiliza múltiples centroides por clase, establecidos mediante K-Means.
+      \end{enumerate}
+    \end{exampleblock}
+    \begin{center}\includegraphics[width=0.35\textwidth]{images/ncm_problem.png}\end{center}
+    \begin{alertblock}{Algoritmos de Aprendizaje}
+      \begin{itemize}
+        \item \textbf{NCMML}, para \textbf{NCM}.
+        \item \textbf{NCMC}, para el clasificador \textbf{NCMC}.
+        \item Enfoques probabilísticos.
+      \end{itemize}
+    \end{alertblock}
+  \end{minipage}
+  }
+  \scalebox{0.6}{%
+  \begin{minipage}[t]{1.66\textwidth}
+    \begin{thebibliography}{9}
+      \setbeamertemplate{bibliography item}[article]
+      \bibitem{ncmml} Thomas Mensink y col. “Metric learning for large scale image classification: Generalizing to new
+                     classes at near-zero cost”. En: Computer Vision–ECCV 2012. Springer, 2012, págs. 488-501.
+    \end{thebibliography}
+  \end{minipage}
+}
+
+\end{frame}
+
+\begin{frame}{Algoritmos basados en teoría de la información}
+  \begin{minipage}[t][\textheight][t]{0.31\textwidth}
+
+  \begin{center}\textbf{ITML}\end{center}
+
+  \scalebox{.6}{%
+  \begin{minipage}[t][\textheight][t]{1.66\textwidth}
+    \begin{itemize}
+      \item \textbf{Objetivo:} aproximar una métrica inicial satisfaciendo restricciones de similaridad.
+      \vspace{8mm}
+      \item \textbf{Métrica inicial:} $M_0 \rightarrow p_0 \sim \mathcal{N}(x|\mu, M_0)$.
+      \vspace{8mm}
+      \item \textbf{Variable: } $M \rightarrow p_M \sim \mathcal{N}(x|\mu,M)$.
+      \vspace{8mm}
+      \item \textbf{Problema: }
+      \begin{equation*} \label{eq:itml:prob1}
+        \begin{split}
+          \min_{M \succeq 0} &\quad \kl(p_0\|p_M)  \\
+          \text{s.a.: } &\quad d_M(x_i,x_j) \le u, \quad (i,j) \in S \\
+                        &\quad d_M(x_i,x_j) \ge l, \quad (i,j) \in D.
+        \end{split}
+      \end{equation*} 
+    \end{itemize}
+  
+
+  \scalebox{1.0}{%
+  \begin{minipage}[t]{\textwidth}
+    \begin{thebibliography}{9}
+      \setbeamertemplate{bibliography item}[article]
+      \bibitem{itml} Jason V Davis y col. “Information-theoretic metric learning”. En: Proceedings of the 24th international conference on Machine learning. ACM. 2007, págs. 209-216.
+    \end{thebibliography}
+  \end{minipage}
+  }
+
+  \end{minipage}
+  }
+
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t][\textheight][t]{0.31\textwidth}
+
+  \begin{center}\textbf{DMLMJ}\end{center}
+
+  \scalebox{.6}{%
+  \begin{minipage}[t][\textheight][t]{1.66\textwidth}
+  \begin{itemize}
+    \item \textbf{Objetivo:} Separar lo máximo posible las distribuciones asociadas a los puntos similares y a los puntos no similares.
+    \item \textbf{Vecindarios:} Vecinos más cercanos de igual clase ($V_k^+(x_i) \rightarrow \Sigma_S$) y distinta clase ($V_k^-(x_i) \rightarrow \Sigma_D$).
+    \item \textbf{Distribuciones de diferencias:}
+    \begin{align*}P_L &\sim \mathcal{N}(x|0,L\Sigma_SL^T)\\ Q_L &\sim \mathcal{N}(x|0,L\Sigma_DL^T).\end{align*}
+    \vspace{.3mm}
+    \item \textbf{Problema:}
+    \[ \max_{L \in \mathcal{M}_{d'\times d}(\R)} \quad  \jf(P_L\|Q_L).\]
+  \end{itemize}
+  \vspace{.2mm}
+  \scalebox{1.0}{%
+  \begin{minipage}[t]{\textwidth}
+    \begin{thebibliography}{9}
+      \setbeamertemplate{bibliography item}[article]
+      \bibitem{dmlmj} Bac Nguyen, Carlos Morell y Bernard De Baets. “Supervised distance metric learning through
+maximization of the Jeffrey divergence”. En: Pattern Recognition 64 (2017), págs. 215-225.
+    \end{thebibliography}
+  \end{minipage}
+  }
+
+  \end{minipage}
+  }
+
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t][\textheight][t]{0.31\textwidth}
+
+  \begin{center}\textbf{MCML}\end{center}
+
+  \scalebox{.6}{%
+  \begin{minipage}[t][\textheight][t]{1.66\textwidth}
+
+  \begin{itemize}
+    \item \textbf{Objetivo:} Aproximarse lo máximo posible a la \textit{distribución ideal} donde los puntos de las mismas clases colapsan.
+    \item \textbf{Distribución ideal:}
+    \[p_0(j|i) \propto \begin{cases}1, &\quad y_i = y_j \\ 0, &\quad y_i \ne y_j\end{cases}. \]
+    \item \textbf{Distribución métrica:}
+    \[p^{M}(j|i) = \frac{\exp(-\|x_i-x_j\|^2_M)}{\sum\limits_{k\ne i} \exp(-\|x_i-x_k\|^2_M)}.\]
+    \item \textbf{Problema:}
+    \[\min_{M \succeq 0}\quad \sum_{i=1}^N \kl \left[ p_0(j|i) \| p^M(j|i) \right]. \]
+  \end{itemize}
+
+  \scalebox{1.0}{%
+  \begin{minipage}[t]{\textwidth}
+    \begin{thebibliography}{9}
+      \setbeamertemplate{bibliography item}[article]
+      \bibitem{mcml} Amir Globerson y Sam T Roweis. “Metric learning by collapsing classes”. En: Advances in neural
+                     information processing systems. 2006, págs. 451-458.
+    \end{thebibliography}
+  \end{minipage}
+  }
+
+  \end{minipage}
+  }
+
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Kernel trick y algoritmos basados en kernels}
+  \scalebox{0.8}{%
+  \begin{minipage}[t]{1.25\textwidth}
+  \begin{center}
+  \includegraphics[width=0.2\textwidth]{images/ker_1.png}%
+  \raisebox{1.1cm}{\includegraphics[width=0.05\textwidth]{images/ker_rightarrow2.png}}%
+  \includegraphics[width=0.2\textwidth]{images/ker_2.png}%
+  \raisebox{1.1cm}{\includegraphics[width=0.05\textwidth]{images/ker_rightarrow2.png}}%
+  \includegraphics[width=0.2\textwidth]{images/ker_3.png}%
+  \raisebox{1.1cm}{\includegraphics[width=0.05\textwidth]{images/ker_rightarrow2.png}}%
+  \includegraphics[width=0.2\textwidth]{images/ker_4.png}
+  \end{center}
+    \begin{block}{Kernel Trick}
+      \begin{itemize}
+        \item Enviar los datos a un espacio de alta dimensionalidad $\mathcal{F}$, mediante $\phi \colon \R^d \to \mathcal{F}$.
+        \item Aprender una distancia en $\mathcal{F}$ mediante $L \colon \mathcal{F} \to \R^{d'}$.
+        \item \textbf{Teoremas de representación: } $L\phi(x_i) = AK_{.i}$, con $A$ y $K$ matrices calculables.
+        \item \textbf{Ventajas: } Mayor variedad de distancias.
+      \end{itemize}
+    \end{block}
+
+    \begin{exampleblock}{Algoritmos kernelizados}
+      \begin{multicols}{4}
+      \begin{enumerate}
+        \item KLMNN
+        \item KANMM
+        \item KDMLMJ
+        \item KDA
+      \end{enumerate}
+      \end{multicols}
+    \end{exampleblock}
+  \end{minipage}
+  }
+
+\end{frame}
+
+\begin{frame}{Otros algoritmos}
+  \begin{minipage}[t][\textheight][t]{0.28\textwidth}
+
+  \begin{center}\textbf{LSI}\end{center}
+
+  \scalebox{.6}{%
+  \begin{minipage}[t][\textheight][t]{1.66\textwidth}
+    
+    \begin{equation*} \label{eq:lsi:equiv}
+    \begin{split}
+        \max_{M} &\quad \sum_{(x_i,x_j)\in D}  \|x_i - x_j \|_M \\
+        \text{s.a.: } &\quad \sum_{(x_i,x_j) \in S} \|x_i - x_j\|_M^2 \le 1 \\
+                      &\quad M \succeq 0.
+    \end{split}
+    \end{equation*}
+  \vspace{0.6cm}
+
+  \scalebox{1.0}{%
+  \begin{minipage}[t]{\textwidth}
+    \begin{thebibliography}{9}
+      \setbeamertemplate{bibliography item}[article]
+      \bibitem{itml} Eric P Xing y col. “Distance metric learning with application to clustering with side-information”.
+                     En: Advances in neural information processing systems. 2003, págs. 521-528.
+    \end{thebibliography}
+  \end{minipage}
+  }
+
+  \end{minipage}
+  }
+
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t][\textheight][t]{0.28\textwidth}
+
+  \begin{center}\textbf{DML-eig}\end{center}
+
+
+  \scalebox{.6}{%
+  \begin{minipage}[t][\textheight][t]{1.66\textwidth}
+  
+  \begin{equation*} \label{eq:dmleig:1}
+  \begin{split}
+      \max_{M} &\quad \min_{(x_i,x_j)\in D}  \|x_i - x_j \|_M^2 \\
+      \text{s.a.: } &\quad \sum_{(x_i,x_j) \in S} \|x_i - x_j\|_M^2 \le 1 \\
+                    &\quad M \succeq 0.
+  \end{split}
+  \end{equation*}
+
+  \vspace{1.2cm}
+  \scalebox{1.0}{%
+  \begin{minipage}[t]{\textwidth}
+    \begin{thebibliography}{9}
+      \setbeamertemplate{bibliography item}[article]
+      \bibitem{dmlmj} Yiming Ying y Peng Li. “Distance metric learning with eigenvalue optimization”. En: Journal of
+                      Machine Learning Research 13.Jan (2012), págs. 1-26.
+    \end{thebibliography}
+  \end{minipage}
+  }
+
+  \end{minipage}
+  }
+
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t][\textheight][t]{0.42\textwidth}
+
+  \begin{center}\textbf{LDML}\end{center}
+
+  \scalebox{.6}{%
+  \begin{minipage}[t][\textheight][t]{1.66\textwidth}
+    \begin{align*}
+     \sigma(x) &= \frac{1}{1+e^{-x}}. \\
+     p_{ij,M} &= \sigma(b - \|x_i-x_j\|_M^2)\\
+     \mathcal{L}(M) &= \sum_{i,j=1}^N y_{ij}\log p_{ij,M} + (1-y_{ij})\log(1-p_{ij,M}) \\
+     \max_{M \succeq 0}&\quad \mathcal{L}(M)
+   \end{align*}
+  
+  \scalebox{1.0}{%
+  \begin{minipage}[t]{\textwidth}
+    \begin{thebibliography}{9}
+      \setbeamertemplate{bibliography item}[article]
+      \bibitem{mcml} Matthieu Guillaumin, Jakob Verbeek y Cordelia Schmid. “Is that you? Metric learning approaches
+                     for face identification”. En: Computer Vision, 2009 IEEE 12th international conference on. IEEE.
+                     2009, págs. 498-505.
+    \end{thebibliography}
+  \end{minipage}
+  }
+
+  \end{minipage}
+  }
+
+  \end{minipage}
+\end{frame}
+
+\section{Informática práctica}
+
+\subsection{Software desarrollado}
+
+\begin{frame}{Python y R}
+  \begin{itemize}
+    \item Lenguajes de programación de alto nivel, multiplataforma, orientados a objetos e interpretados.
+    \item De gran popularidad en el aprendizaje automático.
+    \item Gran cantidad de librerías para computación científica.
+    \item Actualmente sin librerías amplias de aprendizaje de métricas de distancia.
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.3\textwidth]{images/Python.png}
+    \hspace{0.2\textwidth}
+    \includegraphics[width=0.3\textwidth]{images/R_logo.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=\textwidth]{images/scipy_ecosystem.png}
+\end{frame}
+
+\begin{frame}{pyDML}
+  \begin{itemize}
+    \item \textit{Distance Metric Learning algorithms for Python.}
+    \item Incorpora los algoritmos de aprendizaje de métricas de distancia siguiendo la estructura de la librería \textbf{Scikit-Learn}.
+    \item Funcionalidades adicionales: clasificadores, dibujo y estimación de parámetros.
+  \end{itemize}
+  \begin{center}
+    \includegraphics[height=0.15\textheight]{images/github.png}
+    \hspace{0.1\textwidth}
+    \includegraphics[height=0.15\textheight]{images/pypi.png}
+    \hspace{0.1\textwidth}
+    \includegraphics[height=0.1\textheight]{images/readthedocs.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{center}\includegraphics[height=0.5\textheight]{images/uml_pydml.png}\end{center}
+  \begin{enumerate}
+    \item Construcción: \texttt{alg = LDA(num\_dims = 2)}
+    \item Ajuste: \texttt{alg.fit(X,y)}
+    \item Resultados del aprendizaje:
+      \begin{itemize}
+        \item Generalización: \texttt{alg.transform(newX)}
+        \item Métrica: \texttt{M = alg.metric()}
+        \item Aplicación lineal: \texttt{L = alg.transformer()}
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Ejemplo}
+  \begin{center}\textbf{Aprendiendo distancias}\end{center}
+  \begin{minipage}[t]{0.48\textwidth}
+  %\begin{columns}
+    %\column{0.5\textwidth}
+      \centering\includegraphics[width=\textwidth]{images/ex_dml1.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    %\column{0.5\textwidth}
+      \centering\includegraphics[width=\textwidth]{images/ex_dml2.png}
+  %\end{columns}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Funcionalidades adicionales}
+  \begin{center}\textbf{Dibujando regiones de clasificadores basados en distancias} \end{center}
+  \centering\includegraphics[height=0.8\textheight]{images/ex_plot.png}
+\end{frame}
+
+\begin{frame}{Funcionalidades adicionales}
+  \begin{minipage}[t]{0.48\textwidth}
+  \begin{center}\textbf{Clasificadores basados en distancias}\end{center}
+  \begin{center}(Ampliación de los de Scikit-Learn)\end{center}
+      \centering\includegraphics[width=\textwidth]{images/ex_ncmc.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
+      \begin{center}\textbf{Estimación de hiperparámetros}\end{center}
+      \centering\includegraphics[width=\textwidth]{images/ex_tune1.png}
+
+      \centering\includegraphics[width=\textwidth]{images/ex_tune2.png}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{rDML}
+  \begin{itemize}
+    \item \textit{Distance Metric Learning algorithms for R.}
+    \item Wrapper en R para pyDML.
+    \item Pone los algoritmos y funcionalidades adicionales de pyDML a disposición del lenguaje R.
+    \item Herramienta de interacción: biblioteca \texttt{reticulate}.
+  \end{itemize}
+
+  \begin{center}
+    \includegraphics[height=0.15\textheight]{images/github.png}
+    \hspace{0.1\textwidth}
+    \includegraphics[height=0.15\textheight]{images/Rstudio.png}
+    \hspace{0.1\textwidth}
+    \includegraphics[height=0.1\textheight]{images/reticulated_python.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Ejemplo}
+  \begin{center}\textbf{Aprendiendo distancias con rDML}\end{center}
+  \begin{minipage}[t]{0.48\textwidth}
+  %\begin{columns}
+    %\column{0.5\textwidth}
+      \centering\includegraphics[width=\textwidth]{images/ex_rdml_1.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    %\column{0.5\textwidth}
+      \centering\includegraphics[width=\textwidth]{images/ex_rdml_2.png}
+  %\end{columns}
+  \end{minipage}
+\end{frame}
+
+\subsection{Experimentación}
+
+\begin{frame}[shrink]{Experimentación}
+  \begin{alertblock}{Descripción}
+    \begin{itemize}
+      \item Conjunto de experimentos para evaluar los algoritmos de aprendizaje de métricas de distancia.
+      \item Experimentos realizados con la biblioteca pyDML.
+      \item Evaluación: resultados de la clasificación con diferentes clasificadores basados en distancias.
+      \item 34 datasets.
+      \item 10-Fold Cross Validation y normalización previa.
+    \end{itemize}
+  \end{alertblock}
+
+  \begin{block}{Experimentos}
+    \begin{enumerate}
+      \item Algoritmos a dimensión máxima con k-NN.
+      \item Algoritmos basados en centroides con sus correspondientes clasificadores.
+      \item Algoritmos basados en kernels con k-NN.
+      \item Algoritmos de reducción de dimensionalidad con k-NN.
+    \end{enumerate}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Algunos resultados}
+\resizebox{\textwidth}{!}{%
+    \input{results/basic-experiments-test-3nn}
+}
+    
+\end{frame}
+
+\begin{frame}{Análisis de resultados}
+  \begin{enumerate}
+    \item Mejores resultados en clasificación k-NN: \textbf{NCA}, \textbf{LMNN} y \textbf{DMLMJ}.
+    \item Buenos resultados de \textbf{NCMML} y \textbf{NCMC} sobre los clasificadores basados en centroides.
+    \item Algoritmos basados en kernels: gran variedad de posibilidades.
+    \item Ventajas de la reducción de dimensionalidad.
+  \end{enumerate}
+\end{frame}
+
 \section{Conclusiones y vías futuras}
+
+\subsection{Conclusiones y vías futuras}
+
+\begin{frame}{Conclusiones}
+  Hemos estudiado el concepto de aprendizaje de métricas de distancia, con sus fundamentos teóricos y algunos de sus algoritmos. También se han recogido los algoritmos en un software, con el que se han elaborado distintos experimentos.
+  \begin{block}{Vías futuras}
+    \begin{enumerate}
+      \item \textbf{Incorporación de nuevos algoritmos.}
+      \item \textbf{Nuevos enfoques para el concepto de distancia.}
+      \item \textbf{Kernelización de más algoritmos.}
+      \item \textbf{Otros mecanismos de optimización.}
+    \end{enumerate}
+  \end{block}
+\end{frame}
 
 \begin{comment}
 
