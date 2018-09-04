@@ -84,6 +84,8 @@ backend=biber
 \newcommand{\degree}{Doble Grado en Ingeniería Informática y Matemáticas}
 \newcommand{\docauthor}{Juan Luis Suárez Díaz}
 \newcommand{\tutors}{Francisco Herrera Triguero \\ Salvador García López}
+\newcommand{\myTutor}{Francisco Herrera Triguero}
+\newcommand{\myOtherTutor}{Salvador García López}
 \newcommand{\docaddress}{Facultad de Ciencias \\ E.T.S.  Ingenierías Informática y de Telecomunicación}
 \newcommand{\docemail}{jlsuarezdiaz@correo.ugr.es}
 \newcommand{\doclhead}{J. L. Suárez}
@@ -124,6 +126,21 @@ backend=biber
 \pdfbookmark[1]{Abstract}{Abstract}
 \renewcommand{\chaptername}{Abstract}
 \input{chapters/abstract}
+\newpage
+
+
+\refstepcounter{dummy}
+\pdfbookmark[1]{Declaraciones}{Declaraciones}
+\renewcommand{\chaptername}{}
+\thispagestyle{empty}
+\input{chapters/declaration_library}
+\newpage
+
+\refstepcounter{dummy}
+%\pdfbookmark[1]{Abstract}{Abstract}
+\renewcommand{\chaptername}{}
+\thispagestyle{empty}
+\input{chapters/declaration_tutor}
 \newpage
 
 \refstepcounter{dummy}
