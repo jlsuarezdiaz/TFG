@@ -1,0 +1,6 @@
+[submodule "pyDML"]
+	path = pyDML
+	url = https://github.com/jlsuarezdiaz/pyDML
+[submodule "rDML"]
+	path = rDML
+	url = https://github.com/jlsuarezdiaz/rDML
