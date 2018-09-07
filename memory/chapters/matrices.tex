@@ -307,7 +307,7 @@ Para concluir con los teoremas de descomposición, vamos a afinar el resultado i
 \end{thm}
 
 \begin{proof}
-    La primera afirmación fue vista en el teorema \ref{thm:decomp_sqrt}. Supongamos entonces que $L, K \in \mathcal{M}_d(\R)$ verifican $M = L^TL = K^TK$. Sean $L = V|L|, K = W|K|$, con $L, K \in O_d(\R)$, descomposiciones polares de $L$ y $K$. Entonces,
+    La primera afirmación fue vista en el teorema \ref{thm:decomp_sqrt}. Supongamos entonces que $L, K \in \mathcal{M}_d(\R)$ verifican $M = L^TL = K^TK$. Sean $L = V|L|, K = W|K|$, con $V, W \in O_d(\R)$, descomposiciones polares de $L$ y $K$. Entonces,
     \begin{align*}
         L^TL = K^TK &\implies |L|^TV^TV|L| = |K|^TW^TW|K| \\
                     &\implies |L|^T|L| = |K|^T|K| \implies |L|^2 = |K|^2.
@@ -638,7 +638,7 @@ y por tanto estos vectores propios maximizan el problema del teorema \ref{thm:ei
     \[ x \otimes y = xy^T \in \mathcal{M}_d(\R). \]
 \end{definition}
 
-El producto tensorial de vectores es también conocido en inglés como \emph{outer product}, en contraposición con el \emph{inner product}, que hace referencia al producto escalar usual $\langle x, y \rangle = x^Ty$. Observemos que el elemento $(i,j)$ de este producto viene dada por $(x \bigotimes y)_{ij} = x_iy_j$. Una propiedad importante es que esta matriz tiene siempre rango menor o igual que 1, siendo este 1 si y solo $x$ e $y$ son distintos de 0. De hecho, cuando hay alguna fila (resp. columna) no nula, el resto de filas (resp. columnas) son proporcionales a ella.
+El producto tensorial de vectores es también conocido en inglés como \emph{outer product}, en contraposición con el \emph{inner product}, que hace referencia al producto escalar usual $\langle x, y \rangle = x^Ty$. Observemos que el elemento $(i,j)$ de este producto viene dada por $(x \otimes y)_{ij} = x_iy_j$. Una propiedad importante es que esta matriz tiene siempre rango menor o igual que 1, siendo este 1 si y solo si $x$ e $y$ son distintos de 0. De hecho, cuando hay alguna fila (resp. columna) no nula, el resto de filas (resp. columnas) son proporcionales a ella.
 
 Un último detalle a destacar es que el producto $xx^T$, para $x \in \R^{d}\setminus \{0\}$, es siempre semidefinido positivo de rango 1. En efecto, dado $v \in \R^d$, $v^Txx^Tv = \langle v,x \rangle\langle x,v \rangle = \langle v,x \rangle^2 \ge 0$. El producto tensorial de vectores será de gran importancia, ya que aparecerá en el cálculo de muchos gradientes, como veremos a continuación, y también formará parte de numerosas matrices de covarianza, compacidad o dispersión que veremos en próximos capítulos.
 
